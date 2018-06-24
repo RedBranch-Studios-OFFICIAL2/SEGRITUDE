@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayerVitals : MonoBehaviour
+public class PlayerVitals : MonoBehaviour //this script is very wrong
 {
     public Image healthImage;
     public TextMeshProUGUI healthText;
