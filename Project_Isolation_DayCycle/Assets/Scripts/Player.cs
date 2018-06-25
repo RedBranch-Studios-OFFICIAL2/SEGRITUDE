@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -8,25 +10,57 @@ public class Player : MonoBehaviour
     public float health = 100;
     [Header("Hunger")]
     public int hunger = 100;
-    public int minDecreasingHunger=2;   //lowest seconds for food 
-    public int maxDecreasingHunger=10;
+    public int minDecreasingHunger =0;   //lowest seconds for food 
+    public int maxDecreasingHunger = 10;
+    float Probably = 1000; //it gets low and low and when is very low means that is very probably that you will get hungry but you can get hungry before it gets that low
+    float StartProbably;
     [Header("Thirst")]
     public int thirst = 100;
-    public int minDecreasingThirst=1;
-    public int maxDecreasingThrist=9; // i know water should be more demanding but i will let you decide how demanding
+    public int minDecreasingThirst = 0;
+    public int maxDecreasingThrist = 9; // i know water should be more demanding but i will let you decide how demanding
     [Header("Stamina")]
     public int stamina = 100;
     public int StaminaDrains = 1;
-    public int Delay_Stamina=7;//when it reach stamina drains faster
-    public int Delay_StaminaStart;
+    public int Delay_Stamina = 7;//when it reach stamina drains faster
+    int Delay_StaminaStart;
 
-    bool _stopped=true; //auxilary boolean
+    [Header("UI")]
+    public Slider hungerSlider;
+    public TextMeshProUGUI hungerText;
+    public Slider thirstSlider;
+    public TextMeshProUGUI thirstText;
+    public Slider healthSlider;
+    public TextMeshProUGUI healthText;
 
-    
+    bool _stopped = true; //auxilary boolean
 
+    private void Update()
+    {
+        if (Mathf.Ceil(Random.Range(0, Probably))==Mathf.Ceil(Probably)||(Probably<=0))
+        {
+            GetHungryAndThirsty();
+        }
+        Probably -= .1f;
+        UICheck();
+    }
+    void UICheck()
+    {
+        hungerText.text ="Hunger "+ hunger.ToString();
+        thirstText.text ="Thirst " + thirst.ToString();
+        healthText.text ="Health " + health.ToString();
+
+    }
+    void GetHungryAndThirsty() 
+    {
+        Probably = StartProbably;
+        Hungry();
+        Thirsty();
+
+    }
     public void Start()
     {
         Delay_StaminaStart = Delay_Stamina;
+        StartProbably = Probably;
     }
 
     #region Health
@@ -44,8 +78,9 @@ public class Player : MonoBehaviour
     }
     #endregion
     #region Stamina
-    public void Stamina() //you can call it with a bool at some time if you run too much or it is sunny or he is running throug water
+    public void Stamina(int Drain=1) //you can call it with a bool at some time if you run too much or it is sunny or he is running throug water
     {
+        StaminaDrains = Drain;
         stamina-=StaminaDrains;
         _stopped = false;
         if (!_stopped)  //if you run too much withou stopping stamina drains faster
@@ -56,15 +91,14 @@ public class Player : MonoBehaviour
         {
             StaminaDrains++;
         }
-    }
-    public void Stopped()
-    {
         if (_stopped) //recover the delay
         {
             Delay_Stamina = Delay_StaminaStart;
             StaminaDrains = 1;
+            stamina++;
         }
     }
+   
     #endregion
     #region Health&Thirst
     public void Hungry() //call it at some time 
@@ -72,7 +106,7 @@ public class Player : MonoBehaviour
         int a = Random.Range(minDecreasingHunger, maxDecreasingHunger);
         hunger -= a;
     }
-    public void Thristy() //call it at some time 
+    public void Thirsty() //call it at some time 
     {
         int b = Random.Range(minDecreasingThirst, maxDecreasingThrist);
         thirst -= b;
