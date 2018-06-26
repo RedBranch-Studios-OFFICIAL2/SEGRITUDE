@@ -25,7 +25,7 @@ public class GunRecoil : MonoBehaviour {
             {
                 Debug.Log("Shot!");
                 Gun.transform.localRotation = Quaternion.Lerp(Gun.transform.localRotation, Gun.transform.localRotation = Quaternion.Euler(-90, 90, -45), Speed * Time.deltaTime);
-                //Gun.transform.localPosition = Gun.transform.localPosition + new Vector3(0.5f, 0.5f, 0);
+                //Gun.transform.position = Gun.transform.localPosition + new Vector3(-0.5f, 0, 0);
                 yield return new WaitForSeconds(0.0000001f);
             }
             yield return new WaitForSecondsRealtime(Time.deltaTime);
@@ -33,7 +33,7 @@ public class GunRecoil : MonoBehaviour {
             {
                 Debug.Log("Shot!");
                 Gun.transform.localRotation = Quaternion.Lerp(Gun.transform.localRotation, Gun.transform.localRotation = Quaternion.Euler(0, 0, 0), Speed * Time.deltaTime);
-                //Gun.transform.localPosition = Gun.transform.localPosition + new Vector3(0.5f, 0.5f, 0);
+                //Gun.transform.position = Gun.transform.localPosition + new Vector3(0.5f, 0, 0);
                 yield return new WaitForSeconds(0.0000001f);
             }
         }
