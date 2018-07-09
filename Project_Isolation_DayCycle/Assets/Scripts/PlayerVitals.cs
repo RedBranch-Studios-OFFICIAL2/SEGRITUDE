@@ -1,82 +1,96 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using TMPro;
 
-public class PlayerVitals : MonoBehaviour
+public class PlayerVitals : MonoBehaviour //this script is very wrong
 {
-    public Slider healthSlider;
-    public int maxHealth;
-    public int healthFallRate;
+    public Image healthImage;
+    public TextMeshProUGUI healthText;
+    public  float  maxHealth=100;
+    public float health; 
+    public float healthFallRate;
 
-    public Slider thirstSlider;
-    public int maxThirst;
-    public int thirstFallRate;
+    public Image thirstImage;
+    public TextMeshProUGUI thirstText;
+    public float maxThirst=100;
+    public float thirst;
+    public float thirstFallRate;
 
-    public Slider hungerSlider;
-    public int maxHunger;
-    public int hungerFallRate;
+    public Image hungerImage;
+    public TextMeshProUGUI hungerText;
+    public float maxHunger=100;
+    public float hunger;
+    public float hungerFallRate;
 
     void Start()
     {
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = maxHealth;
+       
+        health = maxHealth;
 
-        thirstSlider.maxValue = maxThirst;
-        thirstSlider.value = maxThirst;
+        thirst = maxThirst;
 
-        hungerSlider.maxValue = maxHunger;
-        hungerSlider.value = maxHunger;
+        hunger = maxHunger;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         //HEALTH CONTROL SECTION
-        if (hungerSlider.value <= 0 && (thirstSlider.value <= 0))
+        if (hunger <= 0 && (thirst <= 0))
         {
-            healthSlider.value -= Time.deltaTime / healthFallRate * 2;
+            health -= (Time.deltaTime / healthFallRate) * 2;
         }
 
-        else if (hungerSlider.value <= 0 || thirstSlider.value <= 0)
+        else if (hunger <= 0 || thirst <= 0)
         {
-            healthSlider.value -= Time.deltaTime / healthFallRate;
+            health -= Time.deltaTime / healthFallRate;
         }
 
-        if (healthSlider.value <= 0)
+        if (health <= 0)
         {
             CharacterDeath();
         }
 
         //HUNGER CONTROL SECTION
-        if (hungerSlider.value >= 0)
+        if (hunger >= 0)
         {
-            hungerSlider.value -= Time.deltaTime / hungerFallRate;
+            hunger -= Time.deltaTime / hungerFallRate;
         }
 
-        else if (hungerSlider.value <= 0)
+        else if (hunger <= 0)
         {
-            hungerSlider.value = 0;
+            hunger = 0;
         }
 
-        else if (hungerSlider.value >= maxHunger)
+        else if (hunger >= maxHunger)
         {
-            hungerSlider.value = maxHunger;
+            hunger = maxHunger;
         }
 
         //THIRST CONTROL SECTION
-        if (thirstSlider.value >= 0)
+        if (thirst >= 0)
         {
-            thirstSlider.value -= Time.deltaTime / thirstFallRate;
+            thirst -= Time.deltaTime / thirstFallRate;
         }
 
-        else if (thirstSlider.value <= 0)
+        else if (thirst <= 0)
         {
-            thirstSlider.value = 0;
+            thirst = 0;
         }
 
-        else if (thirstSlider.value >= maxThirst)
+        else if (thirst >= maxThirst)
         {
-            thirstSlider.value = maxThirst;
+            thirst = maxThirst;
         }
+        healthImage.fillAmount = (health / maxHealth);
+        healthText.text = ("Health=" + ((int)(health / maxHealth * 100))+("%")).ToString();
+
+        hungerImage.fillAmount = (hunger / maxHunger);
+        hungerText.text = ("Health=" + ((int)(hunger / maxHunger * 100))+("%")).ToString();
+
+        thirstImage.fillAmount = (thirst / maxThirst);
+        thirstText.text = ("Health=" + ((int)(thirst / maxThirst * 100))+("%")).ToString();
+
     }
 
     void CharacterDeath()
