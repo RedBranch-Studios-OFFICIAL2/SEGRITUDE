@@ -6,6 +6,9 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
+    [Header("Farming")]
+    public Camera cam;
+    public float range;
     [Header("Health")]
     public float health = 100;
     [Header("Hunger")]
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI thirstText;
     public Slider healthSlider;
     public TextMeshProUGUI healthText;
+    Destroyable destroyable;
 
     bool _stopped = true; //auxilary boolean
 
@@ -41,15 +45,14 @@ public class Player : MonoBehaviour
             GetHungryAndThirsty();
         }
         Probably -= .1f;
-        UICheck();
+       
+        if (Input.GetMouseButtonDown(0))
+        {
+            Farm();
+        }
     }
-    void UICheck()
-    {
-        hungerText.text ="Hunger "+ hunger.ToString();
-        thirstText.text ="Thirst " + thirst.ToString();
-        healthText.text ="Health " + health.ToString();
-
-    }
+    
+    
     void GetHungryAndThirsty() 
     {
         Probably = StartProbably;
@@ -112,5 +115,19 @@ public class Player : MonoBehaviour
         thirst -= b;
     }
 
+    #endregion
+    #region Farming System
+    RaycastHit hit;
+    public void Farm()
+    {
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward,out hit, range))
+        {
+            if (hit.collider.tag == "Destroyable")
+            {
+                destroyable = hit.collider.GetComponent<Destroyable>();
+                Debug.Log("Hit something");
+            }
+        }
+    }
     #endregion
 }
