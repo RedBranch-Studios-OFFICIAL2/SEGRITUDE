@@ -125,6 +125,7 @@ public class Player : MonoBehaviour
             if (hit.collider.tag == "Destroyable")
             {
                 destroyable = hit.collider.GetComponent<Destroyable>();
+                destroyable.Damage(2, this);//the first argument can be changed with a variable of the tool you are using etc
                 Debug.Log("Hit something");
             }
         }
