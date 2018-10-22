@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -51,7 +50,7 @@ public class InventorySystem : MonoBehaviour {
     {
         Debug.Log("You have picked up " + item);
 
-        for(int i = x;  i < Slots.Length; i++)
+        for (int i = x; i < Slots.Length; i++)
         {
             if (Slots[i].GetComponent<SlotScript>())
             {
@@ -65,6 +64,7 @@ public class InventorySystem : MonoBehaviour {
                 {
                     Slots[i].GetComponent<SlotScript>().StoredObject = item;
                     item.transform.parent = Slots[i].transform;
+                    item.SetActive(false);
                 }
                 
                 break;

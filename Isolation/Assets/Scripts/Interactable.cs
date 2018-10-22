@@ -11,6 +11,5 @@ public class Interactable : InventorySystem {
     public void OnMouseDown()
     {
         PickUp(NewItem);
-        
     }
 }
