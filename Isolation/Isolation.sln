@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+<<<<<<< HEAD
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Isolation", "Assembly-CSharp.csproj", "{E03DB267-2B6D-6F8A-3A21-27CFD1BA8608}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Isolation", "Assembly-CSharp-Editor.csproj", "{DDB2CE71-ED0A-5D70-58FF-1749065D1730}"
+=======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{E03DB267-2B6D-6F8A-3A21-27CFD1BA8608}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{DDB2CE71-ED0A-5D70-58FF-1749065D1730}"
+>>>>>>> cf2e84fb4e6bcff14aee532067e8553c7ebb51d5
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
