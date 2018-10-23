@@ -451,9 +451,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 1835474886}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &68297392
 MonoBehaviour:
@@ -706,10 +708,7 @@ MonoBehaviour:
   InventoryGui: {fileID: 1080475096}
   SlotParent: {fileID: 667793370}
   Slots: []
-  Items: []
-  x: 0
-  Capacity: 35
-  Additem: 0
+  Slotx: 0
   Cam: {fileID: 282840810}
 --- !u!114 &81810422
 MonoBehaviour:
@@ -859,7 +858,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &114329199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -943,7 +941,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &144345657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1162,7 +1159,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &234486411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1246,7 +1242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &250462434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1330,7 +1325,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &276032345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1413,9 +1407,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 144345654}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &282533955
 MonoBehaviour:
@@ -1643,7 +1639,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &296961243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1873,9 +1868,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 1076886007}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &351327341
 MonoBehaviour:
@@ -2011,9 +2008,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 505924045}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &375059058
 MonoBehaviour:
@@ -2149,9 +2148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 620826855}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &381180189
 MonoBehaviour:
@@ -2356,9 +2357,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 1941058791}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &411108511
 MonoBehaviour:
@@ -2571,7 +2574,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &446482562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2654,9 +2656,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 465897979}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &450083834
 MonoBehaviour:
@@ -2793,7 +2797,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &450815656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2877,7 +2880,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &465897982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4070,9 +4072,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 1220834202}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &495503045
 MonoBehaviour:
@@ -4243,7 +4247,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!1 &517975075
 GameObject:
   m_ObjectHideFlags: 0
@@ -4335,7 +4338,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh13324
+  m_Name: pb_Mesh13636
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -4534,7 +4537,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &539244131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4688,7 +4690,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &603174098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4772,7 +4773,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &619580602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4856,7 +4856,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &620826858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5118,9 +5117,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 1852060970}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &672871261
 MonoBehaviour:
@@ -86712,9 +86713,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 1365184044}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &763826102
 MonoBehaviour:
@@ -86850,9 +86853,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 114329196}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &794284999
 MonoBehaviour:
@@ -87064,9 +87069,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 1134227482}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &812721597
 MonoBehaviour:
@@ -87202,9 +87209,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 1927185626}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &823562842
 MonoBehaviour:
@@ -87417,7 +87426,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &831012416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87500,9 +87508,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 250462431}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &833775458
 MonoBehaviour:
@@ -87638,9 +87648,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 865930214}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &838604886
 MonoBehaviour:
@@ -87777,7 +87789,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &865930217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87861,7 +87872,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &869415545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88634,9 +88644,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 831012413}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &974534694
 MonoBehaviour:
@@ -88773,7 +88785,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &985180602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89401,7 +89412,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &1034904284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89485,7 +89495,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &1076886010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89606,9 +89615,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 869415542}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1130077689
 MonoBehaviour:
@@ -89745,7 +89756,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &1134227485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89828,9 +89838,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 1283779456}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1134723580
 MonoBehaviour:
@@ -90097,9 +90109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 1408857489}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1198999368
 MonoBehaviour:
@@ -90236,7 +90250,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &1216832488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90320,7 +90333,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &1220834205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90403,9 +90415,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 1341913555}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1233476720
 MonoBehaviour:
@@ -90610,9 +90624,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 296961240}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1252701267
 MonoBehaviour:
@@ -90749,7 +90765,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &1283779459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90832,9 +90847,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 603174095}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1316329581
 MonoBehaviour:
@@ -91281,7 +91298,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &1341913558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97300,7 +97316,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &1365184047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97384,7 +97399,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &1381120823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97468,7 +97482,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &1408857492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98169,9 +98182,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 446482559}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1483949126
 MonoBehaviour:
@@ -98376,9 +98391,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 2123559384}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1555128757
 MonoBehaviour:
@@ -98515,7 +98532,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &1559459078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98822,9 +98838,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 539244128}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1605290294
 MonoBehaviour:
@@ -107650,9 +107668,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 1034904281}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1639489509
 MonoBehaviour:
@@ -107864,9 +107884,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 1216832485}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1705824674
 MonoBehaviour:
@@ -108002,9 +108024,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 234486408}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1716133243
 MonoBehaviour:
@@ -108140,9 +108164,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 450815653}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1727857976
 MonoBehaviour:
@@ -115113,9 +115139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 619580599}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1802283416
 MonoBehaviour:
@@ -115251,9 +115279,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 2053167247}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1814279373
 MonoBehaviour:
@@ -115389,9 +115419,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 1381120820}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1824108451
 MonoBehaviour:
@@ -115528,7 +115560,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &1835474889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116095,7 +116126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &1852060973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116188,9 +116218,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 276032342}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &1886926529
 MonoBehaviour:
@@ -116396,7 +116428,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &1927185629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116635,7 +116666,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &1941058794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116943,7 +116973,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &2053167250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117026,9 +117055,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 1559459075}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &2089425852
 MonoBehaviour:
@@ -117202,9 +117233,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9366f447b35b540868dfab8e8d6637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 985180599}
-  Player: {fileID: 81810413}
-  Camera: {fileID: 282840810}
+  InventoryGui: {fileID: 1080475096}
+  SlotParent: {fileID: 667793370}
+  Slots: []
+  Slotx: 0
+  Cam: {fileID: 282840810}
   StoredObject: {fileID: 0}
 --- !u!114 &2107932784
 MonoBehaviour:
@@ -117573,7 +117606,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoredObject: {fileID: 0}
-  weight: 0
 --- !u!114 &2123559387
 MonoBehaviour:
   m_ObjectHideFlags: 0

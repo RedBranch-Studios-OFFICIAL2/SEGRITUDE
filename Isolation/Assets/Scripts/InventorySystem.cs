@@ -8,28 +8,20 @@ public class InventorySystem : MonoBehaviour {
     public GameObject SlotParent;
 
     public Image[] Slots;
-    public List<GameObject> Items = new List<GameObject>();
-    public int x = 0;
-    public int Capacity = 35;
-
-    public bool Additem;
-
+    public int Slotx = 0;
     public GameObject Cam;
-
     bool Open;
 
     void Start()
     {
-
         Open = false;
-        Additem = false;
-
         Slots = SlotParent.GetComponentsInChildren<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Open and Closes the Inventory
         if (Input.GetKeyDown(KeyCode.E) && Open == false)
         {
             Open = true;
@@ -48,29 +40,31 @@ public class InventorySystem : MonoBehaviour {
     // Method that will be called by items that can be picked up
     public void PickUp(GameObject item)
     {
-        Debug.Log("You have picked up " + item);
+        Debug.Log("You picked up "+ item.name);
 
-        for (int i = x; i < Slots.Length; i++)
+        // Sets i to x, in order to keep track of the value of slots being inputted
+        for (int i = Slotx; i < Slots.Length; i++)
         {
             if (Slots[i].GetComponent<SlotScript>())
             {
-                Debug.Log(i);
-                x = x + 1;
-                Debug.Log(Slots[i]);
+                // Sets slot to a random color to display its use
                 Slots[i].GetComponent<Image>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
 
-                Items.Add(item);
+                // Adds the item picked up to the slot and keeps it there
                 if (Slots[i].GetComponent<SlotScript>().StoredObject == null)
                 {
                     Slots[i].GetComponent<SlotScript>().StoredObject = item;
                     item.transform.parent = Slots[i].transform;
                     item.SetActive(false);
+
+                    // Increases X as the loop is ran in order to keep going through the slots
+                    Slotx = Slotx + 1;
+                    Debug.Log(i);
                 }
-                
+
                 break;
             }
         }
-
     }
 
 }
