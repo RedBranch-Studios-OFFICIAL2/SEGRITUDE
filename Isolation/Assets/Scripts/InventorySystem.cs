@@ -7,6 +7,8 @@ public class InventorySystem : MonoBehaviour {
     public GameObject InventoryGui;
     public GameObject SlotParent;
 
+    public GameObject RightHand;
+
     public Image[] Slots;
     public int Slotx = 0;
     public GameObject Cam;
@@ -42,29 +44,39 @@ public class InventorySystem : MonoBehaviour {
     {
         Debug.Log("You picked up "+ item.name);
 
-        // Sets i to x, in order to keep track of the value of slots being inputted
-        for (int i = Slotx; i < Slots.Length; i++)
+        if(item.tag != "Weapon")
         {
-            if (Slots[i].GetComponent<SlotScript>())
+            // Sets i to x, in order to keep track of the value of slots being inputted
+            for (int i = Slotx; i < Slots.Length; i++)
             {
-                // Sets slot to a random color to display its use
-                Slots[i].GetComponent<Image>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
-
-                // Adds the item picked up to the slot and keeps it there
-                if (Slots[i].GetComponent<SlotScript>().StoredObject == null)
+                Debug.Log(i);
+                if (Slots[i].GetComponent<SlotScript>())
                 {
-                    Slots[i].GetComponent<SlotScript>().StoredObject = item;
-                    item.transform.parent = Slots[i].transform;
-                    item.SetActive(false);
+                    // Sets slot to a random color to display its use
+                    Slots[i].GetComponent<Image>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
 
-                    // Increases X as the loop is ran in order to keep going through the slots
-                    Slotx = Slotx + 1;
-                    Debug.Log(i);
+                    // Adds the item picked up to the slot and keeps it there
+                    if (Slots[i].GetComponent<SlotScript>().StoredObject == null)
+                    {
+                        Slots[i].GetComponent<SlotScript>().StoredObject = item;
+                        item.transform.parent = Slots[i].transform;
+                        item.SetActive(false);
+
+
+
+                    }
+                    break;
                 }
-
-                break;
             }
+            Slotx = Slotx + 1;
         }
+        else if(item.tag == "Weapon")
+        {
+            item.GetComponent<BoxCollider>().isTrigger = false;
+            item.transform.parent = RightHand.transform;
+            item.transform.position = new Vector3(-0.0020f, 0.00438f, 0.00108f);
+        }
+        
     }
 
 }
