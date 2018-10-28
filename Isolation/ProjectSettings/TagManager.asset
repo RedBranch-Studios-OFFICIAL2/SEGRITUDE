@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall_Pen
   - Weighted
+  - Weapon
   layers:
   - Default
   - TransparentFX

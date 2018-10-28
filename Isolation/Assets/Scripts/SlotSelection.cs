@@ -3,25 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SlotSelection : MonoBehaviour {
-
-    public GameObject Slot;
-    public GameObject Player;
-    public GameObject Camera;
+public class SlotSelection : InventorySystem {
 
     public GameObject StoredObject;
-    
+    public GameObject Player;
 
     public void OnSlotSelect()
     {
-        StoredObject = Slot.GetComponent<SlotScript>().StoredObject;
+        StoredObject = gameObject.transform.parent.GetComponent<SlotScript>().StoredObject;
+        Debug.Log("Slot Selected");
 
-        Debug.Log(StoredObject);
-        StoredObject.SetActive(true);
         StoredObject.transform.parent = null;
-        StoredObject.transform.position = Player.transform.position + Camera.transform.forward * 2;
+        StoredObject.SetActive(true);
+        StoredObject.transform.position = Player.transform.position + Player.transform.forward;
+        StoredObject = null;
 
-        Slot.GetComponent<SlotScript>().StoredObject = null;
-        Slot.GetComponent<Image>().color = new Color32(0, 0, 0, 120);
+        gameObject.transform.parent.GetComponent<SlotScript>().StoredObject = null;
+
+        gameObject.transform.parent.GetComponent<Image>().color = new Color32(0, 0, 0, 120);
     }
 }
