@@ -11,7 +11,9 @@ public class ButtonManager : MonoBehaviour
 	public GameObject settingsButton;
 	public GameObject spButton;
 	public GameObject mpButton;
+	public GameObject store;
 	public GameObject zombieButton;
+	public GameObject diamondDisplay;
 
 	[Header("Audio")]
 	public AudioSource clickSE;
@@ -35,7 +37,9 @@ public class ButtonManager : MonoBehaviour
 		playButton.SetActive(false);
 		storeButton.SetActive(false);
 		settingsButton.SetActive(false);
-		zombieButton.SetActive(true);
+		store.SetActive(true);
 		clickSE.Play();
+		diamondDisplay.SetActive(true);
+		zombieButton.SetActive(true);
 	}
 }
