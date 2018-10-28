@@ -5,7 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall_Pen
+<<<<<<< HEAD
   - Bullet
+=======
+  - Weighted
+  - Weapon
+>>>>>>> c30d078ff00c07b27f27a1829925358761bdae50
   layers:
   - Default
   - TransparentFX

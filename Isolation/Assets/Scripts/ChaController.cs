@@ -11,12 +11,14 @@ public class ChaController : MonoBehaviour {
 
     public GameObject Player;
     Animator anim;
+    public GameObject Gun;
     
     public bool Jump;
     public bool Walk = false;
     public bool Crouch;
     public bool Prone;
     public bool Run;
+    public bool Action = false;
 
     public float ForwardDir;
     public float SideDir;
@@ -161,7 +163,21 @@ public class ChaController : MonoBehaviour {
         MoveDir.y -= Gravity * Time.deltaTime;
 
         controller.Move(MoveDir * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && Action == false)
+        {
+            Action = true;
+            gameObject.GetComponent<GunController>().enabled = false;
+            Gun.SetActive(false);
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha1) && Action == true)
+        {
+            Action = false;
+            gameObject.GetComponent<GunController>().enabled = true;
+            Gun.SetActive(true);
+        }
     }
+
     public void Running()
     {
         if(Run == true)
@@ -190,4 +206,5 @@ public class ChaController : MonoBehaviour {
         anim.SetBool("Walk", true);
         Jump = false;
     }
+    
 }
