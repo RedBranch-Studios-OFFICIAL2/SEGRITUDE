@@ -84,7 +84,7 @@ public class Playeratt : MonoBehaviour {
         
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other) //For item devloper please change tag of item before u make it here i will program for evryitem do back different ammount of att.
     {
         if(other.tag == "Food")
         {
