@@ -328,6 +328,7 @@
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Runtime Editing\RuntimeEdit.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Vertex Colors\HighlightNearestFace.cs" />
     <Compile Include="Assets\Scripts\AIScripts\AIController.cs" />
+    <Compile Include="Assets\Scripts\AIScripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\Cameras.cs" />
     <Compile Include="Assets\Scripts\CamLook.cs" />
     <Compile Include="Assets\Scripts\ChaController.cs" />
