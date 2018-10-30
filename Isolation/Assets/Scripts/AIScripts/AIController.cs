@@ -20,29 +20,42 @@ public class AIController : MonoBehaviour {
 
     private BoxCollider fovCollider;
 
-    private bool seePlayer;
+    public bool seePlayer;
+    public bool isGettingShot;
     private int resetWarningCountDown;
     private float resetTimeForNextPoint;
 
     private Vector3 newpos;
-    private GameObject player;
+    public GameObject player;
+    private Rigidbody rbAI;
+    private NavMeshAgent AIAgent;
+
+    //animation conditions
+    Animator anim;
+    private bool isPatrolling;
 
 
     private void Start() {
         this.resetTimeForNextPoint = this.timeForNextPoint;
         this.seePlayer = false;
         this.fovCollider = GetComponent<BoxCollider>();
-        FieldOfView();
+        this.FieldOfView();
         this.resetWarningCountDown = this.warningCountDown;
+        this.isPatrolling = false;
+        this.anim = GetComponent<Animator>();
+        this.rbAI = GetComponent<Rigidbody>();
+        this.AIAgent = this.GetComponent<NavMeshAgent>();
+        this.isGettingShot = false;
     }
 
     private void Update() {
         ActionDecider();
+        AnimationDecider();
     }
 
     void FieldOfView() {
         this.fovCollider.size = new Vector3(this.fovCollider.size.x, this.fovCollider.size.y, this.FOV);
-        this.fovCollider.center = new Vector3(this.fovCollider.center.x, this.fovCollider.size.y, this.FOV / 2);
+        this.fovCollider.center = new Vector3(this.fovCollider.center.x, this.fovCollider.center.y, this.FOV / 2);
     }
 
     private void OnTriggerStay(Collider other) {
@@ -50,41 +63,55 @@ public class AIController : MonoBehaviour {
             this.seePlayer = true;
             this.player = other.gameObject;
         }
+        if (other.gameObject.tag == "Bullet") {
+            this.isGettingShot = true;
+        }
     }
 
     void ActionDecider() {
-        if (this.seePlayer) {
-            GiveWarning();
-        }
+        //if (this.seePlayer && warningCountDown == resetWarningCountDown) {
+            //GiveWarning();
+       // }
         if (!seePlayer) {
             Patrol();
         }
-        if (CheckForGettingShot()) {
-            //Say that it should take cover.
+        if (isGettingShot) {
+            TakeCover();
         }
+        if (this.seePlayer && warningCountDown <= 0) {
+            WarningShot();
+        }
+
         if (player != null) {
             if (PlayerDistanceChecking() >= minChaseDistance) {
-
+                Chase();
             } else if (PlayerDistanceChecking() >= maxChaseDistance) {
                 player = null;
             }
         }
 
-
     }
+
+    void AnimationDecider() {
+        if (AIAgent.velocity.magnitude <= 0f) {
+            anim.SetBool("Patrolling", false);
+        } else {
+            anim.SetBool("Patrolling", true);
+        }
+    }
+
     float PlayerDistanceChecking() {
         float playerToDistance = Vector3.Distance(this.transform.position, this.player.transform.position);
         return playerToDistance;
     }
 
-    bool CheckForGettingShot() {
-        //Check if the AI is being shot at
-        return true;
-    }
+    //void GiveWarning() {
+    //    this.warningCountDown -= (int)Time.deltaTime;
+    //    this.warningText.text = "LEAVE: " + this.warningCountDown;
+   // }
 
-    void GiveWarning() {
-        this.warningCountDown -= (int)Time.deltaTime;
-        this.warningText.text = "LEAVE: " + this.warningCountDown;
+    void WarningShot() {
+        //Shoot once somewhere random which is not at the player
     }
 
     #region Patrolling
@@ -116,14 +143,43 @@ public class AIController : MonoBehaviour {
     #endregion
 
     #region Cover
+    Collider closestCover;
+    Vector3 correctCover;
     void TakeCover() {
         Vector3 cover = ClosestCover();
-        this.gameObject.GetComponent<NavMeshAgent>().SetDestination(cover);
-        //Still needs something so that it goes to the opposite direction of the player
+        if (player != null) {
+            LookForPlayer();
+        }
+         correctCover = CheckCoverSide();
+        this.gameObject.GetComponent<NavMeshAgent>().SetDestination(correctCover);
+        
+        
+    }
+
+    void LookForPlayer() {
+        Ray toPlayer = new Ray(this.transform.position, player.transform.position);
+        RaycastHit playerHit;
+        this.transform.LookAt(player.transform);
+
+        if (Physics.Raycast(toPlayer, out playerHit)) {
+            if (playerHit.collider.tag == "Player") {
+                CheckCoverSide();
+            }
+        }
+    }
+
+    Vector3 CheckCoverSide() {
+        Vector3 oppositeSide = closestCover.transform.localScale + this.transform.position;
+        if (correctCover == null) {
+            return oppositeSide;
+        } else
+            return correctCover;
+        
+        
     }
 
     Vector3 ClosestCover() {
-        Collider closestCover = null;
+        
         //Get all Colliders of the covers in the area;
         Collider[] coverColliders = Physics.OverlapSphere(this.transform.position, this.coverRadius, this.coverLayer);
 
@@ -153,6 +209,8 @@ public class AIController : MonoBehaviour {
     #endregion
 
     #region Chase
+    void Chase() {
 
+    }
     #endregion
 }
