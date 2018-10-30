@@ -59,7 +59,7 @@
      <Compile Include="Assets\Scripts\ChaController.cs" />
      <Compile Include="Assets\Scripts\Cosmetic.cs" />
      <Compile Include="Assets\Scripts\Currency.cs" />
-     <Compile Include="Assets\Scripts\DayNightCycle.cs" />
+     <Compile Include="Assets\Scripts\daynightcycle.cs" />
      <Compile Include="Assets\Scripts\Destroyable.cs" />
      <Compile Include="Assets\Scripts\EmeraldCurrency.cs" />
      <Compile Include="Assets\Scripts\Experience.cs" />

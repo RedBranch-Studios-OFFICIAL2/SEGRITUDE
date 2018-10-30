@@ -1,47 +1,68 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class DayNightCycle : MonoBehaviour {
+public class daynightcycle : MonoBehaviour {
 
-    public float time;
-    public TimeSpan CurrentTime;
-    public Transform SunTransform;
-    public Light Sun;
+    public float minutesInDay = 1.0f;
 
-    public float Intensity;
-    public Color Day = Color.blue;
-    public Color Night = Color.black;
-
-    public int Speed;
-
-	// Update is called once per frame
-	void Update ()
+    float timer;
+    float percentageOfDay;
+    float turnSpeed;
+   
+    void Start()
     {
-        ChangeTime();
-	}
+        timer = 0.0f;
+    }
 
-    public void ChangeTime()
+    
+    void Update()
     {
-        time += Time.deltaTime * Speed;
-        if (time > 86400)
+        checkTime();
+        UpdateLights();
+
+        turnSpeed = 360.0f / (minutesInDay * 60.0f) * Time.deltaTime;
+        transform.RotateAround(transform.position, transform.right, turnSpeed);
+
+        Debug.Log(percentageOfDay);
+    }
+
+    void UpdateLights()
+    {
+        Light l = GetComponent<Light>();
+        if (isNight())
         {
-            time = 0;
+            if (l.intensity > 0.0f)
+            {
+                l.intensity -= 0.05f;
+            }
         }
-        CurrentTime = TimeSpan.FromSeconds(time);
-
-        // Rotates the Sun
-        SunTransform.rotation = Quaternion.Euler(new Vector3((time -21600) / 86400 * 360, 0, 0 ));
-        if (time < 43200)
-        
-            Intensity = 1 - (43200 - time) / 43200;
         else
-            Intensity = 1 - ((43200 - time) / 43200 * -1);
+        {
+            if (l.intensity < 1.0f)
+            {
+                l.intensity += 0.05f;
+            }
+        }
+    }
 
-        RenderSettings.ambientSkyColor = Color.Lerp(Day, Night, Intensity * Intensity);
+    bool isNight()
+    {
+        bool c = false;
+        if (percentageOfDay > 0.5f)
+        {
+            c = true;
+        }
+        return c;
+    }
 
-        Sun.intensity = Intensity;
+    void checkTime()
+    {
+        timer += Time.deltaTime;
+        percentageOfDay = timer / (minutesInDay * 60.0f);
+        if (timer > (minutesInDay * 60.0f))
+        {
+            timer = 0.0f;
+        }
     }
 }
