@@ -34,12 +34,10 @@ public class CameraFollow : MonoBehaviour {
 		Cursor.visible = false;
 	}
 	
-	// Update is called once per frame
+	
 	void Update () {
 
-		// We setup the rotation of the sticks here
-		float inputX = Input.GetAxis ("RightStickHorizontal");
-		float inputZ = Input.GetAxis ("RightStickVertical");
+
 		mouseX = Input.GetAxis ("Mouse X");
 		mouseY = Input.GetAxis ("Mouse Y");
 		finalInputX = inputX + mouseX;
