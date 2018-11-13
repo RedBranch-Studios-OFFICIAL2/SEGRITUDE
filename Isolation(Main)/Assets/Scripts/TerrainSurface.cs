@@ -4,12 +4,12 @@ using UnityEngine;
 
 public static class TerrainSurface{
 
-    public static float[] GetTextureMix(Vector3 worldPos) {
+    public static float[] GetTextureMix(Vector3 worldPos, Terrain terrain) {
         // returns an array containing the relative mix of textures
         // on the main terrain at this world position.
         // The number of values in the array will equal the number
         // of textures added to the terrain.
-        Terrain terrain = Terrain.activeTerrain;
+        //Terrain terrain = Terrain.activeTerrain;
         TerrainData terrainData = terrain.terrainData;
         Vector3 terrainPos = terrain.transform.position;
         // calculate which splat map cell the worldPos falls within (ignoring y)
@@ -26,10 +26,10 @@ public static class TerrainSurface{
         return cellMix;
     }
 
-    public static int GetMainTexture(Vector3 worldPos) {
+    public static int GetMainTexture(Vector3 worldPos, Terrain terrain) {
         // returns the zero-based index of the most dominant texture
         // on the main terrain at this world position.
-        float[] mix = GetTextureMix(worldPos);
+        float[] mix = GetTextureMix(worldPos, terrain);
         float maxMix = 0;
         int maxIndex = 0;
         // loop through each mix value and find the maximum

@@ -23,6 +23,9 @@ public class CameraFollow : MonoBehaviour {
 	private float rotY = 0.0f;
 	private float rotX = 0.0f;
 
+    private float inputX;
+    private float inputZ;
+
 
 
 	// Use this for initialization

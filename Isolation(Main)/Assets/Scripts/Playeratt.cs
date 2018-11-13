@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Playeratt : MonoBehaviour {
 
     //Player Att:
-    public float Healt;
-    public float healtOverTime;
+    public float Health;
+    public float healthOverTime;
 
     public float Hunger;
     public float hungerOverTime;
@@ -28,10 +28,10 @@ public class Playeratt : MonoBehaviour {
     public float sprintSpeed = 5f; //rigbody speed if it higher then this stamina will reduce
 
 	void Start () {
-        HealtBar.maxValue = Healt;
-        StaminaBar.maxValue = Stamina;
-        HungerBar.maxValue = Hunger;
-        ThirstBar.maxValue = Thirst;
+        //HealtBar.maxValue = Health;
+        //StaminaBar.maxValue = Stamina;
+        //HungerBar.maxValue = Hunger;
+        //ThirstBar.maxValue = Thirst;
 		
 	}
 	
@@ -48,7 +48,7 @@ public class Playeratt : MonoBehaviour {
 
         if (Hunger <= minAmount || Thirst <= minAmount)
         {
-            Healt -= healtOverTime * Time.deltaTime;
+            Health -= healthOverTime * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.LeftShift) && Stamina > 0)
@@ -62,7 +62,7 @@ public class Playeratt : MonoBehaviour {
             Stamina += 5f * Time.deltaTime;
         }
 
-        if(Healt <= 0)
+        if(Health <= 0)
         {
             print("Dead :(");
         }
@@ -72,15 +72,15 @@ public class Playeratt : MonoBehaviour {
 }
     private void updateUI()
     {
-        Healt = Mathf.Clamp(Healt, 0f, 100f);
+        Health = Mathf.Clamp(Health, 0f, 100f);
         Thirst = Mathf.Clamp(Thirst, 0f, 100f);
         Hunger = Mathf.Clamp(Hunger, 0f, 100f);
         Stamina = Mathf.Clamp(Stamina, 0f, 200f);
 
-        HealtBar.value = Healt;
-        HungerBar.value = Hunger;
-        ThirstBar.value = Thirst;
-        StaminaBar.value = Stamina;
+        //HealtBar.value = Health;
+        //HungerBar.value = Hunger;
+        //ThirstBar.value = Thirst;
+        //StaminaBar.value = Stamina;
         
     }
 
@@ -104,9 +104,9 @@ public class Playeratt : MonoBehaviour {
             Destroy(other.gameObject);
         }
 
-        if (other.tag == "HealtPot")
+        if (other.tag == "HealthPot")
         {
-            Healt = Healt + 10;
+            Health = Health + 10;
             Destroy(other.gameObject);
         }
     }

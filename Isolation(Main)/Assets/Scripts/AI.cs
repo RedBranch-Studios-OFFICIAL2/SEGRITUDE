@@ -3,111 +3,111 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AI : vp_DamageHandler
+//public class AI : vp_DamageHandler
 
-{
-    private Animator _animator;
+//{
+//    private Animator _animator;
 
-    private NavMeshAgent _navMeshAgent;
+//    private NavMeshAgent _navMeshAgent;
 
-    public GameObject Player;
+//    public GameObject Player;
 
-    public float AttackDistance = 10.0f;
+//    public float AttackDistance = 10.0f;
 
-    public float FollowDistance = 20.0f;
+//    public float FollowDistance = 20.0f;
 
-    [Range(0.0f, 1.0f)]
-    public float AttackProbability = 0.5f;
+//    [Range(0.0f, 1.0f)]
+//    public float AttackProbability = 0.5f;
 
-    [Range(0.0f, 1.0f)]
-    public float HitAccuracy = 0.5f;
+//    [Range(0.0f, 1.0f)]
+//    public float HitAccuracy = 0.5f;
 
-    public float DamagePoints = 2.0f;
+//    public float DamagePoints = 2.0f;
 
-    public AudioClip GunSound = null;
-
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-
-        _animator = GetComponent<Animator>();
-
-    }
+//    public AudioClip GunSound = null;
 
 
-    void Update()
-    {
-        if (_navMeshAgent.enabled)
-        {
-            float dist = Vector3.Distance(Player.transform.position, this.transform.position);
-            bool shoot = false;
-            bool follow = (dist < FollowDistance);
+//    protected override void Awake()
+//    {
+//        base.Awake();
 
-            if (follow)
-            {
-                float random = Random.Range(0.0f, 1.0f);
-                if (random > (1.0f - AttackProbability) && dist < AttackDistance)
-                {
-                    shoot = true;
-                }
-            }
+//        _navMeshAgent = GetComponent<NavMeshAgent>();
 
-            if (follow)
-            {
-                _navMeshAgent.SetDestination(Player.transform.position);
-            }
+//        _animator = GetComponent<Animator>();
 
-            if (!follow || shoot)
-                _navMeshAgent.SetDestination(transform.position);
+//    }
 
 
-            _animator.SetBool("Shoot", shoot);
-            _animator.SetBool("Run", follow);
+//    void Update()
+//    {
+//        if (_navMeshAgent.enabled)
+//        {
+//            float dist = Vector3.Distance(Player.transform.position, this.transform.position);
+//            bool shoot = false;
+//            bool follow = (dist < FollowDistance);
 
-        }
-    }
+//            if (follow)
+//            {
+//                float random = Random.Range(0.0f, 1.0f);
+//                if (random > (1.0f - AttackProbability) && dist < AttackDistance)
+//                {
+//                    shoot = true;
+//                }
+//            }
 
-    public void ShootEvent()
-    {
-        if (m_Audio != null)
-        {
-            m_Audio.PlayOneShot(GunSound);
-        }
+//            if (follow)
+//            {
+//                _navMeshAgent.SetDestination(Player.transform.position);
+//            }
 
-        float random = Random.Range(0.0f, 1.0f);
+//            if (!follow || shoot)
+//                _navMeshAgent.SetDestination(transform.position);
 
-        // The higher the accuracy is, the more likely the player will be hit
-        bool isHit = random > 1.0f - HitAccuracy;
 
-        if (isHit)
-        {
-            Player.SendMessage("Damage", DamagePoints,
-                SendMessageOptions.DontRequireReceiver);
-        }
-    }
+//            _animator.SetBool("Shoot", shoot);
+//            _animator.SetBool("Run", follow);
 
-    public override void Die()
-    {
-        if (!enabled || !vp_Utility.IsActive(gameObject))
-            return;
+//        }
+//    }
 
-        if (m_Audio != null)
-        {
-            m_Audio.pitch = Time.timeScale;
-            m_Audio.PlayOneShot(DeathSound);
-        }
+//    public void ShootEvent()
+//    {
+//        if (m_Audio != null)
+//        {
+//            m_Audio.PlayOneShot(GunSound);
+//        }
 
-        _navMeshAgent.enabled = false;
+//        float random = Random.Range(0.0f, 1.0f);
 
-        _animator.SetBool("IsFollow", false);
-        _animator.SetBool("Attack", false);
+//        // The higher the accuracy is, the more likely the player will be hit
+//        bool isHit = random > 1.0f - HitAccuracy;
 
-        _animator.SetTrigger("Die");
+//        if (isHit)
+//        {
+//            Player.SendMessage("Damage", DamagePoints,
+//                SendMessageOptions.DontRequireReceiver);
+//        }
+//    }
 
-        Destroy(GetComponent<vp_SurfaceIdentifier>());
+//    public override void Die()
+//    {
+//        if (!enabled || !vp_Utility.IsActive(gameObject))
+//            return;
 
-    }
-}
+//        if (m_Audio != null)
+//        {
+//            m_Audio.pitch = Time.timeScale;
+//            m_Audio.PlayOneShot(DeathSound);
+//        }
+
+//        _navMeshAgent.enabled = false;
+
+//        _animator.SetBool("IsFollow", false);
+//        _animator.SetBool("Attack", false);
+
+//        _animator.SetTrigger("Die");
+
+//        Destroy(GetComponent<vp_SurfaceIdentifier>());
+
+//    }
+//}
