@@ -23,6 +23,7 @@ public class PlayerSpawning : MonoBehaviour {
     private int terrainPosZ;
 
     private List<Vector3> possibleSpawnLocations = new List<Vector3>();
+    private List<Vector3> possibleSpawnLocationHeight = new List<Vector3>();
 
     private void Start() {
         respawnPanel.SetActive(false);
@@ -47,9 +48,7 @@ public class PlayerSpawning : MonoBehaviour {
     void SpawnPlayer() {
         int randomIndex = Random.Range(0, possibleSpawnLocations.Count);
 
-        Vector3 spawnLocation = possibleSpawnLocations[randomIndex];
-        //float posY = terrain.SampleHeight(spawnLocation);
-        spawnLocation.y = /*posY*/ + player.transform.localScale.y / 2;
+        Vector3 spawnLocation = new Vector3(possibleSpawnLocations[randomIndex].x, possibleSpawnLocationHeight[randomIndex].y + (transform.localScale.y/2), possibleSpawnLocations[randomIndex].z);
 
         GameObject playerSpawn = (GameObject)Instantiate(player, spawnLocation, Quaternion.identity);
     }
@@ -69,6 +68,7 @@ public class PlayerSpawning : MonoBehaviour {
 
                 if (textureIndexAtCheckPos == terrainTextureToSpawnPlayer) {
                     possibleSpawnLocations.Add(checkPos);
+                    possibleSpawnLocationHeight.Add(new Vector3(0,terrain.SampleHeight(checkPos),0));
                 }
             }
         }
