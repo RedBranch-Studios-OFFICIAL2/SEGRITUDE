@@ -11,13 +11,10 @@ public class PlayerMovment : MonoBehaviour {
     //Rigbody
     private Rigidbody rb;
 
-    //Coin Sound
-    public AudioSource coinSound;
-
-    //Speed of ball
+    //Speed of Charachter
     public float speed;
 
-    //Ball jump
+    //Character jump
     public float jumpForce;   
 
     bool pressedJump = false;
@@ -63,10 +60,10 @@ public class PlayerMovment : MonoBehaviour {
     void JumpHandler()
     {
         //Input of the JUmp axis
-        float jumpBall = Input.GetAxis("Jump");
+        float jumpChar = Input.GetAxis("Jump");
 
         //If the pressed jump or not
-        if(jumpBall > 0)
+        if(jumpChar > 0)
         {
             bool isGrounded = CheckGround();
              
@@ -76,7 +73,7 @@ public class PlayerMovment : MonoBehaviour {
                 pressedJump = true;
 
                 //Jumping vector
-                Vector3 jumpVector = new Vector3(0, jumpBall * jumpForce, 0);
+                Vector3 jumpVector = new Vector3(0, jumpChar * jumpForce, 0);
 
                 //apply force
                 rb.AddForce(jumpVector, ForceMode.VelocityChange);
