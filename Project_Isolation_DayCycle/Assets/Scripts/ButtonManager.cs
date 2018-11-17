@@ -17,6 +17,9 @@ public class ButtonManager : MonoBehaviour
 	[Header("Audio")]
 	public AudioSource clickSE;
 
+	[Header("Tabs")]
+	public GameObject addEmeraldsTab;
+
 	public void Play()
 	{
 		mainMenu.SetActive(false);
@@ -41,5 +44,10 @@ public class ButtonManager : MonoBehaviour
 	{
 		mainMenu.SetActive(false);
 		settingsPanel.SetActive(true);
+	}
+	public void OpenAddEmeraldTab()
+	{
+		addEmeraldsTab.SetActive(true);
+		store.SetActive(false);
 	}
 }
