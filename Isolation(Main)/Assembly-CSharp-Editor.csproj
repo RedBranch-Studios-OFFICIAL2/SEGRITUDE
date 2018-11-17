@@ -61,6 +61,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\MapMagic\Editor\CompatibilityManager.cs" />
+    <Compile Include="Assets\MapMagic\Editor\GeneratorsAssetEditor.cs" />
+    <Compile Include="Assets\MapMagic\Editor\InstantUpdaterEditor.cs" />
+    <Compile Include="Assets\MapMagic\Editor\MapMagicEditor.cs" />
+    <Compile Include="Assets\MapMagic\Editor\MapMagicWindow.cs" />
+    <Compile Include="Assets\MapMagic\Editor\PopupMenu.cs" />
+    <Compile Include="Assets\MapMagic\Editor\PreviewWindow.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\About\Editor\pb_AboutWindow.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\About\Editor\pb_UpdateAvailable.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\About\Editor\pb_UpdateCheck.cs" />
@@ -111,6 +118,21 @@
     <Compile Include="Assets\ProCore\ProBuilder\Editor\pb_MissingScriptEditor.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\Editor\pb_Preferences.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\Editor\pb_ScenePostProcessor.cs" />
+    <Compile Include="Assets\RoadArchitect\Editor\GSDEditorProgressWindow.cs" />
+    <Compile Include="Assets\RoadArchitect\Editor\GSDHelpWindow.cs" />
+    <Compile Include="Assets\RoadArchitect\Editor\GSDNotification.cs" />
+    <Compile Include="Assets\RoadArchitect\Editor\GSDObjExporter.cs" />
+    <Compile Include="Assets\RoadArchitect\Editor\GSDRoadEditor.cs" />
+    <Compile Include="Assets\RoadArchitect\Editor\GSDRoadIntersectionEditor.cs" />
+    <Compile Include="Assets\RoadArchitect\Editor\GSDRoadSystemEditor.cs" />
+    <Compile Include="Assets\RoadArchitect\Editor\GSDRoadSystemEditorMenu.cs" />
+    <Compile Include="Assets\RoadArchitect\Editor\GSDSaveWindow.cs" />
+    <Compile Include="Assets\RoadArchitect\Editor\GSDSplineCEditor.cs" />
+    <Compile Include="Assets\RoadArchitect\Editor\GSDSplineFEditor.cs" />
+    <Compile Include="Assets\RoadArchitect\Editor\GSDSplineIEditor.cs" />
+    <Compile Include="Assets\RoadArchitect\Editor\GSDSplineNEditor.cs" />
+    <Compile Include="Assets\RoadArchitect\Editor\GSDTerrainEditor.cs" />
+    <Compile Include="Assets\RoadArchitect\Editor\GSDWizard.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -125,6 +147,12 @@
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
       <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
