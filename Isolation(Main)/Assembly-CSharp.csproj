@@ -137,6 +137,8 @@
     <Compile Include="Assets\Scripts\CamLook.cs" />
     <Compile Include="Assets\Scripts\ChaController.cs" />
     <Compile Include="Assets\Scripts\Collision.cs" />
+    <Compile Include="Assets\Scripts\CommandConsole\Commands.cs" />
+    <Compile Include="Assets\Scripts\CommandConsole\DeveloperConsole.cs" />
     <Compile Include="Assets\Scripts\Cosmetic.cs" />
     <Compile Include="Assets\Scripts\Currency.cs" />
     <Compile Include="Assets\Scripts\daynightcycle.cs" />
@@ -255,13 +257,19 @@
     <None Include="Assets\MapMagic\Scene in here\Shaders\TerrainPreview.shader" />
     <None Include="Assets\MapMagic\Scene in here\Shaders\Tree.shader" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
       <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
@@ -270,7 +278,7 @@
       <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -468,25 +476,25 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.4f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="ProBuilderCore-Unity5">
-      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
+      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
     </Reference>
     <Reference Include="ProBuilderMeshOps-Unity5">
-      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
+      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
     </Reference>
     <Reference Include="KdTreeLib">
-      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
+      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
     </Reference>
     <Reference Include="pb_Stl">
-      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
+      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
     </Reference>
     <Reference Include="Poly2Tri">
-      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
+      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
-      <HintPath>C:/Users/Caleb Lawrence/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
+      <HintPath>C:/Users/garet/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
-      <HintPath>C:/Users/Caleb Lawrence/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/garet/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.4f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>
