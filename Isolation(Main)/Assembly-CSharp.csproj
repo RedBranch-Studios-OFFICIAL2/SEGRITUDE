@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DeveloperConsole.cs" />
     <Compile Include="Assets\MapMagic\Generators\CustomShaderOutput.cs" />
     <Compile Include="Assets\MapMagic\Generators\LegacyGenerators.cs" />
     <Compile Include="Assets\MapMagic\Generators\LegacyOutputs.cs" />
@@ -104,6 +105,51 @@
     <Compile Include="Assets\MapMagic\Scene in here\Scripts\LodDisable.cs" />
     <Compile Include="Assets\MapMagic\Scene in here\Scripts\MoveSun.cs" />
     <Compile Include="Assets\MapMagic\Scene in here\Scripts\NearPlaneIncrease.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballGroupAttribute.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\AmbientOcclusionComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\BloomComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\BuiltinDebugViewsComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\ChromaticAberrationComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\ColorGradingComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\DepthOfFieldComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\DitheringComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\EyeAdaptationComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\FogComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\FxaaComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\GrainComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\MotionBlurComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\ScreenSpaceReflectionComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\TaaComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\UserLutComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\VignetteComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\AmbientOcclusionModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\AntialiasingModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\BloomModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\BuiltinDebugViewsModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\ChromaticAberrationModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\ColorGradingModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\DepthOfFieldModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\DitheringModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\EyeAdaptationModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\FogModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\GrainModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\MotionBlurModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\ScreenSpaceReflectionModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\UserLutModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\VignetteModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\PostProcessingBehaviour.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\PostProcessingComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\PostProcessingContext.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\PostProcessingModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\PostProcessingProfile.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Utils\ColorGradingCurve.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Utils\GraphicsUtils.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
+    <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
@@ -150,6 +196,7 @@
     <Compile Include="Assets\Scripts\GunRecoil.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\InventorySystem.cs" />
+    <Compile Include="Assets\Scripts\Item.cs" />
     <Compile Include="Assets\Scripts\ItemPick.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Playeratt.cs" />
@@ -193,6 +240,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+    <None Include="Assets\EasyRoads3D\shaders\ER Dual Road Blend.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_TransparentOverlay.shader" />
     <None Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
     <None Include="Assets\RoadArchitect\Shaders\GSDTransparentWithShadowsZ.shader" />
@@ -202,74 +251,126 @@
     <None Include="Assets\ProCore\ProBuilder\About\changelog.txt" />
     <None Include="Assets\ProCore\ProBuilder\Shader\DiffuseVertexColor.shader" />
     <None Include="Assets\RoadArchitect\Shaders\GSDShoulderDirt.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\Fog.shader" />
+    <None Include="Assets\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\LutGen.shader" />
     <None Include="Assets\Ultra Skybox Fog\Shaders\UltraSkyboxFog.shader" />
     <None Include="Assets\RoadArchitect\Shaders\GSDRoadShader.shader" />
     <None Include="Assets\RoadArchitect\Readme.txt" />
     <None Include="Assets\RoadArchitect\Shaders\GSDRoadShaderLow.shader" />
+    <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
     <None Include="Assets\MapMagic\Scene in here\Shaders\LeafFunctions.cginc" />
+    <None Include="Assets\PostProcessing\Editor Resources\UI\CurveBackground.shader" />
     <None Include="Assets\RoadArchitect\Shaders\GSDStandardTiling.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_FaceHighlight.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
     <None Include="Assets\RoadArchitect\Shaders\GSDRoadShaderLowDX11.shader" />
+    <None Include="Assets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\ACES.cginc" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\RoadArchitect\Shaders\GSDTransparentWithShadows.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
+    <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_UnlitSolidColor.shader" />
+    <None Include="Assets\EasyRoads3D\Unused prefabs\custom prefabs\_readme.txt" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\Uber.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_ReferenceUnlit.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\Blit.shader" />
+    <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformRender.shader" />
+    <None Include="Assets\PostProcessing\Editor Resources\Monitors\VectorscopeCompute.compute" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\FXAA3.cginc" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\DiffuseTextureBlend.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
+    <None Include="Assets\NatureManufacture Assets\Shaders\LightweightStandard Road Decal.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_StandardVertexColor.shader" />
+    <None Include="Assets\EasyRoads3D\shaders\EasyRoads3D-Surface-Offset.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_VertexPicker.shader" />
     <None Include="Assets\RoadArchitect\LICENSE.txt" />
+    <None Include="Assets\NatureManufacture Assets\Shaders\Standard_Metalic_Road_Shader.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_HideVertices.shader" />
+    <None Include="Assets\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
     <None Include="Assets\ProCore\ProBuilder\About\ThirdPartyLicenses.txt" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\Common.cginc" />
+    <None Include="Assets\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_UnlitVertexColor.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_FacePicker.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\PostProcessing\Editor Resources\UI\Trackball.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
+    <None Include="Assets\EasyRoads3D\shaders\ER Single Road Blend.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.cginc" />
     <None Include="Assets\ProCore\ProBuilder\About\Font\SIL Open Font License.txt" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\TAA.shader" />
+    <None Include="Assets\EasyRoads3D\shaders\EasyRoads3D - Unity 5 Standard.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\EyeHistogram.compute" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
     <None Include="Assets\Ultra Skybox Fog\Manual.txt" />
+    <None Include="Assets\EasyRoads3D\shaders\ER Road Transparency.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\TAA.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\EasyRoads3D\Unused prefabs\dynamic prefabs\_readme.txt" />
     <None Include="Assets\RoadArchitect\Shaders\GSDShoulderDirtDX11.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\EyeAdaptation.cginc" />
     <None Include="Assets\MapMagic\Readme.txt" />
+    <None Include="Assets\EasyRoads3D\shaders\EasyRoads3D - Unity 5 StandardSpecular.shader" />
+    <None Include="Assets\NatureManufacture Assets\Shaders\Standard_Metalic_Cross_Road_Shader.shader" />
+    <None Include="Assets\EasyRoads3D\prefab meshes\_custom prefabs.txt" />
     <None Include="Assets\ProCore\ProBuilder\About\pc_AboutEntry_ProBuilder.txt" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\GrainGen.shader" />
     <None Include="Assets\MapMagic\Scene in here\Shaders\LightingLeafSSS.cginc" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\FXAA.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\NatureManufacture Assets\Shaders\Standard_Metalic_Cross_Road_Shader Parallax.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
     <None Include="Assets\RoadArchitect\Shaders\GSDRoadShaderDX11.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_VertexShader.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\RoadArchitect\Shaders\GSDStandardOffset.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_NormalPreview.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.shader" />
+    <None Include="Assets\NatureManufacture Assets\Shaders\ER Road Transparency.shader" />
+    <None Include="Assets\NatureManufacture Assets\Shaders\Standard_Metalic_Road_Shader Parallax.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\EasyRoads3D\prefab sources\_custom prefabs.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+    <None Include="Assets\PostProcessing\Editor Resources\Monitors\VectorscopeRender.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\EyeAdaptation.shader" />
+    <None Include="Assets\EasyRoads3D\Release - Install Notes.txt" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_ScrollHighlight.shader" />
     <None Include="Assets\ProCore\ProBuilder\readme.txt" />
+    <None Include="Assets\EasyRoads3D\Resources\custom prefabs\_custom prefabs.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
+    <None Include="Assets\EasyRoads3D\Unused prefabs\_readme.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_SmoothingPreview.shader" />
     <None Include="Assets\Ultra Skybox Fog\Textures\Readme.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\MapMagic\Scene in here\Shaders\TerrainPreview.shader" />
     <None Include="Assets\MapMagic\Scene in here\Shaders\Tree.shader" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
       <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
@@ -278,7 +379,7 @@
       <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -476,25 +577,25 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.4f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="ProBuilderCore-Unity5">
-      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
+      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
     </Reference>
     <Reference Include="ProBuilderMeshOps-Unity5">
-      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
+      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
     </Reference>
     <Reference Include="KdTreeLib">
-      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
+      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
     </Reference>
     <Reference Include="pb_Stl">
-      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
+      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
     </Reference>
     <Reference Include="Poly2Tri">
-      <HintPath>C:/Users/garet/Desktop/Own Games/Unity/Isolation/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
+      <HintPath>F:/ANGZStudios/Unity Repos/ISOLATION/Isolation(Main)/Assets/ProCore/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
-      <HintPath>C:/Users/garet/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
+      <HintPath>C:/Users/Caleb Lawrence/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
-      <HintPath>C:/Users/garet/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/Caleb Lawrence/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.4f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>
