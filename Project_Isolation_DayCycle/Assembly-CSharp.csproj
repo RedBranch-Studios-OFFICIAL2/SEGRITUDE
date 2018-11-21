@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\Currency.cs" />
      <Compile Include="Assets\Scripts\daynightcycle.cs" />
      <Compile Include="Assets\Scripts\Destroyable.cs" />
+     <Compile Include="Assets\Scripts\EmeraldCount.cs" />
      <Compile Include="Assets\Scripts\EmeraldCurrency.cs" />
      <Compile Include="Assets\Scripts\Experience.cs" />
      <Compile Include="Assets\Scripts\GunRecoil.cs" />

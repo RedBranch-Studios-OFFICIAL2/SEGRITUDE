@@ -20,6 +20,9 @@ public class ButtonManager : MonoBehaviour
 	[Header("Tabs")]
 	public GameObject addEmeraldsTab;
 
+	[Header("Scripts")]
+	public EmeraldCurrency emeraldCurrency;
+
 	public void Play()
 	{
 		mainMenu.SetActive(false);
@@ -49,5 +52,17 @@ public class ButtonManager : MonoBehaviour
 	{
 		addEmeraldsTab.SetActive(true);
 		store.SetActive(false);
+	}
+	public void BuyEmeralds100()
+	{
+		emeraldCurrency.emeralds += 100;
+	}
+	public void BuyEmeralds500()
+	{
+		emeraldCurrency.emeralds += 500;
+	}
+	public void BuyEmeralds2000()
+	{
+		emeraldCurrency.emeralds += 2000;
 	}
 }
