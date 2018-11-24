@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\ButtonManager.cs" />
      <Compile Include="Assets\Scripts\CamLook.cs" />
      <Compile Include="Assets\Scripts\ChaController.cs" />
+     <Compile Include="Assets\Scripts\ClickSoundEffects.cs" />
      <Compile Include="Assets\Scripts\Cosmetic.cs" />
      <Compile Include="Assets\Scripts\Currency.cs" />
      <Compile Include="Assets\Scripts\daynightcycle.cs" />
