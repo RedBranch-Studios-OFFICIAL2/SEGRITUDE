@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 3345222}
   - component: {fileID: 2345098}
   - component: {fileID: 13636684}
+  - component: {fileID: 114723557375924078}
   m_Layer: 0
   m_Name: PineBig1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &443828
 Transform:
@@ -105,3 +106,24 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 180528}
   m_IsPrefabAsset: 1
+--- !u!114 &114723557375924078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadcc2d9a34a1a34f93d4962ec37e6e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_data: {fileID: 11400000, guid: 4757a610a38dd0644870d40aa5826871, type: 2}
+  m_rootTransform: {fileID: 443828}
+  m_lodGroup: {fileID: 0}
+  m_renderers:
+  - {fileID: 2345098}
+  m_lodReplacement: 2
+  m_insertIndex: 0
+  m_lastImpostor: {fileID: 0}
+  m_folderPath: Assets/AmplifyImpostors/Examples/Scenes/Forest/TreeImpostor/
+  m_cutMode: 1

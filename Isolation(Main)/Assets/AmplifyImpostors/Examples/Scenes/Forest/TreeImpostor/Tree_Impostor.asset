@@ -14,7 +14,7 @@ MonoBehaviour:
   Material: {fileID: 21272934253153140}
   Mesh: {fileID: 43322732915683226}
   Version: 9100
-  ImpostorType: 2
+  ImpostorType: 1
   LockedSizes: 1
   SelectedSize: 2048
   TexSize: {x: 2048, y: 2048}
@@ -22,9 +22,9 @@ MonoBehaviour:
   HorizontalFrames: 16
   VerticalFrames: 16
   PixelPadding: 32
-  MaxVertices: 8
+  MaxVertices: 4
   Tolerance: 0.13
-  NormalScale: 0
+  NormalScale: 0.163
   ShapePoints: []
   Preset: {fileID: 11400000, guid: e4786beb7716da54dbb02a632681cc37, type: 2}
   OverrideOutput: []
@@ -36,7 +36,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Tree_Impostor
   m_Shader: {fileID: 4800000, guid: 572f9be5706148142b8da6e9de53acdb, type: 3}
-  m_ShaderKeywords: EFFECT_HUE_VARIATION _HEMI_ON
+  m_ShaderKeywords: EFFECT_HUE_VARIATION
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -66,17 +66,17 @@ Material:
     - _Bias: -3
     - _Clip: 0.5
     - _ClipMask: 0.5
-    - _DepthSize: 26.20078
+    - _DepthSize: 39.049107
     - _Frames: 16
-    - _Hemi: 1
+    - _Hemi: 0
     - _Hue: 1
-    - _ImpostorSize: -26.358093
+    - _ImpostorSize: -38.87421
     - _Parallax: 1
     - _ShadowBias: 0.4
     - _TextureBias: -1
     m_Colors:
     - _HueVariation: {r: 1, g: 0.5019608, b: 0, a: 0.101960786}
-    - _Offset: {r: 0.0011062622, g: 9.851183, b: -0.071676254, a: 0}
+    - _Offset: {r: -0.26403284, g: 16.705864, b: -0.09053779, a: 0}
 --- !u!43 &43322732915683226
 Mesh:
   m_ObjectHideFlags: 0
@@ -224,8 +224,8 @@ Mesh:
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
-    m_Center: {x: 0.08520508, y: 11.365843, z: 0.2211768}
-    m_Extent: {x: 6.887947, y: 11.713115, z: 6.2676473}
+    m_Center: {x: -0.26403284, y: 16.705864, z: -0.09053779}
+    m_Extent: {x: 5.707069, y: 17.70903, z: 5.9214582}
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
