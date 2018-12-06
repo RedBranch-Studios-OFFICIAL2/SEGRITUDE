@@ -36,6 +36,7 @@ public class InventorySystem : MonoBehaviour {
             Cam.GetComponent<CamLook>().enabled = true;
         }
     }
+
     // Method that will be called by items that can be picked up
     public void PickUp(GameObject item)
     {
@@ -66,5 +67,4 @@ public class InventorySystem : MonoBehaviour {
             }
         }
     }
-
 }

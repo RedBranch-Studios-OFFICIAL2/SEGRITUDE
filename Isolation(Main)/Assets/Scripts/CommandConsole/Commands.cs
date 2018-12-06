@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Console
-{
     //-----------------------------------------------------------------------------------------------------------------------------------------//
     // COMMAND INFO:                                                                                                                           //
     //                                                                                                                                         //
@@ -17,39 +15,108 @@ namespace Console
 
 
 
-    public class TestCommand : ConsoleCommand
+public class TestCommand : ConsoleCommand
+{
+    public override string Name { get; protected set; }
+    public override string CommandText { get; protected set; }
+    public override string CommandParameter { get; set; }
+
+    public TestCommand()
     {
-        public override string Name { get; protected set; }
-        public override string CommandText { get; protected set; }
+        // *The name of the command
+        Name = "Test Command";
 
-        public TestCommand()
-        {
-            // *The name of the command
-            Name = "Test Command";
+        // *What the user needs to type into the console in order for the command to be executed. At the moment, the commands cannot take arguements (so keep them as one word)
+        CommandText = "testcommand";
 
-            // *What the user needs to type into the console in order for the command to be executed. At the moment, the commands cannot take arguements (so keep them as one word)
-            CommandText = "testcommand";
-
-            AddCommandToConsole();
-        }
+        AddCommandToConsole();
+    }
         
-        // *This function is where all the code for the command is stored. In this example, the command prints a message to the console.
-        public override void RunCommand()
-        {
-            DeveloperConsole.AddMessageToConsole("This is a test command. It is has been succesfully created!");
-        }
+    // *This function is where all the code for the command is stored. In this example, the command prints a message to the console.
+    // You'll notice there are 2 versions. One is for commands with parameters and one without. Leave whichever one you don't want blank
+    public override void RunCommand()
+    {
+         DeveloperConsole.AddMessageToConsole("This is a test command. It is has been succesfully created!");
+    }
 
-        // *Very important. Make sure you put the the name of the command's class in the same spots "TestCommand" is!
-        // Example:
-        // 
-        // public static YourCommand CreateCommand()
-        // {
-        //     return new YourCommand();
-        // {
+    // *Very important. Make sure you put the the name of the command's class in the same spots "TestCommand" is!
+    // Example:
+    // 
+    // public static YourCommand CreateCommand()
+    // {
+    //     return new YourCommand();
+    // {
 
-        public static TestCommand CreateCommand()
-        {
+    public static TestCommand CreateCommand()
+    {
             return new TestCommand();
-        }
     }
 }
+
+public class TestParameter : ConsoleCommand
+{
+    public override string Name { get; protected set; }
+    public override string CommandText { get; protected set; }
+    public override string CommandParameter { get; set; }
+
+    public TestParameter()
+    {
+        // *The name of the command
+        Name = "Test Parameter";
+
+        // *What the user needs to type into the console in order for the command to be executed. At the moment, the commands cannot take arguements (so keep them as one word)
+        CommandText = "testparameter";
+
+        AddCommandToConsole();
+    }
+
+    // *This function is where all the code for the command is stored. In this example, the command prints a message to the console.
+    public override void RunCommand()
+    {
+        DeveloperConsole.AddMessageToConsole(CommandParameter);
+    }
+
+    // *Very important. Make sure you put the the name of the command's class in the same spots "TestCommand" is!
+    // Example:
+    // 
+    // public static YourCommand CreateCommand()
+    // {
+    //     return new YourCommand();
+    // {
+
+    public static TestParameter CreateCommand()
+    {
+        return new TestParameter();
+    }
+}
+
+public class SpawnItem : ConsoleCommand
+{
+    public override string Name { get; protected set; }
+    public override string CommandText { get; protected set; }
+    public override string CommandParameter { get; set; }
+
+    public Dictionary<GameObject, string> Items;
+
+    
+
+    public SpawnItem()
+    {
+        Name = "Spawn Item";
+
+        CommandText = "spawnitem";
+
+        AddCommandToConsole();
+    }
+
+    public override void RunCommand()
+    {
+        
+    }
+
+    public static SpawnItem CreateCommand()
+    {
+        return new SpawnItem();
+    }
+}
+
