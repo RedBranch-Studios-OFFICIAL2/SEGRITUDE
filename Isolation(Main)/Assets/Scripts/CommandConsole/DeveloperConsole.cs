@@ -29,6 +29,8 @@ public class DeveloperConsole : MonoBehaviour
     //This dictionary stores a list of commands(The key is a string which is what the user needs to input into the console and the value is the corresponding command)
     public static Dictionary<string, ConsoleCommand> Commands { get; protected set; }
 
+    public List<GameObject> Items = new List<GameObject>();
+
     //Variables to access the UI of the console
     [Header("UI Components")]
     public Canvas consoleCanvas;
@@ -45,6 +47,13 @@ public class DeveloperConsole : MonoBehaviour
 
         instance = this;
         Commands = new Dictionary<string, ConsoleCommand>();
+    }
+
+    public void InstantiateItem(int index)
+    {
+
+        if (index <= Items.Count)
+            Instantiate(Items[index]);
     }
 
     //Use this for initialization
@@ -82,6 +91,7 @@ public class DeveloperConsole : MonoBehaviour
     {
         TestCommand.CreateCommand();
         TestParameter.CreateCommand();
+        SpawnItem.CreateCommand();
     }
 
     //Adds commands to the dictionary

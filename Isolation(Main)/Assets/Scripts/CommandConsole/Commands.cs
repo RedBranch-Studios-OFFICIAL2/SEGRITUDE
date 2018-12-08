@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -94,11 +95,7 @@ public class SpawnItem : ConsoleCommand
 {
     public override string Name { get; protected set; }
     public override string CommandText { get; protected set; }
-    public override string CommandParameter { get; set; }
-
-    public Dictionary<GameObject, string> Items;
-
-    
+    public override string CommandParameter { get; set; }   
 
     public SpawnItem()
     {
@@ -111,7 +108,11 @@ public class SpawnItem : ConsoleCommand
 
     public override void RunCommand()
     {
-        
+        int i = 0;
+
+        Int32.TryParse(CommandParameter, out i);
+
+        DeveloperConsole.instance.InstantiateItem(i - 1);
     }
 
     public static SpawnItem CreateCommand()

@@ -2186,7 +2186,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 663341044}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.050000075
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5087,7 +5087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -532.85504}
+  m_AnchoredPosition: {x: 0, y: -530.35693}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.05}
 --- !u!114 &542579367
@@ -117795,6 +117795,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a42d88d4a118704593b7150ee141456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Items:
+  - {fileID: 1771074585632480, guid: 43851d01babb4d943ae2a766523c4c28, type: 2}
+  - {fileID: 1604955692308704, guid: 7239c1cba0a7131459dd854490353eef, type: 2}
+  - {fileID: 1304298860976774, guid: dd789ccc632f8684f9a8d6a63106af37, type: 2}
   consoleCanvas: {fileID: 1603109531}
   consoleInput: {fileID: 2055479834}
   inputText: {fileID: 246594956}
