@@ -1439,3 +1439,951 @@ Isolation(Main)/Assets/NatureManufacture Assets/Ground Textures/Ground.mat
 Isolation(Main)/Assets/NatureManufacture Assets/Ground Textures/Ground.mat.meta
 Isolation(Main)/Assets/NatureManufacture Assets/Shaders/LightweightStandard Road Decal.shader
 Isolation(Main)/Assets/NatureManufacture Assets/Shaders/LightweightStandard Road Decal.shader.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Cobble.prefab.meta
+Isolation(Main)/Assembly-CSharp.csproj
+Isolation(Main)/Assets/Map V1.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Additional Prefabs.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Additional Prefabs/Asphalt_Plane.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Additional Prefabs/Asphalt_Plane.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Additional Prefabs/park photoscanned teaser - fountain_pool.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Additional Prefabs/park photoscanned teaser - fountain_pool.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Additional Prefabs/Parking 1.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Additional Prefabs/Parking 1.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Additional Prefabs/Parking.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Additional Prefabs/Parking.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Additional Prefabs/Parking_tilled.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Additional Prefabs/Parking_tilled.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Additional Prefabs/Parking_tilled_side_object.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Additional Prefabs/Parking_tilled_side_object.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Materials.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Materials/No Name.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Materials/No Name.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Asphalt_Lines_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Asphalt_Lines_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Asphalt_Lines_Advanced_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Asphalt_Lines_Advanced_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Asphalt_Lines_Advanced_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Asphalt_Lines_Advanced_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Asphalt_No_Lines_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Asphalt_No_Lines_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Asphalt_No_Lines_Advanced_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Asphalt_No_Lines_Advanced_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Asphalt_No_Lines_Advanced_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Asphalt_No_Lines_Advanced_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Dirty_Mix.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Dirty_Mix.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Dirty_Ruts.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_T_Cross_Dirty_Ruts.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_Lines.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_Lines.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_Lines_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_Lines_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_Lines_Advanced_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_Lines_Advanced_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_Lines_Advanced_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_Lines_Advanced_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_Lines_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_Lines_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_No_Lines.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_No_Lines.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_No_Lines_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_No_Lines_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_No_Lines_Advanced_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_No_Lines_Advanced_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_No_Lines_Advanced_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_No_Lines_Advanced_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_No_Lines_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Asphalt_No_Lines_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Dirty_Mix.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Dirty_Mix.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Dirty_Ruts.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_Cross_Dirty_Ruts.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Cobble.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Cobble_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Cobble_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Cobble_Asphalt.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Cobble_Asphalt.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Cobble_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Cobble_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Cobble_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Cobble_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Concrete.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Concrete.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Concrete_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Concrete_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Concrete_Advanced_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Concrete_Advanced_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Concrete_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Concrete_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Concrete_Damaged_Dirt.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Concrete_Damaged_Dirt.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Concrete_Dirt.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X and T Cross/prefab_X_T_Cross_Concrete_Dirt.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_Lines.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_Lines.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_Lines_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_Lines_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_Lines_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_Lines_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_Lines_Damaged_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_Lines_Damaged_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_No_Lines.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_No_Lines.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_No_Lines_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_No_Lines_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_No_Lines_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_No_Lines_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_No_Lines_Damaged_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Asphalt_No_Lines_Damaged_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Cobble.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Cobble.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Cobble_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Cobble_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Cobble_Asphalt.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Cobble_Asphalt.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Cobble_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Cobble_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Cobble_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Cobble_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Dirty_Mix.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Dirty_Mix.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Dirty_Ruts.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/X Roundabout/prefab_X_roundabout_Dirty_Ruts.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_Lines_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_Lines_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_Lines_Advanced_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_Lines_Advanced_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_Lines_Advanced_Damaged_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_Lines_Advanced_Damaged_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_Lines_Advanced_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_Lines_Advanced_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_Lines_Advanced_Dirty_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_Lines_Advanced_Dirty_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_Lines_Advanced_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_Lines_Advanced_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_No_Lines_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_No_Lines_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_No_Lines_Advanced_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_No_Lines_Advanced_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_No_Lines_Advanced_Damaged_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_No_Lines_Advanced_Damaged_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_No_Lines_Advanced_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_No_Lines_Advanced_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_No_Lines_Advanced_Dirty_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_No_Lines_Advanced_Dirty_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_No_Lines_Advanced_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Asphalt_No_Lines_Advanced_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Advanced_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Advanced_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Asphalt.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Asphalt.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Asphalt_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Asphalt_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Damaged_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Damaged_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Dirty_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Dirty_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Cobble_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Advanced_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Advanced_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Advanced_Damaged_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Advanced_Damaged_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Advanced_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Advanced_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Damaged_Dirt.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Damaged_Dirt.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Damaged_Dirt_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Damaged_Dirt_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Damaged_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Damaged_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Dirt.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Dirt.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Dirt_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Dirt_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Sidewalk.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Concrete_Sidewalk.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Dirty_Mix.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Dirty_Mix.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Dirty_Ruts.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Cross/prefab_Y_Cross_Dirty_Ruts.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_Lines.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_Lines.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_Lines_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_Lines_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_Lines_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_Lines_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_Lines_Damaged_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_Lines_Damaged_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_No_Lines.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_No_Lines.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_No_Lines_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_No_Lines_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_No_Lines_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_No_Lines_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_No_Lines_Damaged_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Asphalt_No_Lines_Damaged_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Cobble.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Cobble.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Cobble_Advanced.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Cobble_Advanced.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Cobble_Asphalt.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Cobble_Asphalt.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Cobble_Damaged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Cobble_Damaged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Cobble_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Cobble_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Dirty.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Dirty.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Dirty_Mix.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Dirty_Mix.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Dirty_Ruts.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Prefabs/Y Roundabout/prefab_Y_roundabout_Dirty_Ruts.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/T_crossing.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/T_crossing.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/T_crossing_sidewalk.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/T_crossing_sidewalk.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/X_crossing.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/X_crossing.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/X_crossing_sidewalk.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/X_crossing_sidewalk.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/X_roundabout.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/X_roundabout.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/X_roundabout_cobble.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/X_roundabout_cobble.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Y_crossing.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Y_crossing.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Y_crossing_sidewalk.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Y_crossing_sidewalk.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Y_roundabout.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Y_roundabout.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Y_roundabout_cobble.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Crossing/Y_roundabout_cobble.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/dirt_decal_left.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/dirt_decal_left.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/dust_decal_ending_down.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/dust_decal_ending_down.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/dust_decal_ending_down_left.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/dust_decal_ending_down_left.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/dust_decal_ending_down_right.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/dust_decal_ending_down_right.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/dust_decal_ending_up.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/dust_decal_ending_up.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/dust_decal_ending_up_left.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/dust_decal_ending_up_left.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/dust_decal_ending_up_right.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/dust_decal_ending_up_right.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/M_Dirty_Road_Ruts 1.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/M_Dirty_Road_Ruts 1.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_01.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_01.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_01_blend.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_01_blend.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_01_blend2.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_01_blend2.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_01_hard.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_01_hard.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_02.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_02.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_02_blend.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_02_blend.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_02_blend2.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_02_blend2.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_02_blend3.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_02_blend3.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_03.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_03.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_04.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_04.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_05.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_decals_05.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_dust.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_dust.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_dust_start_end.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Materials/road_dust_start_end.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/road_decals_01.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/road_decals_01.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/road_decals_02.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/road_decals_02.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/road_decals_03.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/road_decals_03.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/road_decals_04.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/road_decals_04.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_01_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_01_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_01_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_01_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_01_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_01_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_02_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_02_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_02_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_02_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_02_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_02_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_03_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_03_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_03_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_03_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_03_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_03_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_04_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_04_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_04_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_04_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_04_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_atlas_road_decals_04_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_dust_decal_01_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_dust_decal_01_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_dust_decal_01_ending_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_dust_decal_01_ending_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_dust_decal_01_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_dust_decal_01_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_dust_decal_01_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Models/Textures/T_dust_decal_01_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal Mother.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal Mother.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal Mother2.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal Mother2.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_01.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_01.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_01_blend.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_01_blend.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_02.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_02.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_02_blend.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_02_blend.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_03.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_03.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_03_blend.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_03_blend.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_04.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_04.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_04_blend.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Crossroad_Mask_04_blend.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Dirt_Crossroad_Mask_01.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Dirt_Crossroad_Mask_01.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Dirt_Crossroad_Mask_02.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Dirt_Crossroad_Mask_02.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Dirt_Crossroad_Mask_03.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Dirt_Crossroad_Mask_03.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Dirt_Crossroad_Mask_04.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Dirt_Crossroad_Mask_04.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Roadfix_01.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Roadfix_01.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Roadfix_02.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Roadfix_02.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Roadfix_03.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Roadfix_03.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Roadfix_04.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Asphalt/Decal_Asphalt_Roadfix_04.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Decal Showcase 2.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Decal Showcase 2.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Decal Showcase.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Decal Showcase.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Dirt and Cobblestone.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Dirt and Cobblestone/Decal_Cobblestone_Crossroad_Mask_01.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Dirt and Cobblestone/Decal_Cobblestone_Crossroad_Mask_01.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Dirt and Cobblestone/Decal_Cobblestone_Crossroad_Mask_02.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Dirt and Cobblestone/Decal_Cobblestone_Crossroad_Mask_02.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Dirt and Cobblestone/Decal_Dirt_Crossroad_Mask_01.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Dirt and Cobblestone/Decal_Dirt_Crossroad_Mask_01.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Dirt and Cobblestone/Decal_Dirt_Crossroad_Mask_02.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Dirt and Cobblestone/Decal_Dirt_Crossroad_Mask_02.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Dirt and Cobblestone/Decal_DirtCobble_Crossroad_Mask_01.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Dirt and Cobblestone/Decal_DirtCobble_Crossroad_Mask_01.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Dirt and Cobblestone/Decal_DirtCobble_Crossroad_Mask_02.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Dirt and Cobblestone/Decal_DirtCobble_Crossroad_Mask_02.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/BUS.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/BUS.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Crossing_Merged.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Crossing_Merged.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Crossing_Merged_Alpha_Cut.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Crossing_Merged_Alpha_Cut.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Crossing_Merged_Line_01.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Crossing_Merged_Line_01.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Crossing_Merged_Line_02.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Crossing_Merged_Line_02.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Crossing_Merged_Line_03.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Crossing_Merged_Line_03.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Decal_Line_Long_1.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Decal_Line_Long_1.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Decal_Line_Long_2.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Decal_Line_Long_2.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_dotted_01.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_dotted_01.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_dotted_02.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_dotted_02.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_double.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_double.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_double_dotted left.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_double_dotted left.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_double_dotted right.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_double_dotted right.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_side.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_side.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_single.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_single.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_stripped_dotted_01.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_stripped_dotted_01.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_stripped_dotted_02.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_stripped_dotted_02.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_stripped_double.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_stripped_double.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_stripped_double_dotted left.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_stripped_double_dotted left.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_stripped_double_dotted right.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_stripped_double_dotted right.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_stripped_side.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_stripped_side.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_stripped_single.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/decal_lines_stripped_single.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Decal_Road_Border_left.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Decal_Road_Border_left.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Decal_Road_Border_right.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Decal_Road_Border_right.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Decal_Road_Dust_left.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Decal_Road_Dust_left.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Decal_Road_Dust_right.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Decal_Road_Dust_right.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Left_Arrow.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Left_Arrow.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Left_Arrow_02.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Left_Arrow_02.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Parking.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Parking.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Right_Arrow.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Right_Arrow.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Right_Arrow_02.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Right_Arrow_02.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Stop Lines Double.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Stop Lines Double.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Straight_Arrow.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Straight_Arrow.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Yield_02_Lines.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Yield_02_Lines.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Yield_03_Triangle_Big.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Yield_03_Triangle_Big.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Yield_03_Triangles.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Decals/Prefabs/Lines Borders Road Marks/Yield_03_Triangles.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Demo.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Demo/Demo Terrain.asset
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Demo/Demo Terrain.asset.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Demo/Demo.unity
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Demo/Demo.unity.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Ground Textures.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Ground Textures/Ground 1.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Ground Textures/Ground 1.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Ground Textures/Ground.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Ground Textures/Ground.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Ground Textures/T_grass_01_A.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Ground Textures/T_grass_01_A.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Ground Textures/T_grass_01_A_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Ground Textures/T_grass_01_A_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Ground Textures/T_grass_01_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Ground Textures/T_grass_01_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Ground Textures/T_grass_01_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Ground Textures/T_grass_01_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Ground Textures/T_grass_01_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Ground Textures/T_grass_01_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/HD Road Presets.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/HD Road Presets.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/HD Roads PDF.pdf
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/HD Roads PDF.pdf.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/LW SRP Support.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/LW SRP Support/EasyRoads3d Addon - HD roads LW SRP.unitypackage.gz
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/LW SRP Support/EasyRoads3d Addon - HD roads LW SRP.unitypackage.gz.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Damaged.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Damaged.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Double_Cross.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Double_Cross.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Double_Cross_Damaged.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Double_Cross_Damaged.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Damaged.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Damaged.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Damaged_Roundabout.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Damaged_Roundabout.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Damaged_X_Cross.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Damaged_X_Cross.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Damaged_X_Cross_sidewalk.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Damaged_X_Cross_sidewalk.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Damaged_Y_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Damaged_Y_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Dirty.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Dirty.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Dirty_Roundabout.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Dirty_Roundabout.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Dirty_X_Cross.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Dirty_X_Cross.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Dirty_X_Cross_sidewalk.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Dirty_X_Cross_sidewalk.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Dirty_Y_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Dirty_Y_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Roundabout.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Roundabout.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_X_Cross.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_X_Cross.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_X_Cross_sidewalk.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_X_Cross_sidewalk.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Y_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Dotted_Lines_Advanced_Y_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Double Lines Damaged.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Double Lines Damaged.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Double_Lines.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Double_Lines.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Double_Lines_Advanced.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Double_Lines_Advanced.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Double_Lines_Advanced_Damaged.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Double_Lines_Advanced_Damaged.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Double_Lines_Advanced_Dirty.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Double_Lines_Advanced_Dirty.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Damaged.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Damaged.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Damaged_Roundabout.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Damaged_Roundabout.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Damaged_X_Cross.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Damaged_X_Cross.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Damaged_X_Cross_sidewalk.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Damaged_X_Cross_sidewalk.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Damaged_Y_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Damaged_Y_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Dirty.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Dirty.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Dirty_Roundabout.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Dirty_Roundabout.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Dirty_X_Cross.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Dirty_X_Cross.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Dirty_X_Cross_sidewalk.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Dirty_X_Cross_sidewalk.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Dirty_Y_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Dirty_Y_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Roundabout.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Roundabout.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_X_Cross.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_X_Cross.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_X_Cross_sidewalk.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_X_Cross_sidewalk.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Y_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Advanced_Y_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Cross.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Cross.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Cross_Damaged.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_Lines_Cross_Damaged.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_lines_Damaged.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_No_lines_Damaged.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Parking.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Asphalt/M_Asphalt_Parking.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Asphalt.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Asphalt.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Asphalt_Roundabout.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Asphalt_Roundabout.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Asphalt_X_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Asphalt_X_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Asphalt_X_Crossing_sidewalk.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Asphalt_X_Crossing_sidewalk.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Asphalt_Y_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Asphalt_Y_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Damaged.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Damaged.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Damaged_Roundabout.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Damaged_Roundabout.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Damaged_X_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Damaged_X_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Damaged_X_Crossing_sidewalk.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Damaged_X_Crossing_sidewalk.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Damaged_Y_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Damaged_Y_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Dirty.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Dirty.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Dirty_Roundabout.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Dirty_Roundabout.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Dirty_X_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Dirty_X_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Dirty_X_Crossing_sidewalk.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Dirty_X_Crossing_sidewalk.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Dirty_Y_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Dirty_Y_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Roundabout.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Roundabout.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_X_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_X_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_X_Crossing_sidewalk.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_X_Crossing_sidewalk.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Y_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Advanced_Y_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Cross_Damaged_Dirt.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_Cross_Damaged_Dirt.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_X_Cross.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Cobble Stone/M_Cobble_Stone_X_Cross.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced_Cross.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced_Cross.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced_Damaged.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced_Damaged.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced_Damaged_Cross.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced_Damaged_Cross.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced_Damaged_Dirt.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced_Damaged_Dirt.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced_Damaged_Dirt_Cross.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced_Damaged_Dirt_Cross.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced_Dirt.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced_Dirt.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced_Dirt_Cross.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Advanced_Dirt_Cross.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Damaged.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Concrete/M_Concrete_Damaged.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Cross.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Cross.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Mix.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Mix.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Mix_Roundabout.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Mix_Roundabout.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Mix_X_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Mix_X_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Mix_Y_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Mix_Y_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Roundabout.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Roundabout.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Ruts.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Ruts.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Ruts_Cross.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Ruts_Cross.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Ruts_Roundabout.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Ruts_Roundabout.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Ruts_T_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Ruts_T_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Ruts_X_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Ruts_X_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Ruts_Y_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Ruts_Y_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_T_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_T_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_X_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_X_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Y_Crossing.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Materials/Dirty Road/M_Dirty_Road_Y_Crossing.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/Road Noise_Strong.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/Road Noise_Strong.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/road_noise_01_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/road_noise_01_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/road_noise_01_Strong.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/road_noise_01_Strong.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/road_noise_01_Strong2.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/road_noise_01_Strong2.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/road_noise_01_Strong3.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/road_noise_01_Strong3.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/road_noise_02.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/road_noise_02.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/road_noise_02_Light.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/road_noise_02_Light.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_damaged_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_damaged_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_damaged_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_damaged_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_damaged_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_damaged_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_damaged_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_damaged_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_dotted_lines_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_damaged_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_damaged_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_damaged_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_damaged_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_damaged_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_damaged_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_damaged_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_damaged_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_double_lines_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_damaged_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_damaged_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_damaged_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_damaged_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_damaged_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_damaged_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_damaged_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_damaged_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_no_lines_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_damaged_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_damaged_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_damaged_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_damaged_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_damaged_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_damaged_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_damaged_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_damaged_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_lines_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_damaged_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_damaged_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_damaged_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_damaged_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_damaged_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_damaged_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_damaged_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_damaged_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_asphalt_road_01_x_crossing_no_lines_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_damaged_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_damaged_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_damaged_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_damaged_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_damaged_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_damaged_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_damaged_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_damaged_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_damaged_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_damaged_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_damaged_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_damaged_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_damaged_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_damaged_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_damaged_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_damaged_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_cobblestone_road_x_crossing_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_damaged_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_damaged_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_damaged_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_damaged_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_damaged_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_damaged_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_damaged_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_damaged_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_concrete_road_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_ruts_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_ruts_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_ruts_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_ruts_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_ruts_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_ruts_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_ruts_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_ruts_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_ruts_A_T.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_ruts_A_T.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_ruts_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_ruts_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_ruts_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_ruts_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_ruts_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_field_road_01_x_crossing_ruts_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_parking_01_no_lines_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Road Textures/T_parking_01_no_lines_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Shaders.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Shaders/ER Road Transparency.shader
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Shaders/ER Road Transparency.shader.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Shaders/LightweightStandard Road Decal.shader
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Shaders/LightweightStandard Road Decal.shader.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Shaders/Standard_Metalic_Cross_Road_Shader Parallax.shader
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Shaders/Standard_Metalic_Cross_Road_Shader Parallax.shader.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Shaders/Standard_Metalic_Cross_Road_Shader.shader
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Shaders/Standard_Metalic_Cross_Road_Shader.shader.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Shaders/Standard_Metalic_Road_Shader Parallax.shader
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Shaders/Standard_Metalic_Road_Shader Parallax.shader.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Shaders/Standard_Metalic_Road_Shader.shader
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Shaders/Standard_Metalic_Road_Shader.shader.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/curb.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/curb.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/curb2.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/curb2.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/curb2_v2.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/curb2_v2.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Materials.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Materials/road_reflectorMat.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Materials/road_reflectorMat.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Materials/sidewalk_01.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Materials/sidewalk_01.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Materials/sidewalk_02.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Materials/sidewalk_02.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Materials/T_fountain_pool_BC_H.mat
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Materials/T_fountain_pool_BC_H.mat.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/park photoscanned teaser - fountain_pool.FBX
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/park photoscanned teaser - fountain_pool.FBX.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/road_curb v2.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/road_curb v2.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/road_curb.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/road_curb.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/road_marker_both.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/road_marker_both.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/road_marker_left.obj
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/road_marker_left.obj.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/road_marker_right.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/road_marker_right.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_01.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_01.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_01_2sided.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_01_2sided.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_01_2sided_v1.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_01_2sided_v1.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_01_2sided_v2.prefab
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_01_2sided_v2.prefab.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_crossing_T.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_crossing_T.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_crossing_X.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_crossing_X.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_crossing_Y.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_crossing_Y.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_roundabout_X.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_roundabout_X.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_roundabout_Y.fbx
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/sidewalk_roundabout_Y.fbx.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/road_reflector_A.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/road_reflector_A.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/road_reflector_MT_AO_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/road_reflector_MT_AO_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/road_reflector_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/road_reflector_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_fountain_pool_BC_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_fountain_pool_BC_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_fountain_pool_MT_AO_G.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_fountain_pool_MT_AO_G.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_fountain_pool_N.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_fountain_pool_N.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_01_A.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_01_A.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_01_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_01_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_01_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_01_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_01_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_01_N.png.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_02_A.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_02_A.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_02_H.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_02_H.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_02_MT_AO_H_SM.tga
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_02_MT_AO_H_SM.tga.meta
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_02_N.png
+Isolation(Main)/Assets/Map V1/NatureManufacture Assets/Side Objects and Pavment/Textures/T_sidewalk_02_N.png.meta
+Isolation(Main)/Assets/Map V1/Test Terrain.unity
+Isolation(Main)/Assets/Map V1/Test Terrain.unity.meta
