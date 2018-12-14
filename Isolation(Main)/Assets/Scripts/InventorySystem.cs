@@ -6,8 +6,10 @@ public class InventorySystem : MonoBehaviour {
 
     public GameObject InventoryGui;
     public GameObject SlotParent;
+    public GameObject HotBarParent;
 
     public Image[] Slots;
+    public Image[] HotBars;
     public GameObject Cam;
     bool Open;
 
@@ -15,6 +17,7 @@ public class InventorySystem : MonoBehaviour {
     {
         Open = false;
         Slots = SlotParent.GetComponentsInChildren<Image>();
+        HotBars = HotBarParent.GetComponentsInChildren<Image>();
     }
 
     // Update is called once per frame
@@ -26,6 +29,7 @@ public class InventorySystem : MonoBehaviour {
             Open = true;
             InventoryGui.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
+            gameObject.GetComponent<ChaController>().speed = 0;
             Cam.GetComponent<CamLook>().enabled = false;
         }
         else if (Input.GetKeyDown(KeyCode.E) && Open == true)
@@ -33,6 +37,7 @@ public class InventorySystem : MonoBehaviour {
             Open = false;
             InventoryGui.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
+            gameObject.GetComponent<ChaController>().speed = 4;
             Cam.GetComponent<CamLook>().enabled = true;
         }
     }
@@ -41,28 +46,78 @@ public class InventorySystem : MonoBehaviour {
     {
         Debug.Log("You picked up "+ item.name);
 
-        // Sets i to x, in order to keep track of the value of slots being inputted
-        
-
-
-        for (int i = 0; i < Slots.Length; i++)
+        if(item.tag != "Weapon")
         {
-            if (Slots[i].GetComponent<SlotScript>().StoredObject == null)
+            for (int i = 0; i < Slots.Length; i++)
             {
-                // Sets slot to a random color to display its use
-                Slots[i].GetComponent<Image>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+                if (Slots[i].GetComponent<SlotScript>().StoredObject == null && Slots[i].tag != item.tag)
+                {
+                    // Sets slot to a random color to display its use and Changes the Tag to the object it is holding
+                    Slots[i].tag = item.tag;
+                    Slots[i].GetComponent<Image>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
 
-                // Stores the Object Collected
-                Slots[i].GetComponent<SlotScript>().StoredObject = item;
-                item.transform.parent = Slots[i].transform;
-                item.SetActive(false);
+                    // Stores the Object Collected
+                    Slots[i].GetComponent<SlotScript>().StoredObject = item;
+                    Slots[i].GetComponent<SlotScript>().Objects.Add(item);
+                    Slots[i].GetComponent<SlotScript>().AmObjects = Slots[i].GetComponent<SlotScript>().AmObjects + 1;
+                    Slots[i].GetComponent<SlotScript>().Amount.text = Slots[i].GetComponent<SlotScript>().AmObjects.ToString();
+    
 
-                
-                return;
+                    Debug.Log(Slots[i].GetComponent<SlotScript>().Objects[i]);
+
+                    item.transform.parent = Slots[i].transform;
+                    item.SetActive(false);
+
+                    Debug.Log(i);
+                    return;
+                }
+                else if (Slots[i].GetComponent<SlotScript>().StoredObject != null && Slots[i].tag == item.tag)
+                {
+                    // Sets slot to a random color to display its use and Changes the Tag to the object it is holding
+                    Slots[i].tag = item.tag;
+                    Slots[i].GetComponent<Image>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+
+                    // Stores the Object Collected
+                    Slots[i].GetComponent<SlotScript>().StoredObject = item;
+                    Slots[i].GetComponent<SlotScript>().Objects.Add(item);
+                    Slots[i].GetComponent<SlotScript>().AmObjects = Slots[i].GetComponent<SlotScript>().AmObjects + 1;
+                    Slots[i].GetComponent<SlotScript>().Amount.text = Slots[i].GetComponent<SlotScript>().AmObjects.ToString();
+
+                    Debug.Log(Slots[i].GetComponent<SlotScript>().Objects[i]);
+
+                    item.transform.parent = Slots[i].transform;
+                    item.SetActive(false);
+
+                    Debug.Log(i);
+                    return;
+                }
+                else if (Slots[i].GetComponent<SlotScript>().StoredObject != null)
+                {
+                    i = i + 1;
+                }
             }
-            else if(Slots[i].GetComponent<SlotScript>().StoredObject != null)
+        }
+        else if(item.tag == "Weapon")
+        {
+            for(int i = 0; i < HotBars.Length; i++)
             {
-                i = i + 1;
+                if(HotBars[i].GetComponent<SlotScript>().StoredObject == null && HotBars[i].tag != item.tag)
+                {
+                    // Identifies Hot Bar Slot for Picked up Object
+                    HotBars[i].tag = item.tag;
+                    HotBars[i].GetComponent<Image>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+
+                    // Sets the Stored Object to the Item picked up, and Also keeps track of how many objects are in that Stack
+                    HotBars[i].GetComponent<SlotScript>().StoredObject = item;
+                    HotBars[i].GetComponent<SlotScript>().Objects.Add(item);
+                    HotBars[i].GetComponent<SlotScript>().AmObjects = HotBars[i].GetComponent<SlotScript>().AmObjects + 1;
+                    HotBars[i].GetComponent<SlotScript>().Amount.text = HotBars[i].GetComponent<SlotScript>().AmObjects.ToString();
+
+                    // Sets Object's parent as the Slot
+                    item.transform.parent = HotBars[i].transform;
+                    item.SetActive(false);
+                    return;
+                }
             }
         }
     }

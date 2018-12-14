@@ -4,68 +4,48 @@ using UnityEngine;
 
 public class WeatherSystem : MonoBehaviour {
 
-    public GameObject WeatherHolder;
-    public GameObject Clouds;
-    public GameObject Rain;
+    public GameObject CurrentWeather;
 
-    // Timing and Durations
-    public float Duration;
-    public float CoolDown;
+    public float Speed = .5f;
+    public bool Move = false;
 
-    public float GameDay;
+    public float SpawnX = -30f;
+    public float SpawnZMax = 30f;
+    public float SpawnZMin = -30f;
 
-    public bool WeatherActive;
-    public bool Moving;
+    public float MaxTime = 10f;
+    public float MinTime = 5f;
+    
 
-    void Start()
+	// Use this for initialization
+	void Start ()
     {
-        WeatherHolder.transform.position = new Vector3(11,26,26);
-
-        WeatherActive = false;
-        Moving = false;
-
-        Duration = Random.Range(60f,1200f);
-        Debug.Log(Duration);
-        CoolDown = Random.Range(60f,600f);
-        Debug.Log(CoolDown);
-    }
-
-    void Update()
+        Spawn();
+	}
+	
+	// Update is called once per frame
+	void Update ()
     {
-        if(Moving == true)
+        if(CurrentWeather.transform.localPosition.x < 30 && Move ==  true)
         {
-            WeatherHolder.transform.position = WeatherHolder.transform.position + new Vector3(0, 0, 1) * Time.deltaTime;
+            CurrentWeather.transform.localPosition = CurrentWeather.transform.localPosition + new Vector3(Speed,0,0) * Time.deltaTime;
         }
-
-        if(WeatherActive == false)
+        else if(CurrentWeather.transform.localPosition.x >= 30)
         {
-            WeatherActive = true;
-            StartCoroutine(Timer());
+            Move = false;
+            Spawn();
         }
     }
 
-    IEnumerator Timer()
+    public void Spawn()
     {
-        yield return new WaitForSeconds(5);
-        Debug.Log("Weather Active");
-        if(Moving == false)
-        {
-            Moving = true;
-            Clouds.SetActive(true);
-            Rain.SetActive(true);
-        }
+        CurrentWeather.transform.localPosition = new Vector3(SpawnX, 0, Random.Range(SpawnZMin, SpawnZMax));
+        StartCoroutine(WaitingTime());
+    }
 
-        yield return new WaitForSeconds(Duration);
-        Debug.Log("Weather Deactive");
-       if(Moving == true)
-        {
-            Moving = false;
-            Clouds.SetActive(false);
-            Rain.SetActive(false);
-            WeatherHolder.transform.position = new Vector3(11, 26, 26);
-        }
-
-        yield return new WaitForSeconds(CoolDown);
-        WeatherActive = false;
+    IEnumerator WaitingTime()
+    {
+        yield return new WaitForSeconds(Random.Range(MinTime,MaxTime));
+        Move = true;
     }
 }
