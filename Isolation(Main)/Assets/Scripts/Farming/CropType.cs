@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Segritude.Farming
 {
@@ -38,35 +34,35 @@ namespace Segritude.Farming
 		/// </summary>
 		public float NightMultiplier { get { return _NightMultiplier; } }
 
-		#endregion
+		#endregion Public Properties
 
 		#region Serialized Fields
 
 		/// <summary>
 		/// Name of the crop
 		/// </summary>
-		[SerializeField] string _Name;
+		[SerializeField] private string _Name;
 
 		/// <summary>
 		/// How much of the item is given when harvested
 		/// </summary>
-		[SerializeField] int _Yield = 1;
+		[SerializeField] private int _Yield = 1;
 
 		/// <summary>
 		/// How long will the crop grow in seconds
 		/// </summary>
-		[SerializeField] float _GrowthTime = 1;
+		[SerializeField] private float _GrowthTime = 1;
 
 		/// <summary>
 		/// Is the crop growth rate affected by day/night cycle
 		/// </summary>
-		[SerializeField] bool _AffectedByTime = true;
+		[SerializeField] private bool _AffectedByTime = true;
 
 		/// <summary>
 		/// How much is the crop affected by day/night cycle
 		/// </summary>
-		[SerializeField] float _NightMultiplier = 0.5f;
+		[SerializeField] private float _NightMultiplier = 0.5f;
 
-		#endregion
+		#endregion Serialized Fields
 	}
 }

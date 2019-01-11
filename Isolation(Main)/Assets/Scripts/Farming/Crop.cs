@@ -1,8 +1,4 @@
 ﻿using Segritude.InputManagement;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace Segritude.Farming
@@ -25,7 +21,7 @@ namespace Segritude.Farming
 		/// </summary>
 		public CropType Type { get { return _Type; } }
 
-		#endregion
+		#endregion Public Properties
 
 		#region Serialized Properties
 
@@ -33,15 +29,15 @@ namespace Segritude.Farming
 		/// Type of the crop.
 		/// See <see cref="CropType"/>
 		/// </summary>
-		[SerializeField] CropType _Type;
+		[SerializeField] private CropType _Type;
 
-		#endregion
+		#endregion Serialized Properties
 
 		#region Private Properties
 
 		private float CurrentGrowthRate { get { return Type.AffectedByTime ? Type.NightMultiplier : 1; } }
 
-		#endregion
+		#endregion Private Properties
 
 		#region Unity Callbacks
 
@@ -49,11 +45,10 @@ namespace Segritude.Farming
 		{
 			if (GrowthState < Type.GrowthTime)
 				GrowthState += CurrentGrowthRate;
-			if (InputManager.IntaractDown) ;
-				//TODO : Add inventory integration
+			if (InputManager.IntaractMainDown) ;
+			//TODO : Add inventory integration
 		}
 
-		#endregion
-
+		#endregion Unity Callbacks
 	}
 }
