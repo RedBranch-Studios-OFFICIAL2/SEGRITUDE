@@ -1,5 +1,5 @@
 // Made with Amplify Shader Editor
-// Available at the Unity Asset Store - http://u3d.as/y3X 
+// Available at the Unity Asset Store - http://u3d.as/y3X
 Shader "Impostors/Examples/ColorByPosition"
 {
 	Properties
@@ -9,76 +9,74 @@ Shader "Impostors/Examples/ColorByPosition"
 		_AmbientOcclusion("Ambient Occlusion", 2D) = "white" {}
 		_SpecularSmoothness("Specular Smoothness", 2D) = "white" {}
 		_Normal("Normal", 2D) = "bump" {}
-		[HideInInspector] _texcoord( "", 2D ) = "white" {}
-		[HideInInspector] __dirty( "", Int ) = 1
+		[HideInInspector] _texcoord("", 2D) = "white" {}
+		[HideInInspector] __dirty("", Int) = 1
 	}
 
-	SubShader
-	{
-		Tags{ "RenderType" = "Opaque"  "Queue" = "Geometry+0" }
-		Cull Back
-		CGPROGRAM
-		#pragma target 3.0
-		#pragma surface surf StandardSpecular keepalpha addshadow fullforwardshadows 
-		struct Input
+		SubShader
 		{
-			float2 uv_texcoord;
-			float4 vertexColor : COLOR;
-		};
+			Tags{ "RenderType" = "Opaque"  "Queue" = "Geometry+0" }
+			Cull Back
+			CGPROGRAM
+			#pragma target 3.0
+			#pragma surface surf StandardSpecular keepalpha addshadow fullforwardshadows
+			struct Input
+			{
+				float2 uv_texcoord;
+				float4 vertexColor : COLOR;
+			};
 
-		uniform sampler2D _Normal;
-		uniform float4 _Normal_ST;
-		uniform sampler2D _AmbientOcclusion;
-		uniform float4 _AmbientOcclusion_ST;
-		uniform sampler2D _SpecularSmoothness;
-		uniform float4 _SpecularSmoothness_ST;
-		uniform sampler2D _Mask;
-		uniform float4 _Mask_ST;
-		uniform sampler2D _MainTex;
-		uniform float4 _MainTex_ST;
+			uniform sampler2D _Normal;
+			uniform float4 _Normal_ST;
+			uniform sampler2D _AmbientOcclusion;
+			uniform float4 _AmbientOcclusion_ST;
+			uniform sampler2D _SpecularSmoothness;
+			uniform float4 _SpecularSmoothness_ST;
+			uniform sampler2D _Mask;
+			uniform float4 _Mask_ST;
+			uniform sampler2D _MainTex;
+			uniform float4 _MainTex_ST;
 
+			float3 HSVToRGB(float3 c)
+			{
+				float4 K = float4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+				float3 p = abs(frac(c.xxx + K.xyz) * 6.0 - K.www);
+				return c.z * lerp(K.xxx, saturate(p - K.xxx), c.y);
+			}
 
-		float3 HSVToRGB( float3 c )
-		{
-			float4 K = float4( 1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0 );
-			float3 p = abs( frac( c.xxx + K.xyz ) * 6.0 - K.www );
-			return c.z * lerp( K.xxx, saturate( p - K.xxx ), c.y );
+			void surf(Input i , inout SurfaceOutputStandardSpecular o)
+			{
+				float2 uv_Normal = i.uv_texcoord * _Normal_ST.xy + _Normal_ST.zw;
+				float2 uv_AmbientOcclusion = i.uv_texcoord * _AmbientOcclusion_ST.xy + _AmbientOcclusion_ST.zw;
+				float occlusion97 = tex2D(_AmbientOcclusion, uv_AmbientOcclusion).r;
+				float2 uv_SpecularSmoothness = i.uv_texcoord * _SpecularSmoothness_ST.xy + _SpecularSmoothness_ST.zw;
+				float4 tex2DNode49 = tex2D(_SpecularSmoothness, uv_SpecularSmoothness);
+				float specular101 = (tex2DNode49.a * 0.5);
+				float2 uv_Mask = i.uv_texcoord * _Mask_ST.xy + _Mask_ST.zw;
+				float smoothstepResult52 = smoothstep(0.35 , -0.15 , ((1.0 - (occlusion97 * saturate((i.vertexColor.r*0.6 + 0.79)))) + specular101 + (1.0 - tex2D(_Mask, uv_Mask).r)));
+				float paintMask83 = smoothstepResult52;
+				float3 lerpResult63 = lerp(UnpackNormal(tex2D(_Normal, uv_Normal)) , float3(0,0,1) , (paintMask83 * occlusion97));
+				o.Normal = lerpResult63;
+				float2 uv_MainTex = i.uv_texcoord * _MainTex_ST.xy + _MainTex_ST.zw;
+				float4 transform30 = mul(unity_ObjectToWorld,float4(0,0,0,1));
+				float3 hsvTorgb44 = HSVToRGB(float3(abs(sin((transform30.x + transform30.z))),1.0,1.0));
+				float4 lerpResult59 = lerp(tex2D(_MainTex, uv_MainTex) , float4((paintMask83 * hsvTorgb44) , 0.0) , paintMask83);
+				o.Albedo = lerpResult59.rgb;
+				float smoothness117 = tex2DNode49.a;
+				float2 appendResult111 = (float2(specular101 , smoothness117));
+				float2 appendResult108 = (float2(0.1 , 0.8));
+				float2 lerpResult68 = lerp(appendResult111 , appendResult108 , paintMask83);
+				float2 break119 = lerpResult68;
+				float3 temp_cast_2 = (break119).xxx;
+				o.Specular = temp_cast_2;
+				o.Smoothness = break119.y;
+				o.Occlusion = occlusion97;
+				o.Alpha = 1;
+			}
+
+			ENDCG
 		}
-
-
-		void surf( Input i , inout SurfaceOutputStandardSpecular o )
-		{
-			float2 uv_Normal = i.uv_texcoord * _Normal_ST.xy + _Normal_ST.zw;
-			float2 uv_AmbientOcclusion = i.uv_texcoord * _AmbientOcclusion_ST.xy + _AmbientOcclusion_ST.zw;
-			float occlusion97 = tex2D( _AmbientOcclusion, uv_AmbientOcclusion ).r;
-			float2 uv_SpecularSmoothness = i.uv_texcoord * _SpecularSmoothness_ST.xy + _SpecularSmoothness_ST.zw;
-			float4 tex2DNode49 = tex2D( _SpecularSmoothness, uv_SpecularSmoothness );
-			float specular101 = ( tex2DNode49.a * 0.5 );
-			float2 uv_Mask = i.uv_texcoord * _Mask_ST.xy + _Mask_ST.zw;
-			float smoothstepResult52 = smoothstep( 0.35 , -0.15 , ( ( 1.0 - ( occlusion97 * saturate( (i.vertexColor.r*0.6 + 0.79) ) ) ) + specular101 + ( 1.0 - tex2D( _Mask, uv_Mask ).r ) ));
-			float paintMask83 = smoothstepResult52;
-			float3 lerpResult63 = lerp( UnpackNormal( tex2D( _Normal, uv_Normal ) ) , float3(0,0,1) , ( paintMask83 * occlusion97 ));
-			o.Normal = lerpResult63;
-			float2 uv_MainTex = i.uv_texcoord * _MainTex_ST.xy + _MainTex_ST.zw;
-			float4 transform30 = mul(unity_ObjectToWorld,float4( 0,0,0,1 ));
-			float3 hsvTorgb44 = HSVToRGB( float3(abs( sin( ( transform30.x + transform30.z ) ) ),1.0,1.0) );
-			float4 lerpResult59 = lerp( tex2D( _MainTex, uv_MainTex ) , float4( ( paintMask83 * hsvTorgb44 ) , 0.0 ) , paintMask83);
-			o.Albedo = lerpResult59.rgb;
-			float smoothness117 = tex2DNode49.a;
-			float2 appendResult111 = (float2(specular101 , smoothness117));
-			float2 appendResult108 = (float2(0.1 , 0.8));
-			float2 lerpResult68 = lerp( appendResult111 , appendResult108 , paintMask83);
-			float2 break119 = lerpResult68;
-			float3 temp_cast_2 = (break119).xxx;
-			o.Specular = temp_cast_2;
-			o.Smoothness = break119.y;
-			o.Occlusion = occlusion97;
-			o.Alpha = 1;
-		}
-
-		ENDCG
-	}
-	Fallback "Diffuse"
+			Fallback "Diffuse"
 }
 /*ASEBEGIN
 Version=15501
