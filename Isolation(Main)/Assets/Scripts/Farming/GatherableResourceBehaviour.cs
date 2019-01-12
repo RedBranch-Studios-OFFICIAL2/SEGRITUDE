@@ -1,6 +1,4 @@
-﻿using Segritude.Audio;
-using Segritude.Interaction;
-using System.Collections.Generic;
+﻿using Segritude.Interaction;
 using UnityEngine;
 
 namespace Segritude.Farming
@@ -21,6 +19,10 @@ namespace Segritude.Farming
 
 		#region Abstract Implementation
 
+		/// <summary>
+		/// Callback when player succesfully interact with the object
+		/// </summary>
+		/// <param name="type">Type of the interaction. See <see cref="InteractionType"/></param>
 		public override void OnInteract(InteractionType type)
 		{
 			// TODO : Add inventory integration
@@ -28,6 +30,11 @@ namespace Segritude.Farming
 			AudioPlayer.Instance.PlaySound(_Resource.GatherSound);
 		}
 
+		/// <summary>
+		/// Callback when player tries to interact
+		/// </summary>
+		/// <param name="type">Type of the interaction. See <see cref="InteractionType"/></param>
+		/// <returns>Was the interaction succesful</returns>
 		public override bool ValidateInteraction(InteractionType type)
 		{
 			if (_Resource.Tool == Tools.ToolType.Any && type == InteractionType.Main)
@@ -37,7 +44,6 @@ namespace Segritude.Farming
 			return false;
 		}
 
-		#endregion
-
+		#endregion Abstract Implementation
 	}
 }

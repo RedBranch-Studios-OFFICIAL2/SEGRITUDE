@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Segritude.Interaction
 {
@@ -11,7 +7,70 @@ namespace Segritude.Interaction
 	/// </summary>
 	public abstract class InteractableBehaviour : MonoBehaviour
 	{
+		#region Public Property
+
+		/// <summary>
+		/// Does the interaction needs the player to hold the button
+		/// </summary>
+		public bool Hold { get { return _Hold; } }
+
+		/// <summary>
+		/// How long does the player need to hold the button
+		/// </summary>
+		public float HoldTime { get { return _HoldTime; } }
+
+		/// <summary>
+		/// What is the current interaction state (0-1)
+		/// </summary>
+		public float HoldState { get { return _Hold ? _CurrentHoldTime / _HoldTime : (IsInteracting ? 1 : 0); } }
+
+		/// <summary>
+		/// Is the player currently interacting with the object
+		/// </summary>
+		public bool IsInteracting { get; private set; }
+
+		/// <summary>
+		/// Is the interaction automaticly repeating
+		/// </summary>
+		public bool Repeat { get { return _Repeat; } }
+
+		#endregion Public Property
+
+		#region Serialized Fields
+
+		/// <summary>
+		/// Does the interaction needs the player to hold the button
+		/// </summary>
+		[SerializeField] private bool _Hold;
+
+		/// <summary>
+		/// How long does the player need to hold the button
+		/// </summary>
+		[SerializeField] private float _HoldTime = 1f;
+
+		/// <summary>
+		/// Is the interaction automaticly repeating
+		/// </summary>
+		[SerializeField] private bool _Repeat;
+
+		#endregion Serialized Fields
+
+		#region Private Fields
+
+		/// <summary>
+		/// For how long is the player interacting
+		/// </summary>
+		private float _CurrentHoldTime;
+
+		/// <summary>
+		/// Type of the current interaction. See <see cref="InteractionType"/>
+		/// </summary>
+		private InteractionType _Type;
+
+		#endregion Private Fields
+
 		#region Abstract Methods
+
 		/// <summary>
 		/// Called when the player succesfully interacts with the object
 		/// </summary>
@@ -25,7 +84,7 @@ namespace Segritude.Interaction
 		/// <returns>Is the interaction valid</returns>
 		public abstract bool ValidateInteraction(InteractionType type);
 
-		#endregion
+		#endregion Abstract Methods
 
 		#region Public Methods
 
@@ -33,15 +92,28 @@ namespace Segritude.Interaction
 		/// Try to interact with the object
 		/// </summary>
 		/// <param name="type">Type of the interaction. See <see cref="InteractionType"/></param>
-		public bool TryInteract(InteractionType type)
+		public bool TryStartInteraction(InteractionType type)
 		{
 			if (!ValidateInteraction(type))
 				return false;
-			OnInteract(type);
+			IsInteracting = true;
+			_CurrentHoldTime = 0;
+			_Type = type;
 			return true;
 		}
 
-		#endregion
+		/// <summary>
+		/// Ends the current interaction of given type
+		/// </summary>
+		/// <param name="type">Type of the interaction. See <see cref="InteractionType"/></param>
+		public void EndInteraction(InteractionType type)
+		{
+			if (type != _Type)
+				return;
+			IsInteracting = false;
+		}
+
+		#endregion Public Methods
 
 		#region Initialization
 
@@ -53,7 +125,25 @@ namespace Segritude.Interaction
 			gameObject.layer = LayerManager.InteractableLayer;
 		}
 
-		#endregion
+		#endregion Initialization
 
+		#region Unity Callbacks
+
+		private void Update()
+		{
+			if (IsInteracting)
+			{
+				_CurrentHoldTime += Time.deltaTime;
+				if (_CurrentHoldTime >= HoldTime)
+				{
+					if (!Repeat)
+						EndInteraction(_Type);
+					_CurrentHoldTime = 0;
+					OnInteract(_Type);
+				}
+			}
+		}
+
+		#endregion Unity Callbacks
 	}
 }

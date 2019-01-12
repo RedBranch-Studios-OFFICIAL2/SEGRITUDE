@@ -1,5 +1,4 @@
-﻿using Segritude.InputManagement;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Segritude.Farming
 {
@@ -45,7 +44,7 @@ namespace Segritude.Farming
 		{
 			if (GrowthState < Type.GrowthTime)
 				GrowthState += CurrentGrowthRate;
-			if (InputManager.IntaractMainDown) ;
+			if (InputManager.InteractMainDown) ;
 			//TODO : Add inventory integration
 		}
 
