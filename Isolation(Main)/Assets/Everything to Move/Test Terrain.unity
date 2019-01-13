@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: 8193bb9b199b2654887a9bddec42962b, type: 3}
   m_Sun: {fileID: 2093950640}
-  m_IndirectSpecularColor: {r: 0.5009355, g: 0.5378655, b: 0.59527117, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10105,6 +10105,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 136418259854074996, guid: 6f6a4f29a2748884db02ac7ad7daa3e3, type: 3}
     - {fileID: 54950458705517506, guid: 6f6a4f29a2748884db02ac7ad7daa3e3, type: 3}
+    - {fileID: 114768993528994722, guid: 6f6a4f29a2748884db02ac7ad7daa3e3, type: 3}
+    - {fileID: 114990593486860828, guid: 6f6a4f29a2748884db02ac7ad7daa3e3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6f6a4f29a2748884db02ac7ad7daa3e3, type: 3}
 --- !u!1 &583169213
 GameObject:
@@ -15967,6 +15969,28 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 493223829}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1461757709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461757704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3504012f64419634cbc945c417c6e20c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  JumpForce: 0
+  Gravity: 0
+  MoveDir: {x: 0, y: 0, z: 0}
+  Player: {fileID: 0}
+  Gun: {fileID: 0}
+  ForwardDir: 0
+  SideDir: 0
+  Crouch: 0
+  Jump: 0
 --- !u!114 &1498372544 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114658221971727268, guid: a798472e33085a94db3ff022b5f61878,
@@ -18766,6 +18790,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 493223829}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2063158026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063158025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a09a3b02951e640b40561a681b9ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: 5
+  smoothing: 2
 --- !u!20 &2063158028 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 20940458563260994, guid: 6f6a4f29a2748884db02ac7ad7daa3e3,
