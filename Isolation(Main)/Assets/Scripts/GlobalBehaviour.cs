@@ -28,7 +28,7 @@ namespace Segritude
 		/// <summary>
 		/// Called at the beggining of the scene
 		/// </summary>
-		private void Start()
+		private void Awake()
 		{
 			Instance = (T)this;
 		}

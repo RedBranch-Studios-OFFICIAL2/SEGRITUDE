@@ -1,4 +1,5 @@
-﻿using Segritude.Tools;
+﻿using Segritude.Inventory;
+using Segritude.Tools;
 using UnityEngine;
 
 namespace Segritude.Farming
@@ -13,17 +14,22 @@ namespace Segritude.Farming
 		/// <summary>
 		/// Name of the resource
 		/// </summary>
-		public string Name { get { return _Name; } }
+		public string Name => _Name;
 
 		/// <summary>
 		/// Sound that plays when the resource is gathered
 		/// </summary>
-		public AudioClip GatherSound { get { return _GatherSound; } }
+		public AudioClip GatherSound => _GatherSound;
 
 		/// <summary>
 		/// <see cref="ToolType"/> of tool required to gather this resource
 		/// </summary>
-		public ToolType Tool { get { return _Tool; } }
+		public ToolType Tool => _Tool;
+
+		/// <summary>
+		/// Item that is gathered
+		/// </summary>
+		public Item GatheredResource => _GatheredResource;
 
 		#endregion Public Properties
 
@@ -43,6 +49,11 @@ namespace Segritude.Farming
 		/// <see cref="ToolType"/> of tool required to gather this resource
 		/// </summary>
 		[SerializeField] private ToolType _Tool;
+
+		/// <summary>
+		/// Item that is gathered
+		/// </summary>
+		[SerializeField] private Item _GatheredResource;
 
 		#endregion Serizalizable Fields
 	}

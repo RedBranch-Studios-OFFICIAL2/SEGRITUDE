@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Segritude.Inventory
 {
@@ -49,6 +50,11 @@ namespace Segritude.Inventory
 
 		public int this[string id] => items.Where(x => x.ID == id).Sum(x => x.Quantity);
 
+		public void AddItem(ItemStack stack)
+		{
+			AddItem(stack.ID, stack.Quantity);
+		}
+
 		public void AddItem(string id, int amount)
 		{
 			AddItem(Database<Item>.Items[id], amount);
@@ -58,7 +64,6 @@ namespace Segritude.Inventory
 		{
 			if (amount <= 0)
 				return;
-			OnChange?.Invoke(this);
 			for (int i = 0; amount > 0 && i < Count; i++)
 			{
 				var itemStack = items[i];
@@ -69,9 +74,9 @@ namespace Segritude.Inventory
 				items[i].Quantity += count;
 				amount -= count;
 			}
-			if (amount <= 0)
-				return;
-			items.Add(new ItemStack(item, amount));
+			if (amount > 0)
+				items.Add(new ItemStack(item, amount));
+			OnChange?.Invoke(this);
 		}
 
 		public int RemoveItem(string id, int amount)

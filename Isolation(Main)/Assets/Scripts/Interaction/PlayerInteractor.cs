@@ -15,9 +15,19 @@ namespace Segritude.Interaction
 		#region Public Propreties
 
 		/// <summary>
+		/// Can player interact right now
+		/// </summary>
+		public bool CanInteract { get; set; }
+
+		/// <summary>
 		/// Is the player currently interacting
 		/// </summary>
 		public bool IsInteracting { get; private set; }
+
+		/// <summary>
+		/// List of interaction hijacks
+		/// </summary>
+		public List<IInteractable> Hijacks { get; private set; } = new List<IInteractable>();
 
 		#endregion
 
@@ -35,12 +45,12 @@ namespace Segritude.Interaction
 		/// <summary>
 		/// Interactable that player interact with. Null if not interacting
 		/// </summary>
-		private InteractableBehaviour _CurrentlyInteracting;
+		private IInteractable currentlyInteracting;
 
 		/// <summary>
 		/// Interaction type that player is currently performing
 		/// </summary>
-		private InteractionType _CurrentInteraction;
+		private InteractionType currentInteraction;
 
 		#endregion
 
@@ -63,7 +73,7 @@ namespace Segritude.Interaction
 		/// </summary>
 		/// <param name="type">Type of the interaction. See <see cref="InteractionType"/></param>
 		/// <returns>Did the interaction just attempted</returns>
-		private bool GetInteractionStart(InteractionType type)
+		private static bool GetInteractionStart(InteractionType type)
 		{
 			switch (type)
 			{
@@ -84,7 +94,7 @@ namespace Segritude.Interaction
 		/// </summary>
 		/// <param name="type">Type of the interaction. See <see cref="InteractionType"/></param>
 		/// <returns>Did the interaction just finished</returns>
-		private bool GetInteractionEnd(InteractionType type)
+		private static bool GetInteractionEnd(InteractionType type)
 		{
 			switch (type)
 			{
@@ -108,35 +118,38 @@ namespace Segritude.Interaction
 		{
 			if (!IsInteracting)
 			{
-				InteractableBehaviour behaviour = null;
+				IInteractable interactable = null;
 				foreach (InteractionType type in Enum.GetValues(typeof(InteractionType)))
 				{
 					if (GetInteractionStart(type))
 					{
-						if (behaviour == null)
+						foreach (var hijack in Hijacks)
+							if (hijack.ValidateInteraction(type))
+							{
+								interactable = hijack;
+								break;
+							}
+
+						if (interactable == null)
 						{
-							behaviour = Raycast();
-							if (behaviour == null)
-								return;
+							interactable = Raycast();
+							if (!interactable?.ValidateInteraction(type) ?? true)
+								interactable = null;
 						}
-						if (behaviour.TryStartInteraction(type))
+						if (interactable?.ValidateInteraction(type) ?? false)
 						{
-							_CurrentInteraction = type;
-							_CurrentlyInteracting = behaviour;
+							currentInteraction = type;
+							currentlyInteracting = interactable;
 							IsInteracting = true;
 						}
 					}
 				}
 			}
-			else
+			else if ((currentlyInteracting is InteractableBehaviour && Raycast() != currentlyInteracting) || GetInteractionEnd(currentInteraction))
 			{
-				var behaviour = Raycast();
-				if (behaviour != _CurrentlyInteracting || GetInteractionEnd(_CurrentInteraction))
-				{
-					_CurrentlyInteracting.EndInteraction(_CurrentInteraction);
-					_CurrentlyInteracting = null;
-					IsInteracting = false;
-				}
+				currentlyInteracting.EndInteraction(currentInteraction);
+				currentlyInteracting = null;
+				IsInteracting = false;
 			}
 		}
 

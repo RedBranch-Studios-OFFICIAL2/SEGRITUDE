@@ -14,7 +14,7 @@ namespace Segritude.Inventory
 
 		public override void OnInteract(InteractionType type)
 		{
-			Player.Instance.Inventory.AddItem(Item, 1);
+			Player.Player.Instance.Inventory.AddItem(Item, 1);
 		}
 		public override bool ValidateInteraction(InteractionType type)
 		{

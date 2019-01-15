@@ -1,4 +1,4 @@
-﻿namespace Segritude
+﻿namespace Segritude.Database
 {
 	public interface IDatabaseItem
 	{

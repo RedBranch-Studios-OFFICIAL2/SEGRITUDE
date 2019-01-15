@@ -5,24 +5,24 @@ namespace Segritude.Interaction
 	/// <summary>
 	/// Base class for all interactable objects
 	/// </summary>
-	public abstract class InteractableBehaviour : MonoBehaviour
+	public abstract class InteractableBehaviour : MonoBehaviour, IInteractable
 	{
 		#region Public Property
 
 		/// <summary>
 		/// Does the interaction needs the player to hold the button
 		/// </summary>
-		public bool Hold { get { return _Hold; } }
+		public bool Hold => _Hold;
 
 		/// <summary>
 		/// How long does the player need to hold the button
 		/// </summary>
-		public float HoldTime { get { return _HoldTime; } }
+		public float HoldTime => _HoldTime;
 
 		/// <summary>
 		/// What is the current interaction state (0-1)
 		/// </summary>
-		public float HoldState { get { return _Hold ? _CurrentHoldTime / _HoldTime : (IsInteracting ? 1 : 0); } }
+		public float HoldState => _Hold ? _CurrentHoldTime / _HoldTime : (IsInteracting ? 1 : 0);
 
 		/// <summary>
 		/// Is the player currently interacting with the object
@@ -32,7 +32,7 @@ namespace Segritude.Interaction
 		/// <summary>
 		/// Is the interaction automaticly repeating
 		/// </summary>
-		public bool Repeat { get { return _Repeat; } }
+		public bool Repeat => _Repeat;
 
 		#endregion Public Property
 
@@ -89,17 +89,14 @@ namespace Segritude.Interaction
 		#region Public Methods
 
 		/// <summary>
-		/// Try to interact with the object
+		/// Starts the interaction
 		/// </summary>
-		/// <param name="type">Type of the interaction. See <see cref="InteractionType"/></param>
-		public bool TryStartInteraction(InteractionType type)
+		/// <param name="type"></param>
+		public void StartInteraction(InteractionType type)
 		{
-			if (!ValidateInteraction(type))
-				return false;
 			IsInteracting = true;
 			_CurrentHoldTime = 0;
 			_Type = type;
-			return true;
 		}
 
 		/// <summary>

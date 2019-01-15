@@ -6,23 +6,10 @@ namespace Segritude.Inventory.UI
 {
 	public class InventorySlotUI : MonoBehaviour, IDragHandler, IDropHandler, IBeginDragHandler, IEndDragHandler
 	{
-		#region Serialized Fields
-
-		[SerializeField] private Image sprite;
-		[SerializeField] private Image dragSprite;
-
-		#endregion Serialized Fields
-
-		#region Private Fields
-
-		private ItemStack stack;
-		private Vector2 Offset;
-		private bool IsDragging;
-
-		#endregion Private Fields
-
 		#region Public Properties
 
+		public int Index { get; set; }
+		public InventoryUI Manager { get; set; }
 		public ItemStack Stack
 		{
 			get
@@ -34,46 +21,89 @@ namespace Segritude.Inventory.UI
 				if (stack == value)
 					return;
 				stack = value;
-				sprite.sprite = stack.Item.Sprite;
-				if (!IsDragging)
-					dragSprite.sprite = stack?.Item.Sprite ?? null;
+				sprite.sprite = stack?.Item.Sprite ?? null;
+				dragSprite.sprite = stack?.Item.Sprite ?? null;
+			}
+		}
+
+		#endregion
+
+		#region Serialized Fields
+
+		[SerializeField] private Image sprite;
+		[SerializeField] private Image dragSprite;
+
+		#endregion Serialized Fields
+
+		#region Private Properties
+
+		protected bool IsDragging
+		{
+			get => isDragging;
+			set
+			{
+				if (isDragging == value)
+					return;
+				isDragging = value;
+				sprite.gameObject.SetActive(isDragging ^ true);
 			}
 		}
 
 		#endregion Public Properties
 
+		#region Private Fields
+
+		protected ItemStack stack;
+		private Vector2 offset;
+		private bool isDragging;
+
+		#endregion Private Fields
+
+
+
 		public void OnBeginDrag(PointerEventData eventData)
 		{
-			IsDragging = true;
-			InventoryUI.Instance.CurrentDrag = Stack;
-			Stack = null;
-			dragSprite.transform.SetParent(InventoryUI.Instance.DragParent);
-			Offset = (Vector2)dragSprite.transform.position - eventData.position;
-			dragSprite.gameObject.SetActive(true);
-
+			AttachDragSprite(eventData.position);
+			InventoryUI.CurrentDrag = Stack;
+			
 		}
 		public void OnDrag(PointerEventData eventData)
 		{
-			dragSprite.transform.position = eventData.position + Offset;
+			dragSprite.transform.position = eventData.position + offset;
 		}
-		public void OnDrop(PointerEventData eventData)
+		public virtual void OnDrop(PointerEventData eventData)
 		{
-			Stack = InventoryUI.Instance.CurrentDrag;
-			InventoryUI.Instance.CurrentDrag = null;
+			Manager.Holder.Inventory.AddItem(InventoryUI.CurrentDrag);
+			Manager.UpdateUI();
+			InventoryUI.CurrentDrag = null;
 		}
-		public void OnEndDrag(PointerEventData eventData)
+		public virtual void OnEndDrag(PointerEventData eventData)
 		{
-			IsDragging = false;
+
+			ReturnDragSprite();
+			if (InventoryUI.CurrentDrag is null)
+			{
+				InventoryUI.CurrentDrag = null;
+				Stack = null;
+				Manager.Holder.Inventory.RemoveStack(Index);
+				Manager.UpdateUI();
+			}
+		}
+
+		protected void AttachDragSprite(Vector2 position)
+		{
+			isDragging = true;
+			dragSprite.transform.SetParent(Manager.DragParent);
+			offset = (Vector2)dragSprite.transform.position - position;
+			dragSprite.gameObject.SetActive(true);
+		}
+
+		protected void ReturnDragSprite()
+		{
+			isDragging = false;
 			dragSprite.transform.SetParent(transform);
 			dragSprite.transform.localPosition = Vector3.zero;
 			dragSprite.gameObject.SetActive(false);
-			if (InventoryUI.Instance.CurrentDrag is null)
-			{
-				dragSprite.sprite = null;
-			}
-			Stack = InventoryUI.Instance.CurrentDrag;
-			InventoryUI.Instance.CurrentDrag = null;
-
 		}
 	}
 }

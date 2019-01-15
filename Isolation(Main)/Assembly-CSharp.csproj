@@ -185,6 +185,8 @@
     <Compile Include="Assets\Scripts\AI.cs" />
     <Compile Include="Assets\Scripts\AIScripts\AIController.cs" />
     <Compile Include="Assets\Scripts\AIScripts\Spawner.cs" />
+    <Compile Include="Assets\Scripts\Arms\Gun.cs" />
+    <Compile Include="Assets\Scripts\Arms\GunBehaviour.cs" />
     <Compile Include="Assets\Scripts\AudioPlayer.cs" />
     <Compile Include="Assets\Scripts\CameraCollision.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
@@ -209,13 +211,14 @@
     <Compile Include="Assets\Scripts\GlobalBehaviour.cs" />
     <Compile Include="Assets\Scripts\Gun.cs" />
     <Compile Include="Assets\Scripts\GunController.cs" />
-    <Compile Include="Assets\Scripts\GunRecoil.cs" />
     <Compile Include="Assets\Scripts\Health\IDamageSource.cs" />
     <Compile Include="Assets\Scripts\Health\ILivingCreature.cs" />
     <Compile Include="Assets\Scripts\InputManager.cs" />
+    <Compile Include="Assets\Scripts\Interaction\IInteractable.cs" />
     <Compile Include="Assets\Scripts\Interaction\InteractableBehaviour.cs" />
     <Compile Include="Assets\Scripts\Interaction\InteractionType.cs" />
     <Compile Include="Assets\Scripts\Interaction\PlayerInteractor.cs" />
+    <Compile Include="Assets\Scripts\Inventory\IInventoryHolder.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Inventory\Item.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemBehaviour.cs" />
@@ -223,7 +226,9 @@
     <Compile Include="Assets\Scripts\Inventory\UI\InventorySlotUI.cs" />
     <Compile Include="Assets\Scripts\Inventory\UI\InventoryUI.cs" />
     <Compile Include="Assets\Scripts\LayerManager.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Player\UI\PlayerInventoryUI.cs" />
+    <Compile Include="Assets\Scripts\Player\UI\PlayerToolbarSlotUI.cs" />
     <Compile Include="Assets\Scripts\Shooting.cs" />
     <Compile Include="Assets\Scripts\skinSystem.cs" />
     <Compile Include="Assets\Scripts\TerrainSurface.cs" />

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Segritude.Database;
+using UnityEngine;
 
 namespace Segritude.Inventory
 {
