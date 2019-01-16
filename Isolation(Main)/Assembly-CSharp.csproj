@@ -62,14 +62,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\DeveloperConsole.cs" />
-    <Compile Include="Assets\Everything to Move\CamLook.cs" />
-    <Compile Include="Assets\Everything to Move\ChaController.cs" />
-    <Compile Include="Assets\Everything to Move\ItemPickUp.cs" />
-    <Compile Include="Assets\Everything to Move\New_Inventory.cs" />
-    <Compile Include="Assets\Everything to Move\New_SlotScript.cs" />
-    <Compile Include="Assets\Everything to Move\Playeratt.cs" />
-    <Compile Include="Assets\Everything to Move\PlayerSpawning.cs" />
-    <Compile Include="Assets\Everything to Move\WeatherSystem.cs" />
+    <Compile Include="Assets\Everything to Move\Scripts\BasicGun.cs" />
+    <Compile Include="Assets\Everything to Move\Scripts\CamLook.cs" />
+    <Compile Include="Assets\Everything to Move\Scripts\ChaController.cs" />
+    <Compile Include="Assets\Everything to Move\Scripts\Damage.cs" />
+    <Compile Include="Assets\Everything to Move\Scripts\ItemPickUp.cs" />
+    <Compile Include="Assets\Everything to Move\Scripts\New_Inventory.cs" />
+    <Compile Include="Assets\Everything to Move\Scripts\New_SlotScript.cs" />
+    <Compile Include="Assets\Everything to Move\Scripts\Playeratt.cs" />
+    <Compile Include="Assets\Everything to Move\Scripts\PlayerSpawning.cs" />
+    <Compile Include="Assets\Everything to Move\Scripts\WeatherSystem.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
