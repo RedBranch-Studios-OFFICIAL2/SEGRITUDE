@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721d0bfdb32a8f3409edf94c093a5981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 2393203844878955465}
-  dragSprite: {fileID: 6024091679190226359}
+  itemSprite: {fileID: 6024091679190226359}
 --- !u!1001 &4648500818561135132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -140,18 +139,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4648500818561135132}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2393203844878955465 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7040415850320953813, guid: a762a58c00e21a04aa8fbd8f558cee5d,
-    type: 3}
-  m_PrefabInstance: {fileID: 4648500818561135132}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2393203844878955468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6024091679190226359 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1376717933211281323, guid: a762a58c00e21a04aa8fbd8f558cee5d,

@@ -1,10 +1,4 @@
-﻿
-using Segritude.Interaction;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Segritude.Interaction;
 
 namespace Segritude.Inventory
 {
@@ -16,6 +10,7 @@ namespace Segritude.Inventory
 		{
 			Player.Player.Instance.Inventory.AddItem(Item, 1);
 		}
+
 		public override bool ValidateInteraction(InteractionType type)
 		{
 			return type == InteractionType.Main;

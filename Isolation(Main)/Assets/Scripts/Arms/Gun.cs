@@ -1,9 +1,4 @@
 ﻿using Segritude.Inventory;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Segritude.Arms
@@ -15,6 +10,6 @@ namespace Segritude.Arms
 		[SerializeField] private float fireRate = 1;
 		[SerializeField] private Vector2 MaximalRecoil = Vector2.one;
 
-		#endregion
+		#endregion Serialized Fields
 	}
 }

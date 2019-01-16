@@ -13,9 +13,8 @@ namespace Segritude
 		}
 
 		T IReadOnlyDictionary<string, T>.this[string key] => (T)base[key];
+
 		#region Static Part
-
-
 
 		public static IReadOnlyDictionary<string, T> Items
 		{
@@ -30,27 +29,18 @@ namespace Segritude
 
 		public bool TryGetValue(string key, out T value) => throw new NotImplementedException();
 
-
-
 		#endregion Static Part
 
 		#region Instance Part
 
-
-
-
-
 		#region IEnumerable Implementation
 
-
 		IEnumerator IEnumerable.GetEnumerator() => items.GetEnumerator();
+
 		IEnumerator<KeyValuePair<string, T>> IEnumerable<KeyValuePair<string, T>>.GetEnumerator() => items.Cast<KeyValuePair<string, T>>().GetEnumerator();
 
 		#endregion IEnumerable Implementation
 
 		#endregion Instance Part
-
-
 	}
-
 }

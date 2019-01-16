@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5044601443502314361
 RectTransform:
   m_ObjectHideFlags: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -177,5 +177,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc5f8acf7188c9640b0ff49381e22633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 7040415850320953813}
-  dragSprite: {fileID: 1376717933211281323}
+  itemSprite: {fileID: 1376717933211281323}

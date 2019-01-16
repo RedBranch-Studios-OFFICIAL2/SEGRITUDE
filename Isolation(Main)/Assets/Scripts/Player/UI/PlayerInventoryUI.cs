@@ -1,10 +1,5 @@
-﻿using Segritude.Inventory;
-using Segritude.Inventory.UI;
-using System;
-using System.Collections.Generic;
+﻿using Segritude.Inventory.UI;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -28,7 +23,7 @@ namespace Segritude.Player.UI
 			}
 		}
 
-		#endregion
+		#endregion Public Properties
 
 		#region Serialized Fields
 
@@ -36,13 +31,13 @@ namespace Segritude.Player.UI
 		[SerializeField] private GameObject inventoryPanel;
 		[SerializeField] private TextMeshProUGUI weightCounter;
 
-		#endregion
+		#endregion Serialized Fields
 
 		#region Private Fields
 
 		private bool open = true;
 
-		#endregion
+		#endregion Private Fields
 
 		#region Unity Callbacks
 
@@ -56,7 +51,7 @@ namespace Segritude.Player.UI
 			Open = false;
 		}
 
-		#endregion
+		#endregion Unity Callbacks
 
 		#region Public Methods
 
@@ -68,9 +63,6 @@ namespace Segritude.Player.UI
 			weightCounter.text = $"{ (Holder.Inventory.TotalWeight + Player.Instance.ToolBar.Where(x => !(x is null)).Sum(x => x.Quantity * x.Item.Weight)) / 10f} / {Player.Instance.MaxWeight / 10f}";
 		}
 
-		#endregion
-
-
-
+		#endregion Public Methods
 	}
 }

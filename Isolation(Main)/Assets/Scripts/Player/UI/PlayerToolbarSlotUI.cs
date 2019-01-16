@@ -1,9 +1,4 @@
 ﻿using Segritude.Inventory.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine.EventSystems;
 
 namespace Segritude.Player.UI
@@ -39,7 +34,6 @@ namespace Segritude.Player.UI
 				Player.Instance.ToolBar[Index] = null;
 				Manager.UpdateUI();
 			}
-
 		}
 	}
 }

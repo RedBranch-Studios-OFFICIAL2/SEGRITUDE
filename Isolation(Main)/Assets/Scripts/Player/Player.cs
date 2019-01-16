@@ -1,7 +1,5 @@
-using Segritude;
 using Segritude.Health;
 using Segritude.Inventory;
-using Segritude.Inventory.UI;
 using Segritude.Player.UI;
 using UnityEngine;
 

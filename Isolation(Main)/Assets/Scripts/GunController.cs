@@ -1,18 +1,16 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GunController : MonoBehaviour
 {
-
 	public float Speed;
 
 	public Camera fpsCam;
 	public GameObject Camera;
 
 	public GameObject Player;
-	Animator anim;
+	private Animator anim;
 
 	public GameObject gun;
 	public GameObject Revolver;
@@ -37,7 +35,7 @@ public class GunController : MonoBehaviour
 	public bool CamSwitch = false;
 	public bool Switch;
 
-	void Start()
+	private void Start()
 	{
 		AmmoDisplay.GetComponent<Text>().text = (Amount.ToString() + "/" + Max.ToString());
 		Switch = false;
@@ -46,9 +44,8 @@ public class GunController : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update()
+	private void Update()
 	{
-
 		// Gun Shots // Reloading
 		if (Input.GetButtonDown("Fire1"))
 		{
@@ -101,16 +98,17 @@ public class GunController : MonoBehaviour
 			LastPos = OrigPos;
 		}
 	}
+
 	// Shooting Bullet
-	void Shoot()
+	private void Shoot()
 	{
 		GameObject BulletClone = Instantiate(bullet, Revolver.transform.position + Camera.transform.forward, Revolver.transform.rotation);
 		BulletClone.name = "Bullet";
 		BulletClone.GetComponent<Rigidbody>().AddForce(Camera.transform.forward * Speed);
-
 	}
+
 	// Reloading Availiable
-	void ReloadAva()
+	private void ReloadAva()
 	{
 		if (Reloading == true)
 		{
@@ -123,13 +121,15 @@ public class GunController : MonoBehaviour
 			anim.SetBool("Walk", true);
 		}
 	}
+
 	// Reloading Process
-	void ReloadProcess()
+	private void ReloadProcess()
 	{
 		Debug.Log("Reloading...");
 		StartCoroutine(Reload());
 		Debug.Log("Reload Complete");
 	}
+
 	// Reloading Core Mechanic
 	public IEnumerator Reload()
 	{
@@ -141,5 +141,4 @@ public class GunController : MonoBehaviour
 		Reloading = false;
 		ReloadAva();
 	}
-
 }

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace Segritude.Interaction
@@ -29,7 +27,7 @@ namespace Segritude.Interaction
 		/// </summary>
 		public List<IInteractable> Hijacks { get; private set; } = new List<IInteractable>();
 
-		#endregion
+		#endregion Public Propreties
 
 		#region Serialized Fields
 
@@ -38,7 +36,7 @@ namespace Segritude.Interaction
 		/// </summary>
 		[SerializeField] private float _InteractionDistance;
 
-		#endregion
+		#endregion Serialized Fields
 
 		#region Private Fields
 
@@ -52,7 +50,7 @@ namespace Segritude.Interaction
 		/// </summary>
 		private InteractionType currentInteraction;
 
-		#endregion
+		#endregion Private Fields
 
 		#region Private Methods
 
@@ -79,10 +77,13 @@ namespace Segritude.Interaction
 			{
 				case InteractionType.Left:
 					return InputManager.InteractLeftDown;
+
 				case InteractionType.Right:
 					return InputManager.InteractRightDown;
+
 				case InteractionType.Main:
 					return InputManager.InteractMainDown;
+
 				default:
 					break;
 			}
@@ -100,17 +101,20 @@ namespace Segritude.Interaction
 			{
 				case InteractionType.Left:
 					return InputManager.InteractLeftRelease;
+
 				case InteractionType.Right:
 					return InputManager.InteractRightRelease;
+
 				case InteractionType.Main:
 					return InputManager.InteractMainRelease;
+
 				default:
 					break;
 			}
 			return false;
 		}
 
-		#endregion
+		#endregion Private Methods
 
 		#region Unity Callbacks
 
@@ -153,6 +157,6 @@ namespace Segritude.Interaction
 			}
 		}
 
-		#endregion
+		#endregion Unity Callbacks
 	}
 }
