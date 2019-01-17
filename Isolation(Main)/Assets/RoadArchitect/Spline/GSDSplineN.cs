@@ -104,7 +104,7 @@ public class GSDSplineN : MonoBehaviour{
 	}
 
 	public EdgeObjectMaker AddEdgeObject(){
-		EdgeObjectMaker EOM = new EdgeObjectMaker();
+		var EOM = new EdgeObjectMaker();
 		EOM.tNode = this;
 		EOM.SetDefaultTimes(bIsEndPoint,tTime,NextTime,idOnSpline,GSDSpline.distance);
 		EOM.StartPos = GSDSpline.GetSplineValue(EOM.StartTime);
@@ -114,7 +114,7 @@ public class GSDSplineN : MonoBehaviour{
 	}
 	
 	public void EdgeObjectQuickAdd(string tName){
-		EdgeObjectMaker EOM = AddEdgeObject();
+		var EOM = AddEdgeObject();
 		EOM.LoadFromLibrary(tName,true);
 		EOM.SetDefaultTimes(bIsEndPoint,tTime,NextTime,idOnSpline,GSDSpline.distance);
 		EOM.tNode = this;
@@ -149,7 +149,7 @@ public class GSDSplineN : MonoBehaviour{
 	}
 	
 	public void CopyEdgeObject(int tIndex){
-		EdgeObjectMaker EOM = EdgeObjects[tIndex].Copy();
+		var EOM = EdgeObjects[tIndex].Copy();
 		EdgeObjects.Add(EOM);
 		SetupEdgeObjects();
 	}
@@ -158,7 +158,7 @@ public class GSDSplineN : MonoBehaviour{
 		if(EdgeObjects == null){ EdgeObjects = new List<EdgeObjectMaker>(); }
 		int eCount = EdgeObjects.Count;
 		if(i > -1 && i < eCount){
-			EdgeObjectMaker EOM = EdgeObjects[i];
+			var EOM = EdgeObjects[i];
 			EOM.LoadFromLibrary(tName);
 			EOM.SetDefaultTimes(bIsEndPoint,tTime,NextTime,idOnSpline,GSDSpline.distance);
 			EOM.tNode = this;
@@ -169,9 +169,9 @@ public class GSDSplineN : MonoBehaviour{
 
 	public void DetectInvalidEdgeObjects(){
 		int mCount = EdgeObjects.Count;
-		List<int> InvalidList = new List<int>();
-		
-		for(int i=0;i<mCount;i++){
+		var InvalidList = new List<int>();
+
+		for (int i=0;i<mCount;i++){
 			if(EdgeObjects[i].EdgeObject == null){
 				InvalidList.Add(i);
 			}
@@ -215,14 +215,14 @@ public class GSDSplineN : MonoBehaviour{
 		if(SplinatedObjects == null){ SplinatedObjects = new List<SplinatedMeshMaker>(); }
 		int eCount = SplinatedObjects.Count;
 		if(i > -1 && i < eCount){
-			SplinatedMeshMaker SMM = SplinatedObjects[i];
+			var SMM = SplinatedObjects[i];
 			SMM.Setup(bGetStrings);
 		}
 	}
 	
 	public SplinatedMeshMaker AddSplinatedObject(){
         if (SplinatedObjects == null) { SplinatedObjects = new List<SplinatedMeshMaker>(); }
-		SplinatedMeshMaker SMM = new SplinatedMeshMaker();
+		var SMM = new SplinatedMeshMaker();
 		SMM.Init(GSDSpline,this,transform);
 		SplinatedObjects.Add(SMM);
 		SMM.SetDefaultTimes(bIsEndPoint,tTime,NextTime,idOnSpline,GSDSpline.distance);
@@ -232,7 +232,7 @@ public class GSDSplineN : MonoBehaviour{
 	}
 	
 	public void SplinatedObjectQuickAdd(string tName){
-		SplinatedMeshMaker SMM = AddSplinatedObject();
+		var SMM = AddSplinatedObject();
 		SMM.LoadFromLibrary(tName,true);
 		SMM.SetDefaultTimes(bIsEndPoint,tTime,NextTime,idOnSpline,GSDSpline.distance);
 		SMM.Setup(true);
@@ -242,7 +242,7 @@ public class GSDSplineN : MonoBehaviour{
 		if(SplinatedObjects == null){ SplinatedObjects = new List<SplinatedMeshMaker>(); }
 		int eCount = SplinatedObjects.Count;
 		if(i > -1 && i < eCount){
-			SplinatedMeshMaker SMM = SplinatedObjects[i];
+			var SMM = SplinatedObjects[i];
 			SMM.SetDefaultTimes(bIsEndPoint,tTime,NextTime,idOnSpline,GSDSpline.distance);
 			SMM.LoadFromLibrary(tName);
 			SMM.Setup(true);
@@ -250,7 +250,7 @@ public class GSDSplineN : MonoBehaviour{
 	}
 	
 	public void CopySplinatedObject(ref SplinatedMeshMaker tSMM){
-		SplinatedMeshMaker SMM = tSMM.Copy();
+		var SMM = tSMM.Copy();
 		SplinatedObjects.Add(SMM);
 		SetupSplinatedMeshes();
 	}
@@ -291,9 +291,9 @@ public class GSDSplineN : MonoBehaviour{
 	
 	public void DetectInvalidSplinatedObjects(){
 		int mCount = SplinatedObjects.Count;
-		List<int> InvalidList = new List<int>();
-		
-		for(int i=0;i<mCount;i++){
+		var InvalidList = new List<int>();
+
+		for (int i=0;i<mCount;i++){
 			if(SplinatedObjects[i].Output == null){
 				InvalidList.Add(i);
 			}
@@ -510,8 +510,8 @@ public class GSDSplineN : MonoBehaviour{
 
 	#region "Grade"
 	public void SetGradePercent(int mCount){
-		Vector3 P1 = default(Vector3);
-		Vector3 P2 = default(Vector3);
+		var P1 = default(Vector3);
+		var P2 = default(Vector3);
 		float tDist;
 		float tGrade;
 		bool bIsNone = false;
@@ -565,7 +565,7 @@ public class GSDSplineN : MonoBehaviour{
 	}
 
 	public Vector3 FilterMaxGradeHeight(Vector3 tPos, out float MinY, out float MaxY){
-		Vector3 tVect = tPos;
+		var tVect = tPos;
 		tVect.y = pos.y;
 		float CurrentDistance = Vector2.Distance(new Vector2(pos.x,pos.z),new Vector2(tPos.x,tPos.z));
 //		float CurrentDistance2 = Vector3.Distance(pos,tVect);
@@ -606,7 +606,7 @@ public class GSDSplineN : MonoBehaviour{
 			}
 		}
 		if(PrevNode == null){ return; }
-		Vector3 tVect = transform.position;
+		var tVect = transform.position;
 
 		float tMinY1 = 0f;
 		float tMinY2 = 0f;
@@ -666,9 +666,9 @@ public class GSDSplineN : MonoBehaviour{
 	}
 	
 	public void BreakConnection(){
-		GSDSplineN tNode2 = SpecialNodeCounterpart;
-				
-		if(bSpecialEndNode_IsStart){
+		var tNode2 = SpecialNodeCounterpart;
+
+		if (bSpecialEndNode_IsStart){
 			GSDSpline.bSpecialStartControlNode = false;
 			GSDSpline.bSpecialEndNode_IsStart_Delay = false;
 		}else if(bSpecialEndNode_IsEnd){

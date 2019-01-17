@@ -73,7 +73,7 @@ namespace MapMagicDemo
 			//following move dir
 			if (follow > 0.000001f)
 			{
-				Vector3 moveVector = cam.transform.position - oldPos;
+				var moveVector = cam.transform.position - oldPos;
 				float moveRotationY = moveVector.Angle();
 				float delta = Mathf.DeltaAngle(rotationY, moveRotationY);
 				

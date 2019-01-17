@@ -76,8 +76,8 @@ public class GSDSplineF : MonoBehaviour{
 			GizmoDrawMeters = 0.1f;
 		}
 		
-		Vector3 prevPos = mNodes[0].pos;
-		Vector3 tempVect = new Vector3(0f,0f,0f);
+		var prevPos = mNodes[0].pos;
+		var tempVect = new Vector3(0f,0f,0f);
 		//GizmoDrawMeters = 40f;
 		float step = GizmoDrawMeters/distance;
 		step = Mathf.Clamp(step,0f,1f);
@@ -159,8 +159,8 @@ public class GSDSplineF : MonoBehaviour{
 		//First lets get the general distance, node to node:
 		mNodes[0].tTime = 0f;
 		mNodes[mNodes.Count-1].tTime = 1f;
-		Vector3 tVect1 = new Vector3(0f,0f,0f);
-		Vector3 tVect2 = new Vector3(0f,0f,0f);
+		var tVect1 = new Vector3(0f,0f,0f);
+		var tVect2 = new Vector3(0f,0f,0f);
 		float mDistance = 0f;
 		float mDistance_NoMod = 0f;
 		for(int j=0;j<mNodes.Count;j++){
@@ -291,11 +291,11 @@ public class GSDSplineF : MonoBehaviour{
 		}
 		
 		//Vectors:
-		Vector3 P0 = mNodes[NGI(i, NI[0])].pos;
-		Vector3 P1 = mNodes[NGI(i, NI[1])].pos;
-		Vector3 P2 = mNodes[NGI(i, NI[2])].pos;
-		Vector3 P3 = mNodes[NGI(i, NI[3])].pos;
-		
+		var P0 = mNodes[NGI(i, NI[0])].pos;
+		var P1 = mNodes[NGI(i, NI[1])].pos;
+		var P2 = mNodes[NGI(i, NI[2])].pos;
+		var P3 = mNodes[NGI(i, NI[3])].pos;
+
 		//Tension:
 		tension = 0.5f;	// 0.5 equivale a catmull-rom
 		

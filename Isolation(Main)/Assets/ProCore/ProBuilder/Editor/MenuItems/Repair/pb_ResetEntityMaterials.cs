@@ -26,10 +26,10 @@ namespace ProBuilder2.Actions
 			IEnumerable all = GameObject.FindObjectsOfType(typeof(pb_Entity))
 								.Where(x => ((pb_Entity)x).entityType == EntityType.Collider || ((pb_Entity)x).entityType == EntityType.Trigger);
 
-			Material ColliderMat = pb_Constant.ColliderMaterial;
-			Material TriggerMat = pb_Constant.TriggerMaterial;
+			var ColliderMat = pb_Constant.ColliderMaterial;
+			var TriggerMat = pb_Constant.TriggerMaterial;
 
-			if( ColliderMat == null )
+			if ( ColliderMat == null )
 			{
 				Debug.LogError("ProBuilder cannot find Collider material!  Make sure the Collider material asset is in \"Assets/ProCore/ProBuilder/Resources/Material\" folder.");
 				return;
@@ -43,7 +43,7 @@ namespace ProBuilder2.Actions
 
 			foreach(pb_Entity ent in all)
 			{
-				MeshRenderer mr = ent.transform.GetComponent<MeshRenderer>() ?? ent.gameObject.AddComponent<MeshRenderer>();
+				var mr = ent.transform.GetComponent<MeshRenderer>() ?? ent.gameObject.AddComponent<MeshRenderer>();
 
 				mr.sharedMaterials = new Material[1] { ent.entityType == EntityType.Collider ? ColliderMat : TriggerMat };
 			}

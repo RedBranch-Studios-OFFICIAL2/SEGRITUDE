@@ -83,20 +83,20 @@ namespace AmplifyImpostors
 		private void DrawHeader( Rect rect )
 		{
 			rect.xMax -= 20;
-			Rect alphaRect = rect;
+			var alphaRect = rect;
 			alphaRect.width = 24;
 			alphaRect.x = rect.xMax;
 			alphaRect.height = 24;
 
 			rect.xMax -= 35;
-			Rect overrideRect = rect;
+			var overrideRect = rect;
 			overrideRect.width = 32;
 			EditorGUI.LabelField( overrideRect, TargetsStr );
 			overrideRect = rect;
 			overrideRect.xMin += 32 + ( m_usingStandard ? 0 : 13 );
 			overrideRect.width = EditorGUIUtility.labelWidth - overrideRect.xMin + 13;
 			EditorGUI.LabelField( overrideRect, SuffixStr );
-			Rect optionRect = rect;
+			var optionRect = rect;
 			optionRect.xMin = EditorGUIUtility.labelWidth + 13;
 			float fullwidth = optionRect.width;
 			optionRect.width = fullwidth * 0.25f;
@@ -118,30 +118,30 @@ namespace AmplifyImpostors
 		private void DrawElement( Rect rect, int index, bool active, bool focused )
 		{
 			rect.y += 1;
-			Rect alphaRect = rect;
+			var alphaRect = rect;
 			alphaRect.height = EditorGUIUtility.singleLineHeight;
 			alphaRect.width = 20;
 			alphaRect.x = rect.xMax - alphaRect.width;
 			rect.xMax -= alphaRect.width + 35;
-			Rect overrideRect = rect;
+			var overrideRect = rect;
 			overrideRect.width = 16;
 			overrideRect.height = EditorGUIUtility.singleLineHeight;
 			EditorGUI.LabelField( overrideRect, new GUIContent( index.ToString() ) );
 
 			rect.height = EditorGUIUtility.singleLineHeight;
-			Rect toggleRect = rect;
+			var toggleRect = rect;
 			toggleRect.x = overrideRect.xMax;
 			toggleRect.width = 16;
 			instance.Output[ index ].Active = EditorGUI.Toggle( toggleRect, instance.Output[ index ].Active );
 			rect.y += 1;
 
 			EditorGUI.BeginDisabledGroup( !instance.Output[ index ].Active );
-			Rect nameRect = rect;
+			var nameRect = rect;
 			nameRect.x = toggleRect.xMax;
 			nameRect.width = EditorGUIUtility.labelWidth - 32 - ( m_usingStandard ? 5 : 19 );
 			instance.Output[ index ].Name = EditorGUI.TextField( nameRect, instance.Output[ index ].Name );
 
-			Rect optionRect = rect;
+			var optionRect = rect;
 			optionRect.xMin = nameRect.xMax;
 			float fullwidth = optionRect.width;
 			optionRect.width = fullwidth * 0.25f;

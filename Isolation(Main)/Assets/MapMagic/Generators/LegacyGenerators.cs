@@ -28,54 +28,54 @@ namespace MapMagic
 
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
-			Matrix matrix = (Matrix)input.GetObject(results); if (matrix != null) matrix = matrix.Copy(null);
+			var matrix = (Matrix)input.GetObject(results); if (matrix != null) matrix = matrix.Copy(null);
 			if (matrix == null) matrix = new Matrix(rect);
-			Matrix mask = (Matrix)maskIn.GetObject(results);
+			var mask = (Matrix)maskIn.GetObject(results);
 			if (stop!=null && stop(0)) return;
 			if (!enabled || intensity==0 || cellCount==0) { output.SetObject(results, matrix); return; } 
 
 			//NoiseGenerator.Noise(matrix,200,0.5f,Vector2.zero);
 			//matrix.Multiply(amount);
 
-			InstanceRandom random = new InstanceRandom(seed + this.seed);
-	
+			var random = new InstanceRandom(seed + this.seed);
+
 			//creating point matrix
 			float cellSize = 1f * matrix.rect.size.x / cellCount;
-			Matrix2<Vector3> points = new Matrix2<Vector3>( new CoordRect(0,0,cellCount+2,cellCount+2) );
+			var points = new Matrix2<Vector3>( new CoordRect(0,0,cellCount+2,cellCount+2) );
 			points.rect.offset = new Coord(-1,-1);
 
-			Coord matrixSpaceOffset = new Coord((int)(matrix.rect.offset.x/cellSize), (int)(matrix.rect.offset.z/cellSize));
-		
+			var matrixSpaceOffset = new Coord((int)(matrix.rect.offset.x/cellSize), (int)(matrix.rect.offset.z/cellSize));
+
 			//scattering points
 			for (int x=-1; x<points.rect.size.x-1; x++)
 				for (int z=-1; z<points.rect.size.z-1; z++)
 				{
-					Vector3 randomPoint = new Vector3(x+random.CoordinateRandom(x+matrixSpaceOffset.x,z+matrixSpaceOffset.z), 0, z+random.NextCoordinateRandom());
-					Vector3 centerPoint = new Vector3(x+0.5f,0,z+0.5f);
-					Vector3 point = randomPoint*(1-uniformity) + centerPoint*uniformity;
+					var randomPoint = new Vector3(x+random.CoordinateRandom(x+matrixSpaceOffset.x,z+matrixSpaceOffset.z), 0, z+random.NextCoordinateRandom());
+					var centerPoint = new Vector3(x+0.5f,0,z+0.5f);
+					var point = randomPoint*(1-uniformity) + centerPoint*uniformity;
 					point = point*cellSize + new Vector3(matrix.rect.offset.x, 0, matrix.rect.offset.z);
 					point.y = random.NextCoordinateRandom();
 					points[x,z] = point;
 				}
 
-			Coord min = matrix.rect.Min; Coord max = matrix.rect.Max; 
+			var min = matrix.rect.Min; var max = matrix.rect.Max;
 			for (int x=min.x; x<max.x; x++)
 				for (int z=min.z; z<max.z; z++)
 			{
 				//finding current cell
-				Coord cell = new Coord((int)((x-matrix.rect.offset.x)/cellSize), (int)((z-matrix.rect.offset.z)/cellSize));
-		
-				//finding min dist
-				float minDist = 200000000; float secondMinDist = 200000000;
+				var cell = new Coord((int)((x-matrix.rect.offset.x)/cellSize), (int)((z-matrix.rect.offset.z)/cellSize));
+
+					//finding min dist
+					float minDist = 200000000; float secondMinDist = 200000000;
 				float minHeight = 0; //float secondMinHeight = 0;
 				for (int ix=-1; ix<=1; ix++)
 					for (int iz=-1; iz<=1; iz++)
 				{
-					Coord nearCell = new Coord(cell.x+ix, cell.z+iz);
-					//if (!points.rect.CheckInRange(nearCell)) continue; //no need to perform test as points have 1-cell border around matrix
+					var nearCell = new Coord(cell.x+ix, cell.z+iz);
+							//if (!points.rect.CheckInRange(nearCell)) continue; //no need to perform test as points have 1-cell border around matrix
 
-					Vector3 point = points[nearCell];
-					float dist = (x-point.x)*(x-point.x) + (z-point.z)*(z-point.z);
+							var point = points[nearCell];
+							float dist = (x-point.x)*(x-point.x) + (z-point.z)*(z-point.z);
 					if (dist<minDist) 
 					{ 
 						secondMinDist = minDist; minDist = dist; 
@@ -138,9 +138,9 @@ namespace MapMagic
 
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
-			Matrix matrix = (Matrix)input.GetObject(results); if (matrix != null) matrix = matrix.Copy(null);
+			var matrix = (Matrix)input.GetObject(results); if (matrix != null) matrix = matrix.Copy(null);
 			if (matrix == null) matrix = new Matrix(rect);
-			Matrix mask = (Matrix)maskIn.GetObject(results);
+			var mask = (Matrix)maskIn.GetObject(results);
 			if (!enabled) { output.SetObject(results, matrix); return; }
 			if (stop!=null && stop(0)) return;
 
@@ -171,7 +171,7 @@ namespace MapMagic
 			}
 
 			//making some noise
-			Coord min = matrix.rect.Min; Coord max = matrix.rect.Max;
+			var min = matrix.rect.Min; var max = matrix.rect.Max;
 			for (int x=min.x; x<max.x; x++)
 			{
 				for (int z=min.z; z<max.z; z++)
@@ -248,9 +248,9 @@ namespace MapMagic
 
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
-			Matrix matrix = (Matrix)input.GetObject(results); if (matrix != null) matrix = matrix.Copy(null);
+			var matrix = (Matrix)input.GetObject(results); if (matrix != null) matrix = matrix.Copy(null);
 			if (matrix == null) matrix = new Matrix(rect);
-			Matrix mask = (Matrix)maskIn.GetObject(results);
+			var mask = (Matrix)maskIn.GetObject(results);
 			if (!enabled) { output.SetObject(results, matrix); return; }
 			if (stop!=null && stop(0)) return;
 
@@ -271,7 +271,7 @@ namespace MapMagic
 			int seedX = (seed + seed*7) % 77777;
 			int seedZ = (seed + seed*3) % 73333;
 
-			Coord min = matrix.rect.Min; Coord max = matrix.rect.Max;
+			var min = matrix.rect.Min; var max = matrix.rect.Max;
 			for (int x=min.x; x<max.x; x++)
 				for (int z=min.z; z<max.z; z++)
 			{
@@ -383,7 +383,7 @@ namespace MapMagic
 			texturePath = path;
 
 			//generating preview
-			CoordRect previewRect = new CoordRect(0,0, 70, 70);
+			var previewRect = new CoordRect(0,0, 70, 70);
 			previewMatrix = textureAsset.matrix.Resize(previewRect, previewMatrix);
 			preview = previewMatrix.SimpleToTexture();
 			#endif
@@ -391,25 +391,25 @@ namespace MapMagic
 
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
-			Matrix matrix = new Matrix(rect);
+			var matrix = new Matrix(rect);
 			if (!enabled || textureAsset==null || textureAsset.matrix==null) { output.SetObject(results, matrix); return; }
 			if (stop!=null && stop(0)) return;
 
 			//matrix = textureMatrix.Resize(matrix.rect);
 			
-			CoordRect scaledRect = new CoordRect(
+			var scaledRect = new CoordRect(
 				(int)(offset.x), 
 				(int)(offset.y), 
 				(int)(matrix.rect.size.x*scale),
 				(int)(matrix.rect.size.z*scale) );
-			Matrix scaledTexture = textureAsset.matrix.Resize(scaledRect);
+			var scaledTexture = textureAsset.matrix.Resize(scaledRect);
 
 			matrix.Replicate(scaledTexture, tile:tile);
 			matrix.Multiply(intensity);
 
 			if (scale > 1)
 			{
-				Matrix cpy = matrix.Copy();
+				var cpy = matrix.Copy();
 				for (int i=0; i<scale-1; i++) matrix.Blur();
 				Matrix.SafeBorders(cpy, matrix, Mathf.Max(matrix.rect.size.x/128, 4));
 			}
@@ -433,7 +433,7 @@ namespace MapMagic
 			#if UNITY_EDITOR
 			int previewSize = 70;
 			int controlsSize = (int)layout.field.width - previewSize - 10;
-			Rect oldCursor = layout.cursor;
+			var oldCursor = layout.cursor;
 			if (preview == null) 
 			{
 				if (previewMatrix != null) preview = previewMatrix.SimpleToTexture();
@@ -473,14 +473,14 @@ namespace MapMagic
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
 			//getting input
-			Matrix matrix = (Matrix)input.GetObject(results);
+			var matrix = (Matrix)input.GetObject(results);
 
 			//return on stop/disable/null input
 			if ((stop!=null && stop(0)) || !enabled || matrix==null) return; 
 
 			//preparing outputs
-			Matrix result = new Matrix(matrix.rect);
-			Matrix temp = new Matrix(matrix.rect);
+			var result = new Matrix(matrix.rect);
+			var temp = new Matrix(matrix.rect);
 
 			//cavity
 			System.Func<float,float,float,float> cavityFn = delegate(float prev, float curr, float next) 
@@ -540,13 +540,13 @@ namespace MapMagic
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
 			//getting input
-			Matrix matrix = (Matrix)input.GetObject(results);
+			var matrix = (Matrix)input.GetObject(results);
 
 			//return on stop/disable/null input
 			if ((stop!=null && stop(0)) || !enabled || matrix==null) return; 
 
 			//preparing output
-			Matrix result = new Matrix(matrix.rect);
+			var result = new Matrix(matrix.rect);
 
 			//using the terain-height relative values
 			float dist = range;
@@ -610,9 +610,9 @@ namespace MapMagic
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
 			//getting inputs
-			SpatialHash objects = (SpatialHash)objectsIn.GetObject(results);
-			Matrix src = (Matrix)canvasIn.GetObject(results);
-			
+			var objects = (SpatialHash)objectsIn.GetObject(results);
+			var src = (Matrix)canvasIn.GetObject(results);
+
 			//return on stop/disable/null input
 			if ((stop!=null && stop(0)) || objects==null) return; 
 			if (!enabled) { output.SetObject(results, src); return; }
@@ -634,8 +634,8 @@ namespace MapMagic
 			}
 
 			//preparing procedural matrices
-			Matrix noiseMatrix = new Matrix( new CoordRect(0,0,maxRadius*2+2,maxRadius*2+2) );
-			Matrix percentMatrix = new Matrix( new CoordRect(0,0,maxRadius*2+2,maxRadius*2+2) );
+			var noiseMatrix = new Matrix( new CoordRect(0,0,maxRadius*2+2,maxRadius*2+2) );
+			var percentMatrix = new Matrix( new CoordRect(0,0,maxRadius*2+2,maxRadius*2+2) );
 
 			foreach (SpatialObject obj in objects.AllObjs())
 			{
@@ -644,7 +644,7 @@ namespace MapMagic
 				curRadius = curRadius * terrainSize.pixelSize; //transforming to map-space
 
 				//resizing procedural matrices
-				CoordRect matrixSize = new CoordRect(0,0,curRadius*2+2,curRadius*2+2);
+				var matrixSize = new CoordRect(0,0,curRadius*2+2,curRadius*2+2);
 				noiseMatrix.ChangeRect(matrixSize);
 				percentMatrix.ChangeRect(matrixSize);
 
@@ -652,8 +652,8 @@ namespace MapMagic
 				noiseMatrix.rect.offset = new Coord((int)(obj.pos.x-curRadius-1), (int)(obj.pos.y-curRadius-1));
 				percentMatrix.rect.offset = new Coord((int)(obj.pos.x-curRadius-1), (int)(obj.pos.y-curRadius-1));
 
-				CoordRect intersection = CoordRect.Intersect(noiseMatrix.rect, dst.rect);
-				Coord min = intersection.Min; Coord max = intersection.Max; 
+				var intersection = CoordRect.Intersect(noiseMatrix.rect, dst.rect);
+				var min = intersection.Min; var max = intersection.Max;
 				for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 				{
@@ -665,7 +665,7 @@ namespace MapMagic
 				}
 
 				//adjusting value by curve
-				Curve c = new Curve(curve);
+				var c = new Curve(curve);
 				for (int i=0; i<percentMatrix.array.Length; i++) percentMatrix.array[i] = c.Evaluate(percentMatrix.array[i]);
 
 				//adding some noise
@@ -699,7 +699,7 @@ namespace MapMagic
 				}
 			}
 
-			Matrix mask = (Matrix)maskIn.GetObject(results);
+			var mask = (Matrix)maskIn.GetObject(results);
 			if (mask != null) Matrix.Mask(src, dst, mask);
 			if (safeBorders != 0) Matrix.SafeBorders(src, dst, safeBorders);
 
@@ -722,7 +722,7 @@ namespace MapMagic
 			layout.Label("Fallof:");
 			
 			//curve
-			Rect cursor = layout.cursor;
+			var cursor = layout.cursor;
 			layout.Par(53);
 			layout.Curve(curve, rect:layout.Inset(80));
 
@@ -786,15 +786,15 @@ namespace MapMagic
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
 			//getting inputs
-			SpatialHash minuend = (SpatialHash)minuendIn.GetObject(results);
-			SpatialHash subtrahend = (SpatialHash)subtrahendIn.GetObject(results);
+			var minuend = (SpatialHash)minuendIn.GetObject(results);
+			var subtrahend = (SpatialHash)subtrahendIn.GetObject(results);
 
 			//return on stop/disable/null input
 			if ((stop!=null && stop(0)) || minuend==null) return;
 			if (!enabled || subtrahend==null || subtrahend.Count==0) { minuendOut.SetObject(results, minuend); return; }
 
 			//preparing output
-			SpatialHash result = new SpatialHash(minuend.offset, minuend.size, minuend.resolution);
+			var result = new SpatialHash(minuend.offset, minuend.size, minuend.resolution);
 
 			//transforming distance to map-space
 			float dist = distance * terrainSize.pixelSize; 
@@ -855,9 +855,9 @@ namespace MapMagic
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
 			//getting inputs
-			SpatialHash objs = (SpatialHash)objsIn.GetObject(results);
-			Matrix substrate = (Matrix)substrateIn.GetObject(results);
-			
+			var objs = (SpatialHash)objsIn.GetObject(results);
+			var substrate = (Matrix)substrateIn.GetObject(results);
+
 			//return on stop/disable/null input
 			if ((stop!=null && stop(0)) || objs==null) return; 
 			if (!enabled || substrate==null) { objsOut.SetObject(results, objs); return; }
@@ -867,11 +867,11 @@ namespace MapMagic
 
 			for (int c=0; c<objs.cells.Length; c++)
 			{
-				List<SpatialObject> objList = objs.cells[c].objs;
+				var objList = objs.cells[c].objs;
 				int objsCount = objList.Count;
 				for (int i=0; i<objsCount; i++)
 				{
-					SpatialObject obj = objList[i];
+					var obj = objList[i];
 					//obj.height = substrate[(int)obj.pos.x, (int)obj.pos.y];
 					obj.height = substrate.GetInterpolatedValue(obj.pos);
 				}
@@ -914,18 +914,18 @@ namespace MapMagic
 		{
 			if (!enabled || (stop!=null && stop(0))) return;
 
-			CoordRect scaledRect = new CoordRect(
+			var scaledRect = new CoordRect(
 				(int)(offset.x * terrainSize.resolution / terrainSize.dimensions), 
 				(int)(offset.y * terrainSize.resolution / terrainSize.dimensions), 
 				(int)(terrainSize.resolution*scale),
 				(int)(terrainSize.resolution*scale) );
-			Matrix stampMatrix = new Matrix(scaledRect);
+			var stampMatrix = new Matrix(scaledRect);
 
 			float gradientStep = 1f/stampMatrix.rect.size.x;
-			Coord center = scaledRect.Center;
+			var center = scaledRect.Center;
 			float radius = stampMatrix.rect.size.x / 2f;
-			Coord min = stampMatrix.rect.Min; Coord max = stampMatrix.rect.Max;
-			
+			var min = stampMatrix.rect.Min; var max = stampMatrix.rect.Max;
+
 			switch (type)
 			{
 				case FormType.GradientX:
@@ -958,7 +958,7 @@ namespace MapMagic
 					break;
 			}
 
-			Matrix matrix = new Matrix(rect);
+			var matrix = new Matrix(rect);
 			matrix.Replicate(stampMatrix, tile:tile);
 			matrix.Multiply(intensity);
 
@@ -1002,22 +1002,22 @@ namespace MapMagic
 
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
-			Matrix probMatrix = (Matrix)probability.GetObject(results);
-			SpatialHash spatialHash = new SpatialHash(new Vector2(rect.offset.x,rect.offset.z), rect.size.x, 16);
+			var probMatrix = (Matrix)probability.GetObject(results);
+			var spatialHash = new SpatialHash(new Vector2(rect.offset.x,rect.offset.z), rect.size.x, 16);
 			if (!enabled) { output.SetObject(results, spatialHash); return; }
 			if (stop!=null && stop(0)) return; 
 
-			InstanceRandom rnd = new InstanceRandom(seed + this.seed + terrainSize.Seed(rect));
+			var rnd = new InstanceRandom(seed + this.seed + terrainSize.Seed(rect));
 
 			//Rect terrainRect = terrain.coord.ToRect(terrain.size);
 			//terrainRect.position += Vector2.one; terrainRect.size-=Vector2.one*2;
-			
+
 			//SpatialHash spatialHash = new SpatialHash(terrain.coord.ToVector2(terrain.size), terrain.size, 16);
-			
-			
+
+
 			//float square = terrainRect.width * terrainRect.height;
 			//float count = square*(density/1000000); //number of items per terrain
-			
+
 			//positioned scatter
 			/*float sideCount = Mathf.Sqrt(count);
 			float step = spatialHash.size / sideCount;
@@ -1044,8 +1044,8 @@ namespace MapMagic
 				
 				for (int c=0; c<candidatesNum; c++)
 				{
-					Vector2 candidate = new Vector2((spatialHash.offset.x+1) + (rnd.Random()*(spatialHash.size-2.01f)), (spatialHash.offset.y+1) + (rnd.Random()*(spatialHash.size-2.01f)));
-				
+					var candidate = new Vector2((spatialHash.offset.x+1) + (rnd.Random()*(spatialHash.size-2.01f)), (spatialHash.offset.y+1) + (rnd.Random()*(spatialHash.size-2.01f)));
+
 					//checking if candidate available here according to probability map
 					if (probMatrix!=null && probMatrix[candidate] < rnd.Random()+0.0001f) continue;
 
@@ -1125,10 +1125,10 @@ namespace MapMagic
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
 			//preparing inputs
-			Matrix baseMatrix = (Matrix)baseInput.GetObject(results);
-			Matrix blendMatrix = (Matrix)blendInput.GetObject(results);
-			Matrix maskMatrix = (Matrix)maskInput.GetObject(results);
-			
+			var baseMatrix = (Matrix)baseInput.GetObject(results);
+			var blendMatrix = (Matrix)blendInput.GetObject(results);
+			var maskMatrix = (Matrix)maskInput.GetObject(results);
+
 			//return on stop/disable/null input
 			if (stop!=null && stop(0)) return;
 			if (!enabled || blendMatrix==null || baseMatrix==null) { output.SetObject(results, baseMatrix); return; }
@@ -1138,7 +1138,7 @@ namespace MapMagic
 
 			//setting algorithm
 			if (guiAlgorithm != GuiAlgorithm.none) { algorithm = (Algorithm)guiAlgorithm; guiAlgorithm = GuiAlgorithm.none; }
-			System.Func<float,float,float> algorithmFn = GetAlgorithm(algorithm);
+			var algorithmFn = GetAlgorithm(algorithm);
 
 
 			//special fast cases for mix and add
@@ -1175,7 +1175,7 @@ namespace MapMagic
 
 			//generating all other
 			//else
-				for (int i=0; i<baseMatrix.array.Length; i++)
+			for (int i=0; i<baseMatrix.array.Length; i++)
 				{
 					float m = (maskMatrix==null ? 1 : maskMatrix.array[i]) * opacity;
 					float a = baseMatrix.array[i];
@@ -1264,8 +1264,8 @@ namespace MapMagic
 		{
 			//return on stop/disable/null input
 			if ((stop!=null && stop(0)) || layers.Length==0) return;
-			Matrix baseMatrix = (Matrix)layers[0].input.GetObject(results);
-			Matrix maskMatrix = (Matrix)maskInput.GetObject(results);
+			var baseMatrix = (Matrix)layers[0].input.GetObject(results);
+			var maskMatrix = (Matrix)maskInput.GetObject(results);
 			if (!enabled || layers.Length==1) { output.SetObject(results,baseMatrix); return; }
 
 			//preparing output
@@ -1276,11 +1276,11 @@ namespace MapMagic
 			//processing
 			for (int l=0; l<layers.Length; l++)
 			{
-				Layer layer = layers[l];
-				Matrix layerMatrix = (Matrix)layer.input.GetObject(results);
+				var layer = layers[l];
+				var layerMatrix = (Matrix)layer.input.GetObject(results);
 				if (layerMatrix==null) continue;
 
-				System.Func<float,float,float> algorithmFn = GetAlgorithm(layer.algorithm);
+				var algorithmFn = GetAlgorithm(layer.algorithm);
 
 				for (int i=0; i<matrix.array.Length; i++)
 				{
@@ -1367,16 +1367,16 @@ namespace MapMagic
 
 		public static void DrawBlob (Matrix canvas, Vector2 pos, float val, float radius, AnimationCurve fallof, float noiseAmount=0, float noiseSize=20)
 		{
-			CoordRect blobRect = new CoordRect(
+			var blobRect = new CoordRect(
 				(int)(pos.x-radius-1), (int)(pos.y-radius-1),
 				radius*2+2, radius*2+2 );
 
-			Curve curve = new Curve(fallof);
-			InstanceRandom noise = new InstanceRandom(noiseSize, 512, 12345, 123); //TODO: use normal noise instead
+			var curve = new Curve(fallof);
+			var noise = new InstanceRandom(noiseSize, 512, 12345, 123); //TODO: use normal noise instead
 
-			CoordRect intersection = CoordRect.Intersect(canvas.rect, blobRect);
-			Coord center = blobRect.Center;
-			Coord min = intersection.Min; Coord max = intersection.Max; 
+			var intersection = CoordRect.Intersect(canvas.rect, blobRect);
+			var center = blobRect.Center;
+			var min = intersection.Min; var max = intersection.Max;
 			for (int x=min.x; x<max.x; x++)
 				for (int z=min.z; z<max.z; z++)
 			{
@@ -1398,9 +1398,9 @@ namespace MapMagic
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
 			//getting inputs
-			SpatialHash objects = (SpatialHash)objectsIn.GetObject(results);
-			Matrix src = (Matrix)canvasIn.GetObject(results);
-			
+			var objects = (SpatialHash)objectsIn.GetObject(results);
+			var src = (Matrix)canvasIn.GetObject(results);
+
 			//return on stop/disable/null input
 			if (stop!=null && stop(0)) return; 
 			if (!enabled || objects==null) { output.SetObject(results, src); return; }
@@ -1419,7 +1419,7 @@ namespace MapMagic
 				DrawBlob(dst, obj.pos, intensity, curRadius, fallof, noiseAmount, noiseSize);
 			}
 
-			Matrix mask = (Matrix)maskIn.GetObject(results);
+			var mask = (Matrix)maskIn.GetObject(results);
 			if (mask != null) Matrix.Mask(src, dst, mask);
 			if (safeBorders != 0) Matrix.SafeBorders(src, dst, safeBorders);
 
@@ -1446,7 +1446,7 @@ namespace MapMagic
 			layout.Label("Fallof:");
 			
 			//curve
-			Rect cursor = layout.cursor;
+			var cursor = layout.cursor;
 			layout.Par(53);
 			layout.Curve(fallof, rect:layout.Inset(80));
 
@@ -1481,9 +1481,9 @@ namespace MapMagic
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
 			//getting inputs
-			SpatialHash objects = (SpatialHash)objectsIn.GetObject(results);
-			Matrix src = (Matrix)canvasIn.GetObject(results);
-			
+			var objects = (SpatialHash)objectsIn.GetObject(results);
+			var src = (Matrix)canvasIn.GetObject(results);
+
 			//return on stop/disable/null input
 			if (stop!=null && stop(0)) return; 
 			if (!enabled || objects==null || src==null) { output.SetObject(results, src); return; }
@@ -1503,7 +1503,7 @@ namespace MapMagic
 				BlobGenerator.DrawBlob(dst, obj.pos, objHeight, curRadius, fallof, noiseAmount, noiseSize);
 			}
 
-			Matrix mask = (Matrix)maskIn.GetObject(results);
+			var mask = (Matrix)maskIn.GetObject(results);
 			if (mask != null) Matrix.Mask(src, dst, mask);
 			if (safeBorders != 0) Matrix.SafeBorders(src, dst, safeBorders);
 
@@ -1529,7 +1529,7 @@ namespace MapMagic
 			layout.Label("Fallof:");
 			
 			//curve
-			Rect cursor = layout.cursor;
+			var cursor = layout.cursor;
 			layout.Par(53);
 			layout.Curve(fallof, rect:layout.Inset(80));
 
@@ -1567,13 +1567,13 @@ namespace MapMagic
 
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
-			Matrix matrix = (Matrix)input.GetObject(results); if (matrix != null) matrix = matrix.Copy(null);
+			var matrix = (Matrix)input.GetObject(results); if (matrix != null) matrix = matrix.Copy(null);
 			if (matrix == null) matrix = new Matrix(rect);
-			Matrix mask = (Matrix)maskIn.GetObject(results);
+			var mask = (Matrix)maskIn.GetObject(results);
 			if (!enabled) { output.SetObject(results, matrix); return; }
 			if (stop!=null && stop(0)) return;
 
-			Noise noise = new Noise(seed^this.seed, permutationCount:16384);
+			var noise = new Noise(seed^this.seed, permutationCount:16384);
 
 			//range
 			float range = high - low;
@@ -1581,7 +1581,7 @@ namespace MapMagic
 			//number of iterations
 			int iterations = (int)Mathf.Log(size,2) + 1; //+1 max size iteration
 
-			Coord min = matrix.rect.Min; Coord max = matrix.rect.Max;
+			var min = matrix.rect.Min; var max = matrix.rect.Max;
 			for (int x=min.x; x<max.x; x++)
 				for (int z=min.z; z<max.z; z++)
 				{
@@ -1644,12 +1644,12 @@ namespace MapMagic
 
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
-			Matrix probMatrix = (Matrix)probability.GetObject(results);
+			var probMatrix = (Matrix)probability.GetObject(results);
 			if (!enabled || (stop!=null && stop(0))) return;
-			SpatialHash spatialHash = new SpatialHash(new Vector2(rect.offset.x,rect.offset.z), rect.size.x, 16);
-			
+			var spatialHash = new SpatialHash(new Vector2(rect.offset.x,rect.offset.z), rect.size.x, 16);
+
 			//initializing random
-			InstanceRandom rnd = new InstanceRandom(seed + this.seed + terrainSize.Seed(rect));
+			var rnd = new InstanceRandom(seed + this.seed + terrainSize.Seed(rect));
 
 			float square = rect.size.x * rect.size.z;
 			int count = (int)(square*(density/1000000)); //number of items per terrain
@@ -1675,8 +1675,8 @@ namespace MapMagic
 				
 				for (int c=0; c<candidatesNum; c++)
 				{
-					Vector2 candidate = new Vector2((spatialHash.offset.x+1) + (rnd.Random()*(spatialHash.size-2.01f)), (spatialHash.offset.y+1) + (rnd.Random()*(spatialHash.size-2.01f)));
-				
+					var candidate = new Vector2((spatialHash.offset.x+1) + (rnd.Random()*(spatialHash.size-2.01f)), (spatialHash.offset.y+1) + (rnd.Random()*(spatialHash.size-2.01f)));
+
 					//checking if candidate available here according to probability map
 					//if (probMatrix!=null && probMatrix[candidate] < rnd.Random()+0.0001f) continue;
 
@@ -1701,13 +1701,13 @@ namespace MapMagic
 			//masking
 			for (int c=0; c<spatialHash.cells.Length; c++)
 			{
-				SpatialHash.Cell cell = spatialHash.cells[c];
+				var cell = spatialHash.cells[c];
 				for (int i=cell.objs.Count-1; i>=0; i--)
 				{
 					if (stop!=null && stop(0)) return;
 
-					Vector2 pos = cell.objs[i].pos;
-				
+					var pos = cell.objs[i].pos;
+
 					if (pos.x < spatialHash.offset.x+safeBorders || 
 						pos.y < spatialHash.offset.y+safeBorders ||
 						pos.x > spatialHash.offset.x+spatialHash.size-safeBorders ||
@@ -1721,7 +1721,7 @@ namespace MapMagic
 		public void CellScatter (int count, SpatialHash spatialHash, InstanceRandom rnd, Matrix probMatrix, bool hex=true, Func<float,bool> stop = null)
 		{
 			//finding scatter rect
-			CoordRect rect = new CoordRect(spatialHash.offset.x+1, spatialHash.offset.y+1, spatialHash.size-2, spatialHash.size-2);
+			var rect = new CoordRect(spatialHash.offset.x+1, spatialHash.offset.y+1, spatialHash.size-2, spatialHash.size-2);
 			rect.Contract(safeBorders);
 
 			//positioned scatter
@@ -1730,17 +1730,17 @@ namespace MapMagic
 
 			//scattering in hexagonal order
 			float heightFactor = 1; if (hex) heightFactor = 0.8660254f;
-			Matrix2<Vector2> positions = new Matrix2<Vector2>( new CoordRect(0,0,sideCount,(int)(sideCount/heightFactor)) );
-			Vector2 cellSize = new Vector2(spatialHash.size/positions.rect.size.x, spatialHash.size/positions.rect.size.z);
+			var positions = new Matrix2<Vector2>( new CoordRect(0,0,sideCount,(int)(sideCount/heightFactor)) );
+			var cellSize = new Vector2(spatialHash.size/positions.rect.size.x, spatialHash.size/positions.rect.size.z);
 
-			Coord min = positions.rect.Min; Coord max = positions.rect.Max;
+			var min = positions.rect.Min; var max = positions.rect.Max;
 			for (int x=min.x; x<max.x; x++)
 				for (int z=min.z; z<max.z; z++)
 			{
 				if (stop!=null && stop(0)) return;
 				
-				Vector2 position = new Vector2(x*cellSize.x + spatialHash.offset.x,  z*cellSize.y + spatialHash.offset.y);
-				position.x += cellSize.x/2; position.y += cellSize.y/2;
+				var position = new Vector2(x*cellSize.x + spatialHash.offset.x,  z*cellSize.y + spatialHash.offset.y);
+					position.x += cellSize.x/2; position.y += cellSize.y/2;
 				if (hex && z%2!=0) position.x += cellSize.x/2;
 				
 				//random
@@ -1750,8 +1750,8 @@ namespace MapMagic
 			}
 
 			//relaxing
-			Matrix2<Vector2> newPositions = new Matrix2<Vector2>(positions.rect);
-			Vector2[] closestPositions = new Vector2[8];
+			var newPositions = new Matrix2<Vector2>(positions.rect);
+			var closestPositions = new Vector2[8];
 
 			for (int x=min.x; x<max.x; x++)
 				for (int z=min.z; z<max.z; z++)
@@ -1760,19 +1760,19 @@ namespace MapMagic
 
 				if (x==min.x || x==max.x-1 || z==min.z || z==max.z-1) { newPositions[x,z] = positions[x,z]; continue; }
 
-				Vector2 position = positions[x,z];
-				Vector2 relaxDir = new Vector2();
+				var position = positions[x,z];
+					var relaxDir = new Vector2();
 
-				//getting closest positions
-				closestPositions[0] = positions[x-1,z+1]; closestPositions[1] = positions[x,z+1]; closestPositions[2] = positions[x+1,z+1];
+					//getting closest positions
+					closestPositions[0] = positions[x-1,z+1]; closestPositions[1] = positions[x,z+1]; closestPositions[2] = positions[x+1,z+1];
 				closestPositions[3] = positions[x-1,z];											  closestPositions[4] = positions[x+1,z];
 				closestPositions[5] = positions[x-1,z-1]; closestPositions[6] = positions[x,z-1]; closestPositions[7] = positions[x+1,z-1];
 
 				//relaxing
 				for (int i=0; i<8; i++)
 				{
-					Vector2 deltaVec = (position-closestPositions[i]) / cellSize.x; //in cells
-					float deltaDist = deltaVec.magnitude;
+					var deltaVec = (position-closestPositions[i]) / cellSize.x; //in cells
+						float deltaDist = deltaVec.magnitude;
 					if (deltaDist > 1) deltaDist = 1;
 
 					float relaxFactor = (1-deltaDist)*(1-deltaDist); //1 / deltaVec.magnitude;
@@ -1793,9 +1793,9 @@ namespace MapMagic
 			{
 				if (stop!=null && stop(0)) return;
 				
-				Vector2 pos = newPositions[x,z];
+				var pos = newPositions[x,z];
 
-				if (pos.x < spatialHash.offset.x+safeBorders+0.001f || 
+					if (pos.x < spatialHash.offset.x+safeBorders+0.001f || 
 					pos.y < spatialHash.offset.y+safeBorders+0.001f ||
 					pos.x > spatialHash.offset.x+spatialHash.size-safeBorders-0.001f ||
 					pos.y > spatialHash.offset.y+spatialHash.size-safeBorders-0.001f ) continue;
@@ -1844,10 +1844,10 @@ namespace MapMagic
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
 			//getting inputs
-			Matrix stamp = (Matrix)stampIn.GetObject(results);
-			Matrix src = (Matrix)canvasIn.GetObject(results);
-			SpatialHash objs = (SpatialHash)positionsIn.GetObject(results);
-			
+			var stamp = (Matrix)stampIn.GetObject(results);
+			var src = (Matrix)canvasIn.GetObject(results);
+			var objs = (SpatialHash)positionsIn.GetObject(results);
+
 			//return on stop/disable/null input
 			if (stop!=null && stop(0)) return; 
 			if (!enabled || stamp==null || objs==null) { output.SetObject(results,src); return; }
@@ -1858,7 +1858,7 @@ namespace MapMagic
 			else dst = src.Copy(null);
 
 			//algorithm
-			System.Func<float,float,float> algorithm = BlendGenerator.GetAlgorithm(guiAlgorithm);
+			var algorithm = BlendGenerator.GetAlgorithm(guiAlgorithm);
 
 			foreach (SpatialObject obj in objs.AllObjs())
 			{
@@ -1868,14 +1868,14 @@ namespace MapMagic
 
 				//stamp coordinates
 				//float scale = curRadius*2 / stamp.rect.size.x;
-				Vector2 stampMin = obj.pos - new Vector2(curRadius, curRadius);
-				Vector2 stampMax = obj.pos + new Vector2(curRadius, curRadius);
-				Vector2 stampSize = new Vector2(curRadius*2, curRadius*2);
+				var stampMin = obj.pos - new Vector2(curRadius, curRadius);
+				var stampMax = obj.pos + new Vector2(curRadius, curRadius);
+				var stampSize = new Vector2(curRadius*2, curRadius*2);
 
 				//calculating rects 
-				CoordRect stampRect = new CoordRect(stampMin.x, stampMin.y, stampSize.x, stampSize.y);
-				CoordRect intersection = CoordRect.Intersect(stampRect, dst.rect);
-				Coord min = intersection.Min; Coord max = intersection.Max; 
+				var stampRect = new CoordRect(stampMin.x, stampMin.y, stampSize.x, stampSize.y);
+				var intersection = CoordRect.Intersect(stampRect, dst.rect);
+				var min = intersection.Min; var max = intersection.Max;
 
 				for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
@@ -1884,8 +1884,8 @@ namespace MapMagic
 					//float percent = 1f - dist / curRadius; 
 					//if (percent < 0 || dist > curRadius) percent = 0;
 
-					Vector2 relativePos = new Vector2(1f*(x-stampMin.x)/(stampMax.x-stampMin.x), 1f*(z-stampMin.y)/(stampMax.y-stampMin.y));
-					float val = stamp.GetInterpolated(relativePos.x*stamp.rect.size.x + stamp.rect.offset.x, relativePos.y*stamp.rect.size.z + stamp.rect.offset.z, Matrix.WrapMode.Clamp);
+					var relativePos = new Vector2(1f*(x-stampMin.x)/(stampMax.x-stampMin.x), 1f*(z-stampMin.y)/(stampMax.y-stampMin.y));
+						float val = stamp.GetInterpolated(relativePos.x*stamp.rect.size.x + stamp.rect.offset.x, relativePos.y*stamp.rect.size.z + stamp.rect.offset.z, Matrix.WrapMode.Clamp);
 					//float val = stamp.CheckGet((int)(relativePos.x*stamp.rect.size.x + stamp.rect.offset.x), (int)(relativePos.y*stamp.rect.size.z + stamp.rect.offset.z)); //TODO use bilenear filtering
 
 					//matrix[x,z] = matrix[x,z]+val*scale;
@@ -1894,7 +1894,7 @@ namespace MapMagic
 				}
 			}
 
-			Matrix mask = (Matrix)maskIn.GetObject(results);
+			var mask = (Matrix)maskIn.GetObject(results);
 			if (mask != null) Matrix.Mask(src, dst, mask);
 			if (safeBorders != 0) Matrix.SafeBorders(src, dst, safeBorders);
 

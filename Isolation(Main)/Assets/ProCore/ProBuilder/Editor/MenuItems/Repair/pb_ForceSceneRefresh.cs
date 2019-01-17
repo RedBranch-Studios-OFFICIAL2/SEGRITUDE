@@ -22,8 +22,8 @@ namespace ProBuilder2.Actions
 		 */
 		private static void ForceRefresh(bool interactive)
 		{
-			pb_Object[] all = (pb_Object[])GameObject.FindObjectsOfType(typeof(pb_Object));
-			for(int i = 0; i < all.Length; i++)
+			var all = (pb_Object[])GameObject.FindObjectsOfType(typeof(pb_Object));
+			for (int i = 0; i < all.Length; i++)
 			{
 				if(interactive)
 				EditorUtility.DisplayProgressBar(

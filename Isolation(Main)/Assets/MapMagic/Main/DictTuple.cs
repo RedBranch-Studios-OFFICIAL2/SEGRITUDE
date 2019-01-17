@@ -48,8 +48,8 @@ namespace MapMagic
 		public T1 GetVal1 (TKey key) { return dict[key].item1; }
 		public T2 GetVal2 (TKey key) { return dict[key].item2; }
 		public void Set (TKey key, T1 val1, T2 val2) { if (!dict.ContainsKey(key)) dict.Add(key, new TupleSet<T1,T2>(val1,val2)); else dict[key] = new TupleSet<T1,T2>(val1,val2); } //same as add with owerwrite
-		public void SetVal1 (TKey key, T1 val) { TupleSet<T1,T2> tuple=dict[key]; tuple.item1=val; dict[key]=tuple; }
-		public void SetVal2 (TKey key, T2 val) { TupleSet<T1,T2> tuple=dict[key]; tuple.item2=val; dict[key]=tuple; }
+		public void SetVal1 (TKey key, T1 val) { var tuple=dict[key]; tuple.item1=val; dict[key]=tuple; }
+		public void SetVal2 (TKey key, T2 val) { var tuple=dict[key]; tuple.item2=val; dict[key]=tuple; }
 		
 		public TupleSet<T1,T2> this[TKey key] { get {return dict[key];} set{dict[key]=value;} }
 
@@ -78,9 +78,9 @@ namespace MapMagic
 		public T2 GetVal2 (TKey key) { return dict[key].item2; }
 		public T3 GetVal3 (TKey key) { return dict[key].item3; }
 		public void Set (TKey key, T1 val1, T2 val2, T3 val3) { if (!dict.ContainsKey(key)) dict.Add(key, new TupleSet<T1,T2,T3>(val1,val2,val3)); else dict[key] = new TupleSet<T1,T2,T3>(val1,val2,val3); } //same as add with owerwrite
-		public void SetVal1 (TKey key, T1 val) { TupleSet<T1,T2,T3> tuple=dict[key]; tuple.item1=val; dict[key]=tuple; }
-		public void SetVal2 (TKey key, T2 val) { TupleSet<T1,T2,T3> tuple=dict[key]; tuple.item2=val; dict[key]=tuple; }
-		public void SetVal3 (TKey key, T3 val) { TupleSet<T1,T2,T3> tuple=dict[key]; tuple.item3=val; dict[key]=tuple; }
+		public void SetVal1 (TKey key, T1 val) { var tuple=dict[key]; tuple.item1=val; dict[key]=tuple; }
+		public void SetVal2 (TKey key, T2 val) { var tuple=dict[key]; tuple.item2=val; dict[key]=tuple; }
+		public void SetVal3 (TKey key, T3 val) { var tuple=dict[key]; tuple.item3=val; dict[key]=tuple; }
 		
 		public TupleSet<T1,T2,T3> this[TKey key] { get {return dict[key];} set{dict[key]=value;} }
 	}
@@ -95,7 +95,7 @@ namespace MapMagic
 			if (dict.ContainsKey(key)) dict[key].Add(val);
 			else 
 			{
-				List<TValue> sub = new List<TValue>();
+				var sub = new List<TValue>();
 				sub.Add(val);
 				dict.Add(key, sub);
 			}
@@ -104,7 +104,7 @@ namespace MapMagic
 		public IEnumerable<TValue> Items (TKey key)
 		{
 			if (!dict.ContainsKey(key)) yield break;
-			List<TValue> sub = dict[key];
+			var sub = dict[key];
 
 			int listCount = sub.Count;
 			for (int i=0; i<listCount; i++)
@@ -178,7 +178,7 @@ namespace MapMagic
 			set {
 				if(index >= list.Count || index < 0) throw new ArgumentOutOfRangeException("index", "Index Out Of Range (0-" + list.Count +"): " + index);
 
-				TKey key = list[index].item1;
+				var key = list[index].item1;
 
 				list[index] = new TupleSet<TKey,TValue>(key,value);
 				dict[key] = value;
@@ -240,13 +240,13 @@ namespace MapMagic
 			int numInSub;
 			if (dict.ContainsKey(key)) 
 			{
-				List<TValue> sub = dict[key];
+				var sub = dict[key];
 				numInSub = sub.Count;
 				sub.Add(val);
 			}
 			else 
 			{
-				List<TValue> sub = new List<TValue>();
+				var sub = new List<TValue>();
 				sub.Add(val);
 				dict.Add(key, sub);
 				numInSub = 0;
@@ -290,7 +290,7 @@ namespace MapMagic
 			set {
 				if(index >= list.Count || index < 0) throw new ArgumentOutOfRangeException("index", "Index Out Of Range (0-" + list.Count +"): " + index);
 
-				TKey key = list[index].item1;
+				var key = list[index].item1;
 				int numInSub = list[index].item2;
 
 				list[index] = new TupleSet<TKey,int,TValue>(key,numInSub,value);
@@ -304,9 +304,9 @@ namespace MapMagic
 			set {
 				if(dict.ContainsKey(key))
 				{
-					List<TValue> sub = dict[key];
+					var sub = dict[key];
 
-					if(num >= sub.Count || num < 0) throw new ArgumentOutOfRangeException("num", "Index Out Of Range (0-" + sub.Count +"): " + num);
+					if (num >= sub.Count || num < 0) throw new ArgumentOutOfRangeException("num", "Index Out Of Range (0-" + sub.Count +"): " + num);
 
 					if (num == sub.Count) Add(key,value); //adding right after the last
 					else
@@ -324,7 +324,7 @@ namespace MapMagic
 		{
 			if (!dict.ContainsKey(key)) yield break;
 			
-			List<TValue> sub = dict[key];
+			var sub = dict[key];
 
 			int subCount = sub.Count;
 			for (int i=0; i<subCount; i++)
@@ -341,10 +341,10 @@ namespace MapMagic
 		{
 			if(index >= list.Count || index < 0) throw new ArgumentOutOfRangeException("index", "Index Out Of Range (0-" + list.Count +"): " + index);
 
-			TKey key = list[index].item1;
+			var key = list[index].item1;
 			int num = list[index].item2;
 
-			List<TValue> sub = dict[key];
+			var sub = dict[key];
 			sub.RemoveAt(num);
 			if (sub.Count==0) dict.Remove(key);
 
@@ -354,7 +354,7 @@ namespace MapMagic
 			int listCount = list.Count;
 			for (int i=0; i<listCount; i++)
 			{
-				TKey ikey = list[i].item1;
+				var ikey = list[i].item1;
 				int inum = list[i].item2;
 				if (Equals(key, ikey) && inum>=num)
 					list[i] = new TupleSet<TKey,int,TValue>(ikey, inum-1, list[i].item3);

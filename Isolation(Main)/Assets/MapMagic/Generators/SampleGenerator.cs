@@ -20,14 +20,14 @@ namespace MapMagic //it's recommended to use your own namespace
 		public float level = 1;
 		public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
 		{
-			Matrix src = (Matrix)input.GetObject(results);
+			var src = (Matrix)input.GetObject(results);
 
 			if (src==null || (stop!=null && stop(0))) return;
 			if (!enabled) { output.SetObject(results, src); return; }
 
-			Matrix dst = new Matrix(src.rect);
+			var dst = new Matrix(src.rect);
 
-			Coord min = src.rect.Min; Coord max = src.rect.Max;
+			var min = src.rect.Min; var max = src.rect.Max;
 
 			for (int x=min.x; x<max.x; x++)
 			   for (int z=min.z; z<max.z; z++)

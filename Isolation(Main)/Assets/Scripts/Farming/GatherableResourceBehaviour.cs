@@ -25,7 +25,7 @@ namespace Segritude.Farming
 		/// <param name="type">Type of the interaction. See <see cref="InteractionType"/></param>
 		public override void OnInteract(InteractionType type)
 		{
-			Player.Player.Instance.Inventory.AddItem(_Resource.GatheredResource, 19);
+			Player.PlayerBehaviour.Instance.Inventory.AddItem(_Resource.GatheredResource, 19);
 
 			AudioPlayer.Instance.PlaySound(_Resource.GatherSound);
 		}

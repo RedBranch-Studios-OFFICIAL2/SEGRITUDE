@@ -35,8 +35,8 @@ namespace MapMagic
 			static public void RemoveAt<T> (ref T[] array, int num) { array = RemoveAt(array, num); }
 			static public T[] RemoveAt<T> (T[] array, int num)
 			{
-				T[] newArray = new T[array.Length-1];
-				for (int i=0; i<newArray.Length; i++) 
+				var newArray = new T[array.Length-1];
+			for (int i=0; i<newArray.Length; i++) 
 				{
 					if (i<num) newArray[i] = array[i];
 					else newArray[i] = array[i+1];
@@ -60,8 +60,8 @@ namespace MapMagic
 					else return new T[] {default(T)};
 				}
 
-				T[] newArray = new T[array.Length+1];
-				for (int i=0; i<array.Length; i++) 
+				var newArray = new T[array.Length+1];
+			for (int i=0; i<array.Length; i++) 
 					newArray[i] = array[i];
 				
 				if (createElement != null) newArray[array.Length] = createElement();
@@ -80,8 +80,8 @@ namespace MapMagic
 				}
 				if (pos > array.Length || pos < 0) pos = array.Length;
 				
-				T[] newArray = new T[array.Length+1];
-				for (int i=0; i<newArray.Length; i++) 
+				var newArray = new T[array.Length+1];
+			for (int i=0; i<newArray.Length; i++) 
 				{
 					if (i<pos) newArray[i] = array[i];
 					else if (i == pos) 
@@ -99,8 +99,8 @@ namespace MapMagic
 				if (array==null || array.Length==0) { return add; }
 				if (after > array.Length || after<0) after = array.Length;
 				
-				T[] newArray = new T[array.Length+add.Length];
-				for (int i=0; i<newArray.Length; i++) 
+				var newArray = new T[array.Length+add.Length];
+			for (int i=0; i<newArray.Length; i++) 
 				{
 					if (i<after) newArray[i] = array[i];
 					else if (i == after) 
@@ -119,9 +119,9 @@ namespace MapMagic
 			{
 				if (array.Length == newSize) return array;
 
-				T[] newArray = new T[newSize];
-					
-				int min = newSize<array.Length? newSize : array.Length;
+				var newArray = new T[newSize];
+
+			int min = newSize<array.Length? newSize : array.Length;
 				for (int i=0; i<min; i++)
 					newArray[i] = array[i];
 
@@ -137,8 +137,8 @@ namespace MapMagic
 			static public void Append<T> (ref T[] array, T[] additional) { array = Append(array, additional); }
 			static public T[] Append<T> (T[] array, T[] additional)
 			{
-				T[] newArray = new T[array.Length+additional.Length];
-				for (int i=0; i<array.Length; i++) { newArray[i] = array[i]; }
+				var newArray = new T[array.Length+additional.Length];
+			for (int i=0; i<array.Length; i++) { newArray[i] = array[i]; }
 				for (int i=0; i<additional.Length; i++) { newArray[i+array.Length] = additional[i]; }
 				return newArray;
 			}
@@ -147,8 +147,8 @@ namespace MapMagic
 			{
 				if (num1<0 || num1>=array.Length || num2<0 || num2 >=array.Length) return;
 				
-				T temp = array[num1];
-				array[num1] = array[num2];
+				var temp = array[num1];
+			array[num1] = array[num2];
 				array[num2] = temp;
 			}
 
@@ -161,8 +161,8 @@ namespace MapMagic
 
 			static public T[] Truncated<T> (this T[] src, int length)
 			{
-				T[] dst = new T[length];
-				for (int i=0; i<length; i++) dst[i] = src[i];
+				var dst = new T[length];
+			for (int i=0; i<length; i++) dst[i] = src[i];
 				return dst;
 			}
 
@@ -244,8 +244,8 @@ namespace MapMagic
 						reference[i] = reference[j];
 						reference[j] = temp;
 
-						T tempT = array[i];
-						array[i] = array[j];
+						var tempT = array[i];
+					array[i] = array[j];
 						array[j] = tempT;
 						
 						i++; j--;
@@ -272,8 +272,8 @@ namespace MapMagic
 						reference[i] = reference[j];
 						reference[j] = temp;
 
-						T tempT = list[i];
-						list[i] = list[j];
+						var tempT = list[i];
+					list[i] = list[j];
 						list[j] = tempT;
 						
 						i++; j--;
@@ -290,8 +290,8 @@ namespace MapMagic
 				else steps = stepsArray.Length-1;
 			
 				//creating starts array
-				int[] starts = new int[steps+1];
-				for (int i=0; i<max; i++) starts[ array[i] ]++;
+				var starts = new int[steps+1];
+			for (int i=0; i<max; i++) starts[ array[i] ]++;
 					
 				//making starts absolute
 				int prev = 0;
@@ -317,8 +317,8 @@ namespace MapMagic
 
 			static public T[] Convert<T,Y> (Y[] src)
 			{
-				T[] result = new T[src.Length];
-				for (int i=0; i<src.Length; i++) result[i] = (T)(object)(src[i]);
+				var result = new T[src.Length];
+			for (int i=0; i<src.Length; i++) result[i] = (T)(object)(src[i]);
 				return result;
 			}
 

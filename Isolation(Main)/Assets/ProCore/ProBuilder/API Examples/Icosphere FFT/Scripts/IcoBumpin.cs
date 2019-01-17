@@ -123,12 +123,12 @@ namespace ProBuilder2.Examples
 			ico = pb_ShapeGenerator.IcosahedronGenerator(icoRadius, icoSubdivisions);
 
 			// Shell is all the faces on the new icosphere.
-			pb_Face[] shell = ico.faces;
+			var shell = ico.faces;
 
 			// Materials are set per-face on pb_Object meshes.  pb_Objects will automatically
 			// condense the mesh to the smallest set of subMeshes possible based on materials.
 #if !PROTOTYPE
-			foreach(pb_Face f in shell)
+			foreach (pb_Face f in shell)
 				f.material = material;
 #else
 			ico.gameObject.GetComponent<MeshRenderer>().sharedMaterial = material;
@@ -147,11 +147,11 @@ namespace ProBuilder2.Examples
 			ico.Refresh();
 
 			outsides = new FaceRef[shell.Length];
-			Dictionary<int, int> lookup = ico.sharedIndices.ToDictionary();
+			var lookup = ico.sharedIndices.ToDictionary();
 
 			// Populate the outsides[] cache.  This is a reference to the tops of each extruded column, including
 			// copies of the sharedIndices.
-			for(int i = 0; i < shell.Length; ++i)
+			for (int i = 0; i < shell.Length; ++i)
 				outsides[i] = new FaceRef( 	shell[i],
 											pb_Math.Normal(ico, shell[i]),
 											ico.sharedIndices.AllIndicesWithValues(lookup, shell[i].distinctIndices).ToArray()
@@ -210,18 +210,18 @@ namespace ProBuilder2.Examples
 
 				int n = (int)(normalizedIndex*fftBounds);
 
-				Vector3 displacement = outsides[i].nrm * ( ((fft[n]+fft_history[n]) * .5f) * (frequencyCurve.Evaluate(normalizedIndex) * .5f + .5f)) * extrusion;
+				var displacement = outsides[i].nrm * ( ((fft[n]+fft_history[n]) * .5f) * (frequencyCurve.Evaluate(normalizedIndex) * .5f + .5f)) * extrusion;
 
-				foreach(int t in outsides[i].indices)
+				foreach (int t in outsides[i].indices)
 				{
 					displaced_vertices[t] = original_vertices[t] + displacement;
 				}
 			}
 
-			Vector3 vec = Vector3.zero;
+			var vec = Vector3.zero;
 
 			// Waveform ring
-			for(int i = 0; i < WAVEFORM_SAMPLES; i++)
+			for (int i = 0; i < WAVEFORM_SAMPLES; i++)
 			{
 				int n = i < WAVEFORM_SAMPLES-1 ? i : 0;
 				vec.x = Mathf.Cos((float)n/WAVEFORM_SAMPLES * TWOPI) * (waveformRadius + (((data[n] + data_history[n]) * .5f) * waveformHeight));
@@ -235,7 +235,7 @@ namespace ProBuilder2.Examples
 			// Ring rotation
 			if( rotateWaveformRing )
 			{
-				Vector3 rot = waveform.transform.localRotation.eulerAngles;
+				var rot = waveform.transform.localRotation.eulerAngles;
 
 				rot.x = Mathf.PerlinNoise(Time.time * waveformSpeed, 0f) * 360f;
 				rot.y = Mathf.PerlinNoise(0f, Time.time * waveformSpeed) * 360f;

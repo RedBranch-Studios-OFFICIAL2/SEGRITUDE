@@ -1,10 +1,8 @@
-﻿using Segritude.Interaction;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Segritude.Arms
 {
-	public class GunBehaviour : MonoBehaviour, IInteractable
+	public class GunBehaviour : MonoBehaviour
 	{
 		#region Serialized Fields
 
@@ -12,10 +10,16 @@ namespace Segritude.Arms
 
 		#endregion Serialized Fields
 
-		public void EndInteraction(InteractionType type) => throw new NotImplementedException();
+		private void Update()
+		{
+			if (Input.GetMouseButtonDown(0))
+				Shoot();
+		}
 
-		public void StartInteraction(InteractionType type) => throw new NotImplementedException();
-
-		public bool ValidateInteraction(InteractionType type) => throw new NotImplementedException();
+		private void Shoot()
+		{
+			//SOME SCHOOTING LOGIC
+			//YOUR JOB
+		}
 	}
 }

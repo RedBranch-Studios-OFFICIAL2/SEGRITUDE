@@ -306,7 +306,7 @@ namespace MapMagic
 
 		public void Clamp (Coord min, Coord max)
 		{
-			Coord oldMax = Max;
+			var oldMax = Max;
 			offset = Coord.Max(min, offset);
 			size = Coord.Min(max-offset, oldMax-offset);
 			size.ClampPositive();
@@ -324,7 +324,7 @@ namespace MapMagic
 
 		public static CoordRect Combine (CoordRect[] rects)
 		{
-			Coord min=new Coord(2000000000, 2000000000); Coord max=new Coord(-2000000000, -2000000000); 
+			var min=new Coord(2000000000, 2000000000); var max=new Coord(-2000000000, -2000000000);
 			for (int i=0; i<rects.Length; i++)
 			{
 				if (rects[i].offset.x < min.x) min.x = rects[i].offset.x;
@@ -397,8 +397,8 @@ namespace MapMagic
 		public IEnumerable<Coord> Cells (int cellSize) //coordinates of the cells inside this rect
 		{
 			//transforming to cell-space
-			Coord min = offset/cellSize;
-			Coord max = (Max-1)/cellSize + 1;
+			var min = offset/cellSize;
+			var max = (Max-1)/cellSize + 1;
 
 			for (int x=min.x; x<max.x; x++)
 				for (int z=min.z; z<max.z; z++)
@@ -409,7 +409,7 @@ namespace MapMagic
 
 		public CoordRect Approximate (int val)
 		{
-			CoordRect approx = new CoordRect();
+			var approx = new CoordRect();
 
 			approx.size.x = (size.x/val + 1) * val;
 			approx.size.z = (size.z/val + 1) * val;
@@ -426,8 +426,8 @@ namespace MapMagic
 		public void DrawGizmo ()
 		{
 			#if UNITY_EDITOR
-			Vector3 s = size.ToVector3(1);
-			Vector3 o = offset.ToVector3(1);
+			var s = size.ToVector3(1);
+			var o = offset.ToVector3(1);
 			Gizmos.DrawWireCube(o + s/2, s);
 			#endif
 		}
@@ -553,8 +553,8 @@ namespace MapMagic
 
 		public void Fill (Matrix2<T> m, bool removeBorders=false)
 		{
-			CoordRect intersection = CoordRect.Intersect(rect, m.rect);
-			Coord min = intersection.Min; Coord max = intersection.Max;
+			var intersection = CoordRect.Intersect(rect, m.rect);
+			var min = intersection.Min; var max = intersection.Max;
 			for (int x=min.x; x<max.x; x++)
 				for (int z=min.z; z<max.z; z++)
 					this[x,z] = m[x,z];
@@ -625,9 +625,9 @@ namespace MapMagic
 
 			public void RemoveBorders ()
 			{
-				Coord min = rect.Min; Coord last = rect.Max - 1;
-			
-				for (int x=min.x; x<=last.x; x++)
+				var min = rect.Min; var last = rect.Max - 1;
+
+			for (int x=min.x; x<=last.x; x++)
 					{ SetPos(x,min.z); array[pos] = array[pos+rect.size.x]; }
 
 				for (int x=min.x; x<=last.x; x++)
@@ -642,33 +642,33 @@ namespace MapMagic
 
 			public void RemoveBorders (int borderMinX, int borderMinZ, int borderMaxX, int borderMaxZ)
 			{
-				Coord min = rect.Min; Coord max = rect.Max;
-			
-				if (borderMinZ != 0)
+				var min = rect.Min; var max = rect.Max;
+
+			if (borderMinZ != 0)
 				for (int x=min.x; x<max.x; x++)
 				{
-					T val = this[x, min.z+borderMinZ];
+					var val = this[x, min.z+borderMinZ];
 					for (int z=min.z; z<min.z+borderMinZ; z++) this[x,z] = val;
 				}
 
 				if (borderMaxZ != 0)
 				for (int x=min.x; x<max.x; x++)
 				{
-					T val = this[x, max.z-borderMaxZ];
+					var val = this[x, max.z-borderMaxZ];
 					for (int z=max.z-borderMaxZ; z<max.z; z++) this[x,z] = val;
 				}
 
 				if (borderMinX != 0)
 				for (int z=min.z; z<max.z; z++)
 				{
-					T val = this[min.x+borderMinX, z];
+					var val = this[min.x+borderMinX, z];
 					for (int x=min.x; x<min.x+borderMinX; x++) this[x,z] = val;
 				}
 				
 				if (borderMaxX != 0)
 				for (int z=min.z; z<max.z; z++)
 				{
-					T val = this[max.x-borderMaxX, z];
+					var val = this[max.x-borderMaxX, z];
 					for (int x=max.x-borderMaxX; x<max.x; x++) this[x,z] = val;
 				}
 			}

@@ -66,7 +66,7 @@ namespace MapMagic
 				{
 					int link = ser.Store(val);
 					
-					Keyframe tval = (Keyframe)val;
+					var tval = (Keyframe)val;
 					ser.entities[link].AddValue(typeof(float), tval.time, "time", ser);
 					ser.entities[link].AddValue(typeof(float), tval.value, "value", ser);
 					ser.entities[link].AddValue(typeof(float), tval.inTangent, "inTangent", ser);
@@ -127,10 +127,10 @@ namespace MapMagic
 
 			public Array GetValues (System.Type elementType, Serializer ser)
 			{
-				IList list = GetListByType(elementType);
-				Array array = Array.CreateInstance(elementType, list.Count);
+				var list = GetListByType(elementType);
+				var array = Array.CreateInstance(elementType, list.Count);
 
-				if(elementType == typeof(bool))  { for(int i=0;i<bools.Count;i++) array.SetValue(bools[i].val, i); }
+				if (elementType == typeof(bool))  { for(int i=0;i<bools.Count;i++) array.SetValue(bools[i].val, i); }
 				else if(elementType == typeof(int))  { for(int i=0;i<ints.Count;i++) array.SetValue(ints[i].val, i); }
 				else if(elementType == typeof(float))  { for(int i=0;i<floats.Count;i++) array.SetValue(floats[i].val, i); }
 				else if(elementType == typeof(string))  { for(int i=0;i<strings.Count;i++) array.SetValue(strings[i].val, i); }
@@ -180,8 +180,8 @@ namespace MapMagic
 				if (obj == entities[i].obj) return i;
 			
 			//creating entity
-			SerializedObject entity = new SerializedObject();
-			System.Type objType = obj.GetType();
+			var entity = new SerializedObject();
+			var objType = obj.GetType();
 			entity.typeName = objType.AssemblyQualifiedName.ToString();
 			entity.obj = obj;
 
@@ -192,18 +192,18 @@ namespace MapMagic
 			//writing arrays
 			if (objType.IsArray)
 			{
-				Array array = (Array)obj;
-				System.Type elementType = objType.GetElementType();
+				var array = (Array)obj;
+				var elementType = objType.GetElementType();
 				entity.AddValues(elementType, array, this);
 				//for (int i=0;i<array.Length;i++) entity.AddValue(elementType, array.GetValue(i), "", this);
 				return result;
 			}
 
 			//writing fields
-			FieldInfo[] fields = objType.GetFields(BindingFlags.Public | BindingFlags.Instance); //BindingFlags.NonPublic - does not work in web player
+			var fields = objType.GetFields(BindingFlags.Public | BindingFlags.Instance); //BindingFlags.NonPublic - does not work in web player
 			for (int i=0; i<fields.Length; i++)
 			{
-				FieldInfo field = fields[i];
+				var field = fields[i];
 				if (field.IsLiteral) continue; //leaving constant fields blank
 				if (field.FieldType.IsPointer) continue; //skipping pointers (they make unity crash. Maybe require unsafe)
 				if (field.IsNotSerialized) continue;
@@ -214,10 +214,10 @@ namespace MapMagic
 			//writing properties
 			if (writeProperties)
 			{
-				PropertyInfo[] properties = objType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+				var properties = objType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 				for (int i=0;i<properties.Length;i++) 
 				{
-					PropertyInfo prop = properties[i];
+					var prop = properties[i];
 					if (!prop.CanWrite) continue;
 					if (prop.Name == "Item") continue; //ignoring this[x] 
 
@@ -237,28 +237,28 @@ namespace MapMagic
 			//checking if this object was already retrieved
 			if (entities[num].obj != null) return entities[num].obj;
 			
-			SerializedObject entity = entities[num];
-			System.Type type = System.Type.GetType(entity.typeName);
+			var entity = entities[num];
+			var type = System.Type.GetType(entity.typeName);
 			if (type == null) type = System.Type.GetType(entity.typeName.Substring(0, entity.typeName.IndexOf(","))); //trying to get type using it's short name
 			if (type == null) return null; //in case this type do not exists anymore
 
 			//retrieving arrays
 			if (type.IsArray)
 			{
-				Array array = entity.GetValues(type.GetElementType(),this);
+				var array = entity.GetValues(type.GetElementType(),this);
 				entity.obj = array; 
 				return array;
 			}
 
 			//creating instance
-			object obj = System.Activator.CreateInstance(type);
+			var obj = System.Activator.CreateInstance(type);
 			entity.obj = obj; //signing record.obj before calling Retrieve to avoid infinite loop
 
 			//loading values
-			FieldInfo[] fields = obj.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
+			var fields = obj.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
 			for (int f=0; f<fields.Length; f++)
 			{
-				FieldInfo field = fields[f];
+				var field = fields[f];
 				if (field.IsLiteral) continue; //leaving constant fields blank
 				if (field.FieldType.IsPointer) continue; //skipping pointers (they make unity crash. Maybe require unsafe)
 				if (field.IsNotSerialized) continue;
@@ -271,10 +271,10 @@ namespace MapMagic
 			}
 
 			//loading properties
-			PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+			var properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 			for (int p=0; p<properties.Length; p++) 
 			{
-				PropertyInfo prop = properties[p];
+				var prop = properties[p];
 				if (!prop.CanWrite) continue;
 				if (prop.Name == "Item") continue; //ignoring this[x] 
 
@@ -307,12 +307,12 @@ namespace MapMagic
 		//a standalone function for the deep copy
 		public static object DeepCopy (object obj)
 		{
-			Serializer serializer = new Serializer();
-			
+			var serializer = new Serializer();
+
 			serializer.Store(obj); 
 			
 			serializer.ClearLinks();
-			object result = serializer.Retrieve(0);
+			var result = serializer.Retrieve(0);
 			serializer.ClearLinks();
 
 			return result;

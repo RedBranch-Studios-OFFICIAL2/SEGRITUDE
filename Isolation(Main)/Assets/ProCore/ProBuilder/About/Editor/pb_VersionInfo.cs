@@ -110,13 +110,13 @@ namespace ProBuilder2.EditorCommon
 		 */
 		public static pb_VersionInfo FromString(string str)
 		{
-			pb_VersionInfo version = new pb_VersionInfo();
+			var version = new pb_VersionInfo();
 			version.text = str;
 
 			try
 			{
-				string[] split = Regex.Split(str, @"[\.A-Za-z]");
-				Match type = Regex.Match(str, @"A-Za-z");
+				var split = Regex.Split(str, @"[\.A-Za-z]");
+				var type = Regex.Match(str, @"A-Za-z");
 				int.TryParse(split[0], out version.major);
 				int.TryParse(split[1], out version.minor);
 				int.TryParse(split[2], out version.patch);

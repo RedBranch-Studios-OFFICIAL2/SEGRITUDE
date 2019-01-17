@@ -37,13 +37,13 @@ namespace ProBuilder2.EditorCommon
 		 */
 		static void LoadMonoScript()
 		{
-			GameObject go = new GameObject();
+			var go = new GameObject();
 
-			pb_Object pb = go.AddComponent<pb_Object>();
-			pb_Entity pe = go.GetComponent<pb_Entity>();
-			if(pe == null)
+			var pb = go.AddComponent<pb_Object>();
+			var pe = go.GetComponent<pb_Entity>();
+			if (pe == null)
 				pe = go.AddComponent<pb_Entity>();
-			pb_DummyScript du = go.AddComponent<pb_DummyScript>();
+			var du = go.AddComponent<pb_DummyScript>();
 
 			_mono_pb = MonoScript.FromMonoBehaviour( pb );
 			_mono_pe = MonoScript.FromMonoBehaviour( pe );
@@ -90,7 +90,7 @@ namespace ProBuilder2.EditorCommon
 		{
 			EditorApplication.ExecuteMenuItem("Window/Inspector");
 
-			Object[] all = Resources.FindObjectsOfTypeAll(typeof(GameObject)).Where(x => ((GameObject)x).GetComponents<Component>().Any(n => n == null) ).ToArray();
+			var all = Resources.FindObjectsOfTypeAll(typeof(GameObject)).Where(x => ((GameObject)x).GetComponents<Component>().Any(n => n == null) ).ToArray();
 			total = all.Length;
 
 			unfixable.Clear();
@@ -136,9 +136,9 @@ namespace ProBuilder2.EditorCommon
 						if(	(PrefabUtility.GetPrefabType(go) == PrefabType.PrefabInstance ||
 							 PrefabUtility.GetPrefabType(go) == PrefabType.Prefab ) )
 						{
-							GameObject pref = (GameObject)PrefabUtility.GetCorrespondingObjectFromSource(go);
+							var pref = (GameObject)PrefabUtility.GetCorrespondingObjectFromSource(go);
 
-							if(pref && (pref.GetComponent<pb_Object>() || pref.GetComponent<pb_Entity>()))
+							if (pref && (pref.GetComponent<pb_Object>() || pref.GetComponent<pb_Entity>()))
 							{
 								unfixable.Add(go);
 								continue;
@@ -158,9 +158,9 @@ namespace ProBuilder2.EditorCommon
 				}
 			}
 
-			pb_Object[] pbs = (pb_Object[])Resources.FindObjectsOfTypeAll(typeof(pb_Object));
+			var pbs = (pb_Object[])Resources.FindObjectsOfTypeAll(typeof(pb_Object));
 
-			for(int i = 0; i < pbs.Length; i++)
+			for (int i = 0; i < pbs.Length; i++)
 			{
 				EditorUtility.DisplayProgressBar("Checking ProBuilder Meshes", "Refresh " + (i+1) + " out of " + total + " objects in scene.", ((float)i/pbs.Length) );
 
@@ -223,9 +223,9 @@ namespace ProBuilder2.EditorCommon
 				return;
 			}
 
-			SerializedProperty scriptProperty = this.serializedObject.FindProperty("m_Script");
+			var scriptProperty = this.serializedObject.FindProperty("m_Script");
 
-			if(scriptProperty == null || scriptProperty.objectReferenceValue != null)
+			if (scriptProperty == null || scriptProperty.objectReferenceValue != null)
 			{
 				if(doFix)
 				{
@@ -247,7 +247,7 @@ namespace ProBuilder2.EditorCommon
 			// Shows a detailed tree view of all the properties in this serializedobject.
 			// GUILayout.Label( SerializedObjectToString(this.serializedObject) );
 
-			SerializedProperty iterator = this.serializedObject.GetIterator();
+			var iterator = this.serializedObject.GetIterator();
 
 			iterator.Next(true);
 
@@ -346,7 +346,7 @@ namespace ProBuilder2.EditorCommon
 		 */
 		static void DeleteDummyScripts()
 		{
-			pb_DummyScript[] dummies = (pb_DummyScript[])Resources.FindObjectsOfTypeAll(typeof(pb_DummyScript));
+			var dummies = (pb_DummyScript[])Resources.FindObjectsOfTypeAll(typeof(pb_DummyScript));
 			dummies = dummies.Where(x => x.hideFlags == HideFlags.None).ToArray();
 
 			if(dummies.Length > 0)
@@ -365,7 +365,7 @@ namespace ProBuilder2.EditorCommon
 						if(ret == 2)
 						{
 							// Only interested in objects that have 2 null components (pb_Object and pb_Entity)
-							Object[] broken = (Object[])Resources.FindObjectsOfTypeAll(typeof(GameObject))
+							var broken = (Object[])Resources.FindObjectsOfTypeAll(typeof(GameObject))
 								.Where(x => !x.Equals(null) &&
 								x is GameObject &&
 								((GameObject)x).GetComponents<pb_DummyScript>().Length == 2 &&
@@ -399,23 +399,23 @@ namespace ProBuilder2.EditorCommon
 		 */
 		static string SerializedObjectToString(SerializedObject serializedObject)
 		{
-			System.Text.StringBuilder sb = new System.Text.StringBuilder();
+			var sb = new System.Text.StringBuilder();
 
-			if(serializedObject == null)
+			if (serializedObject == null)
 			{
 				sb.Append("NULL");
 				return sb.ToString();
 			}
 
-			SerializedProperty iterator = serializedObject.GetIterator();
+			var iterator = serializedObject.GetIterator();
 
 			iterator.Next(true);
 
 
 			while( iterator.Next(true) )
 			{
-				string tabs = "";
-				for(int i = 0; i < iterator.depth; i++) tabs += "\t";
+				var tabs = "";
+				for (int i = 0; i < iterator.depth; i++) tabs += "\t";
 
 				sb.AppendLine(tabs + iterator.name + (iterator.propertyType == SerializedPropertyType.ObjectReference && iterator.type.Contains("Component") && iterator.objectReferenceValue == null ? " -> NULL" : "") );
 

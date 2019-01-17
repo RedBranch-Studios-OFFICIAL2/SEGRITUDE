@@ -114,10 +114,10 @@ namespace MapMagic
 			// ???
 			public bool[] InRect (CoordRect area = new CoordRect())
 			{
-				Matrix2<bool> result = new Matrix2<bool>(rect);
-				CoordRect intersection = CoordRect.Intersect(rect,area);
-				Coord min = intersection.Min; Coord max = intersection.Max;
-				for (int x=min.x; x<max.x; x++)
+				var result = new Matrix2<bool>(rect);
+			var intersection = CoordRect.Intersect(rect,area);
+			var min = intersection.Min; var max = intersection.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 						result[x,z] = true;
 				return result.array;
@@ -130,9 +130,9 @@ namespace MapMagic
 			public void Fill (float[,] array, CoordRect arrayRect) //using swapped x and z!
 			{
 				//arrayRect.z should be equal to array.GetLength(0), and arrayRect.x to array.GetLength(1)
-				CoordRect intersection = CoordRect.Intersect(rect, arrayRect);
-				Coord min = intersection.Min; Coord max = intersection.Max;
-				for (int x=min.x; x<max.x; x++)
+				var intersection = CoordRect.Intersect(rect, arrayRect);
+			var min = intersection.Min; var max = intersection.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 						this[x,z] = array[z-arrayRect.offset.z,x-arrayRect.offset.x];
 			}
@@ -140,9 +140,9 @@ namespace MapMagic
 			public void Pour (float[,] array, CoordRect arrayRect) //using swapped x and z!
 			{
 				//arrayRect.z should be equal to array.GetLength(0), and arrayRect.x to array.GetLength(1)
-				CoordRect intersection = CoordRect.Intersect(rect, arrayRect);
-				Coord min = intersection.Min; Coord max = intersection.Max;
-				for (int x=min.x; x<max.x; x++)
+				var intersection = CoordRect.Intersect(rect, arrayRect);
+			var min = intersection.Min; var max = intersection.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 						array[z-arrayRect.offset.z,x-arrayRect.offset.x] = this[x,z];
 			}
@@ -150,9 +150,9 @@ namespace MapMagic
 			public void Pour (float[,,] array, int channel, CoordRect arrayRect) //using swapped x and z!
 			{
 				//arrayRect.z should be equal to array.GetLength(0), and arrayRect.x to array.GetLength(1)
-				CoordRect intersection = CoordRect.Intersect(rect, arrayRect);
-				Coord min = intersection.Min; Coord max = intersection.Max;
-				for (int x=min.x; x<max.x; x++)
+				var intersection = CoordRect.Intersect(rect, arrayRect);
+			var min = intersection.Min; var max = intersection.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 						array[z-arrayRect.offset.z,x-arrayRect.offset.x, channel] = this[x,z];
 			}
@@ -160,14 +160,14 @@ namespace MapMagic
 
 			public float[,] ReadHeighmap (TerrainData data, float height=1)
 			{
-				CoordRect intersection = CoordRect.Intersect(rect, new CoordRect(0,0,data.heightmapResolution, data.heightmapResolution));
-				
-				//get heights
-				float[,] array = data.GetHeights(intersection.offset.x, intersection.offset.z, intersection.size.x, intersection.size.z); //returns x and z swapped
+				var intersection = CoordRect.Intersect(rect, new CoordRect(0,0,data.heightmapResolution, data.heightmapResolution));
 
-				//reading 2d array
-				Coord min = intersection.Min; Coord max = intersection.Max;
-				for (int x=min.x; x<max.x; x++)
+			//get heights
+			var array = data.GetHeights(intersection.offset.x, intersection.offset.z, intersection.size.x, intersection.size.z); //returns x and z swapped
+
+			//reading 2d array
+			var min = intersection.Min; var max = intersection.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 						this[x,z] = array[z-min.z, x-min.x] * height;
 
@@ -179,14 +179,14 @@ namespace MapMagic
 
 			public void WriteHeightmap (TerrainData data, float[,] array=null, float brushFallof=0.5f, bool delayLod=false)
 			{
-				CoordRect intersection = CoordRect.Intersect(rect, new CoordRect(0,0,data.heightmapResolution, data.heightmapResolution));
-				
-				//checking ref array
-				if (array == null || array.Length != intersection.size.x*intersection.size.z) array = new float[intersection.size.z,intersection.size.x]; //x and z swapped
+				var intersection = CoordRect.Intersect(rect, new CoordRect(0,0,data.heightmapResolution, data.heightmapResolution));
+
+			//checking ref array
+			if (array == null || array.Length != intersection.size.x*intersection.size.z) array = new float[intersection.size.z,intersection.size.x]; //x and z swapped
 
 				//write to 2d array
-				Coord min = intersection.Min; Coord max = intersection.Max;
-				for (int x=min.x; x<max.x; x++)
+				var min = intersection.Min; var max = intersection.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 				{
 					float fallofFactor = Fallof(x,z,brushFallof);
@@ -201,14 +201,14 @@ namespace MapMagic
 
 			public float[,,] ReadSplatmap (TerrainData data, int channel, float[,,] array=null)
 			{
-				CoordRect intersection = CoordRect.Intersect(rect, new CoordRect(0,0,data.alphamapResolution, data.alphamapResolution));
-				
-				//get heights
-				if (array==null) array = data.GetAlphamaps(intersection.offset.x, intersection.offset.z, intersection.size.x, intersection.size.z); //returns x and z swapped
+				var intersection = CoordRect.Intersect(rect, new CoordRect(0,0,data.alphamapResolution, data.alphamapResolution));
+
+			//get heights
+			if (array==null) array = data.GetAlphamaps(intersection.offset.x, intersection.offset.z, intersection.size.x, intersection.size.z); //returns x and z swapped
 
 				//reading array
-				Coord min = intersection.Min; Coord max = intersection.Max;
-				for (int x=min.x; x<max.x; x++)
+				var min = intersection.Min; var max = intersection.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 						this[x,z] = array[z-min.z, x-min.x, channel];
 
@@ -221,18 +221,18 @@ namespace MapMagic
 			static public void AddSplatmaps (TerrainData data, Matrix[] matrices, int[] channels, float[] opacity, float[,,] array=null, float brushFallof=0.5f)
 			{
 				int numChannels = data.alphamapLayers;
-				bool[] usedChannels = new bool[numChannels];
-				for (int i=0; i<channels.Length; i++) usedChannels[channels[i]] = true;
-				float[] slice = new float[numChannels];
+				var usedChannels = new bool[numChannels];
+			for (int i=0; i<channels.Length; i++) usedChannels[channels[i]] = true;
+				var slice = new float[numChannels];
 
-				Coord dataSize = new Coord(data.alphamapResolution, data.alphamapResolution);
-				CoordRect dataRect = new CoordRect(new Coord(0,0), dataSize);
-				CoordRect intersection = CoordRect.Intersect(dataRect, matrices[0].rect);
-				
-				if (array==null) array = data.GetAlphamaps(intersection.offset.x, intersection.offset.z, intersection.size.x, intersection.size.z);
+			var dataSize = new Coord(data.alphamapResolution, data.alphamapResolution);
+			var dataRect = new CoordRect(new Coord(0,0), dataSize);
+			var intersection = CoordRect.Intersect(dataRect, matrices[0].rect);
 
-				Coord min = intersection.Min; Coord max = intersection.Max;
-				for (int x=min.x; x<max.x; x++)
+			if (array==null) array = data.GetAlphamaps(intersection.offset.x, intersection.offset.z, intersection.size.x, intersection.size.z);
+
+				var min = intersection.Min; var max = intersection.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 				{
 					//calculating fallof and opacity
@@ -278,16 +278,16 @@ namespace MapMagic
 				if (resizeTexture) texture.Resize(rect.size.x, rect.size.z);
 				
 				//finding matrix-texture intersection
-				Coord textureSize = new Coord(texture.width, texture.height);
-				CoordRect textureRect = new CoordRect(new Coord(0,0), textureSize);
-				CoordRect intersection = CoordRect.Intersect(textureRect, rect);
-				
-				//checking ref color array
-				if (colors == null || colors.Length != intersection.size.x*intersection.size.z) colors = new Color[intersection.size.x*intersection.size.z];
+				var textureSize = new Coord(texture.width, texture.height);
+			var textureRect = new CoordRect(new Coord(0,0), textureSize);
+			var intersection = CoordRect.Intersect(textureRect, rect);
+
+			//checking ref color array
+			if (colors == null || colors.Length != intersection.size.x*intersection.size.z) colors = new Color[intersection.size.x*intersection.size.z];
 
 				//filling texture
-				Coord min = intersection.Min; Coord max = intersection.Max;
-				for (int x=min.x; x<max.x; x++)
+				var min = intersection.Min; var max = intersection.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 				{
 					float val = this[x,z];
@@ -336,17 +336,17 @@ namespace MapMagic
 
 			public void FromTexture (Texture2D texture)
 			{
-				CoordRect textureRect = new CoordRect(0,0, texture.width, texture.height);
-				CoordRect intersection = CoordRect.Intersect(textureRect, rect);
+				var textureRect = new CoordRect(0,0, texture.width, texture.height);
+			var intersection = CoordRect.Intersect(textureRect, rect);
 
-				Color[] colors = texture.GetPixels(intersection.offset.x, intersection.offset.z, intersection.size.x, intersection.size.z);
+			var colors = texture.GetPixels(intersection.offset.x, intersection.offset.z, intersection.size.x, intersection.size.z);
 
-				Coord min = intersection.Min; Coord max = intersection.Max;
-				for (int x=min.x; x<max.x; x++)
+			var min = intersection.Min; var max = intersection.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 				{
 					int tx = x-min.x; int tz = z-min.z;
-					Color col = colors[tz*(max.x-min.x) + tx];
+					var col = colors[tz*(max.x-min.x) + tx];
 
 					this[x,z] = (col.r+col.g+col.b)/3;
 				}
@@ -354,17 +354,17 @@ namespace MapMagic
 
 			public void FromTextureAlpha (Texture2D texture)
 			{
-				CoordRect textureRect = new CoordRect(0,0, texture.width, texture.height);
-				CoordRect intersection = CoordRect.Intersect(textureRect, rect);
+				var textureRect = new CoordRect(0,0, texture.width, texture.height);
+			var intersection = CoordRect.Intersect(textureRect, rect);
 
-				Color[] colors = texture.GetPixels(intersection.offset.x, intersection.offset.z, intersection.size.x, intersection.size.z);
+			var colors = texture.GetPixels(intersection.offset.x, intersection.offset.z, intersection.size.x, intersection.size.z);
 
-				Coord min = intersection.Min; Coord max = intersection.Max;
-				for (int x=min.x; x<max.x; x++)
+			var min = intersection.Min; var max = intersection.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 				{
 					int tx = x-min.x; int tz = z-min.z;
-					Color col = colors[tz*(max.x-min.x) + tx];
+					var col = colors[tz*(max.x-min.x) + tx];
 
 					this[x,z] = (col.r+col.g+col.b+col.a)/4;
 				}
@@ -372,18 +372,18 @@ namespace MapMagic
 
 			public void FromTextureTiled (Texture2D texture)
 			{
-				Color[] colors = texture.GetPixels();
+				var colors = texture.GetPixels();
 
-				int textureWidth = texture.width;
+			int textureWidth = texture.width;
 				int textureHeight = texture.height;
 
-				Coord min = rect.Min; Coord max = rect.Max;
-				for (int x=min.x; x<max.x; x++)
+				var min = rect.Min; var max = rect.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 				{
 					int tx = x % textureWidth; if (tx<0) tx += textureWidth;
 					int tz = z % textureHeight; if (tz<0) tz += textureHeight;
-					Color col = colors[tz*(textureWidth) + tx];
+					var col = colors[tz*(textureWidth) + tx];
 
 					this[x,z] = (col.r+col.g+col.b)/3;
 				}
@@ -412,32 +412,32 @@ namespace MapMagic
 			{
 				ChangeRect(new CoordRect(rect.offset.x, rect.offset.z, texture.width, texture.height));
 				
-				Color[] colors = texture.GetPixels();
+				var colors = texture.GetPixels();
 
-				for (int i=0; i<count; i++) 
+			for (int i=0; i<count; i++) 
 				{
-					Color col = colors[i];
-					array[i] = (col.r+col.g+col.b)/3;
+					var col = colors[i];
+				array[i] = (col.r+col.g+col.b)/3;
 				}
 			}
 
 			public void ImportRaw (string path)
 			{
 				//reading file
-				System.IO.FileInfo fileInfo = new System.IO.FileInfo(path);
-				System.IO.FileStream stream = fileInfo.Open(System.IO.FileMode.Open, System.IO.FileAccess.Read);
+				var fileInfo = new System.IO.FileInfo(path);
+			var stream = fileInfo.Open(System.IO.FileMode.Open, System.IO.FileAccess.Read);
 
-				int size = (int)Mathf.Sqrt(stream.Length/2);
-				byte[] vals = new byte[size*size*2];
+			int size = (int)Mathf.Sqrt(stream.Length/2);
+				var vals = new byte[size*size*2];
 
-				stream.Read(vals,0,vals.Length);
+			stream.Read(vals,0,vals.Length);
 				stream.Close();
 
 				//setting matrix
 				ChangeRect( new CoordRect(0,0,size,size) );
 				int i = 0;
-				Coord min = rect.Min; Coord max = rect.Max;
-				for (int z=max.z-1; z>=min.z; z--)
+				var min = rect.Min; var max = rect.Max;
+			for (int z=max.z-1; z>=min.z; z--)
 					for (int x=min.x; x<max.x; x++)
 				{
 					this[x,z] = (vals[i+1]*256f+vals[i]) / 65535f;
@@ -447,8 +447,8 @@ namespace MapMagic
 
 			public void Replicate (Matrix source, bool tile=false)
 			{
-				Coord min = rect.Min; Coord max = rect.Max;
-				for (int x=min.x; x<max.x; x++)
+				var min = rect.Min; var max = rect.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 				{
 					if (source.rect.CheckInRange(x,z)) this[x,z] = source[x,z];
@@ -578,8 +578,8 @@ namespace MapMagic
 				if (result==null) result = new Matrix(newRect);
 				else result.ChangeRect(newRect);
 
-				Coord min = result.rect.Min; Coord max = result.rect.Max;
-				for (int x=min.x; x<max.x; x++)
+				var min = result.rect.Min; var max = result.rect.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 				{
 					float percentX = 1f*(x-result.rect.offset.x)/result.rect.size.x; float origX = percentX*this.rect.size.x + this.rect.offset.x; 
@@ -594,9 +594,9 @@ namespace MapMagic
 			public Matrix Upscale (int factor, Matrix result=null) { return Resize(rect*factor, result); }
 			public Matrix BlurredUpscale (int factor)
 			{
-				Matrix src = new Matrix(rect, new float[count*factor]);
-				Matrix dst = new Matrix(rect, new float[count*factor]);
-				src.Fill(this);
+				var src = new Matrix(rect, new float[count*factor]);
+			var dst = new Matrix(rect, new float[count*factor]);
+			src.Fill(this);
 
 				int steps = Mathf.RoundToInt(Mathf.Sqrt(factor));
 				for (int i=0; i<steps; i++)
@@ -643,8 +643,8 @@ namespace MapMagic
 				if (factor == 1) return Copy(result);
 
 				//resizing
-				Coord min = rect.Min; Coord last = rect.Max-1;
-				float step = 1f/factor;
+				var min = rect.Min; var last = rect.Max-1;
+			float step = 1f/factor;
 
 				for (int x=min.x; x<last.x; x++)
 					for (int z=min.z; z<last.z; z++)
@@ -697,10 +697,10 @@ namespace MapMagic
 
 			public Matrix TestResize (CoordRect newRect)
 			{
-				Matrix result = new Matrix(newRect);
+				var result = new Matrix(newRect);
 
-				Coord min = result.rect.Min; Coord max = result.rect.Max;
-				for (int x=min.x; x<max.x; x++)
+			var min = result.rect.Min; var max = result.rect.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 				{
 					float percentX = 1f*(x-result.rect.offset.x)/result.rect.size.x; float origX = percentX*this.rect.size.x + this.rect.offset.x; 
@@ -722,11 +722,11 @@ namespace MapMagic
 				if (factor == 1) return Copy(result);
 			
 				//work coords
-				Coord min = rect.Min; //Coord max = rect.Max;
-				Coord rmin = result.rect.Min; Coord rmax = result.rect.Max;
+				var min = rect.Min; //Coord max = rect.Max;
+			var rmin = result.rect.Min; var rmax = result.rect.Max;
 
-				//scaling nearest neightbour
-				if (smoothness < 0.0001f)
+			//scaling nearest neightbour
+			if (smoothness < 0.0001f)
 				for (int x=rmin.x; x<rmax.x; x++)
 					for (int z=rmin.z; z<rmax.z; z++)
 				{
@@ -840,9 +840,9 @@ namespace MapMagic
 
 			public void Spread (float strength=0.5f, int iterations=4, Matrix copy=null)
 			{
-				Coord min = rect.Min; Coord max = rect.Max;
+				var min = rect.Min; var max = rect.Max;
 
-				for (int j=0; j<count; j++) array[j] = Mathf.Clamp(array[j],-1,1);
+			for (int j=0; j<count; j++) array[j] = Mathf.Clamp(array[j],-1,1);
 
 				if (copy==null) copy = Copy(null);
 				else for (int j=0; j<count; j++) copy.array[j] = array[j];
@@ -873,9 +873,9 @@ namespace MapMagic
 
 			public void Spread (System.Func<float,float,float> spreadFn=null, int iterations=4)
 			{
-				Coord min = rect.Min; Coord max = rect.Max;
+				var min = rect.Min; var max = rect.Max;
 
-				for (int i=0; i<iterations; i++)
+			for (int i=0; i<iterations; i++)
 				{
 					float prev = 0;
 
@@ -895,9 +895,9 @@ namespace MapMagic
 
 			public void SimpleBlur (int iterations, float strength)
 			{
-				Coord min = rect.Min; Coord max = rect.Max;
+				var min = rect.Min; var max = rect.Max;
 
-				for (int iteration=0; iteration<iterations; iteration++)
+			for (int iteration=0; iteration<iterations; iteration++)
 				{
 					for (int z=min.z; z<max.z; z++)
 					{
@@ -935,9 +935,9 @@ namespace MapMagic
 			public void Blur (System.Func<float,float,float,float> blurFn=null, float intensity=0.666f, bool additive=false, bool takemax=false, bool horizontal=true, bool vertical=true, Matrix reference=null)
 			{
 				if (reference==null) reference = this;
-				Coord min = rect.Min; Coord max = rect.Max;
+				var min = rect.Min; var max = rect.Max;
 
-				if (horizontal)
+			if (horizontal)
 				for (int z=min.z; z<max.z; z++)
 				{
 					SetPos(min.x,z);
@@ -1002,8 +1002,8 @@ namespace MapMagic
 			public void LossBlur (int step=2, bool horizontal=true, bool vertical=true, Matrix reference=null)
 			{
 				if (reference==null) reference = this;
-				Coord min = rect.Min; Coord max = rect.Max;
-				int stepShift = step + step/2;
+				var min = rect.Min; var max = rect.Max;
+			int stepShift = step + step/2;
 
 				if (horizontal)
 				for (int z=min.z; z<max.z; z++)
@@ -1200,15 +1200,15 @@ namespace MapMagic
 				if (anyMatrixNum == -1) { Debug.LogError("No matrices were found to blend " + matrices.Length); return; }
 
 				//finding rect
-				CoordRect rect = matrices[anyMatrixNum].rect;
+				var rect = matrices[anyMatrixNum].rect;
 
-				//checking rect size
-				#if WDEBUG
+			//checking rect size
+#if WDEBUG
 				for (int i=0; i<matrices.Length; i++)
 					if (matrices[i]!=null && matrices[i].rect!=rect) { Debug.LogError("Matrix rect mismatch " + rect + " " + matrices[i].rect); return; }
-				#endif
+#endif
 
-				int rectCount = rect.Count;
+			int rectCount = rect.Count;
 				for (int pos=0; pos<rectCount; pos++)
 				{
 					float sum = 0;
@@ -1239,16 +1239,16 @@ namespace MapMagic
 				if (anyMatrixNum == -1) { Debug.LogError("No matrices were found to blend " + matrices.Length); return; }
 
 				//finding rect
-				CoordRect rect = matrices[anyMatrixNum].rect;
+				var rect = matrices[anyMatrixNum].rect;
 
-				//checking rect size
-				#if WDEBUG
+			//checking rect size
+#if WDEBUG
 				for (int i=0; i<matrices.Length; i++)
 					if (matrices[i]!=null && matrices[i].rect!=rect) { Debug.LogError("Matrix rect mismatch " + rect + " " + matrices[i].rect); return; }
-				#endif
+#endif
 
 
-				int rectCount = rect.Count;
+			int rectCount = rect.Count;
 				for (int pos=0; pos<rectCount; pos++)
 				{
 					for (int i=0; i<matrices.Length; i++) matrices[i].array[pos] *= opacity[i];
@@ -1283,9 +1283,9 @@ namespace MapMagic
 			public void FillEmpty ()
 			{
 				float prev = 0;
-				Coord min = rect.Min; Coord max = rect.Max;
+				var min = rect.Min; var max = rect.Max;
 
-				for (int x=min.x; x<max.x; x++)
+			for (int x=min.x; x<max.x; x++)
 				{
 					prev = 0;
 					for (int z=min.z; z<max.z; z++)
@@ -1340,8 +1340,8 @@ namespace MapMagic
 
 			static public void SafeBorders (Matrix src, Matrix dst, int safeBorders) //changes dst, not src
 			{
-				Coord min = dst.rect.Min; Coord max = dst.rect.Max;
-				for (int x=min.x; x<max.x; x++)
+				var min = dst.rect.Min; var max = dst.rect.Max;
+			for (int x=min.x; x<max.x; x++)
 					for (int z=min.z; z<max.z; z++)
 				{
 					int distFromBorder = Mathf.Min( Mathf.Min(x-min.x,max.x-x), Mathf.Min(z-min.z,max.z-z) );

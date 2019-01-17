@@ -61,7 +61,7 @@ namespace Segritude.Inventory
 
 		public void AddItem(Item item, int amount)
 		{
-			if (amount <= 0)
+			if (amount <= 0 || item is null)
 				return;
 			for (int i = 0; amount > 0 && i < Count; i++)
 			{

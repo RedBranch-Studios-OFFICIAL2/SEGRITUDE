@@ -159,10 +159,10 @@ namespace MapMagic
 				if (zoom+zoomChange < minZoom) zoomChange = minZoom-zoom;
 			
 				//record mouse position in worldspace
-				Vector2 worldMousePos = (Event.current.mousePosition - scroll)/zoom;
+				var worldMousePos = (Event.current.mousePosition - scroll)/zoom;
 
-				//changing zoom
-				zoom += zoomChange;
+			//changing zoom
+			zoom += zoomChange;
 			
 				if (zoom >= minZoom && zoom <= maxZoom) scroll -= worldMousePos*zoomChange;
 				//zoom = Mathf.Clamp(zoom, minZoom, maxZoom); //returning on out-of-range instead
@@ -286,9 +286,9 @@ namespace MapMagic
 
 			public Texture2D GetIcon (string textureName)
 			{
-				string nonProName = textureName;
-				#if UNITY_EDITOR
-				if (UnityEditor.EditorGUIUtility.isProSkin) textureName += "_pro";
+				var nonProName = textureName;
+#if UNITY_EDITOR
+			if (UnityEditor.EditorGUIUtility.isProSkin) textureName += "_pro";
 				#endif
 				
 				Texture2D texture=null;
@@ -310,10 +310,10 @@ namespace MapMagic
 				//drawing animation frames
 				if (animationFrames != 0)
 				{
-					System.DateTime now = System.DateTime.Now;
-					int frameNum = (int)((now.Second*5f + now.Millisecond*5f/1000f) % animationFrames);
-					string frameString = (frameNum+1<10? "0" : "") + (frameNum+1).ToString();
-					return Icon(textureName + frameString, rect, horizontalAlign, verticalAlign, 0, frame, tile, clickable);
+					var now = System.DateTime.Now;
+				int frameNum = (int)((now.Second*5f + now.Millisecond*5f/1000f) % animationFrames);
+					var frameString = (frameNum+1<10? "0" : "") + (frameNum+1).ToString();
+				return Icon(textureName + frameString, rect, horizontalAlign, verticalAlign, 0, frame, tile, clickable);
 				}
 				
 				//drawig texture
@@ -371,8 +371,8 @@ namespace MapMagic
 				else
 				{
 					//Debug.Log(zoom);
-					Rect localRect = ToDisplay(rect);
-					for (float x=0; x<rect.width; x+=texture.width*zoom)
+					var localRect = ToDisplay(rect);
+				for (float x=0; x<rect.width; x+=texture.width*zoom)
 						for (float y=0; y<rect.height; y+=texture.height*zoom)
 						{
 							if (alphaBlend) GUI.DrawTexture(new Rect(x+localRect.x, y+localRect.y, texture.width*zoom, texture.height*zoom), texture, ScaleMode.StretchToFill);
@@ -395,9 +395,9 @@ namespace MapMagic
 			{
 				if (Event.current.type != EventType.Repaint) return;
 
-				GUIStyle elementStyle = elementStyles.CheckGet(textureName);
-	
-				if (elementStyle == null || elementStyle.normal.background == null || elementStyle.hover.background == null)
+				var elementStyle = elementStyles.CheckGet(textureName);
+
+			if (elementStyle == null || elementStyle.normal.background == null || elementStyle.hover.background == null)
 				{
 					elementStyle = new GUIStyle();
 					elementStyle.normal.background = GetIcon(textureName); //Resources.Load("MapMagic_Window") as Texture2D;
@@ -409,8 +409,8 @@ namespace MapMagic
 				if (borders != null)
 					elementStyle.border = borders;
 
-				Rect paddedRect = ToDisplay(rect);
-				if (offset != null)
+				var paddedRect = ToDisplay(rect);
+			if (offset != null)
 					paddedRect = new Rect(paddedRect.x-offset.left, paddedRect.y-offset.top, paddedRect.width+offset.left+offset.right, paddedRect.height+offset.top+offset.bottom);
 				
 				#if UNITY_EDITOR
@@ -586,10 +586,10 @@ namespace MapMagic
 
 				//finding field and label rects
 				if (label==null) fieldSize = 1;
-				Rect labelRect = rect.Clamp(1f-fieldSize); //new Rect(rect.x, rect.y, (1f-_fieldSize)*rect.width, rect.height);
-				Rect fieldRect = rect.ClampFromLeft((float)fieldSize); //new Rect(rect.x+(1f-_fieldSize)*rect.width, rect.y, _fieldSize*rect.width, rect.height);
-				
-				Rect sliderRect = fieldRect.Clamp((float)sliderSize); sliderRect = sliderRect.Clamp((int)sliderRect.width-4);
+				var labelRect = rect.Clamp(1f-fieldSize); //new Rect(rect.x, rect.y, (1f-_fieldSize)*rect.width, rect.height);
+			var fieldRect = rect.ClampFromLeft((float)fieldSize); //new Rect(rect.x+(1f-_fieldSize)*rect.width, rect.y, _fieldSize*rect.width, rect.height);
+
+			var sliderRect = fieldRect.Clamp((float)sliderSize); sliderRect = sliderRect.Clamp((int)sliderRect.width-4);
 				if (slider) fieldRect = fieldRect.ClampFromLeft(1f-sliderSize);
 
 				//prefix label 
@@ -599,12 +599,12 @@ namespace MapMagic
 			//	GUI.SetNextControlName("LayoutField");
 
 				//drawing field
-				object srcObj = (object)src;
-				object dstObj = default(T);
+				var srcObj = (object)src;
+			object dstObj = default(T);
 
 				#if UNITY_EDITOR
-				System.Type type = typeof(T);
-				if (type == typeof(float)) 
+				var type = typeof(T);
+			if (type == typeof(float)) 
 				{
 					float val = (float)srcObj;
 
@@ -660,15 +660,15 @@ namespace MapMagic
 				}
 				else if (type == typeof(Vector2)) 
 				{
-					Rect leftRect = fieldRect.Clamp((int)(fieldRect.width/2f-1));
-					Rect rightRect = fieldRect.ClampFromLeft((int)(fieldRect.width/2f-1));
+					var leftRect = fieldRect.Clamp((int)(fieldRect.width/2f-1));
+				var rightRect = fieldRect.ClampFromLeft((int)(fieldRect.width/2f-1));
 
-					Vector2 val = (Vector2)srcObj;
+				var val = (Vector2)srcObj;
 
-					if (slider)
+				if (slider)
 					{
-						Vector2 newval = val;
-						if (!quadratic) UnityEditor.EditorGUI.MinMaxSlider(ToDisplay(sliderRect), ref newval.x, ref newval.y, min, max);
+						var newval = val;
+					if (!quadratic) UnityEditor.EditorGUI.MinMaxSlider(ToDisplay(sliderRect), ref newval.x, ref newval.y, min, max);
 						else 
 						{
 							newval = new Vector2(Mathf.Pow(newval.x,0.5f), Mathf.Pow(newval.y,0.5f));
@@ -686,25 +686,25 @@ namespace MapMagic
 				}
 				else if (type == typeof(Coord)) 
 				{
-					Rect leftRect = fieldRect.Clamp((int)(fieldRect.width/2f-1));
-					Rect rightRect = fieldRect.ClampFromLeft((int)(fieldRect.width/2f-1));
+					var leftRect = fieldRect.Clamp((int)(fieldRect.width/2f-1));
+				var rightRect = fieldRect.ClampFromLeft((int)(fieldRect.width/2f-1));
 
-					Coord val = (Coord)srcObj;
+				var val = (Coord)srcObj;
 
-					val.x = Field(val.x, rect:leftRect, min:min, max:max, limit:limit, monitorChange:false, disabled:disabled, dragChange:dragChange, slider:false, quadratic:quadratic, tooltip:tooltip);
+				val.x = Field(val.x, rect:leftRect, min:min, max:max, limit:limit, monitorChange:false, disabled:disabled, dragChange:dragChange, slider:false, quadratic:quadratic, tooltip:tooltip);
 					val.z = Field(val.z, rect:rightRect, min:min, max:max, limit:limit, monitorChange:false, disabled:disabled, dragChange:dragChange, slider:false, quadratic:quadratic, tooltip:tooltip);
 
 					dstObj = val;
 				}
 				else if (type == typeof(Vector3)) 
 				{
-					Rect leftRect = fieldRect.Clamp((int)(fieldRect.width/3f-1));
-					Rect midRect = fieldRect.Clamp((int)(fieldRect.width/3f-1)); midRect.x += leftRect.width + 3;
-					Rect rightRect = fieldRect.ClampFromLeft((int)(fieldRect.width/3f-1));
+					var leftRect = fieldRect.Clamp((int)(fieldRect.width/3f-1));
+				var midRect = fieldRect.Clamp((int)(fieldRect.width/3f-1)); midRect.x += leftRect.width + 3;
+					var rightRect = fieldRect.ClampFromLeft((int)(fieldRect.width/3f-1));
 
-					Vector3 val = (Vector3)srcObj;
+				var val = (Vector3)srcObj;
 
-					val.x = Field(val.x, rect:leftRect, min:min, max:max, limit:limit, monitorChange:false, disabled:disabled, dragChange:dragChange, slider:false, quadratic:quadratic, tooltip:tooltip);
+				val.x = Field(val.x, rect:leftRect, min:min, max:max, limit:limit, monitorChange:false, disabled:disabled, dragChange:dragChange, slider:false, quadratic:quadratic, tooltip:tooltip);
 					val.y = Field(val.y, rect:midRect, min:min, max:max, limit:limit, monitorChange:false, disabled:disabled, dragChange:dragChange, slider:false, quadratic:quadratic, tooltip:tooltip);
 					val.z = Field(val.z, rect:rightRect, min:min, max:max, limit:limit, monitorChange:false, disabled:disabled, dragChange:dragChange, slider:false, quadratic:quadratic, tooltip:tooltip);
 
@@ -712,8 +712,8 @@ namespace MapMagic
 				}
 				else if (type == typeof(bool)) 
 				{
-					Rect fRect = fieldRect;//ToDisplay(fieldRect);
-					if (zoom > 0.75f) dstObj = UnityEditor.EditorGUI.Toggle(ToDisplay(new Rect(fRect.x,fRect.y,20,fRect.height)), (bool)srcObj);
+					var fRect = fieldRect;//ToDisplay(fieldRect);
+				if (zoom > 0.75f) dstObj = UnityEditor.EditorGUI.Toggle(ToDisplay(new Rect(fRect.x,fRect.y,20,fRect.height)), (bool)srcObj);
 					else  dstObj = UnityEditor.EditorGUI.Toggle(ToDisplay(new Rect(fRect.x,fRect.y,20,fRect.height)), (bool)srcObj, UnityEditor.EditorStyles.miniButton);
 				}
 				else if (type == typeof(string)) dstObj = UnityEditor.EditorGUI.TextField(ToDisplay(fieldRect), (string)srcObj, style!=null? style : fieldStyle);
@@ -741,11 +741,11 @@ namespace MapMagic
 				else if (type.IsSubclassOf(typeof(UnityEngine.Object))) dstObj = UnityEditor.EditorGUI.ObjectField(ToDisplay(fieldRect), (UnityEngine.Object)srcObj, type, allowSceneObject);
 				#endif
 
-				T dst = (T)dstObj;
+				var dst = (T)dstObj;
 
-				//end disabling
-				#if UNITY_EDITOR
-				if (disabled) UnityEditor.EditorGUI.EndDisabledGroup();
+			//end disabling
+#if UNITY_EDITOR
+			if (disabled) UnityEditor.EditorGUI.EndDisabledGroup();
 				#endif
 
 				//monitoring change
@@ -782,16 +782,16 @@ namespace MapMagic
 				UnityEditor.EditorGUI.HelpBox(ToDisplay(rect), null, UnityEditor.MessageType.None);
 				for (int p=0; p<curve.points.Length-1; p++)
 				{
-					Curve.Point prev = curve.points[p];
-					Curve.Point next = curve.points[p+1];
-					
-					Vector2 pos1 = new Vector2(prev.time, prev.val);
-					Vector2 pos2 = new Vector2(next.time, next.val);
+					var prev = curve.points[p];
+				var next = curve.points[p+1];
 
-					Vector2 tan1 = new Vector2((next.time-prev.time)/4f, prev.outTangent/4f) + pos1;
-					Vector2 tan2 = new Vector2((prev.time-next.time)/4f, -next.inTangent/4f) + pos2;
-					
-					pos1.x = pos1.x*rect.width + rect.x; pos1.y = -pos1.y*rect.height + rect.y + rect.height; 
+				var pos1 = new Vector2(prev.time, prev.val);
+				var pos2 = new Vector2(next.time, next.val);
+
+				var tan1 = new Vector2((next.time-prev.time)/4f, prev.outTangent/4f) + pos1;
+				var tan2 = new Vector2((prev.time-next.time)/4f, -next.inTangent/4f) + pos2;
+
+				pos1.x = pos1.x*rect.width + rect.x; pos1.y = -pos1.y*rect.height + rect.y + rect.height; 
 					pos2.x = pos2.x*rect.width + rect.x; pos2.y = -pos2.y*rect.height + rect.y + rect.height; 
 					tan1.x = tan1.x*rect.width + rect.x; tan1.y = -tan1.y*rect.height + rect.y + rect.height; 
 					tan2.x = tan2.x*rect.width + rect.x; tan2.y = -tan2.y*rect.height + rect.y + rect.height; 
@@ -823,15 +823,15 @@ namespace MapMagic
 					if (curveWindowType == null) curveWindowType = typeof(UnityEditor.EditorWindow).Assembly.GetType("UnityEditor.CurveEditorWindow");
 					if (UnityEditor.EditorWindow.focusedWindow != null && UnityEditor.EditorWindow.focusedWindow.GetType() == curveWindowType)
 					{
-						AnimationCurve windowCurve = curveWindowType.GetProperty("curve").GetValue(UnityEditor.EditorWindow.focusedWindow, null) as AnimationCurve;
-						if (windowCurve == src)
+						var windowCurve = curveWindowType.GetProperty("curve").GetValue(UnityEditor.EditorWindow.focusedWindow, null) as AnimationCurve;
+					if (windowCurve == src)
 						{
 							if (windowCurveRef == null) windowCurveRef = windowCurve.Copy();
 							if (!windowCurve.IdenticalTo(windowCurveRef))
 							{
 								
-								Keyframe[] tempKeys = windowCurve.keys;
-								windowCurve.keys = windowCurveRef.keys;
+								var tempKeys = windowCurve.keys;
+							windowCurve.keys = windowCurveRef.keys;
 								SetChange(true);
 								SetChange(true);
 								
@@ -874,8 +874,8 @@ namespace MapMagic
 				//setting styles
 				CheckStyles();
 
-				GUIStyle style = labelStyle;
-				if (url != null) style = urlStyle;
+				var style = labelStyle;
+			if (url != null) style = urlStyle;
 				if (helpbox) style = helpBoxStyle;
 
 				fontSize.Verify(this.fontSize);
@@ -887,11 +887,11 @@ namespace MapMagic
 				if (icon!=null) Icon(icon, new Rect(rect.x+4, rect.y, rect.width-8, rect.height), horizontalAlign:IconAligment.min, verticalAlign:IconAligment.center);
 
 				//gui content
-				GUIContent content = new GUIContent(label, tooltip);
+				var content = new GUIContent(label, tooltip);
 
-				//drawing label
-				#if UNITY_EDITOR
-				if (prefix) UnityEditor.EditorGUI.PrefixLabel(ToDisplay(rect), content, labelStyle); 
+			//drawing label
+#if UNITY_EDITOR
+			if (prefix) UnityEditor.EditorGUI.PrefixLabel(ToDisplay(rect), content, labelStyle); 
 				else if (helpbox) UnityEditor.EditorGUI.HelpBox(ToDisplay(rect), label, (UnityEditor.MessageType)messageType);
 				else if (url != null) 
 				{
@@ -915,10 +915,10 @@ namespace MapMagic
 			{
 				CheckStyles();
 				if (rect.width < 0.9f && rect.height < 0.9f) { Par(); rect = Inset(); }
-				GUIContent content = new GUIContent(label, tooltip);
+				var content = new GUIContent(label, tooltip);
 
-				//exit on markup
-				if (markup) return false;
+			//exit on markup
+			if (markup) return false;
 				
 				//disabling
 				disabled.Verify(this.disabled);
@@ -963,9 +963,9 @@ namespace MapMagic
 				CheckStyles();
 				if (rect.width < 0.9f && rect.height < 0.9f) { Par(); rect = Inset(); }		
 				if (markup) return src; //exit on markup
-				GUIContent content = new GUIContent(label, tooltip);
-				
-				bool dst = GUI.Toggle(ToDisplay(rect), src, content, buttonStyle);
+				var content = new GUIContent(label, tooltip);
+
+			bool dst = GUI.Toggle(ToDisplay(rect), src, content, buttonStyle);
 
 				monitorChange.Verify(this.monitorChange);
 				if (monitorChange)
@@ -1001,10 +1001,10 @@ namespace MapMagic
 				if (disabled) UnityEditor.EditorGUI.BeginDisabledGroup(true);
 				#endif
 
-				Rect fieldRect = new Rect(rect.x, rect.y, 20, rect.height);
-				Rect labelRect = new Rect(rect.x+20, rect.y, rect.width-20, rect.height);
+				var fieldRect = new Rect(rect.x, rect.y, 20, rect.height);
+			var labelRect = new Rect(rect.x+20, rect.y, rect.width-20, rect.height);
 
-				if (label != null) Label(label, labelRect);
+			if (label != null) Label(label, labelRect);
 
 				bool dst = src;
 				#if UNITY_EDITOR
@@ -1056,10 +1056,10 @@ namespace MapMagic
 
 				//finding field and label rects
 				if (label==null) fieldSize = 1;
-				Rect labelRect = rect.Clamp(1f-fieldSize); //new Rect(rect.x, rect.y, (1f-_fieldSize)*rect.width, rect.height);
-				Rect fieldRect = rect.ClampFromLeft((float)fieldSize); //new Rect(rect.x+(1f-_fieldSize)*rect.width, rect.y, _fieldSize*rect.width, rect.height);
+				var labelRect = rect.Clamp(1f-fieldSize); //new Rect(rect.x, rect.y, (1f-_fieldSize)*rect.width, rect.height);
+			var fieldRect = rect.ClampFromLeft((float)fieldSize); //new Rect(rect.x+(1f-_fieldSize)*rect.width, rect.y, _fieldSize*rect.width, rect.height);
 
-				if (label != null) Label(label, labelRect);
+			if (label != null) Label(label, labelRect);
 
 				int dst = src;
 				#if UNITY_EDITOR
@@ -1096,8 +1096,8 @@ namespace MapMagic
 				CheckStyles();
 				if (rect.width < 0.9f && rect.height < 0.9f) { Par(); rect = Inset(); }
 				if (markup) return src; //exit on markup
-				GUIContent content = new GUIContent(label, tooltip);
-				if (bold) foldoutStyle.fontStyle = FontStyle.Bold; else foldoutStyle.fontStyle = FontStyle.Normal;
+				var content = new GUIContent(label, tooltip);
+			if (bold) foldoutStyle.fontStyle = FontStyle.Bold; else foldoutStyle.fontStyle = FontStyle.Normal;
 
 				//offset rect to make triangle within field
 				rect.x += 12; rect.width -= 12;
@@ -1126,19 +1126,19 @@ namespace MapMagic
 				if (rect.width < 0.9f && rect.height < 0.9f) { Par(); rect = Inset(); }
 				if (markup) return; //exit on markup
 				label = "     " + label;
-				GUIContent content = new GUIContent(label, tooltip);
-				foldoutStyle.fontStyle = FontStyle.Normal;
+				var content = new GUIContent(label, tooltip);
+			foldoutStyle.fontStyle = FontStyle.Normal;
 				
 				#if UNITY_EDITOR
-				Rect foldoutRect = new Rect(rect.x+12, rect.y, 10, rect.height);
-				unfolded = UnityEditor.EditorGUI.Foldout(ToDisplay(foldoutRect), unfolded, " ", true, foldoutStyle);
+				var foldoutRect = new Rect(rect.x+12, rect.y, 10, rect.height);
+			unfolded = UnityEditor.EditorGUI.Foldout(ToDisplay(foldoutRect), unfolded, " ", true, foldoutStyle);
 				
-				Rect fieldRect = new Rect(rect.x+20, rect.y, 20, rect.height);
-				if (zoom > 0.75f) enabled = UnityEditor.EditorGUI.Toggle(ToDisplay(fieldRect), enabled);
+				var fieldRect = new Rect(rect.x+20, rect.y, 20, rect.height);
+			if (zoom > 0.75f) enabled = UnityEditor.EditorGUI.Toggle(ToDisplay(fieldRect), enabled);
 				else  enabled = UnityEditor.EditorGUI.Toggle(ToDisplay(fieldRect), enabled, UnityEditor.EditorStyles.miniButton);
 
-				Rect labelRect = new Rect(rect.x+20, rect.y, rect.width-50, rect.height);
-				UnityEditor.EditorGUI.LabelField(ToDisplay(labelRect), content);
+				var labelRect = new Rect(rect.x+20, rect.y, rect.width-50, rect.height);
+			UnityEditor.EditorGUI.LabelField(ToDisplay(labelRect), content);
 				#endif
 			}
 
@@ -1147,10 +1147,10 @@ namespace MapMagic
 				CheckStyles();
 				if (rect.width < 0.9f && rect.height < 0.9f) { Par(); rect = Inset(); }
 				if (markup) return; //exit on markup
-				GUIContent content = new GUIContent(label, tooltip);
+				var content = new GUIContent(label, tooltip);
 
-				#if UNITY_EDITOR
-				if (disabled) UnityEditor.EditorGUI.BeginDisabledGroup(true);
+#if UNITY_EDITOR
+			if (disabled) UnityEditor.EditorGUI.BeginDisabledGroup(true);
 				UnityEditor.EditorGUI.ProgressBar(ToDisplay(rect), progress, label);
 				if (disabled) UnityEditor.EditorGUI.EndDisabledGroup();
 				#endif
@@ -1161,9 +1161,9 @@ namespace MapMagic
 				CheckStyles();
 				if (rect.width < 0.9f && rect.height < 0.9f) { Par(); rect = Inset(); }
 				if (markup) return selected; //exit on markup
-				GUIContent content = new GUIContent(label, tooltip);
+				var content = new GUIContent(label, tooltip);
 
-				int newSelected = selected;
+			int newSelected = selected;
 				#if UNITY_EDITOR
 				newSelected = UnityEditor.EditorGUI. Popup(ToDisplay(rect), selected, displayedOptions);
 				#endif
@@ -1276,8 +1276,8 @@ namespace MapMagic
 				Par(18); Inset(1-fieldSize.val);
 				if (Button("Save as Copy", rect:Inset(fieldSize.val), disabled:asset==null))
 				{
-					T copyAsset = ScriptableObject.Instantiate<T>(asset);
-					SaveAsset(copyAsset,savePath);
+					var copyAsset = ScriptableObject.Instantiate<T>(asset);
+				SaveAsset(copyAsset,savePath);
 				}
 				#endif
 
@@ -1376,11 +1376,11 @@ namespace MapMagic
 			//actions args are mouse pos and dragged rect
 			//both actions and if (DragDrop) switch (dragState) could be used
 			{
-				Vector2 mousePos = ToInternal(Event.current.mousePosition);
+				var mousePos = ToInternal(Event.current.mousePosition);
 
-				
-				//dragging
-				if (id==dragId) dragState = DragState.Drag;
+
+			//dragging
+			if (id==dragId) dragState = DragState.Drag;
 
 				//pressing
 				if (Event.current.type==EventType.MouseDown && Event.current.button==0 && initialRect.Contains(mousePos))
@@ -1429,22 +1429,22 @@ namespace MapMagic
 
 			public Rect ResizeRect (Rect rectBase, int id, int border=6, bool sideResize=true)
 			{
-				Rect rect = ToDisplay(rectBase);
-				
-				//bound rects
-				Rect rightRect = new Rect(rect.x+rect.width-border/2, rect.y, border, rect.height);
-				Rect leftRect = new Rect(rect.x-border/2, rect.y, border, rect.height);
-				Rect topRect = new Rect(rect.x, rect.y-border/2, rect.width, border);
-				Rect bottomRect = new Rect(rect.x, rect.y+rect.height-border/2, rect.width, border);
+				var rect = ToDisplay(rectBase);
 
-				Rect rightTopRect = new Rect(rect.x+rect.width-border, rect.y-border, border*2, border*2);
-				Rect leftTopRect = new Rect(rect.x-border, rect.y-border, border*2, border*2);
-				Rect rightBottomRect = new Rect(rect.x+rect.width-border, rect.y+rect.height-border, border*2, border*2);
-				Rect leftBottomRect = new Rect(rect.x-border, rect.y+rect.height-border, border*2, border*2);
-				
-				//drawing cursor
-				#if UNITY_EDITOR
-				UnityEditor.EditorGUIUtility.AddCursorRect (rightTopRect, UnityEditor.MouseCursor.ResizeUpRight);
+			//bound rects
+			var rightRect = new Rect(rect.x+rect.width-border/2, rect.y, border, rect.height);
+			var leftRect = new Rect(rect.x-border/2, rect.y, border, rect.height);
+			var topRect = new Rect(rect.x, rect.y-border/2, rect.width, border);
+			var bottomRect = new Rect(rect.x, rect.y+rect.height-border/2, rect.width, border);
+
+			var rightTopRect = new Rect(rect.x+rect.width-border, rect.y-border, border*2, border*2);
+			var leftTopRect = new Rect(rect.x-border, rect.y-border, border*2, border*2);
+			var rightBottomRect = new Rect(rect.x+rect.width-border, rect.y+rect.height-border, border*2, border*2);
+			var leftBottomRect = new Rect(rect.x-border, rect.y+rect.height-border, border*2, border*2);
+
+			//drawing cursor
+#if UNITY_EDITOR
+			UnityEditor.EditorGUIUtility.AddCursorRect (rightTopRect, UnityEditor.MouseCursor.ResizeUpRight);
 				UnityEditor.EditorGUIUtility.AddCursorRect (leftTopRect, UnityEditor.MouseCursor.ResizeUpLeft);
 				UnityEditor.EditorGUIUtility.AddCursorRect (rightBottomRect, UnityEditor.MouseCursor.ResizeUpLeft);
 				UnityEditor.EditorGUIUtility.AddCursorRect (leftBottomRect, UnityEditor.MouseCursor.ResizeUpRight);
@@ -1459,8 +1459,8 @@ namespace MapMagic
 				#endif
 
 				//pressing
-				Vector2 mp = Event.current.mousePosition;
-				bool anyRectsContains = rightTopRect.Contains(mp) || leftTopRect.Contains(mp) || rightBottomRect.Contains(mp) || leftBottomRect.Contains(mp);
+				var mp = Event.current.mousePosition;
+			bool anyRectsContains = rightTopRect.Contains(mp) || leftTopRect.Contains(mp) || rightBottomRect.Contains(mp) || leftBottomRect.Contains(mp);
 				if (sideResize) anyRectsContains = anyRectsContains || rightRect.Contains(mp) || leftRect.Contains(mp) || topRect.Contains(mp) || bottomRect.Contains(mp);
 
 				if (Event.current.type==EventType.MouseDown && anyRectsContains) 
@@ -1486,9 +1486,9 @@ namespace MapMagic
 				//dragging
 				if (id==dragId)
 				{
-					Vector2 dragDist = Event.current.mousePosition - dragPos;
+					var dragDist = Event.current.mousePosition - dragPos;
 
-					if (dragSide==DragSide.right || dragSide==DragSide.rightTop || dragSide==DragSide.rightBottom) rect.width = dragInitialRect.width + dragDist.x;
+				if (dragSide==DragSide.right || dragSide==DragSide.rightTop || dragSide==DragSide.rightBottom) rect.width = dragInitialRect.width + dragDist.x;
 					if (dragSide==DragSide.left || dragSide==DragSide.leftTop || dragSide==DragSide.leftBottom) { rect.width = dragInitialRect.width - dragDist.x; rect.x = dragInitialRect.x + dragDist.x; }
 					if (dragSide==DragSide.top || dragSide==DragSide.leftTop || dragSide==DragSide.rightTop) { rect.height = dragInitialRect.height - dragDist.y; rect.y = dragInitialRect.y + dragDist.y; }
 					if (dragSide==DragSide.bottom || dragSide==DragSide.leftBottom || dragSide==DragSide.rightBottom) { rect.height = dragInitialRect.height + dragDist.y; }
@@ -1603,21 +1603,21 @@ namespace MapMagic
 				int rMargin = rightMargin;
 
 				//rendering in markup mode
-				Rect startCursor = cursor;
-				bool prevMarkup = markup; 
+				var startCursor = cursor;
+			bool prevMarkup = markup; 
 				markup = true;
 				onGUI(this); 
 				markup = prevMarkup;
-				Rect endCursor = cursor;
-				Par(0, margin:0);
+				var endCursor = cursor;
+			Par(0, margin:0);
 
 				//calculating rect
-				Rect layerRect = new Rect(
+				var layerRect = new Rect(
 					startCursor.x, 
 					startCursor.y, 
 					endCursor.x-startCursor.x, 
 					endCursor.y-startCursor.y + endCursor.height); //-1 is initial padding
-				layerRect.y += field.y;
+			layerRect.y += field.y;
 
 				//making rect full width
 				if (fullWidth)
@@ -1644,10 +1644,10 @@ namespace MapMagic
 				bool curIsSelected = selectedNum==num;
 
 				//calculating background rect
-				Rect backgroundRect = GetBackgroundRect( (Layout tmp) => { Par(heightSpacing,margin:0); onGUI(this, curIsSelected, num); Par(heightSpacing,margin:0); } );
+				var backgroundRect = GetBackgroundRect( (Layout tmp) => { Par(heightSpacing,margin:0); onGUI(this, curIsSelected, num); Par(heightSpacing,margin:0); } );
 
-				//modifying background rect
-				backgroundRect.x += widthOffset;
+			//modifying background rect
+			backgroundRect.x += widthOffset;
 				backgroundRect.width -= widthOffset*2;
 
 				//selecting
@@ -1685,10 +1685,10 @@ namespace MapMagic
 
 			public void Foreground (Rect startAnchor, Rect endAnchor, int padding=3)
 			{
-				Vector2 start = startAnchor.position;
-				Vector2 end = endAnchor.position + endAnchor.size;
+				var start = startAnchor.position;
+			var end = endAnchor.position + endAnchor.size;
 
-				Element("DPLayout_FoldoutBackground", 
+			Element("DPLayout_FoldoutBackground", 
 					new Rect(
 						start.x-padding, 
 						start.y-padding, 
@@ -1700,12 +1700,12 @@ namespace MapMagic
 			public void Foreground (Rect startAnchor, int padding=3)
 			{
 				Par(0,padding:0); Inset(1);
-				Rect endAnchor = lastRect;
-				
-				Vector2 start = startAnchor.position;
-				Vector2 end = endAnchor.position + endAnchor.size;
+				var endAnchor = lastRect;
 
-				Element("DPLayout_FoldoutBackground", 
+			var start = startAnchor.position;
+			var end = endAnchor.position + endAnchor.size;
+
+			Element("DPLayout_FoldoutBackground", 
 					new Rect(
 						start.x-padding, 
 						start.y-padding, 
@@ -1732,10 +1732,10 @@ namespace MapMagic
 			public void MatField<T> (Material mat, string name, string label=null, Rect rect = new Rect(), float min=-200000000, float max=200000000, bool limit=true, Val fieldSize = new Val(), Val sliderSize = new Val(), Val monitorChange = new Val(), Val useEvent = new Val(), Val disabled = new Val(), Val dragChange = new Val(), Val slider = new Val(), Val quadratic = new Val(), Val allowSceneObject = new Val(), Val delayed = new Val(), GUIStyle style=null, string tooltip=null, bool zwOfVector4=false)
 			{ 
 				if (mat==null || !mat.HasProperty(name)) return; //Field(default(T), label, disabled: true);
-				Vector4 fullVector = new Vector4();
+				var fullVector = new Vector4();
 
-				T prop = default(T);
-				if (typeof(T) == typeof(float)) prop = (T)(object)mat.GetFloat(name);
+			var prop = default(T);
+			if (typeof(T) == typeof(float)) prop = (T)(object)mat.GetFloat(name);
 				else if (typeof(T) == typeof(int)) prop = (T)(object)mat.GetInt(name);
 				else if (typeof(T) == typeof(Color)) prop = (T)(object)mat.GetColor(name);
 				else if (typeof(T) == typeof(Vector2))
@@ -1758,8 +1758,8 @@ namespace MapMagic
 					else if (typeof(T) == typeof(Color)) mat.SetColor(name, (Color)(object)prop);
 					else if (typeof(T) == typeof(Vector2))
 					{
-						Vector2 vec = (Vector2)(object)prop;
-						if (!zwOfVector4) { fullVector.x=vec.x; fullVector.y=vec.y; }
+						var vec = (Vector2)(object)prop;
+					if (!zwOfVector4) { fullVector.x=vec.x; fullVector.y=vec.y; }
 						else { fullVector.z=vec.x; fullVector.w=vec.y; }
 						mat.SetVector(name, fullVector);
 					}

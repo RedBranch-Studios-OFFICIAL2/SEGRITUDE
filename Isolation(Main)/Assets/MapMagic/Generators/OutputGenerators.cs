@@ -54,14 +54,14 @@ namespace MapMagic
 				//if (stop!=null && stop(0)) return; //do not break while results.heights is empty!
 
 				//loading inputs
-				Matrix heights = (Matrix)gen.input.GetObject(results);
+				var heights = (Matrix)gen.input.GetObject(results);
 				if (heights == null) continue;
 
 				//loading biome matrix
 				Matrix biomeMask = null;
 				if (gen.biome != null)
 				{
-					object biomeMaskObj = gen.biome.mask.GetObject(results);
+					var biomeMaskObj = gen.biome.mask.GetObject(results);
 					if (biomeMaskObj == null) continue; //adding nothing if biome has no mask
 					biomeMask = (Matrix)biomeMaskObj;
 					if (biomeMask == null) continue;
@@ -76,7 +76,7 @@ namespace MapMagic
 			//creating 2d array
 			if (stop!=null && stop(0)) return;
 			int heightSize = terrainSize.resolution * scale + 1;
-			float[,] heights2D = new float[heightSize, heightSize];
+			var heights2D = new float[heightSize, heightSize];
 			for (int x = 0; x < heightSize - 1; x++)
 				for (int z = 0; z < heightSize - 1; z++)
 				{
@@ -190,7 +190,7 @@ namespace MapMagic
 			//skipping if already purged
 			if (terrain.terrainData.heightmapResolution<=33) return;
 
-			float[,] heights2D = new float[33, 33];
+			var heights2D = new float[33, 33];
 			terrain.terrainData.heightmapResolution = heights2D.GetLength(0);
 			terrain.terrainData.SetHeights(0, 0, heights2D);
 			terrain.terrainData.size = new Vector3(MapMagic.instance.terrainSize, MapMagic.instance.terrainHeight, MapMagic.instance.terrainSize);
@@ -233,8 +233,8 @@ namespace MapMagic
 			#endif
 
 			#else
-			float[,] heights2D = (float[,])dataBox;
-			#endif
+			var heights2D = (float[,])dataBox;
+#endif
 
 			//quick lod apply
 			/*if (chunk.lod)
@@ -250,10 +250,10 @@ namespace MapMagic
 
 			//determining data
 			if (terrain==null || terrain.terrainData==null) yield break; //chunk removed during apply
-			TerrainData data = terrain.terrainData;
+			var data = terrain.terrainData;
 
 			//resizing terrain (standard terrain resize is extremely slow. Even when creating a new terrain)
-			Vector3 terrainSize = terrain.terrainData.size; //new Vector3(MapMagic.instance.terrainSize, MapMagic.instance.terrainHeight, MapMagic.instance.terrainSize);
+			var terrainSize = terrain.terrainData.size; //new Vector3(MapMagic.instance.terrainSize, MapMagic.instance.terrainHeight, MapMagic.instance.terrainSize);
 			int terrainResolution = heights2D.GetLength(0); //heights2D[0].GetLength(0);
 			if ((data.size - terrainSize).sqrMagnitude > 0.01f || data.heightmapResolution != terrainResolution)
 			{
@@ -277,31 +277,31 @@ namespace MapMagic
 			//welding
 			if (MapMagic.instance != null && MapMagic.instance.heightWeldMargins!=0)
 			{
-				Coord coord = Coord.PickCell(rect.offset, MapMagic.instance.resolution);
-				Chunk chunk = MapMagic.instance.chunks[coord.x, coord.z];
-				
-				Chunk neigPrevX = MapMagic.instance.chunks[coord.x-1, coord.z];
+				var coord = Coord.PickCell(rect.offset, MapMagic.instance.resolution);
+				var chunk = MapMagic.instance.chunks[coord.x, coord.z];
+
+				var neigPrevX = MapMagic.instance.chunks[coord.x-1, coord.z];
 				if (neigPrevX!=null && neigPrevX.terrain.terrainData.heightmapResolution==terrainResolution)
 				{
 					if (neigPrevX.worker.ready) WeldTerrains.WeldToPrevX(ref heights2D, neigPrevX.terrain, MapMagic.instance.heightWeldMargins);
 					Chunk.SetNeigsX(neigPrevX, chunk);
 				}
 
-				Chunk neigNextX = MapMagic.instance.chunks[coord.x+1, coord.z];
+				var neigNextX = MapMagic.instance.chunks[coord.x+1, coord.z];
 				if (neigNextX!=null && neigNextX.terrain.terrainData.heightmapResolution==terrainResolution)
 				{
 					if (neigNextX.worker.ready) WeldTerrains.WeldToNextX(ref heights2D, neigNextX.terrain, MapMagic.instance.heightWeldMargins);
 					Chunk.SetNeigsX(chunk, neigNextX);
 				}
 
-				Chunk neigPrevZ = MapMagic.instance.chunks[coord.x, coord.z-1];
+				var neigPrevZ = MapMagic.instance.chunks[coord.x, coord.z-1];
 				if (neigPrevZ!=null  && neigPrevZ.terrain.terrainData.heightmapResolution==terrainResolution)
 				{
 					if (neigPrevZ.worker.ready) WeldTerrains.WeldToPrevZ(ref heights2D, neigPrevZ.terrain, MapMagic.instance.heightWeldMargins);
 					Chunk.SetNeigsZ(neigPrevZ, chunk);
 				}
 
-				Chunk neigNextZ = MapMagic.instance.chunks[coord.x, coord.z+1];
+				var neigNextZ = MapMagic.instance.chunks[coord.x, coord.z+1];
 				if (neigNextZ!=null  && neigNextZ.terrain.terrainData.heightmapResolution==terrainResolution)
 				{
 					if (neigNextZ.worker.ready) WeldTerrains.WeldToNextZ(ref heights2D, neigNextZ.terrain, MapMagic.instance.heightWeldMargins);
@@ -425,7 +425,7 @@ namespace MapMagic
 			if ((stop!=null && stop(0)) || !enabled) return;
 
 			//loading inputs
-			Matrix[] matrices = new Matrix[baseLayers.Length];
+			var matrices = new Matrix[baseLayers.Length];
 			for (int i = 0; i < baseLayers.Length; i++)
 			{
 				if (baseLayers[i].input != null)
@@ -441,7 +441,7 @@ namespace MapMagic
 			matrices[0].Fill(1);
 
 			//populating opacity array
-			float[] opacities = new float[matrices.Length];
+			var opacities = new float[matrices.Length];
 			for (int i = 0; i < baseLayers.Length; i++)
 				opacities[i] = baseLayers[i].opacity;
 			opacities[0] = 1;
@@ -462,10 +462,10 @@ namespace MapMagic
 			if (stop!=null && stop(0)) return;
 
 			//gathering prototypes and matrices lists
-			List<SplatPrototype> prototypesList = new List<SplatPrototype>();
-			List<float> opacities = new List<float>();
-			List<Matrix> matrices = new List<Matrix>();
-			List<Matrix> biomeMasks = new List<Matrix>();
+			var prototypesList = new List<SplatPrototype>();
+			var opacities = new List<float>();
+			var matrices = new List<Matrix>();
+			var biomeMasks = new List<Matrix>();
 
 			foreach (SplatOutput gen in gens.GeneratorsOfType<SplatOutput>(onlyEnabled: true, checkBiomes: true))
 			{
@@ -473,7 +473,7 @@ namespace MapMagic
 				Matrix biomeMask = null;
 				if (gen.biome != null)
 				{
-					object biomeMaskObj = gen.biome.mask.GetObject(results);
+					var biomeMaskObj = gen.biome.mask.GetObject(results);
 					if (biomeMaskObj == null) continue; //adding nothing if biome has no mask
 					biomeMask = (Matrix)biomeMaskObj;
 					if (biomeMask == null) continue;
@@ -483,10 +483,10 @@ namespace MapMagic
 				for (int i = 0; i < gen.baseLayers.Length; i++)
 				{
 					//reading output directly
-					Output output = gen.baseLayers[i].output;
+					var output = gen.baseLayers[i].output;
 					if (stop!=null && stop(0)) return; //checking stop before reading output
 					if (!results.results.ContainsKey(output)) continue;
-					Matrix matrix = (Matrix)results.results[output];
+					var matrix = (Matrix)results.results[output];
 					matrix.Clamp01();
 
 					//adding to lists
@@ -503,7 +503,7 @@ namespace MapMagic
 //				{ prototypesList.RemoveAt(i); opacities.RemoveAt(i); matrices.RemoveAt(i); biomeMasks.RemoveAt(i); }
 
 			//creating array
-			float[,,] splats3D = new float[terrainSize.resolution, terrainSize.resolution, prototypesList.Count];
+			var splats3D = new float[terrainSize.resolution, terrainSize.resolution, prototypesList.Count];
 			if (matrices.Count == 0) { results.apply.CheckAdd(typeof(SplatOutput), new TupleSet<float[,,], SplatPrototype[]>(splats3D, new SplatPrototype[0]), replace: true); return; }
 
 			//filling array
@@ -513,7 +513,7 @@ namespace MapMagic
 			int maxX = splats3D.GetLength(0); int maxZ = splats3D.GetLength(1); //MapMagic.instance.resolution should not be used because of possible lods
 																				//CoordRect rect =  matrices[0].rect;
 
-			float[] values = new float[numLayers]; //row, to avoid reading/writing 3d array (it is too slow)
+			var values = new float[numLayers]; //row, to avoid reading/writing 3d array (it is too slow)
 
 			for (int x = 0; x < maxX; x++)
 				for (int z = 0; z < maxZ; z++)
@@ -537,19 +537,19 @@ namespace MapMagic
 
 			//pushing to apply
 			if (stop!=null && stop(0)) return;
-			TupleSet<float[,,], SplatPrototype[]> splatsTuple = new TupleSet<float[,,], SplatPrototype[]>(splats3D, prototypesList.ToArray());
+			var splatsTuple = new TupleSet<float[,,], SplatPrototype[]>(splats3D, prototypesList.ToArray());
 			results.apply.CheckAdd(typeof(SplatOutput), splatsTuple, replace: true);
 		}
 
 		public static IEnumerator Apply(CoordRect rect, Terrain terrain, object dataBox, Func<float,bool> stop= null)
 		{
-			TupleSet<float[,,], SplatPrototype[]> splatsTuple = (TupleSet<float[,,], SplatPrototype[]>)dataBox;
-			float[,,] splats3D = splatsTuple.item1;
-			SplatPrototype[] prototypes = splatsTuple.item2;
+			var splatsTuple = (TupleSet<float[,,], SplatPrototype[]>)dataBox;
+			var splats3D = splatsTuple.item1;
+			var prototypes = splatsTuple.item2;
 
 			if (splats3D.GetLength(2) == 0) { Purge(rect,terrain); yield break; }
 
-			TerrainData data = terrain.terrainData;
+			var data = terrain.terrainData;
 
 			//setting resolution
 			int size = splats3D.GetLength(0);
@@ -563,19 +563,19 @@ namespace MapMagic
 			//welding
 			if (MapMagic.instance != null && MapMagic.instance.splatsWeldMargins!=0)
 			{
-				Coord coord = Coord.PickCell(rect.offset, MapMagic.instance.resolution);
+				var coord = Coord.PickCell(rect.offset, MapMagic.instance.resolution);
 				//Chunk chunk = MapMagic.instance.chunks[coord.x, coord.z];
-				
-				Chunk neigPrevX = MapMagic.instance.chunks[coord.x-1, coord.z];
+
+				var neigPrevX = MapMagic.instance.chunks[coord.x-1, coord.z];
 				if (neigPrevX!=null && neigPrevX.worker.ready) WeldTerrains.WeldSplatToPrevX(ref splats3D, neigPrevX.terrain, MapMagic.instance.splatsWeldMargins);
 
-				Chunk neigNextX = MapMagic.instance.chunks[coord.x+1, coord.z];
+				var neigNextX = MapMagic.instance.chunks[coord.x+1, coord.z];
 				if (neigNextX!=null && neigNextX.worker.ready) WeldTerrains.WeldSplatToNextX(ref splats3D, neigNextX.terrain, MapMagic.instance.splatsWeldMargins);
 
-				Chunk neigPrevZ = MapMagic.instance.chunks[coord.x, coord.z-1];
+				var neigPrevZ = MapMagic.instance.chunks[coord.x, coord.z-1];
 				if (neigPrevZ!=null && neigPrevZ.worker.ready) WeldTerrains.WeldSplatToPrevZ(ref splats3D, neigPrevZ.terrain, MapMagic.instance.splatsWeldMargins);
 
-				Chunk neigNextZ = MapMagic.instance.chunks[coord.x, coord.z+1];
+				var neigNextZ = MapMagic.instance.chunks[coord.x, coord.z+1];
 				if (neigNextZ!=null && neigNextZ.worker.ready) WeldTerrains.WeldSplatToNextZ(ref splats3D, neigNextZ.terrain, MapMagic.instance.splatsWeldMargins);
 			}
 			yield return null;
@@ -592,12 +592,12 @@ namespace MapMagic
 			//skipping if already purged
 			if (terrain.terrainData.alphamapResolution<=16) return; //using 8 will return resolution to 16
 
-			SplatPrototype[] prototypes = new SplatPrototype[1];
+			var prototypes = new SplatPrototype[1];
 			if (prototypes[0] == null) prototypes[0] = new SplatPrototype();
 			if (prototypes[0].texture == null) prototypes[0].texture = defaultTex;
 			terrain.terrainData.splatPrototypes = prototypes;
 
-			float[,,] emptySplats = new float[16, 16, 1];
+			var emptySplats = new float[16, 16, 1];
 			for (int x = 0; x < 16; x++)
 				for (int z = 0; z < 16; z++)
 					emptySplats[z, x, 0] = 1;
@@ -730,19 +730,19 @@ namespace MapMagic
 		{
 			if (stop!=null && stop(0)) return;
 
-			Noise noise = new Noise(12345, permutationCount:128); //to pick objects based on biome
+			var noise = new Noise(12345, permutationCount:128); //to pick objects based on biome
 
 			//preparing output
-			Dictionary<Transform, List<ObjectPool.Transition>> transitions = new Dictionary<Transform, List<ObjectPool.Transition>>();
+			var transitions = new Dictionary<Transform, List<ObjectPool.Transition>>();
 
 			//find all of the biome masks - they will be used to determine object probability
-			List<TupleSet<ObjectOutput,Matrix>> allGensMasks = new List<TupleSet<ObjectOutput, Matrix>>();
+			var allGensMasks = new List<TupleSet<ObjectOutput, Matrix>>();
 			foreach (ObjectOutput gen in gens.GeneratorsOfType<ObjectOutput>(onlyEnabled: true, checkBiomes: true))
 			{
 				Matrix biomeMask = null;
 				if (gen.biome != null)
 				{
-					object biomeMaskObj = gen.biome.mask.GetObject(results);
+					var biomeMaskObj = gen.biome.mask.GetObject(results);
 					if (biomeMaskObj == null) continue; //adding nothing if biome has no mask
 					biomeMask = (Matrix)biomeMaskObj;
 					if (biomeMask == null) continue;
@@ -754,27 +754,27 @@ namespace MapMagic
 			int allGensMasksCount = allGensMasks.Count;
 
 			//biome rect to find array pos faster
-			CoordRect biomeRect = new CoordRect();
+			var biomeRect = new CoordRect();
 			for (int g=0; g<allGensMasksCount; g++)
 				if (allGensMasks[g].item2 != null) { biomeRect = allGensMasks[g].item2.rect; break; }
 
 			//prepare biome mask values stack to re-use it to find per-coord biome
-			float[] biomeVals = new float[allGensMasksCount]; //+1 for not using any object at all
+			var biomeVals = new float[allGensMasksCount]; //+1 for not using any object at all
 
 			//iterating all gens
 			for (int g=0; g<allGensMasksCount; g++)
 			{
-				ObjectOutput gen = allGensMasks[g].item1;
+				var gen = allGensMasks[g].item1;
 
 				//iterating in layers
 				for (int b = 0; b < gen.baseLayers.Length; b++)
 				{
 					if (stop!=null && stop(0)) return; //checking stop before reading output
-					Layer layer = gen.baseLayers[b];
+					var layer = gen.baseLayers[b];
 					if (layer.prefab == null) continue;
 
 					//loading objects from input
-					SpatialHash hash = (SpatialHash)gen.baseLayers[b].input.GetObject(results);
+					var hash = (SpatialHash)gen.baseLayers[b].input.GetObject(results);
 					if (hash == null) continue;
 
 					//finding/creating proper transitions list
@@ -844,7 +844,7 @@ namespace MapMagic
 
 
 						//world-space object position
-						Vector3 position = new Vector3(
+						var position = new Vector3(
 							(obj.pos.x) / hash.size * terrainSize.dimensions,  // relative (0-1) position * terrain dimension
 							(obj.height + terrainHeight) * terrainSize.height, 
 							(obj.pos.y) / hash.size * terrainSize.dimensions);
@@ -854,15 +854,15 @@ namespace MapMagic
 						float objRotation = layer.rotate ? obj.rotation % 360 : 0;
 						if (layer.takeTerrainNormal)
 						{
-							Vector3 terrainNormal = GetTerrainNormal(obj.pos.x, obj.pos.y, results.heights, terrainSize.height, terrainSize.pixelSize);
-							Vector3 sideVector = new Vector3( Mathf.Sin((obj.rotation+90)*Mathf.Deg2Rad), 0, Mathf.Cos((obj.rotation+90)*Mathf.Deg2Rad) );
-							Vector3 frontVector = Vector3.Cross(sideVector, terrainNormal);
+							var terrainNormal = GetTerrainNormal(obj.pos.x, obj.pos.y, results.heights, terrainSize.height, terrainSize.pixelSize);
+							var sideVector = new Vector3( Mathf.Sin((obj.rotation+90)*Mathf.Deg2Rad), 0, Mathf.Cos((obj.rotation+90)*Mathf.Deg2Rad) );
+							var frontVector = Vector3.Cross(sideVector, terrainNormal);
 							rotation = Quaternion.LookRotation(frontVector, terrainNormal);
 						}
 						else rotation = objRotation.EulerToQuat();
 
 						//scale + biome scale mode
-						Vector3 scale = layer.scale ? new Vector3(layer.scaleY ? 1 : obj.size, obj.size, layer.scaleY ? 1 : obj.size) : Vector3.one;
+						var scale = layer.scale ? new Vector3(layer.scaleY ? 1 : obj.size, obj.size, layer.scaleY ? 1 : obj.size) : Vector3.one;
 
 						if (biomeBlendType == BiomeBlendType.Scale)
 						{
@@ -908,25 +908,25 @@ namespace MapMagic
 
 		public static IEnumerator Apply(CoordRect rect, Terrain terrain, object dataBox, Func<float,bool> stop= null)
 		{
-			Dictionary<Transform, List<ObjectPool.Transition>> transitions = (Dictionary<Transform, List<ObjectPool.Transition>>)dataBox;
+			var transitions = (Dictionary<Transform, List<ObjectPool.Transition>>)dataBox;
 
 			float pixelSize = 1f * MapMagic.instance.terrainSize / MapMagic.instance.resolution;
-			Rect terrainRect = new Rect(rect.offset.x*pixelSize, rect.offset.z*pixelSize, rect.size.x*pixelSize, rect.size.z*pixelSize);
+			var terrainRect = new Rect(rect.offset.x*pixelSize, rect.offset.z*pixelSize, rect.size.x*pixelSize, rect.size.z*pixelSize);
 
 			//adding
 			foreach (KeyValuePair<Transform,List<ObjectPool.Transition>> kvp in transitions)
 			{
-				Transform prefab = kvp.Key;
-				List<ObjectPool.Transition> transitionsList = kvp.Value;
-				
-				IEnumerator e = MapMagic.instance.objectsPool.RepositionCoroutine(
+				var prefab = kvp.Key;
+				var transitionsList = kvp.Value;
+
+				var e = MapMagic.instance.objectsPool.RepositionCoroutine(
 					prefab, 
 					terrainRect, 
 					transitionsList, 
 					parent:terrain.transform, 
 					root:MapMagic.instance.transform.position.sqrMagnitude>Mathf.Epsilon? MapMagic.instance.transform : null, //don't use root if it is placed in the center of the scene
-					objsPerFrame:500); 
-						//not truly "per frame"\
+					objsPerFrame:500);
+				//not truly "per frame"\
 
 				while (e.MoveNext()) 
 					{ yield return null; }
@@ -949,8 +949,8 @@ namespace MapMagic
 			//early exit
 			if (terrain.transform.childCount == 0) return;
 
-			Coord coord = Coord.PickCell(rect.offset, MapMagic.instance.resolution);
-			Rect terrainRect = new Rect(coord.x*MapMagic.instance.terrainSize, coord.z*MapMagic.instance.terrainSize, MapMagic.instance.terrainSize, MapMagic.instance.terrainSize);
+			var coord = Coord.PickCell(rect.offset, MapMagic.instance.resolution);
+			var terrainRect = new Rect(coord.x*MapMagic.instance.terrainSize, coord.z*MapMagic.instance.terrainSize, MapMagic.instance.terrainSize, MapMagic.instance.terrainSize);
 
 			MapMagic.instance.objectsPool.ClearAllRect(terrainRect);
 
@@ -1083,19 +1083,19 @@ namespace MapMagic
 		{
 			if (stop!=null && stop(0)) return;
 
-			Noise noise = new Noise(12345, permutationCount:128); //to pick objects based on biome
+			var noise = new Noise(12345, permutationCount:128); //to pick objects based on biome
 
-			List<TreeInstance> instancesList = new List<TreeInstance>();
-			List<TreePrototype> prototypesList = new List<TreePrototype>();
+			var instancesList = new List<TreeInstance>();
+			var prototypesList = new List<TreePrototype>();
 
 			//find all of the biome masks - they will be used to determine object probability
-			List<TupleSet<TreesOutput,Matrix>> allGensMasks = new List<TupleSet<TreesOutput, Matrix>>();
+			var allGensMasks = new List<TupleSet<TreesOutput, Matrix>>();
 			foreach (TreesOutput gen in gens.GeneratorsOfType<TreesOutput>(onlyEnabled: true, checkBiomes: true))
 			{
 				Matrix biomeMask = null;
 				if (gen.biome != null)
 				{
-					object biomeMaskObj = gen.biome.mask.GetObject(results);
+					var biomeMaskObj = gen.biome.mask.GetObject(results);
 					if (biomeMaskObj == null) continue; //adding nothing if biome has no mask
 					biomeMask = (Matrix)biomeMaskObj;
 					if (biomeMask == null) continue;
@@ -1107,32 +1107,32 @@ namespace MapMagic
 			int allGensMasksCount = allGensMasks.Count;
 
 			//biome rect to find array pos faster
-			CoordRect biomeRect = new CoordRect();
+			var biomeRect = new CoordRect();
 			for (int g=0; g<allGensMasksCount; g++)
 				if (allGensMasks[g].item2 != null) { biomeRect = allGensMasks[g].item2.rect; break; }
 
 			//prepare biome mask values stack to re-use it to find per-coord biome
-			float[] biomeVals = new float[allGensMasksCount]; //+1 for not using any object at all
+			var biomeVals = new float[allGensMasksCount]; //+1 for not using any object at all
 
 			//iterating all gens
 			for (int g=0; g<allGensMasksCount; g++)
 			{
-				TreesOutput gen = allGensMasks[g].item1;
+				var gen = allGensMasks[g].item1;
 
 				//iterating in layers
 				for (int b = 0; b < gen.baseLayers.Length; b++)
 				{
 					if (stop!=null && stop(0)) return; //checking stop before reading output
-					Layer layer = gen.baseLayers[b];
-//					if (layer.prefab == null) continue;
+					var layer = gen.baseLayers[b];
+					//					if (layer.prefab == null) continue;
 
 					//loading objects from input
-					SpatialHash hash = (SpatialHash)gen.baseLayers[b].input.GetObject(results);
+					var hash = (SpatialHash)gen.baseLayers[b].input.GetObject(results);
 					if (hash == null) continue;
 
 					//adding prototype
 //					if (layer.prefab == null) continue;
-					TreePrototype prototype = new TreePrototype() { prefab = layer.prefab, bendFactor = layer.bendFactor };
+					var prototype = new TreePrototype() { prefab = layer.prefab, bendFactor = layer.bendFactor };
 					prototypesList.Add(prototype);
 					int prototypeNum = prototypesList.Count - 1;
 
@@ -1195,7 +1195,7 @@ namespace MapMagic
 							terrainHeight = results.heights.GetInterpolated(obj.pos.x, obj.pos.y);
 						if (terrainHeight > 1) terrainHeight = 1;
 
-						TreeInstance tree = new TreeInstance();
+						var tree = new TreeInstance();
 						tree.position = new Vector3(
 							(obj.pos.x - hash.offset.x) / hash.size,
 							obj.height + terrainHeight,
@@ -1224,7 +1224,7 @@ namespace MapMagic
 			//setting output
 			if (stop!=null && stop(0)) return;
 			if (instancesList.Count == 0 && prototypesList.Count == 0) return; //empty, process is caused by height change
-			TupleSet<TreeInstance[], TreePrototype[]> treesTuple = new TupleSet<TreeInstance[], TreePrototype[]>(instancesList.ToArray(), prototypesList.ToArray());
+			var treesTuple = new TupleSet<TreeInstance[], TreePrototype[]>(instancesList.ToArray(), prototypesList.ToArray());
 			results.apply.CheckAdd(typeof(TreesOutput), treesTuple, replace: true);
 		}
 
@@ -1308,7 +1308,7 @@ namespace MapMagic
 		{
 			//applying
 			terrain.terrainData.treeInstances = new TreeInstance[0];
-			TupleSet<TreeInstance[], TreePrototype[]> treesTuple = (TupleSet<TreeInstance[], TreePrototype[]>)dataBox;
+			var treesTuple = (TupleSet<TreeInstance[], TreePrototype[]>)dataBox;
 			if (treesTuple.item2 != null) //if tree prototype is not null
 			{
 				terrain.terrainData.treePrototypes = treesTuple.item2;
@@ -1423,7 +1423,7 @@ namespace MapMagic
 					det.dryColor = layout.Field(det.dryColor, "Dry");
 					det.healthyColor = layout.Field(det.healthyColor, "Healthy");
 
-					Vector2 temp = new Vector2(det.minWidth, det.maxWidth);
+					var temp = new Vector2(det.minWidth, det.maxWidth);
 					layout.Field(ref temp, "Width", max: 10);
 					det.minWidth = temp.x; det.maxWidth = temp.y;
 
@@ -1492,7 +1492,7 @@ namespace MapMagic
 		public override void Generate(CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop= null)
 		{
 			//loading inputs
-			Matrix[] matrices = new Matrix[baseLayers.Length];
+			var matrices = new Matrix[baseLayers.Length];
 			for (int i = 0; i < baseLayers.Length; i++)
 			{
 				if (baseLayers[i].input != null)
@@ -1507,7 +1507,7 @@ namespace MapMagic
 			if (obscureLayers) Matrix.BlendLayers(matrices);
 
 			//masking layers
-			Matrix mask = (Matrix)maskIn.GetObject(results);
+			var mask = (Matrix)maskIn.GetObject(results);
 			if (mask != null)
 				for (int i = 0; i < matrices.Length; i++) matrices[i].Multiply(mask);
 
@@ -1537,7 +1537,7 @@ namespace MapMagic
 			float pixelSquare = pixelSize * pixelSize;
 
 			//a random needed to convert float to int
-			InstanceRandom rnd = new InstanceRandom(terrainSize.Seed(rect));
+			var rnd = new InstanceRandom(terrainSize.Seed(rect));
 
 			//calculating the totoal number of prototypes
 			int prototypesNum = 0;
@@ -1545,8 +1545,8 @@ namespace MapMagic
 				prototypesNum += grassOut.baseLayers.Length;
 
 			//preparing results
-			List<int[,]> detailsList = new List<int[,]>();
-			List<DetailPrototype> prototypesList = new List<DetailPrototype>();
+			var detailsList = new List<int[,]>();
+			var prototypesList = new List<DetailPrototype>();
 
 			//filling result
 			foreach (GrassOutput gen in gens.GeneratorsOfType<GrassOutput>(onlyEnabled: true, checkBiomes: true))
@@ -1555,7 +1555,7 @@ namespace MapMagic
 				Matrix biomeMask = null;
 				if (gen.biome != null)
 				{
-					object biomeMaskObj = gen.biome.mask.GetObject(results);
+					var biomeMaskObj = gen.biome.mask.GetObject(results);
 					if (biomeMaskObj == null) continue; //adding nothing if biome has no mask
 					biomeMask = (Matrix)biomeMaskObj;
 					if (biomeMask == null) continue;
@@ -1571,13 +1571,13 @@ namespace MapMagic
 					//if (matrix == null) continue;
 
 					//reading output directly
-					Output output = gen.baseLayers[i].output;
+					var output = gen.baseLayers[i].output;
 					if (stop!=null && stop(0)) return; //checking stop before reading output
 					if (!results.results.ContainsKey(output)) continue;
-					Matrix matrix = (Matrix)results.results[output];
+					var matrix = (Matrix)results.results[output];
 
 					//filling array
-					int[,] detail = new int[matrix.rect.size.x, matrix.rect.size.z];
+					var detail = new int[matrix.rect.size.x, matrix.rect.size.z];
 					for (int x = 0; x < matrix.rect.size.x; x++)
 						for (int z = 0; z < matrix.rect.size.z; z++)
 						{
@@ -1600,9 +1600,9 @@ namespace MapMagic
 			//pushing to apply
 			if (stop!=null && stop(0)) return;
 
-            TupleSet<int[][,], DetailPrototype[]> grassTuple = new TupleSet<int[][,], DetailPrototype[]>(detailsList.ToArray(), prototypesList.ToArray());
+            var grassTuple = new TupleSet<int[][,], DetailPrototype[]>(detailsList.ToArray(), prototypesList.ToArray());
 
-            #if UN_MapMagic
+#if UN_MapMagic
             if (FoliageCore_MainManager.instance != null)
             {
                 float resolutionDifferences = (float)MapMagic.instance.terrainSize / terrainSize.resolution;
@@ -1616,8 +1616,8 @@ namespace MapMagic
                 //return;
 				results.apply.CheckAdd(typeof(GrassOutput), grassTuple, replace: true);
             }
-            #else
-            results.apply.CheckAdd(typeof(GrassOutput), grassTuple, replace: true);
+#else
+			results.apply.CheckAdd(typeof(GrassOutput), grassTuple, replace: true);
             #endif
         }
 
@@ -1644,8 +1644,8 @@ namespace MapMagic
             grassTuple = (TupleSet<int[][,], DetailPrototype[]>)dataBox;
             #endif
 
-            int[][,] details = grassTuple.item1;
-			DetailPrototype[] prototypes = grassTuple.item2;
+            var details = grassTuple.item1;
+			var prototypes = grassTuple.item2;
 
 			//resolution
 			if (details.Length != 0)
@@ -1693,7 +1693,7 @@ namespace MapMagic
 			//skipping if already purged
 			if (terrain.terrainData.detailPrototypes.Length==0) return;
 
-			DetailPrototype[] prototypes = new DetailPrototype[0];
+			var prototypes = new DetailPrototype[0];
 			terrain.terrainData.detailPrototypes = prototypes;
 			terrain.terrainData.SetDetailResolution(16, 8);
 

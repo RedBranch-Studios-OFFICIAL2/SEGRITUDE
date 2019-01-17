@@ -82,8 +82,8 @@ public class GSDSplineC : MonoBehaviour{
 		mSplineRoot = transform.gameObject;
 
 		//Create spline nodes:
-		GSDSplineN[] tNodesRaw = mSplineRoot.GetComponentsInChildren<GSDSplineN>();
-		List<GSDSplineN> tList = new List<GSDSplineN>();
+		var tNodesRaw = mSplineRoot.GetComponentsInChildren<GSDSplineN>();
+		var tList = new List<GSDSplineN>();
 		int tNodesRawLength = tNodesRaw.Length;
 		if(tNodesRawLength == 0){ return; }
 		for(int i=0;i<tNodesRawLength;i++){
@@ -122,8 +122,8 @@ public class GSDSplineC : MonoBehaviour{
 		
 		int mNodesCount = mNodes.Count;
 		GSDSplineN tNode = null;
-		Vector3[] pVects = new Vector3[mNodesCount+1];
-		for(int i=0;i<mNodesCount;i++){
+		var pVects = new Vector3[mNodesCount+1];
+		for (int i=0;i<mNodesCount;i++){
 			tNode = mNodes[i];
 			tNode.idOnSpline = i;
 			tNode.bIsEndPoint = false;
@@ -219,16 +219,16 @@ public class GSDSplineC : MonoBehaviour{
         }
 		
 		//Get bounds of road system:
-		float[] tMaxEffects = new float[3];
+		var tMaxEffects = new float[3];
 		tMaxEffects[0] = tRoad.opt_MatchHeightsDistance;
 		tMaxEffects[1] = tRoad.opt_ClearDetailsDistance;
 		tMaxEffects[2] = tRoad.opt_ClearTreesDistance;
 		float MaxEffectDistance = Mathf.Max(tMaxEffects)*2f; //Add min/max clear diff to bound checks
 		int mCount1 = GetNodeCount();
-		float[] tMinMaxX = new float[mCount1];
-		float[] tMinMaxZ = new float[mCount1];
-//		Vector3 tVect1 = default(Vector3);
-		for(int i=0;i<mCount1;i++){
+		var tMinMaxX = new float[mCount1];
+		var tMinMaxZ = new float[mCount1];
+		//		Vector3 tVect1 = default(Vector3);
+		for (int i=0;i<mCount1;i++){
 			tMinMaxX[i] = mNodes[i].pos.x;
 			tMinMaxZ[i] = mNodes[i].pos.z;
 		}
@@ -252,7 +252,7 @@ public class GSDSplineC : MonoBehaviour{
 	private void RenameNodes(){
 		int mNodesCount = mNodes.Count;
 		for(int i=0;i<mNodesCount;i++){
-			GSDSplineN tNode = mNodes[i];
+			var tNode = mNodes[i];
 			tNode.name = "Node" + tNode.idOnSpline;	
 			tNode.transform.gameObject.name = tNode.name;
 			tNode.EditorDisplayString = tRoad.transform.name + "-" + tNode.name;
@@ -266,7 +266,7 @@ public class GSDSplineC : MonoBehaviour{
 	private void Setup_Nodes(ref GSDSplineN[] tNodesRaw){
 		//Process nodes:
 		int i=0;
-		List<GSDSplineN> tNodes = new List<GSDSplineN>();
+		var tNodes = new List<GSDSplineN>();
 		int tNodesRawLength = tNodesRaw.Length;
 		for(i=0;i<tNodesRawLength;i++){
 			if(!tNodesRaw[i].bDestroyed){
@@ -313,8 +313,8 @@ public class GSDSplineC : MonoBehaviour{
 		//First lets get the general distance, node to node:
 		mNodes[0].tTime = 0f;
 		mNodes[mNodeCount-1].tTime = 1f;
-		Vector3 tVect1 = new Vector3(0f,0f,0f);
-		Vector3 tVect2 = new Vector3(0f,0f,0f);
+		var tVect1 = new Vector3(0f,0f,0f);
+		var tVect2 = new Vector3(0f,0f,0f);
 		float mDistance = 0f;
 		float mDistance_NoMod = 0f;
 		for(int j=0;j<mNodeCount;j++){
@@ -341,9 +341,9 @@ public class GSDSplineC : MonoBehaviour{
 
 		//Using general distance and calculated step, get an accurate distance:
 		float tDistance = 0f;
-		Vector3 prevPos = mNodes[0].pos;
-		Vector3 cPos = new Vector3(0f,0f,0f);
-//		float hDistance = 0f;
+		var prevPos = mNodes[0].pos;
+		var cPos = new Vector3(0f,0f,0f);
+		//		float hDistance = 0f;
 		GSDSplineN tNode;
 		
 		prevPos = GetSplineValue(0f);
@@ -445,8 +445,8 @@ public class GSDSplineC : MonoBehaviour{
 //		float tNanCheck = 0f;
 		float tMod = Mathf.Lerp(0.05f,0.2f,distance/9000f);
 		float step = tMod / distance;
-		Vector3 cPos = GetSplineValue(0f);
-		Vector3 prevPos = cPos;
+		var cPos = GetSplineValue(0f);
+		var prevPos = cPos;
 		float tempDistanceModMax = tRoad.opt_RoadDefinition - step;
 		float tempDistanceMod = 0f;
 		float tempTotalDistance = 0f;
@@ -454,9 +454,9 @@ public class GSDSplineC : MonoBehaviour{
 		if(RoadDefKeysArray != null){ RoadDefKeysArray = null; }
 		if(RoadDefValuesArray != null){ RoadDefValuesArray = null; }
 
-		List<int> RoadDefKeys = new List<int>();
-		List<float> RoadDefValues = new List<float>();
-		
+		var RoadDefKeys = new List<int>();
+		var RoadDefValues = new List<float>();
+
 		RoadDefKeys.Add(0);
 		RoadDefValues.Add(0f);
 		
@@ -777,10 +777,10 @@ public class GSDSplineC : MonoBehaviour{
 		float tMax=1f;
 		float BestValue = -1f;
 		float MaxStretch = 0.9f;
-		Vector3 BestVect_p = new Vector3(0f,0f,0f);
-		Vector3 BestVect_n = new Vector3(0f,0f,0f);
+		var BestVect_p = new Vector3(0f,0f,0f);
+		var BestVect_n = new Vector3(0f,0f,0f);
 
-        if (mNodes.Count == 0) { return 0f; }
+		if (mNodes.Count == 0) { return 0f; }
         if (mNodes.Count == 1) { return 1f; }
 		 
 		//Step 1: 1m 
@@ -807,8 +807,8 @@ public class GSDSplineC : MonoBehaviour{
 	private float GetClosestPoint_Helper(ref Vector3 tVect, float tStep, float BestValue, float tMin, float tMax, ref Vector3 BestVect_p, ref Vector3 BestVect_n, bool bMeterCache = false){
 		float mDistance = 5000f;
 		float tDistance = 0f;
-		Vector3 cVect = new Vector3(0f,0f,0f);
-		Vector3 pVect = new Vector3(0f,0f,0f);
+		var cVect = new Vector3(0f,0f,0f);
+		var pVect = new Vector3(0f,0f,0f);
 		bool bFirstLoopHappened = false;
 		bool bSetBestValue = false;
 		
@@ -918,10 +918,10 @@ public class GSDSplineC : MonoBehaviour{
 		}
 		
 		//Vectors:
-		Vector3 P0 = mNodes[NGI(i, NI[0])].pos;
-		Vector3 P1 = mNodes[NGI(i, NI[1])].pos;
-		Vector3 P2 = mNodes[NGI(i, NI[2])].pos;
-		Vector3 P3 = mNodes[NGI(i, NI[3])].pos;
+		var P0 = mNodes[NGI(i, NI[0])].pos;
+		var P1 = mNodes[NGI(i, NI[1])].pos;
+		var P2 = mNodes[NGI(i, NI[2])].pos;
+		var P3 = mNodes[NGI(i, NI[3])].pos;
 
 		//Tension:
 		tension = 0.5f;
@@ -929,8 +929,8 @@ public class GSDSplineC : MonoBehaviour{
 		
 		
 		//Tangents:
-		Vector3 xVect1 = (P1-P2) * tension;
-		Vector3 xVect2 = (P3-P0) * tension;
+		var xVect1 = (P1-P2) * tension;
+		var xVect2 = (P3-P0) * tension;
 		float tMaxMag = tRoad.opt_MagnitudeThreshold;
 	
 		if(Vector3.Distance(P1,P3) > tMaxMag){
@@ -954,9 +954,9 @@ public class GSDSplineC : MonoBehaviour{
 			BL3 = (float) (CM[12] * t2 + CM[13] * t + CM[14]);
 		}
 		
-		Vector3 tVect = BL0 * P0 + BL1 * P1 + BL2 * xVect1 + BL3 * xVect2;
+		var tVect = BL0 * P0 + BL1 * P1 + BL2 * xVect1 + BL3 * xVect2;
 
-		if(!bTangent){ if(tVect.y < 0f){ tVect.y = 0f; } }
+		if (!bTangent){ if(tVect.y < 0f){ tVect.y = 0f; } }
 		
 		return tVect;
 	}
@@ -1004,16 +1004,16 @@ public class GSDSplineC : MonoBehaviour{
 			GizmoDrawMeters = 0.1f;
 		}
 
-		Vector3 prevPos = mNodes[0].pos;
-		Vector3 tempVect = new Vector3(0f,0f,0f);
+		var prevPos = mNodes[0].pos;
+		var tempVect = new Vector3(0f,0f,0f);
 		float step = GizmoDrawMeters/distance;
 		step = Mathf.Clamp(step,0f,1f);
 		Gizmos.color = new Color (1f, 0f, 0f, 1f);
 		float i=0f;
 		Vector3 cPos;
 		float tCheck = 0f;
-		Vector3 camPos = Camera.current.transform.position;
-		for(i=0f;i<=1f;i+=step){
+		var camPos = Camera.current.transform.position;
+		for (i=0f;i<=1f;i+=step){
 			tCheck+=step;
 			cPos = GetSplineValue(i);
 			
@@ -1444,14 +1444,14 @@ public class GSDSplineC : MonoBehaviour{
 		ActivateEndNodeConnection_Do(tNode1,tNode2);
 	}
 	private void ActivateEndNodeConnection_Do(GSDSplineN tNode1, GSDSplineN tNode2){
-		GSDSplineC xSpline = tNode2.GSDSpline;
+		var xSpline = tNode2.GSDSpline;
 		int xCount = xSpline.GetNodeCount();
 		int mCount = GetNodeCount();
 		//Don't allow connection with less than 3 nodes:
 		if(mCount < 3 || xCount < 3){ return; }
 
-		Vector3 tNode1_ExtraPos = default(Vector3);
-		Vector3 tNode2_ExtraPos = default(Vector3);
+		var tNode1_ExtraPos = default(Vector3);
+		var tNode2_ExtraPos = default(Vector3);
 
 		bool bFirstNode_Start = false;
 //		bool bFirstNode_End = false;
@@ -1487,8 +1487,8 @@ public class GSDSplineC : MonoBehaviour{
 			NodeCreated1 = mNodes[0];
 		}else{
 			bSpecialEndControlNode = true;
-            GSDSplineN zNode1 = xSpline.GetLastNode_All();
-            if (zNode1 != null && zNode1.bSpecialEndNode) {
+            var zNode1 = xSpline.GetLastNode_All();
+			if (zNode1 != null && zNode1.bSpecialEndNode) {
                 zNode1.transform.position = tNode1_ExtraPos;
                 zNode1.pos = tNode1_ExtraPos;
 			}else{
@@ -1508,8 +1508,8 @@ public class GSDSplineC : MonoBehaviour{
 			NodeCreated2 = xSpline.mNodes[0];
 		}else{
 			xSpline.bSpecialEndControlNode = true;
-            GSDSplineN zNode2 = xSpline.GetLastNode_All();
-            if (zNode2 != null && zNode2.bSpecialEndNode) {
+            var zNode2 = xSpline.GetLastNode_All();
+			if (zNode2 != null && zNode2.bSpecialEndNode) {
                 zNode2.transform.position = tNode2_ExtraPos;
                 zNode2.pos = tNode2_ExtraPos;
 			}else{

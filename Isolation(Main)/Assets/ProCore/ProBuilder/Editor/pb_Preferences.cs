@@ -291,9 +291,9 @@ public class pb_Preferences : Editor
 		GUI.contentColor = Color.white;
 		GUI.Box(selectBox, "");
 
-		GUIStyle labelStyle = GUIStyle.none;
+		var labelStyle = GUIStyle.none;
 
-		if(EditorGUIUtility.isProSkin)
+		if (EditorGUIUtility.isProSkin)
 			labelStyle.normal.textColor = new Color(1f, 1f, 1f, .8f);
 
 		labelStyle.alignment = TextAnchor.MiddleLeft;
@@ -307,8 +307,8 @@ public class pb_Preferences : Editor
 			{
 				GUI.backgroundColor = new Color(0.23f, .49f, .89f, 1f);
 					labelStyle.normal.background = EditorGUIUtility.whiteTexture;
-					Color oc = labelStyle.normal.textColor;
-					labelStyle.normal.textColor = Color.white;
+					var oc = labelStyle.normal.textColor;
+				labelStyle.normal.textColor = Color.white;
 					GUILayout.Box(defaultShortcuts[n].action, labelStyle, GUILayout.MinHeight(CELL_HEIGHT), GUILayout.MaxHeight(CELL_HEIGHT));
 					labelStyle.normal.background = null;
 					labelStyle.normal.textColor = oc;
@@ -334,16 +334,16 @@ public class pb_Preferences : Editor
 
 			// descriptionTitleRect = EditorGUI.RectField(new Rect(240,150,200,50), descriptionTitleRect);
 			GUILayout.Label("Key", EditorStyles.boldLabel);
-			KeyCode key = defaultShortcuts[shortcutIndex].key;
-			key = (KeyCode) EditorGUILayout.EnumPopup(key);
+			var key = defaultShortcuts[shortcutIndex].key;
+		key = (KeyCode) EditorGUILayout.EnumPopup(key);
 			defaultShortcuts[shortcutIndex].key = key;
 
 			GUILayout.Label("Modifiers", EditorStyles.boldLabel);
 			// EnumMaskField returns a bit-mask where the flags correspond to the indices of the enum, not the enum values,
 			// so this isn't technically correct.
 #if UNITY_2017_3_OR_NEWER
-			EventModifiers em = (EventModifiers) defaultShortcuts[shortcutIndex].eventModifiers;
-			defaultShortcuts[shortcutIndex].eventModifiers = (EventModifiers) EditorGUILayout.EnumFlagsField(em);
+			var em = (EventModifiers) defaultShortcuts[shortcutIndex].eventModifiers;
+		defaultShortcuts[shortcutIndex].eventModifiers = (EventModifiers) EditorGUILayout.EnumFlagsField(em);
 #else
 			EventModifiers em = (EventModifiers) (((int)defaultShortcuts[shortcutIndex].eventModifiers) * 2);
 			em = (EventModifiers)EditorGUILayout.EnumMaskField(em);

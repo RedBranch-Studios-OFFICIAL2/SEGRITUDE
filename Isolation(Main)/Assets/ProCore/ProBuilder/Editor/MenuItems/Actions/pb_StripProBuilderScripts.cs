@@ -16,7 +16,7 @@ namespace ProBuilder2.Actions
 			if(!EditorUtility.DisplayDialog("Strip ProBuilder Scripts", "This will remove all ProBuilder scripts in the scene.  You will no longer be able to edit these objects.  There is no undo, please exercise caution!\n\nAre you sure you want to do this?", "Okay", "Cancel"))
 				return;
 
-			pb_Object[] all = (pb_Object[]) Resources.FindObjectsOfTypeAll(typeof(pb_Object) );
+			var all = (pb_Object[]) Resources.FindObjectsOfTypeAll(typeof(pb_Object) );
 
 			Strip(all);
 		}
@@ -65,11 +65,11 @@ namespace ProBuilder2.Actions
 		{
 			try
 			{
-				GameObject go = pb.gameObject;
+				var go = pb.gameObject;
 
-				Renderer ren = go.GetComponent<Renderer>();
+				var ren = go.GetComponent<Renderer>();
 
-				if(ren != null)
+				if (ren != null)
 					pb_EditorUtility.SetSelectionRenderState(ren, pb_EditorUtility.GetSelectionRenderState());
 
 				if( PrefabUtility.GetPrefabType(go) == PrefabType.Prefab )
@@ -101,7 +101,7 @@ namespace ProBuilder2.Actions
 				}
 				else
 				{
-					Mesh m = pb_MeshUtility.DeepCopy(pb.msh);
+					var m = pb_MeshUtility.DeepCopy(pb.msh);
 
 					DestroyImmediate(pb);
 

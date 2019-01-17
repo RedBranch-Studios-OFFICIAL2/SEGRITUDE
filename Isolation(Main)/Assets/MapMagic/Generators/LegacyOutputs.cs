@@ -25,11 +25,11 @@ namespace MapMagic
 
         public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
         {
-            SpatialHash src = (SpatialHash)input.GetObject(results);
-            SpatialHash dst = new SpatialHash(src.offset, src.size, src.resolution);
+            var src = (SpatialHash)input.GetObject(results);
+			var dst = new SpatialHash(src.offset, src.size, src.resolution);
 
 			//initializing random
-			InstanceRandom rnd = new InstanceRandom(seed + this.seed + terrainSize.Seed(rect));
+			var rnd = new InstanceRandom(seed + this.seed + terrainSize.Seed(rect));
 
 			if (rnd.CoordinateRandom(rect.offset.x, rect.offset.z) < chance)
 			foreach (SpatialObject obj in src.AllObjs())
@@ -61,8 +61,8 @@ namespace MapMagic
 
         public override void Generate (CoordRect rect, Chunk.Results results, Chunk.Size terrainSize, int seed, Func<float,bool> stop = null)
         {
-            SpatialHash dst = new SpatialHash(new Vector2(rect.offset.x,rect.offset.z), rect.size.x, 16);
-			Vector2 pixelPos = pos / terrainSize.pixelSize;
+            var dst = new SpatialHash(new Vector2(rect.offset.x,rect.offset.z), rect.size.x, 16);
+			var pixelPos = pos / terrainSize.pixelSize;
 
 			if (pixelPos.x > rect.offset.x && pixelPos.x <= rect.offset.x + rect.size.x &&
 				pixelPos.y > rect.offset.z && pixelPos.y <= rect.offset.z + rect.size.z)
@@ -466,7 +466,7 @@ CustomShaderOutput.CTS_UpdateShader(ctsProfile, terrain.materialTemplate);
 			{
 				baseLayers[i].input.Link(null,null); 
 
-				Input connectedInput = baseLayers[i].output.GetConnectedInput(MapMagic.instance.gens.list);
+				var connectedInput = baseLayers[i].output.GetConnectedInput(MapMagic.instance.gens.list);
 				if (connectedInput != null) connectedInput.Link(null, null);
 			}
 
@@ -1133,7 +1133,7 @@ CustomShaderOutput.CTS_UpdateShader(ctsProfile, terrain.materialTemplate);
 			public void OnRemove (int n) 
 			{ 
 				input.Link(null,null); 
-				Input connectedInput = output.GetConnectedInput(MapMagic.instance.gens.list);
+				var connectedInput = output.GetConnectedInput(MapMagic.instance.gens.list);
 				if (connectedInput != null) connectedInput.Link(null, null);
 			}
 			public void OnSwitch (int o, int n) { }
@@ -1588,7 +1588,7 @@ CustomShaderOutput.CTS_UpdateShader(ctsProfile, terrain.materialTemplate);
 			{
 				baseLayers[i].input.Link(null,null); 
 
-				Input connectedInput = baseLayers[i].output.GetConnectedInput(MapMagic.instance.gens.list);
+				var connectedInput = baseLayers[i].output.GetConnectedInput(MapMagic.instance.gens.list);
 				if (connectedInput != null) connectedInput.Link(null, null);
 			}
 

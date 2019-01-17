@@ -729,7 +729,7 @@ public class GSDRoadIntersectionEditor : Editor {
 			
 			//Apply secondary effects:
 			if(bGizmoChange){
-				MeshRenderer[] tMRs = tInter.transform.GetComponentsInChildren<MeshRenderer>();
+				var tMRs = tInter.transform.GetComponentsInChildren<MeshRenderer>();
 				int tCount = tMRs.Length;
 				for(int i=0;i<tCount;i++){
 					//EditorUtility.SetSelectedWireframeHidden(tMRs[i], !tInter.bDrawGizmo);
@@ -763,7 +763,7 @@ public class GSDRoadIntersectionEditor : Editor {
 	}
 		
     public void OnSceneGUI() {
-		Event current = Event.current;
+		var current = Event.current;
 		int controlID = GUIUtility.GetControlID(GetHashCode(), FocusType.Passive);
 		
 //		if (Event.current.type == EventType.MouseDrag && Event.current.button == 0){

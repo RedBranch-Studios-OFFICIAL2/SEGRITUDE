@@ -72,8 +72,8 @@ namespace MapMagic
 
 				public void DrawIcon (Layout layout, string label=null, bool mandatory=false, bool setRectOnly=false)
 				{ 
-					string textureName = "";
-					switch (type) 
+					var textureName = "";
+				switch (type) 
 					{ 
 						case InoutType.Map: textureName = "MapMagicMatrix"; break;
 						case InoutType.Objects: textureName = "MapMagicScatter"; break;
@@ -85,8 +85,8 @@ namespace MapMagic
 
 					if (label != null)
 					{
-						Rect nameRect = guiRect;
-						nameRect.width = 100; nameRect.x += guiRect.width + 2;
+						var nameRect = guiRect;
+					nameRect.width = 100; nameRect.x += guiRect.width + 2;
 						layout.Label(label, nameRect,  fontSize:10);
 					}
 
@@ -121,8 +121,8 @@ namespace MapMagic
 				{
 					if (link == null) return null;
 					if (!tw.results.ContainsKey(link)) return null;
-					object obj = tw.results[link];
-					if (obj == null) return null;
+					var obj = tw.results[link];
+				if (obj == null) return null;
 					else return (T)obj;
 				}
 
@@ -151,8 +151,8 @@ namespace MapMagic
 				
 				public void DrawIcon (Layout layout, string label=null, bool setRectOnly=false, bool debug=false) 
 				{ 
-					string textureName = "";
-					switch (type) 
+					var textureName = "";
+				switch (type) 
 					{ 
 						case InoutType.Map: textureName = "MapMagicMatrix"; break;
 						case InoutType.Objects: textureName = "MapMagicScatter"; break;
@@ -163,8 +163,8 @@ namespace MapMagic
 
 					if (label!=null)
 					{
-						Rect nameRect = guiRect;
-						nameRect.width = 100; nameRect.x-= 103;
+						var nameRect = guiRect;
+					nameRect.width = 100; nameRect.x-= 103;
 						layout.Label(label, nameRect, textAnchor:TextAnchor.LowerRight, fontSize:10);
 					}
 
@@ -222,8 +222,8 @@ namespace MapMagic
 				public T GetObject<T> (Chunk.Results tw) where T:class
 				{
 					if (!tw.results.ContainsKey(this)) return null;    
-					object obj = tw.results[this];
-					if (obj == null) return null;
+					var obj = tw.results[this];
+				if (obj == null) return null;
 					else return (T)obj;
 				}
 
@@ -231,12 +231,12 @@ namespace MapMagic
 				{
 					//TODO20: each generator should have a link to gens
 
-					object activeGensBoxed = Extensions.CallStaticMethodFrom("Assembly-CSharp-Editor", "MapMagic.MapMagicWindow", "GetGens", null);
-					if (activeGensBoxed == null) return;
-					GeneratorsAsset activeGens = activeGensBoxed as GeneratorsAsset;  
+					var activeGensBoxed = Extensions.CallStaticMethodFrom("Assembly-CSharp-Editor", "MapMagic.MapMagicWindow", "GetGens", null);
+				if (activeGensBoxed == null) return;
+					var activeGens = activeGensBoxed as GeneratorsAsset;
 
-					Input connectedInput = GetConnectedInput(activeGens.list);
-					if (connectedInput != null) connectedInput.Link(null, null);
+				var connectedInput = GetConnectedInput(activeGens.list);
+				if (connectedInput != null) connectedInput.Link(null, null);
 				}
 			}
 		#endregion
@@ -277,32 +277,32 @@ namespace MapMagic
 
 			//drawing eye icon
 			layout.Par(14); layout.Inset(2);
-			Rect eyeRect = layout.Inset(18);
-			GeneratorMenuAttribute attribute = System.Attribute.GetCustomAttribute(GetType(), typeof(GeneratorMenuAttribute)) as GeneratorMenuAttribute;
+			var eyeRect = layout.Inset(18);
+			var attribute = System.Attribute.GetCustomAttribute(GetType(), typeof(GeneratorMenuAttribute)) as GeneratorMenuAttribute;
 
 			if (attribute != null && attribute.disengageable) 
 				layout.Toggle(ref enabled, rect:eyeRect, onIcon:"MapMagic_GeneratorEnabled", offIcon:"MapMagic_GeneratorDisabled");
 			else layout.Icon("MapMagic_GeneratorAlwaysOn", eyeRect, Layout.IconAligment.center, Layout.IconAligment.center);
 			
 			//drawing label
-			string genName = "";
-			#if WDEBUG
+			var genName = "";
+#if WDEBUG
 			if (mapMagic!=null)
 			{
 				int num = -1;
 				for (int n=0; n<gens.list.Length; n++) if (gens.list[n]==this) num = n;
 				genName += num + ". ";
 			}
-			#endif
+#endif
 			genName += attribute==null? "Unknown" : attribute.name;
 
 			if (mapMagic!=null && debug && !mapMagic.IsGeneratorReady(this)) genName+="*";
 
-			Rect labelRect = layout.Inset(layout.field.width-18-22); labelRect.height = 25; labelRect.y -= (1f-layout.zoom)*6 + 2;
+			var labelRect = layout.Inset(layout.field.width-18-22); labelRect.height = 25; labelRect.y -= (1f-layout.zoom)*6 + 2;
 			layout.Label(genName, labelRect, fontStyle:FontStyle.Bold, fontSize:19-layout.zoom*8);
 
 			//drawing help link
-			Rect helpRect = layout.Inset(22);
+			var helpRect = layout.Inset(22);
 			if (attribute != null && attribute.helpLink != null && attribute.helpLink.Length != 0)
 			{
 				layout.Label("", helpRect, url:attribute.helpLink, icon:"MapMagic_Help");
@@ -478,13 +478,13 @@ namespace MapMagic
 			if (form == PortalForm.In) name = layout.Field(name, rect:layout.Inset());
 			if (form == PortalForm.Out)
 			{
-				string buttonLabel = "Select";
+				var buttonLabel = "Select";
 				if (input.linkGen != null) 
 				{
 					if (!(input.linkGen is Portal)) input.Link(null, null); //in case connected input portal was changet to output
 					else buttonLabel = ((Portal)input.linkGen).name;
 				}
-				Rect buttonRect = layout.Inset();
+				var buttonRect = layout.Inset();
 				buttonRect.height -= 3;
 				if (layout.Button(buttonLabel, rect:buttonRect) && OnChooseEnter!=null) OnChooseEnter(this, type);
 			}
@@ -546,7 +546,7 @@ namespace MapMagic
 
 			for (int i=0; i<gens.list.Length; i++)
 			{
-				Generator gen = gens.list[i];
+				var gen = gens.list[i];
 				if (layout.field.Contains(gen.layout.field)) generators.Add(gen); 
 			}
 		}

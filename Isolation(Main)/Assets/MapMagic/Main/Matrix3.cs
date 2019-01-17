@@ -53,7 +53,7 @@ namespace MapMagic
 
 		public static CoordDir Min (CoordDir[] coords)
 		{
-			CoordDir min = new CoordDir(int.MaxValue, int.MaxValue, int.MaxValue,7);
+			var min = new CoordDir(int.MaxValue, int.MaxValue, int.MaxValue,7);
 			for (int i=0; i<coords.Length; i++)
 			{
 				if (coords[i].x < min.x) min.x = coords[i].x;
@@ -65,7 +65,7 @@ namespace MapMagic
 
 		public static CoordDir Max (CoordDir[] coords)
 		{
-			CoordDir max = new CoordDir(int.MinValue, int.MinValue, int.MinValue,7);
+			var max = new CoordDir(int.MinValue, int.MinValue, int.MinValue,7);
 			for (int i=0; i<coords.Length; i++)
 			{
 				if (coords[i].x > max.x) max.x = coords[i].x;
@@ -376,7 +376,7 @@ namespace MapMagic
 
 		public Matrix3<T> Copy ()
 		{
-			Matrix3<T> newMatrix = new Matrix3<T>(cube);
+			var newMatrix = new Matrix3<T>(cube);
 			for (int i=0; i<array.Length; i++) newMatrix.array[i] = array[i];
 			return newMatrix;
 		}

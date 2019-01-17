@@ -36,7 +36,7 @@ public class HighlightNearestFace : MonoBehaviour
 		target.Refresh();
 
 		// Orient the camera in a good position
-		Camera cam = Camera.main;
+		var cam = Camera.main;
 		cam.transform.position = new Vector3(25f, 40f, 0f);
 		cam.transform.localRotation = Quaternion.Euler( new Vector3(65f, 0f, 0f) );
 	}
@@ -45,7 +45,7 @@ public class HighlightNearestFace : MonoBehaviour
 	{
 		float time = Time.time * speed;
 
-		Vector3 position = new Vector3(
+		var position = new Vector3(
 			Mathf.PerlinNoise(time, time) * travel,
 			2,
 			Mathf.PerlinNoise(time + 1f, time + 1f) * travel
@@ -61,10 +61,10 @@ public class HighlightNearestFace : MonoBehaviour
 
 		// instead of testing distance by converting each face's center to world space,
 		// convert the world space of this object to the pb-Object local transform.
-		Vector3 pbRelativePosition = target.transform.InverseTransformPoint(transform.position);
+		var pbRelativePosition = target.transform.InverseTransformPoint(transform.position);
 
 		// reset the last colored face to white
-		if(nearest != null)
+		if (nearest != null)
 			target.SetFaceColor(nearest, Color.white);
 
 		// iterate each face in the pb_Object looking for the one nearest
@@ -98,16 +98,16 @@ public class HighlightNearestFace : MonoBehaviour
 	 */
 	private Vector3 FaceCenter(pb_Object pb, pb_Face face)
 	{
-		Vector3[] vertices = pb.vertices;
+		var vertices = pb.vertices;
 
-		Vector3 average = Vector3.zero;
+		var average = Vector3.zero;
 
 		// face holds triangle data.  distinctIndices is a
 		// cached collection of the distinct indices that
 		// make up the triangles. Ex:
 		// tris = {0, 1, 2, 2, 3, 0}
 		// distinct indices = {0, 1, 2, 3}
-		foreach(int index in face.distinctIndices)
+		foreach (int index in face.distinctIndices)
 		{
 			average.x += vertices[index].x;
 			average.y += vertices[index].y;

@@ -46,7 +46,7 @@ public class ExtendedFlycam : MonoBehaviour
 		}
 		rotationY = Mathf.Clamp( rotationY, -90, 90 );
 
-		Quaternion temp = Quaternion.AngleAxis( rotationX, Vector3.up );
+		var temp = Quaternion.AngleAxis( rotationX, Vector3.up );
 		temp *= Quaternion.AngleAxis( rotationY, Vector3.left );
 
 		transform.localRotation = Quaternion.Lerp( transform.localRotation, temp, Time.deltaTime * 5);

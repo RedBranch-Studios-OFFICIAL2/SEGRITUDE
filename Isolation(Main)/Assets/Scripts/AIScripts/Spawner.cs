@@ -17,8 +17,8 @@ public class Spawner : MonoBehaviour {
 
     void SpawnEnemies (){
         if (CheckAmountOfEnemies()) {
-            GameObject swat = (GameObject)Instantiate(swatPrefab, this.transform.position, this.transform.rotation);
-            swat.GetComponent<AIController>().area = area;
+            var swat = (GameObject)Instantiate(swatPrefab, this.transform.position, this.transform.rotation);
+			swat.GetComponent<AIController>().area = area;
             currentEnemies++;
         }
     }

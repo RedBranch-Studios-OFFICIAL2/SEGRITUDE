@@ -91,8 +91,8 @@ namespace MapMagic
 					for (int i=0; i<items.Length; i++) items[i].SortItems();
 				}
 								
-				PopupMenu popupWindow = new PopupMenu();
-				popupWindow.items = items;
+				var popupWindow = new PopupMenu();
+			popupWindow.items = items;
 				PopupWindow.Show(new Rect(pos.x,pos.y,0,0), popupWindow);
 				return popupWindow;
 			}
@@ -122,11 +122,11 @@ namespace MapMagic
 				//list
 				for (int i=0; i<items.Length; i++)
 				{
-					MenuItem currentItem = items[i];
-					
-					currentItem.clicked = false;
-					Rect lineRect = new Rect(1, i*lineHeight+1, width-2, lineHeight-2);
-					bool highlighted = lineRect.Contains(Event.current.mousePosition);
+					var currentItem = items[i];
+
+				currentItem.clicked = false;
+					var lineRect = new Rect(1, i*lineHeight+1, width-2, lineHeight-2);
+				bool highlighted = lineRect.Contains(Event.current.mousePosition);
 					if (currentItem.disabled) highlighted = false;
 
 					if (highlighted) GUI.DrawTexture(lineRect, highlight);
@@ -139,7 +139,7 @@ namespace MapMagic
 
 					if (currentItem.hasSubs)
 					{
-						Rect rightRect = lineRect; rightRect.width = 10; rightRect.height = 10; 
+						var rightRect = lineRect; rightRect.width = 10; rightRect.height = 10; 
 							rightRect.x = lineRect.x + lineRect.width - rightRect.width; rightRect.y = lineRect.y + lineRect.height/2 - rightRect.height/2;
 						//UnityEditor.EditorGUI.LabelField(rightRect, "\u25B6");
 						if (triangle == null) triangle = Resources.Load("PopupMenuTrangleIcon") as Texture2D; 

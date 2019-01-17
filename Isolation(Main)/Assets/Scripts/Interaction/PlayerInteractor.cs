@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Segritude.Camera;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,15 +8,10 @@ namespace Segritude.Interaction
 	/// <summary>
 	/// Handles all interactions made by player
 	/// </summary>
-	[RequireComponent(typeof(Camera))]
+	[RequireComponent(typeof(CameraController))]
 	public class PlayerInteractor : GlobalBehaviour<PlayerInteractor>
 	{
 		#region Public Propreties
-
-		/// <summary>
-		/// Can player interact right now
-		/// </summary>
-		public bool CanInteract { get; set; }
 
 		/// <summary>
 		/// Is the player currently interacting
@@ -60,8 +56,7 @@ namespace Segritude.Interaction
 		/// <returns></returns>
 		private InteractableBehaviour Raycast()
 		{
-			RaycastHit hit;
-			if (!Physics.Raycast(transform.position, transform.forward, out hit, _InteractionDistance))
+			if (!Physics.Raycast(transform.position, transform.forward, out var hit, _InteractionDistance, ~(1 << 9)))
 				return null;
 			return hit.collider.GetComponent<InteractableBehaviour>();
 		}
@@ -114,11 +109,7 @@ namespace Segritude.Interaction
 			return false;
 		}
 
-		#endregion Private Methods
-
-		#region Unity Callbacks
-
-		private void Update()
+		private void Interact()
 		{
 			if (!IsInteracting)
 			{
@@ -133,7 +124,6 @@ namespace Segritude.Interaction
 								interactable = hijack;
 								break;
 							}
-
 						if (interactable == null)
 						{
 							interactable = Raycast();
@@ -142,6 +132,7 @@ namespace Segritude.Interaction
 						}
 						if (interactable?.ValidateInteraction(type) ?? false)
 						{
+							interactable.StartInteraction(type);
 							currentInteraction = type;
 							currentlyInteracting = interactable;
 							IsInteracting = true;
@@ -155,6 +146,16 @@ namespace Segritude.Interaction
 				currentlyInteracting = null;
 				IsInteracting = false;
 			}
+		}
+
+		#endregion Private Methods
+
+		#region Unity Callbacks
+
+		private void Update()
+		{
+			if (CameraController.UseCamera)
+				Interact();
 		}
 
 		#endregion Unity Callbacks

@@ -87,8 +87,8 @@ namespace GSD.Roads.EdgeObjects{
 		public EdgeObjectEditorMaker EM;
 		
 		public EdgeObjectMaker Copy(){
-			EdgeObjectMaker EOM = new EdgeObjectMaker();
-			
+			var EOM = new EdgeObjectMaker();
+
 			EOM.EdgeObjectString = EdgeObjectString;
 			#if UNITY_EDITOR
 			EOM.EdgeObject = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath(EdgeObjectString,typeof(GameObject));
@@ -165,12 +165,12 @@ namespace GSD.Roads.EdgeObjects{
 		}
 		
 		public void SaveToLibrary(string fName = "", bool bIsDefault = false){
-			EdgeObjectLibraryMaker ELM = new EdgeObjectLibraryMaker();
+			var ELM = new EdgeObjectLibraryMaker();
 			ELM.Setup(this);
 			GSDRootUtil.Dir_GetLibrary_CheckSpecialDirs();
-			string xPath = GSDRootUtil.Dir_GetLibrary();
-			string tPath = xPath + "EOM" + tName + ".gsd";
-			if(fName.Length > 0){
+			var xPath = GSDRootUtil.Dir_GetLibrary();
+			var tPath = xPath + "EOM" + tName + ".gsd";
+			if (fName.Length > 0){
 				if(bIsDefault){
 					tPath = xPath + "Q/EOM" + fName + ".gsd";
 				}else{
@@ -182,28 +182,28 @@ namespace GSD.Roads.EdgeObjects{
 
 		public void LoadFromLibrary(string xName, bool bIsQuickAdd = false){
 			GSDRootUtil.Dir_GetLibrary_CheckSpecialDirs();
-			string xPath = GSDRootUtil.Dir_GetLibrary();
-			string tPath = xPath + "EOM" + xName + ".gsd";
-			if(bIsQuickAdd){
+			var xPath = GSDRootUtil.Dir_GetLibrary();
+			var tPath = xPath + "EOM" + xName + ".gsd";
+			if (bIsQuickAdd){
 				tPath = xPath + "Q/EOM" + xName + ".gsd";
 			}
-			EdgeObjectLibraryMaker ELM = (EdgeObjectLibraryMaker)GSDRootUtil.LoadXML<EdgeObjectLibraryMaker>(ref tPath);
+			var ELM = (EdgeObjectLibraryMaker)GSDRootUtil.LoadXML<EdgeObjectLibraryMaker>(ref tPath);
 			ELM.LoadTo(this);
 			bNeedsUpdate = true;
 		}
 		
 		public void LoadFromLibraryWizard(string xName){
 			GSDRootUtil.Dir_GetLibrary_CheckSpecialDirs();
-			string xPath = GSDRootUtil.Dir_GetLibrary();
-			string tPath = xPath + "W/" + xName + ".gsd";
-			EdgeObjectLibraryMaker ELM = (EdgeObjectLibraryMaker)GSDRootUtil.LoadXML<EdgeObjectLibraryMaker>(ref tPath);
+			var xPath = GSDRootUtil.Dir_GetLibrary();
+			var tPath = xPath + "W/" + xName + ".gsd";
+			var ELM = (EdgeObjectLibraryMaker)GSDRootUtil.LoadXML<EdgeObjectLibraryMaker>(ref tPath);
 			ELM.LoadTo(this);
 			bNeedsUpdate = true;
 		}
 		
 		
 		public string ConvertToString(){
-			EdgeObjectLibraryMaker ELM = new EdgeObjectLibraryMaker();
+			var ELM = new EdgeObjectLibraryMaker();
 			ELM.Setup(this);
 			return GSDRootUtil.GetString<EdgeObjectLibraryMaker>(ELM);
 		}
@@ -214,7 +214,7 @@ namespace GSD.Roads.EdgeObjects{
 		
 		public static EdgeObjectLibraryMaker ELMFromData(string tData){
 			try{
-				EdgeObjectLibraryMaker ELM = (EdgeObjectLibraryMaker)GSDRootUtil.LoadData<EdgeObjectLibraryMaker>(ref tData);	
+				var ELM = (EdgeObjectLibraryMaker)GSDRootUtil.LoadData<EdgeObjectLibraryMaker>(ref tData);
 				return ELM;
 			}catch{
 				return null;	
@@ -231,14 +231,14 @@ namespace GSD.Roads.EdgeObjects{
 			tNames = null;
 			tPaths = null;
 			DirectoryInfo info;
-			string xPath = GSDRootUtil.Dir_GetLibrary();
-			if(bIsDefault){
+			var xPath = GSDRootUtil.Dir_GetLibrary();
+			if (bIsDefault){
 				info = new DirectoryInfo(xPath + "Q/");
 			}else{
 				info = new DirectoryInfo(xPath);
 			}
 
-			FileInfo[] fileInfo = info.GetFiles();
+			var fileInfo = info.GetFiles();
 			int tCount = 0;
 			
 			
@@ -266,20 +266,20 @@ namespace GSD.Roads.EdgeObjects{
 			if(!tNode.GSDSpline.tRoad.GSDRS.opt_bSaveMeshes){ return; }
 
 			//string tSceneName = System.IO.Path.GetFileName(UnityEditor.EditorApplication.currentScene).ToLower().Replace(".unity","");
-            string tSceneName = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().name;
+            var tSceneName = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().name;
 
 
-            tSceneName = tSceneName.Replace("/","");
+			tSceneName = tSceneName.Replace("/","");
 			tSceneName = tSceneName.Replace(".","");
-			string tFolderName = "Assets/RoadArchitect/Mesh/Generated/CombinedEdgeObj/";
-			string tRoadName = tNode.GSDSpline.tRoad.transform.name;
-			string FinalName = tFolderName + tSceneName + "-" + tRoadName + "-" + tName + ".asset";
-			if(bIsCollider){
+			var tFolderName = "Assets/RoadArchitect/Mesh/Generated/CombinedEdgeObj/";
+			var tRoadName = tNode.GSDSpline.tRoad.transform.name;
+			var FinalName = tFolderName + tSceneName + "-" + tRoadName + "-" + tName + ".asset";
+			if (bIsCollider){
 				FinalName = tFolderName + tSceneName + "-" + tRoadName + "-" + tName + "-collider.asset";	
 			}
 			
-			string xPath = Application.dataPath.Replace("/Assets","/" + tFolderName);
-			if(!System.IO.Directory.Exists(xPath)){
+			var xPath = Application.dataPath.Replace("/Assets","/" + tFolderName);
+			if (!System.IO.Directory.Exists(xPath)){
 				System.IO.Directory.CreateDirectory(xPath);
 			}
 
@@ -554,8 +554,9 @@ namespace GSD.Roads.EdgeObjects{
 		#region "Setup and processing"
 		public void Setup(bool bCollect = true){
 			#if UNITY_EDITOR
-			List<GameObject> tErrorObjs = new List<GameObject>();
-			try{
+			var tErrorObjs = new List<GameObject>();
+			try
+			{
 				Setup_Do(bCollect, ref tErrorObjs);
 			}catch(System.Exception e){
 				if(tErrorObjs != null && tErrorObjs.Count > 0){
@@ -592,7 +593,7 @@ namespace GSD.Roads.EdgeObjects{
 			if(EdgeMaterial2 != null){ EdgeMaterial2String = UnityEditor.AssetDatabase.GetAssetPath(EdgeMaterial2); }
 			EdgeObjects = new List<GameObject>();
 
-			Quaternion xRot = default(Quaternion);
+			var xRot = default(Quaternion);
 			xRot = Quaternion.identity;
 			xRot.eulerAngles = CustomRotation;
 			int lCount = EdgeObjectLocations.Count;
@@ -600,14 +601,14 @@ namespace GSD.Roads.EdgeObjects{
 			Material[] tMats = null;
 			GameObject tObj = null;
 			if(EdgeObject != null){
-				GameObject mObj = new GameObject(EdgeObject.name); 
+				var mObj = new GameObject(EdgeObject.name);
 				MasterObj = mObj;
 				tErrorObjs.Add(MasterObj);
 				mObj.transform.position = tNode.transform.position;
 				mObj.transform.parent = tNode.transform;
 				mObj.name = tName;
-				MeshRenderer OrigMR = EdgeObject.GetComponent<MeshRenderer>();
-				for(int j=0;j<lCount;j++){
+				var OrigMR = EdgeObject.GetComponent<MeshRenderer>();
+				for (int j=0;j<lCount;j++){
 					if(EdgeObjectRotations[j] == default(Vector3)){
 						tObj = (GameObject)GameObject.Instantiate(EdgeObject);	
 						tErrorObjs.Add(tObj);
@@ -619,8 +620,8 @@ namespace GSD.Roads.EdgeObjects{
 //					OrigRot = tObj.transform.rotation;
 					tObj.transform.rotation *= xRot;
 						if(bOncomingRotation && SubType == GSD.Roads.SignPlacementSubTypeEnum.Left){
-							Quaternion tRot = new Quaternion(0f,0f,0f,0f);
-							tRot = Quaternion.identity;
+							var tRot = new Quaternion(0f,0f,0f,0f);
+						tRot = Quaternion.identity;
 							tRot.eulerAngles = new Vector3(0f,180f,0f);
 							tObj.transform.rotation *= tRot;
 						}
@@ -628,8 +629,8 @@ namespace GSD.Roads.EdgeObjects{
 					tObj.transform.parent = mObj.transform;
 					EdgeObjects.Add(tObj);
 					
-					MeshRenderer NewMR = tObj.GetComponent<MeshRenderer>();
-					if(NewMR == null){
+					var NewMR = tObj.GetComponent<MeshRenderer>();
+					if (NewMR == null){
 						NewMR = tObj.AddComponent<MeshRenderer>();	
 					}
 					
@@ -671,16 +672,16 @@ namespace GSD.Roads.EdgeObjects{
 					tMat = EdgeObject.GetComponent<MeshRenderer>().sharedMaterials;	
 				}
 				
-				Vector3[] kVerts = xMeshBuffer.vertices;
-				int[] kTris = xMeshBuffer.triangles;
-				Vector2[] kUV = xMeshBuffer.uv;
+				var kVerts = xMeshBuffer.vertices;
+				var kTris = xMeshBuffer.triangles;
+				var kUV = xMeshBuffer.uv;
 				int OrigMVL = kVerts.Length;
 				int OrigTriCount = xMeshBuffer.triangles.Length;
 				
-				List<Vector3[]> hVerts = new List<Vector3[]>();
-				List<int[]> hTris = new List<int[]>();
-				List<Vector2[]> hUV = new List<Vector2[]>();
-				
+				var hVerts = new List<Vector3[]>();
+				var hTris = new List<int[]>();
+				var hUV = new List<Vector2[]>();
+
 
 				Transform tTrans;
 				for(int j=0;j<lCount;j++){
@@ -696,27 +697,27 @@ namespace GSD.Roads.EdgeObjects{
 					//UV copy:
 					System.Array.Copy(kUV,hUV[j],OrigMVL);
 		
-					Vector3 tVect = default(Vector3);
-					for(int i=0;i<OrigMVL;i++){
+					var tVect = default(Vector3);
+					for (int i=0;i<OrigMVL;i++){
 						tVect = hVerts[j][i];
 						hVerts[j][i] = tTrans.rotation * tVect;
 						hVerts[j][i] += tTrans.localPosition;
 					}
 				}
 				
-				GameObject xObj = new GameObject(tName);
-				MeshRenderer MR = xObj.GetComponent<MeshRenderer>();
-				if(MR == null){ MR = xObj.AddComponent<MeshRenderer>(); }
+				var xObj = new GameObject(tName);
+				var MR = xObj.GetComponent<MeshRenderer>();
+				if (MR == null){ MR = xObj.AddComponent<MeshRenderer>(); }
 				xObj.isStatic = bStatic;
 				xObj.transform.parent = MasterObj.transform;
 				tErrorObjs.Add(xObj);
 				xObj.transform.name = xObj.transform.name + "Combined";
 				xObj.transform.name = xObj.transform.name.Replace("(Clone)","");
-				MeshFilter MF = xObj.GetComponent<MeshFilter>();
-				if(MF == null){ MF = xObj.AddComponent<MeshFilter>(); }
+				var MF = xObj.GetComponent<MeshFilter>();
+				if (MF == null){ MF = xObj.AddComponent<MeshFilter>(); }
 				MF.sharedMesh = GSDCombineMeshes(ref hVerts,ref hTris, ref hUV,OrigMVL,OrigTriCount);
-				MeshCollider MC = xObj.GetComponent<MeshCollider>();
-				if(MC == null){ MC = xObj.AddComponent<MeshCollider>(); }
+				var MC = xObj.GetComponent<MeshCollider>();
+				if (MC == null){ MC = xObj.AddComponent<MeshCollider>(); }
 				xObj.transform.position = tNode.transform.position;
 				xObj.transform.rotation = Quaternion.identity;
 	
@@ -733,8 +734,8 @@ namespace GSD.Roads.EdgeObjects{
 					MR.sharedMaterials = tMat;
 				}
 				
-				BoxCollider BC = xObj.GetComponent<BoxCollider>();
-				if(BC != null){ Object.DestroyImmediate(BC); }
+				var BC = xObj.GetComponent<BoxCollider>();
+				if (BC != null){ Object.DestroyImmediate(BC); }
 				int cCount = xObj.transform.childCount;
 				int spamc = 0;
 				while(cCount > 0 && spamc < 10){
@@ -800,10 +801,10 @@ namespace GSD.Roads.EdgeObjects{
 			if(tNode.idOnSpline >= mCount-1){ return; }
 //			fTimeMax = tNode.GSDSpline.mNodes[tNode.idOnSpline+1].tTime;
 //			float tStep = -1f;
-			Vector3 tVect = default(Vector3);
-			Vector3 POS = default(Vector3);
-			
-//			tStep = MeterSep/tNode.GSDSpline.distance;
+			var tVect = default(Vector3);
+			var POS = default(Vector3);
+
+			//			tStep = MeterSep/tNode.GSDSpline.distance;
 			//Destroy old objects:
 			ClearEOM();
 			//Make sure old locs and rots are fresh:
@@ -816,7 +817,7 @@ namespace GSD.Roads.EdgeObjects{
 			
 			//Set rotation and locations:
 //			Vector2 temp2DVect = default(Vector2);
-			Ray tRay = default(Ray);
+			var tRay = default(Ray);
 			RaycastHit[] tRayHit = null;
 			float[] tRayYs = null;
 			if(bSingle){
@@ -860,7 +861,7 @@ namespace GSD.Roads.EdgeObjects{
 			}else{
 							
 				//Get the vector series that this mesh is interpolated on:
-				List<float> tTimes = new List<float>();
+				var tTimes = new List<float>();
 				float cTime = FakeStartTime;
 				tTimes.Add(cTime);
 				int SpamGuard = 5000;
@@ -868,8 +869,8 @@ namespace GSD.Roads.EdgeObjects{
 				float pDiffTime = EndTime - FakeStartTime;
 				float CurrentH = 0f;
 				float fHeight = 0f;
-				Vector3 xVect = default(Vector3);
-				while(cTime < EndTime && SpamGuardCounter < SpamGuard){
+				var xVect = default(Vector3);
+				while (cTime < EndTime && SpamGuardCounter < SpamGuard){
 					tNode.GSDSpline.GetSplineValue_Both(cTime,out tVect,out POS);
 					
 					fHeight = HorizontalCurve.Evaluate((cTime-FakeStartTime) / pDiffTime);
@@ -938,11 +939,11 @@ namespace GSD.Roads.EdgeObjects{
 		private Mesh GSDCombineMeshes(ref List<Vector3[]> hVerts,ref List<int[]> hTris, ref List<Vector2[]> hUV, int OrigMVL, int OrigTriCount){
 			int mCount = hVerts.Count;
 			int NewMVL = OrigMVL * mCount;
-			Vector3[] tVerts = new Vector3[NewMVL];
-			int[] tTris = new int[OrigTriCount*mCount];
-			Vector3[] tNormals = new Vector3[NewMVL];
-			Vector2[] tUV = new Vector2[NewMVL];
-			
+			var tVerts = new Vector3[NewMVL];
+			var tTris = new int[OrigTriCount*mCount];
+			var tNormals = new Vector3[NewMVL];
+			var tUV = new Vector2[NewMVL];
+
 			int CurrentMVLIndex = 0;
 			int CurrentTriIndex = 0;
 			for(int j=0;j<mCount;j++){
@@ -960,7 +961,7 @@ namespace GSD.Roads.EdgeObjects{
 				System.Array.Copy(hUV[j],0,tUV,CurrentMVLIndex,OrigMVL);
 			}
 			
-			Mesh tMesh = new Mesh();
+			var tMesh = new Mesh();
 			tMesh.vertices = tVerts;
 			tMesh.triangles = tTris;
 			tMesh.uv = tUV;

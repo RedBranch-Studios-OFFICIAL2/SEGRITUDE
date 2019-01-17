@@ -53,8 +53,8 @@ namespace MapMagic
 					//no object
 					if (result == null)
 						{ baseLayout.Label("Please wait until preview \nresult is being generated."); return; }
-					object previewBox = Preview.previewOutput.GetObject<object>(result);
-					if (previewBox == null)
+					var previewBox = Preview.previewOutput.GetObject<object>(result);
+				if (previewBox == null)
 						{ baseLayout.Label("Please wait until preview \nobject is being generated."); return; }
 
 					//displaying matrix
@@ -64,11 +64,11 @@ namespace MapMagic
 						if (Preview.RefreshMatricesNeeded()) Preview.RefreshMatrices(range.x, range.y);
 
 						//finding matrix and texture
-						Matrix matrix = (Matrix)previewBox;
-						Texture2D texture = Preview.matrices[matrix];
+						var matrix = (Matrix)previewBox;
+					var texture = Preview.matrices[matrix];
 
-						//drawing texture
-						EditorGUI.DrawPreviewTexture(baseLayout.ToDisplay(new Rect(0,0,texture.width,texture.height)), texture);
+					//drawing texture
+					EditorGUI.DrawPreviewTexture(baseLayout.ToDisplay(new Rect(0,0,texture.width,texture.height)), texture);
 
 						//drawing texture info
 						UnityEditor.EditorGUI.HelpBox(infoLayout.field,"", UnityEditor.MessageType.None);
@@ -85,15 +85,15 @@ namespace MapMagic
 						if (infoLayout.Button("Save To Texture")) 
 						{
 							#if !UNITY_WEBPLAYER //you cannot get access to files for web player platform. Even for an editor. Seems to be Unity bug.
-							string path= UnityEditor.EditorUtility.SaveFilePanel(
+							var path= UnityEditor.EditorUtility.SaveFilePanel(
 								"Save Output Texture",
 								"Assets",
 								"OutputTexture.png", 
 								"png");
-							if (path!=null && path.Length!=0)
+						if (path!=null && path.Length!=0)
 							{
-								byte[] bytes = texture.EncodeToPNG();
-								System.IO.File.WriteAllBytes(path, bytes);
+								var bytes = texture.EncodeToPNG();
+							System.IO.File.WriteAllBytes(path, bytes);
 							}
 							#endif
 						}
@@ -101,14 +101,14 @@ namespace MapMagic
 
 					else if (Preview.previewOutput.type == Generator.InoutType.Objects)
 					{
-						SpatialHash spatialHash = (SpatialHash)previewBox;
+						var spatialHash = (SpatialHash)previewBox;
 
-						for (int i=0; i<spatialHash.cells.Length; i++)
+					for (int i=0; i<spatialHash.cells.Length; i++)
 						{
-							SpatialHash.Cell cell = spatialHash.cells[i];
-					
-							//drawing grid
-							UnityEditor.Handles.color = new Color(0.6f, 0.6f, 0.6f); //TODO: meight be too light in pro skin
+							var cell = spatialHash.cells[i];
+
+						//drawing grid
+						UnityEditor.Handles.color = new Color(0.6f, 0.6f, 0.6f); //TODO: meight be too light in pro skin
 							UnityEditor.Handles.DrawPolyLine(  
 								baseLayout.ToDisplay( (cell.min-spatialHash.offset)/spatialHash.size * 1000 ),
 								baseLayout.ToDisplay( (new Vector2(cell.max.x, cell.min.y)-spatialHash.offset)/spatialHash.size * 1000 ),
@@ -122,8 +122,8 @@ namespace MapMagic
 							UnityEditor.Handles.color = new Color(0.3f, 0.5f, 0.1f);
 							for (int j=0; j<cell.objs.Count; j++)
 							{
-								Vector2 pos = baseLayout.ToDisplay( (cell.objs[j].pos-spatialHash.offset)/spatialHash.size * 1000 );
-								float radius = cell.objs[j].size * baseLayout.zoom / 2;
+								var pos = baseLayout.ToDisplay( (cell.objs[j].pos-spatialHash.offset)/spatialHash.size * 1000 );
+							float radius = cell.objs[j].size * baseLayout.zoom / 2;
 								if (radius < 3) radius = 3;
 
 								UnityEditor.Handles.DrawAAConvexPolygon(  
@@ -192,17 +192,17 @@ namespace MapMagic
 				if (mapMagic == null) mapMagic = FindObjectOfType<MapMagic>();
 				if (mapMagic == null) { EditorGUI.LabelField(new Rect(10,10,200,200), "No MapMagic object found, re-open the window."); return; }
 				
-				Vector3 camPos = new Vector3();
-				if (UnityEditor.SceneView.lastActiveSceneView!=null) camPos = UnityEditor.SceneView.lastActiveSceneView.camera.transform.position;
+				var camPos = new Vector3();
+			if (UnityEditor.SceneView.lastActiveSceneView!=null) camPos = UnityEditor.SceneView.lastActiveSceneView.camera.transform.position;
 				
-				Chunk.Results closestResults = mapMagic.ClosestResults(camPos);
-				if (closestResults == null)
+				var closestResults = mapMagic.ClosestResults(camPos);
+			if (closestResults == null)
 					{ EditorGUI.LabelField(new Rect(10,10,200,200), "No terrains are pinned for preview"); return; }
 
 				if (Preview.previewOutput == null) { EditorGUI.LabelField(new Rect(10,10,200,200), "No preview output is selected"); return; }
 
-				object currentObj = Preview.previewOutput.GetObject<object>(closestResults);
-				if (currentObj == null)
+				var currentObj = Preview.previewOutput.GetObject<object>(closestResults);
+			if (currentObj == null)
 					{ EditorGUI.LabelField(new Rect(10,10,200,200), "Please wait until preview \nobject is being generated."); return; }
 				
 				if (currentObj != lastUsedObject) Repaint();
@@ -222,14 +222,14 @@ namespace MapMagic
 				//drawing hash preview
 				if (currentObj is SpatialHash)
 				{
-					SpatialHash spatialHash = (SpatialHash)currentObj;
+					var spatialHash = (SpatialHash)currentObj;
 
-					for (int i=0; i<spatialHash.cells.Length; i++)
+				for (int i=0; i<spatialHash.cells.Length; i++)
 					{
-						SpatialHash.Cell cell = spatialHash.cells[i];
-					
-						//drawing grid
-						UnityEditor.Handles.color = Color.gray;
+						var cell = spatialHash.cells[i];
+
+					//drawing grid
+					UnityEditor.Handles.color = Color.gray;
 						UnityEditor.Handles.DrawPolyLine(  
 							baseLayout.ToDisplay( (cell.min-spatialHash.offset)/spatialHash.size * 1000 ),
 							baseLayout.ToDisplay( (new Vector2(cell.max.x, cell.min.y)-spatialHash.offset)/spatialHash.size * 1000 ),
@@ -254,10 +254,10 @@ namespace MapMagic
 				//drawing matrix preview
 				else if (currentObj is Matrix)
 				{
-					Matrix matrix = (Matrix)currentObj;
+					var matrix = (Matrix)currentObj;
 
-					//refreshing texture if matrix has changed
-					if (matrix != lastUsedObject || (range-lastUsedRange).sqrMagnitude > 0.01f)
+				//refreshing texture if matrix has changed
+				if (matrix != lastUsedObject || (range-lastUsedRange).sqrMagnitude > 0.01f)
 					{
 						lastUsedObject = matrix; lastUsedRange = range;
 						texture = new Texture2D(matrix.rect.size.x, matrix.rect.size.z);
@@ -282,15 +282,15 @@ namespace MapMagic
 						if (infoLayout.Button("Save To Texture")) 
 						{
 							#if !UNITY_WEBPLAYER
-							string path= UnityEditor.EditorUtility.SaveFilePanel(
+							var path= UnityEditor.EditorUtility.SaveFilePanel(
 								"Save Output Texture",
 								"Assets",
 								"OutputTexture.png", 
 								"png");
-							if (path!=null && path.Length!=0)
+						if (path!=null && path.Length!=0)
 							{
-								byte[] bytes = texture.EncodeToPNG();
-								System.IO.File.WriteAllBytes(path, bytes);
+								var bytes = texture.EncodeToPNG();
+							System.IO.File.WriteAllBytes(path, bytes);
 							}
 							#endif
 						}

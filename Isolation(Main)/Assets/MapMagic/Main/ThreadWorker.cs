@@ -49,8 +49,8 @@ namespace MapMagic
 
 				public string Print () 
 				{ 
-					string prefix = worker.name + " " + name;
-					for (int numSymbols=prefix.Length; numSymbols<50; numSymbols+=10)
+					var prefix = worker.name + " " + name;
+				for (int numSymbols=prefix.Length; numSymbols<50; numSymbols+=10)
 						prefix += "\t";
 				
 					return prefix + 
@@ -97,12 +97,12 @@ namespace MapMagic
 				#endif
 			}
 			public static string PrintLog () { List<ThreadWorker> tmp = null; return PrintLog(tmp); }
-			public static string PrintLog (ThreadWorker worker) { List <ThreadWorker> workers = new List<ThreadWorker>(); workers.Add(worker); return PrintLog(workers); }
+			public static string PrintLog (ThreadWorker worker) { var workers = new List<ThreadWorker>(); workers.Add(worker); return PrintLog(workers); }
 			public static string PrintLog (List<ThreadWorker> workers)
 			{
 				if (log==null) return "No Logging Enabled";
-				string result = "";
-				for (int i=0; i<log.Count; i++)
+				var result = "";
+			for (int i=0; i<log.Count; i++)
 				{
 					if (workers!=null && workers.Count!=0 && !workers.Contains(log[i].worker)) continue;
 					result += i + ". " + log[i].Print();
@@ -167,7 +167,7 @@ namespace MapMagic
 			Profiler.BeginSample("Update Apply");
 			#endif
 		
-			System.Diagnostics.Stopwatch timer = new System.Diagnostics.Stopwatch();
+			var timer = new System.Diagnostics.Stopwatch();
 			timer.Start();
 
 			while (timer.ElapsedMilliseconds < maxApplyTime)
@@ -183,7 +183,7 @@ namespace MapMagic
 				int queueCount = queue.Count;
 				for (int i=0; i<queueCount; i++)
 				{
-					ThreadWorker worker = queue[i];
+					var worker = queue[i];
 
 					if (worker==null) continue; //if object destroyed
 					if (worker.priority < maxProirity) continue;
@@ -269,8 +269,8 @@ namespace MapMagic
 				queueCount = queue.Count;
 				for (int i=0; i<queueCount; i++)
 				{
-					ThreadWorker worker = queue[i];
-					if (worker==null) continue;
+					var worker = queue[i];
+							if (worker==null) continue;
 					if (worker.priority < maxProirity) continue;
 					if (worker.stage!=Stage.threadEnqueued) continue; //if object destroyed or other stage
 					if (worker.threadCondition!=null && !worker.threadCondition()) continue;
@@ -398,11 +398,11 @@ namespace MapMagic
 				if (newStage == Stage.coroutineEnqueued && Coroutine == null) newStage = Stage.ready;
 				//idle, stop and restart are not mentioned - they don't have to be skipped
 
-				string postfix = logging? " (" + stage + "->" + newStage + ")" : null;
+				var postfix = logging? " (" + stage + "->" + newStage + ")" : null;
 
-				#if WDEBUG
+#if WDEBUG
 				if (timer != null && (newStage==Stage.blank || newStage==Stage.ready)) timer.Stop();
-				#endif
+#endif
 
 				stage = newStage;
 
@@ -674,7 +674,7 @@ namespace MapMagic
 			int queueCount = queue.Count;
 			for (int i=0; i<queueCount; i++)
 			{
-				ThreadWorker worker = queue[i];
+				var worker = queue[i];
 				if (!worker.tag.Contains(tag)) continue;
 				if (worker.stage!=Stage.blank && worker.stage!=Stage.ready) return true; 
 			}
@@ -692,7 +692,7 @@ namespace MapMagic
 
 			for (int i=0; i<queueCount; i++)
 			{
-				ThreadWorker worker = queue[i];
+				var worker = queue[i];
 				//if (!worker.tag.Contains(tag)) continue;
 				if (worker.tag != tag) continue;
 
@@ -713,7 +713,7 @@ namespace MapMagic
 		{
 			if (profile) Profiler.BeginSample("Get Progress Tag");
 
-			DictTuple<string, bool,bool> dict = new DictTuple<string, bool,bool>();
+			var dict = new DictTuple<string, bool,bool>();
 
 			int queueCount = queue.Count;
 
@@ -721,7 +721,7 @@ namespace MapMagic
 
 			for (int i=0; i<queueCount; i++)
 			{
-				ThreadWorker worker = queue[i];
+				var worker = queue[i];
 				if (worker.stage==Stage.stop || worker.stage==Stage.blank) continue;
 				if (!worker.tag.Contains(tag)) continue;
 
@@ -729,7 +729,7 @@ namespace MapMagic
 				if (!dict.ContainsKey(worker.tag)) dict.Add(worker.tag, true,true);
 
 				//calculated
-				TupleSet<bool,bool> tuple = dict[worker.tag];
+				var tuple = dict[worker.tag];
 				if (worker.stage!=Stage.applyEnqueued && worker.stage!=Stage.coroutineEnqueued && worker.stage!=Stage.coroutineRunning && worker.stage!=Stage.ready)
 					{ tuple.item1=false; tuple.item2=false; dict[worker.tag] = tuple; }
 

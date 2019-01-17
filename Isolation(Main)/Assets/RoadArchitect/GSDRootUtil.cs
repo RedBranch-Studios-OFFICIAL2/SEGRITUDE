@@ -68,9 +68,9 @@ namespace GSD{
 			
 		
 		public static string GetPrefabString(GameObject tObj){
-			string tString = "";
-			#if UNITY_EDITOR
-			if(tObj != null){
+			var tString = "";
+#if UNITY_EDITOR
+			if (tObj != null){
 				tString = UnityEditor.AssetDatabase.GetAssetPath( tObj );
 				if(tString == null || tString.Length < 1){
 #if UNITY_2018_2_OR_NEWER
@@ -100,10 +100,10 @@ namespace GSD{
 			#if UNITY_WEBPLAYER
 			return;
 			#else
-			string tData = SerializeObject<T>(ref pObject);
+			var tData = SerializeObject<T>(ref pObject);
 			StreamWriter writer; 
-			FileInfo t = new FileInfo (tPath); 
-			if(!t.Exists){ 
+			var t = new FileInfo (tPath);
+			if (!t.Exists){ 
 				writer = t.CreateText (); 
 			}else{ 
 				t.Delete(); 
@@ -115,7 +115,7 @@ namespace GSD{
 		}
 		
 		public static string GetString<T>(object pObject){
-			string tData = SerializeObject<T>(ref pObject);
+			var tData = SerializeObject<T>(ref pObject);
 			return tData;
 		}
 		 
@@ -123,16 +123,16 @@ namespace GSD{
 			#if UNITY_WEBPLAYER
 			return null;
 			#else
-			StreamReader r = File.OpenText (tPath); 
-			string _info = r.ReadToEnd (); 
+			var r = File.OpenText (tPath);
+			var _info = r.ReadToEnd ();
 			r.Close ();  
-			object tObject = DeserializeObject<T>(_info);
+			var tObject = DeserializeObject<T>(_info);
 			return tObject; 
 			#endif
 		} 
 		
 		public static object LoadData<T>(ref string _info){ 
-			object tObject = DeserializeObject<T>(_info);
+			var tObject = DeserializeObject<T>(_info);
 			return tObject; 
 		} 
 		
@@ -154,9 +154,9 @@ namespace GSD{
 		
 		private static string SerializeObject<T>(ref object pObject){ 
 			string XmlizedString = null; 
-			MemoryStream memoryStream = new MemoryStream ();
-			XmlSerializer xs = new XmlSerializer(typeof(T)); 
-			XmlTextWriter xmlTextWriter = new XmlTextWriter (memoryStream, Encoding.UTF8); 
+			var memoryStream = new MemoryStream ();
+			var xs = new XmlSerializer(typeof(T));
+			var xmlTextWriter = new XmlTextWriter (memoryStream, Encoding.UTF8);
 			xs.Serialize (xmlTextWriter, pObject); 
 			memoryStream = (MemoryStream)xmlTextWriter.BaseStream; 
 			XmlizedString = UTF8ByteArrayToString (memoryStream.ToArray ()); 
@@ -164,20 +164,20 @@ namespace GSD{
 		} 
 		
 		private static object DeserializeObject<T>(string pXmlizedString){ 
-			XmlSerializer xs = new XmlSerializer (typeof(T)); 
-			MemoryStream memoryStream = new MemoryStream (StringToUTF8ByteArray (pXmlizedString)); 
+			var xs = new XmlSerializer (typeof(T));
+			var memoryStream = new MemoryStream (StringToUTF8ByteArray (pXmlizedString));
 			return xs.Deserialize (memoryStream); 
 		} 
 		
 		private static string UTF8ByteArrayToString (byte[] characters){      
-			UTF8Encoding encoding = new UTF8Encoding (); 
-			string constructedString = encoding.GetString (characters); 
+			var encoding = new UTF8Encoding ();
+			var constructedString = encoding.GetString (characters);
 			return (constructedString); 
 		}
 		 
 		private static byte[] StringToUTF8ByteArray (string pXmlString){ 
-			UTF8Encoding encoding = new UTF8Encoding (); 
-			byte[] byteArray = encoding.GetBytes (pXmlString); 
+			var encoding = new UTF8Encoding ();
+			var byteArray = encoding.GetBytes (pXmlString);
 			return byteArray; 
 		} 
 		#endregion
@@ -188,9 +188,9 @@ namespace GSD{
 			int MVL = verts.Length;
 			if(MVL == 0){ return new Vector4[0]; }
 			int triangleCount = tris.Length;// mesh.triangles.Length / 3;
-			Vector3[] tan1 = new Vector3[MVL];
-			Vector3[] tan2 = new Vector3[MVL];
-			Vector4[] tangents = new Vector4[MVL];
+			var tan1 = new Vector3[MVL];
+			var tan2 = new Vector3[MVL];
+			var tangents = new Vector4[MVL];
 			int i1,i2,i3;
 			Vector3 v1,v2,v3;
 			Vector2 w1,w2,w3;
@@ -258,10 +258,10 @@ namespace GSD{
 		}
 		
 		public static void ProcessTangents(ref Mesh tMesh){
-			Vector3[] tVerts = tMesh.vertices;
-			Vector2[] tUV = tMesh.uv;
-			Vector3[] tNormals = tMesh.normals;
-			int[] tTris = tMesh.triangles;
+			var tVerts = tMesh.vertices;
+			var tUV = tMesh.uv;
+			var tNormals = tMesh.normals;
+			var tTris = tMesh.triangles;
 
 			tMesh.tangents = ProcessTangents(tTris,tNormals,tUV,tVerts);
 		}	
@@ -272,8 +272,8 @@ namespace GSD{
 			return Application.dataPath.Replace("/Assets","/GSD/");
 		}
 		public static string Dir_GetTH(){
-			string xPath = Dir_GetBase() + "TH/";
-			if(!Directory.Exists(xPath)){
+			var xPath = Dir_GetBase() + "TH/";
+			if (!Directory.Exists(xPath)){
 				Directory.CreateDirectory(xPath);
 			}
 			return xPath;
@@ -283,16 +283,16 @@ namespace GSD{
 			return Application.dataPath + "/RoadArchitect/Editor/Library/";
 		}
 		public static string Dir_GetLibrary(){
-			string xPath = Dir_GetLibraryBase();
-			if(!Directory.Exists(xPath)){
+			var xPath = Dir_GetLibraryBase();
+			if (!Directory.Exists(xPath)){
 				Directory.CreateDirectory(xPath);
 			}
 			return xPath;
 		}
 		
 		public static void Dir_GetLibrary_CheckSpecialDirs(){
-			string xPath = Dir_GetLibraryBase() + "Q/";
-			if(!Directory.Exists(xPath)){
+			var xPath = Dir_GetLibraryBase() + "Q/";
+			if (!Directory.Exists(xPath)){
 				Directory.CreateDirectory(xPath);
 			}
 			xPath = Dir_GetLibraryBase() + "W/";

@@ -163,7 +163,7 @@ namespace GSD.Roads.Splination{
 		}
 		
 		public SplinatedMeshMaker Copy(){
-			SplinatedMeshMaker SMM = new SplinatedMeshMaker();
+			var SMM = new SplinatedMeshMaker();
 			SMM.Init(tSpline,tNode,MasterObjTrans);
 			SMM.MasterObjTrans = MasterObjTrans;
 			SMM.bIsGSD = bIsGSD;
@@ -314,12 +314,12 @@ namespace GSD.Roads.Splination{
 		}
 		
 		public void SaveToLibrary(string fName = "", bool bIsDefault = false){
-			SplinatedMeshLibraryMaker SLM = new SplinatedMeshLibraryMaker();
+			var SLM = new SplinatedMeshLibraryMaker();
 			SLM.Setup(this);
 			GSDRootUtil.Dir_GetLibrary_CheckSpecialDirs();
-			string xPath = GSDRootUtil.Dir_GetLibrary();
-			string tPath = xPath + "ESO" + tName + ".gsd";
-			if(fName.Length > 0){
+			var xPath = GSDRootUtil.Dir_GetLibrary();
+			var tPath = xPath + "ESO" + tName + ".gsd";
+			if (fName.Length > 0){
 				if(bIsDefault){
 					tPath = xPath + "Q/ESO" + fName + ".gsd";
 				}else{
@@ -330,22 +330,22 @@ namespace GSD.Roads.Splination{
 		}
 
 		public void LoadFromLibrary(string xName, bool bIsQuickAdd = false){
-			string xPath = GSDRootUtil.Dir_GetLibrary();
-			string tPath = xPath + "ESO" + xName + ".gsd";
-			if(bIsQuickAdd){
+			var xPath = GSDRootUtil.Dir_GetLibrary();
+			var tPath = xPath + "ESO" + xName + ".gsd";
+			if (bIsQuickAdd){
 				GSDRootUtil.Dir_GetLibrary_CheckSpecialDirs();
 				tPath = xPath + "Q/ESO" + xName + ".gsd";
 			}
-			SplinatedMeshLibraryMaker SLM = (SplinatedMeshLibraryMaker)GSDRootUtil.LoadXML<SplinatedMeshLibraryMaker>(ref tPath);
+			var SLM = (SplinatedMeshLibraryMaker)GSDRootUtil.LoadXML<SplinatedMeshLibraryMaker>(ref tPath);
 			SLM.LoadToSMM(this);
 			bNeedsUpdate = true;
 		}
 		
 		public void LoadFromLibraryWizard(string xName){
 			GSDRootUtil.Dir_GetLibrary_CheckSpecialDirs();
-			string xPath = GSDRootUtil.Dir_GetLibrary();
-			string tPath = xPath + "W/" + xName + ".gsd";
-			SplinatedMeshLibraryMaker SLM = (SplinatedMeshLibraryMaker)GSDRootUtil.LoadXML<SplinatedMeshLibraryMaker>(ref tPath);
+			var xPath = GSDRootUtil.Dir_GetLibrary();
+			var tPath = xPath + "W/" + xName + ".gsd";
+			var SLM = (SplinatedMeshLibraryMaker)GSDRootUtil.LoadXML<SplinatedMeshLibraryMaker>(ref tPath);
 			SLM.LoadToSMM(this);
 			bNeedsUpdate = true;
 		}
@@ -357,7 +357,7 @@ namespace GSD.Roads.Splination{
 		
 		public static SplinatedMeshLibraryMaker SLMFromData(string tData){
 			try{
-				SplinatedMeshLibraryMaker SLM = (SplinatedMeshLibraryMaker)GSDRootUtil.LoadData<SplinatedMeshLibraryMaker>(ref tData);	
+				var SLM = (SplinatedMeshLibraryMaker)GSDRootUtil.LoadData<SplinatedMeshLibraryMaker>(ref tData);
 				return SLM;
 			}catch{
 				return null;	
@@ -365,7 +365,7 @@ namespace GSD.Roads.Splination{
 		}
 
 		public string ConvertToString(){
-			SplinatedMeshLibraryMaker SLM = new SplinatedMeshLibraryMaker();
+			var SLM = new SplinatedMeshLibraryMaker();
 			SLM.Setup(this);
 			return GSDRootUtil.GetString<SplinatedMeshLibraryMaker>(SLM);
 		}
@@ -380,13 +380,13 @@ namespace GSD.Roads.Splination{
 			tNames = null;
 			tPaths = null;
 			DirectoryInfo info;
-			string xPath = GSDRootUtil.Dir_GetLibrary();
-			if(bIsDefault){
+			var xPath = GSDRootUtil.Dir_GetLibrary();
+			if (bIsDefault){
 				info = new DirectoryInfo(xPath + "Q/");
 			}else{
 				info = new DirectoryInfo(xPath);
 			}
-			FileInfo[] fileInfo = info.GetFiles();
+			var fileInfo = info.GetFiles();
 			int tCount = 0;
 			foreach(FileInfo tInfo in fileInfo){
 				if(tInfo.Name.Contains("ESO") && tInfo.Extension.ToLower().Contains("gsd")){
@@ -1154,8 +1154,8 @@ namespace GSD.Roads.Splination{
 		
 		public static Vector3 GetVector3Average(Vector3[] tVects){
 			int tCount = tVects.Length;
-			Vector3 mVect = default(Vector3);
-			for(int i=0;i<tCount;i++){
+			var mVect = default(Vector3);
+			for (int i=0;i<tCount;i++){
 				mVect += tVects[i];
 			}
 			mVect /= tCount;
@@ -1176,8 +1176,8 @@ namespace GSD.Roads.Splination{
 	
 		private static int[] GetCollisionTris_Tri(int MeshCount, int cTriCount, int cCount){
 			int tCounter = 0;
-			int[] tTris = new int[cTriCount*3];
-			
+			var tTris = new int[cTriCount*3];
+
 			//Front side: **
 			tTris[tCounter] = 0; tCounter+=1;
 			tTris[tCounter] = 2; tCounter+=1;
@@ -1217,8 +1217,8 @@ namespace GSD.Roads.Splination{
 		
 		private static int[] GetCollisionTris_Box(int MeshCount, int cTriCount, int cCount){
 			int tCounter = 0;
-			int[] tTris = new int[cTriCount*3];
-			
+			var tTris = new int[cTriCount*3];
+
 			//Front side: ***
 			tTris[tCounter] = 0; tCounter+=1;
 			tTris[tCounter] = 2; tCounter+=1;
@@ -1369,17 +1369,17 @@ namespace GSD.Roads.Splination{
 		}
 		
 		private static float GetVHeightAtXY(ref Vector3 tVect1, ref Vector3 tVect2, ref Vector3 tVect3){
-			Vector2 tVect2D1 = new Vector2(tVect1.x,tVect1.z);
-			Vector2 tVect2D2 = new Vector2(tVect2.x,tVect2.z);
-			Vector2 tVect2D3 = new Vector2(tVect3.x,tVect3.z);
-			
+			var tVect2D1 = new Vector2(tVect1.x,tVect1.z);
+			var tVect2D2 = new Vector2(tVect2.x,tVect2.z);
+			var tVect2D3 = new Vector2(tVect3.x,tVect3.z);
+
 			float tDist1 = Vector2.Distance(tVect2D1,tVect2D3);
 			float tDist2 = Vector2.Distance(tVect2D2,tVect2D3);
 			float tDistSum = tDist1+tDist2;
 			
 			float CloseTo1 = (tDist1/tDistSum);
 
-			Vector3 tVect = ((tVect2-tVect1)*CloseTo1)+tVect1;
+			var tVect = ((tVect2-tVect1)*CloseTo1)+tVect1;
 
 			return tVect.y;
 		}	
@@ -1388,8 +1388,9 @@ namespace GSD.Roads.Splination{
 		
 		public void Setup(bool bGetStrings = false, bool bCollect = true){
 			#if UNITY_EDITOR
-			GameObject[] tObj = new GameObject[5];
-			try{
+			var tObj = new GameObject[5];
+			try
+			{
 				SplinateMesh_Do(bGetStrings, ref tObj,bCollect);
 			}catch(System.Exception e){
 				if(tObj != null){
@@ -1409,12 +1410,12 @@ namespace GSD.Roads.Splination{
 			SetupUniqueIdentifier();
 
 			//Buffers:
-			Vector3 tVect1 = default(Vector3);
-			Vector3 tVect2 = default(Vector3);
-			Vector3 tDir = default(Vector3);
-			Vector3 xVect = default(Vector3);
-//			Vector3 oVect = default(Vector3);
-//			Quaternion tRot = default(Quaternion);
+			var tVect1 = default(Vector3);
+			var tVect2 = default(Vector3);
+			var tDir = default(Vector3);
+			var xVect = default(Vector3);
+			//			Vector3 oVect = default(Vector3);
+			//			Quaternion tRot = default(Quaternion);
 			float tFloat1 = default(float);
 //			float tFloat2 = default(float);
 //			float tFloat3 = default(float);
@@ -1461,7 +1462,7 @@ namespace GSD.Roads.Splination{
 			}
 	
 			if(CurrentSplination == null){ return; }
-			GameObject tObj = (GameObject)GameObject.Instantiate(CurrentSplination);
+			var tObj = (GameObject)GameObject.Instantiate(CurrentSplination);
 			ErrortObj[0] = tObj;
 			
 			GameObject EndCapStartObj = null;
@@ -1500,9 +1501,9 @@ namespace GSD.Roads.Splination{
 			MeshFilter MF = null;
 			Mesh CapMesh1 = null;
 			Mesh CapMesh2 = null;
-			HashSet<int> tCapMatchIndices1 = new HashSet<int>();
-			HashSet<int> tCapMatchIndices2 = new HashSet<int>();
-			if(Cap1 != null){
+			var tCapMatchIndices1 = new HashSet<int>();
+			var tCapMatchIndices2 = new HashSet<int>();
+			if (Cap1 != null){
 				MF = Cap1.GetComponent<MeshFilter>();
 				CapMesh1 = MF.sharedMesh;
 			}
@@ -1544,11 +1545,11 @@ namespace GSD.Roads.Splination{
 				CapOrigMVL2 = CapOrigVerts2.Length;
 			}
 			
-			Vector3[] OrigVerts = tMesh.vertices;
+			var OrigVerts = tMesh.vertices;
 			int OrigMVL = OrigVerts.Length;
 
 			//Transform vertices:
-			Vector3[] OrigNormals = tMesh.normals;
+			var OrigNormals = tMesh.normals;
 			bool bCheckingNormal = true;
 			for(int i=0;i<OrigMVL;i++){
 				OrigVerts[i] = tObj.transform.TransformPoint(OrigVerts[i]);
@@ -1577,10 +1578,10 @@ namespace GSD.Roads.Splination{
 					CapOrigVerts1[i] = Cap1.transform.TransformPoint(CapOrigVerts1[i]);
 				}
 				
-				float[] oMinMaxX = new float[CapOrigMVL1];
-				float[] oMinMaxY = new float[CapOrigMVL1];
-				float[] oMinMaxZ = new float[CapOrigMVL1];
-				for(int i=0;i<CapOrigMVL1;i++){
+				var oMinMaxX = new float[CapOrigMVL1];
+				var oMinMaxY = new float[CapOrigMVL1];
+				var oMinMaxZ = new float[CapOrigMVL1];
+				for (int i=0;i<CapOrigMVL1;i++){
 					oMinMaxX[i] = CapOrigVerts1[i].x;	
 					oMinMaxY[i] = CapOrigVerts1[i].y;
 					oMinMaxZ[i] = CapOrigVerts1[i].z;
@@ -1615,10 +1616,10 @@ namespace GSD.Roads.Splination{
 					CapOrigVerts2[i] = Cap2.transform.TransformPoint(CapOrigVerts2[i]);
 				}
 				
-				float[] oMinMaxX = new float[CapOrigMVL2];
-				float[] oMinMaxY = new float[CapOrigMVL2];
-				float[] oMinMaxZ = new float[CapOrigMVL2];
-				for(int i=0;i<CapOrigMVL2;i++){
+				var oMinMaxX = new float[CapOrigMVL2];
+				var oMinMaxY = new float[CapOrigMVL2];
+				var oMinMaxZ = new float[CapOrigMVL2];
+				for (int i=0;i<CapOrigMVL2;i++){
 					oMinMaxX[i] = CapOrigVerts2[i].x;	
 					oMinMaxY[i] = CapOrigVerts2[i].y;
 					oMinMaxZ[i] = CapOrigVerts2[i].z;
@@ -1649,13 +1650,13 @@ namespace GSD.Roads.Splination{
 				CapOrigNormals2 = CapMesh2.normals;
 			}
 			
-			int[] OrigTris = tMesh.triangles;
+			var OrigTris = tMesh.triangles;
 			int OrigTriCount = OrigTris.Length;
-			Vector2[] OrigUV = tMesh.uv;
-			float[] tMinMax = new float[OrigMVL]; 
-			float[] tMinMaxX = new float[OrigMVL];
-			float[] tMinMaxY = new float[OrigMVL];
-			float[] tMinMaxZ = new float[OrigMVL];
+			var OrigUV = tMesh.uv;
+			var tMinMax = new float[OrigMVL];
+			var tMinMaxX = new float[OrigMVL];
+			var tMinMaxY = new float[OrigMVL];
+			var tMinMaxZ = new float[OrigMVL];
 			float[] tMinMaxUV = null;
 			if(RepeatUVType != RepeatUVTypeEnum.None){
 				tMinMaxUV = new float[OrigMVL];
@@ -1696,9 +1697,9 @@ namespace GSD.Roads.Splination{
 			float mMaxHeight = mMaxY - mMinY;
 			float mMaxThreshold = mMax-MinMaxMod;
 			float mMinThreshold = mMin+MinMaxMod;
-			List<int> MinVectorIndices = new List<int>();
-			List<int> MaxVectorIndices = new List<int>();
-			List<int> MiddleVectorIndicies = new List<int>();
+			var MinVectorIndices = new List<int>();
+			var MaxVectorIndices = new List<int>();
+			var MiddleVectorIndicies = new List<int>();
 			float tBuffer = 0f;
 			for(int i=0;i<OrigMVL;i++){
 				if(Axis == AxisTypeEnum.X){
@@ -1718,10 +1719,10 @@ namespace GSD.Roads.Splination{
 			int MiddleCount = MiddleVectorIndicies.Count;
 
 			//Match up min/max vertices:
-			Dictionary<int,int> MatchingIndices = new Dictionary<int, int>();
-			Dictionary<int,int> MatchingIndices_Min = new Dictionary<int, int>();
-			Dictionary<int,List<int>> MatchingIndices_Min_Cap = new Dictionary<int, List<int>>();
-			Dictionary<int,List<int>> MatchingIndices_Max_Cap = new Dictionary<int, List<int>>();
+			var MatchingIndices = new Dictionary<int, int>();
+			var MatchingIndices_Min = new Dictionary<int, int>();
+			var MatchingIndices_Min_Cap = new Dictionary<int, List<int>>();
+			var MatchingIndices_Max_Cap = new Dictionary<int, List<int>>();
 			int tCount1 = MaxVectorIndices.Count;
 			int tCount2 = MinVectorIndices.Count;
 			int tIntBuffer1 = -1;
@@ -1732,8 +1733,8 @@ namespace GSD.Roads.Splination{
 //			if(RepeatUVType != RepeatUVTypeEnum.None){
 //				UVStep = new Dictionary<int, float>();
 //			}
-			List<int> AlreadyAddedList = new List<int>();
-			for(int i=0;i<tCount1;i++){
+			var AlreadyAddedList = new List<int>();
+			for (int i=0;i<tCount1;i++){
 				tIntBuffer1 = MaxVectorIndices[i];
 				tVect1 = OrigVerts[tIntBuffer1];
 
@@ -1813,7 +1814,7 @@ namespace GSD.Roads.Splination{
 			if(CapMesh1 != null){
 				bool bDidAdd = false;
 				foreach(KeyValuePair<int,int> KVP in MatchingIndices_Min){
-					List<int> tList = new List<int>();
+					var tList = new List<int>();
 					tVect1 = OrigVerts[KVP.Key];
 					for(int i=0;i<CapOrigMVL1;i++){
 						if(tCapMatchIndices1.Contains(i) && IsApproxTwoThirds(ref tVect1, CapOrigVerts1[i],VertexMatchingPrecision)){
@@ -1840,7 +1841,7 @@ namespace GSD.Roads.Splination{
 			if(CapMesh2 != null){
 				bool bDidAdd = false;
 				foreach(KeyValuePair<int,int> KVP in MatchingIndices){
-					List<int> tList = new List<int>();
+					var tList = new List<int>();
 					tVect1 = OrigVerts[KVP.Key];
 					for(int i=0;i<CapOrigMVL2;i++){
 						if(tCapMatchIndices2.Contains(i) && IsApproxTwoThirds(ref tVect1, CapOrigVerts2[i],VertexMatchingPrecision)){
@@ -1932,7 +1933,7 @@ namespace GSD.Roads.Splination{
 			int VertCutTriIndex1 = -1;
 			int VertCutTriIndex2 = -1;
 			if(bVerticalMeshCutoff_OppositeDir){
-				float[] tMatchingMaxY = new float[MatchingIndices.Count];
+				var tMatchingMaxY = new float[MatchingIndices.Count];
 				int tempcount141 = 0;
 				foreach(KeyValuePair<int,int> KVP in MatchingIndices){
 					tMatchingMaxY[tempcount141] = OrigVerts[KVP.Key].y;
@@ -1979,7 +1980,7 @@ namespace GSD.Roads.Splination{
 			Vector2[] tUV = null;
 
 			//Get the vector series that this mesh is interpolated on:
-			List<float> tTimes = new List<float>();
+			var tTimes = new List<float>();
 			float cTime = StartTime;
 			
 			
@@ -2064,41 +2065,41 @@ namespace GSD.Roads.Splination{
 				DynamicHoriz.Add(fHeight);
 			}
 			
-			Vector3[] VectorSeries = new Vector3[vSeriesCount];
-			Vector3[] VectorSeriesTangents = new Vector3[vSeriesCount];
-//			bool bIsCenter = GSDRootUtil.IsApproximately(HorizontalSep,0f,0.02f);
+			var VectorSeries = new Vector3[vSeriesCount];
+			var VectorSeriesTangents = new Vector3[vSeriesCount];
+			//			bool bIsCenter = GSDRootUtil.IsApproximately(HorizontalSep,0f,0.02f);
 			float tIntStrength = 0f;
 			float tIntHeight = 0f;
 			GSDRoadIntersection GSDRI = null;
 			bool bIsPastInter = false;
 			GSDSplineN xNode = null;
-			List<float> tOrigHeights = new List<float>();
-			
-//			List<Terrain> xTerrains = null;
-//			List<GSD.Roads.GSDRoadUtil.Construction2DRect> tTerrainRects = null;
-//			int TerrainCount = 0;
-//			if(bMatchTerrain){
-//				tTerrainRects = new List<GSD.Roads.GSDRoadUtil.Construction2DRect>();
-//				xTerrains = new List<Terrain>();
-//				Object[] tTerrains = GameObject.FindObjectsOfType(typeof(Terrain));
-//				GSD.Roads.GSDRoadUtil.Construction2DRect tTerrainRect = null;
-//				Vector2 tPos2D = default(Vector2);
-//				Vector2 P1,P2,P3,P4;
-//				foreach(Terrain xTerrain in tTerrains){
-//					tPos2D = new Vector2(xTerrain.transform.position.x,xTerrain.transform.position.z);
-//					P1 = new Vector2(0f,0f) + tPos2D;
-//					P2 = new Vector2(0f,xTerrain.terrainData.size.y) + tPos2D;
-//					P3 = new Vector2(xTerrain.terrainData.size.x,xTerrain.terrainData.size.y) + tPos2D;
-//					P4 = new Vector2(xTerrain.terrainData.size.x,0f) + tPos2D;
-//					tTerrainRect = new GSD.Roads.GSDRoadUtil.Construction2DRect(P1,P2,P3,P4,xTerrain.transform.position.y);
-//					tTerrainRects.Add(tTerrainRect);
-//					xTerrains.Add(xTerrain);
-//					TerrainCount+=1;
-//				}
-//			}
-			
-//			Vector2 temp2DVect = default(Vector2);
-			Ray tRay = default(Ray);
+			var tOrigHeights = new List<float>();
+
+			//			List<Terrain> xTerrains = null;
+			//			List<GSD.Roads.GSDRoadUtil.Construction2DRect> tTerrainRects = null;
+			//			int TerrainCount = 0;
+			//			if(bMatchTerrain){
+			//				tTerrainRects = new List<GSD.Roads.GSDRoadUtil.Construction2DRect>();
+			//				xTerrains = new List<Terrain>();
+			//				Object[] tTerrains = GameObject.FindObjectsOfType(typeof(Terrain));
+			//				GSD.Roads.GSDRoadUtil.Construction2DRect tTerrainRect = null;
+			//				Vector2 tPos2D = default(Vector2);
+			//				Vector2 P1,P2,P3,P4;
+			//				foreach(Terrain xTerrain in tTerrains){
+			//					tPos2D = new Vector2(xTerrain.transform.position.x,xTerrain.transform.position.z);
+			//					P1 = new Vector2(0f,0f) + tPos2D;
+			//					P2 = new Vector2(0f,xTerrain.terrainData.size.y) + tPos2D;
+			//					P3 = new Vector2(xTerrain.terrainData.size.x,xTerrain.terrainData.size.y) + tPos2D;
+			//					P4 = new Vector2(xTerrain.terrainData.size.x,0f) + tPos2D;
+			//					tTerrainRect = new GSD.Roads.GSDRoadUtil.Construction2DRect(P1,P2,P3,P4,xTerrain.transform.position.y);
+			//					tTerrainRects.Add(tTerrainRect);
+			//					xTerrains.Add(xTerrain);
+			//					TerrainCount+=1;
+			//				}
+			//			}
+
+			//			Vector2 temp2DVect = default(Vector2);
+			var tRay = default(Ray);
 			RaycastHit[] tRayHit = null;
 			float[] tRayYs = null;
 			for(int i=0;i<vSeriesCount;i++){
@@ -2171,8 +2172,8 @@ namespace GSD.Roads.Splination{
 //			int MatchCount = MatchingIndices.Count;
 			tVerts = new Vector3[MVL];
 			tUV = new Vector2[MVL];
-			int[] tTris = new int[TriCount];
-			Vector3[] tNormals = new Vector3[MVL];
+			var tTris = new int[TriCount];
+			var tNormals = new Vector3[MVL];
 			int vManuver = 0;
 			int vManuver_Prev = 0;
 			int TriManuver = 0;
@@ -2199,9 +2200,9 @@ namespace GSD.Roads.Splination{
 //			GSD.Roads.GSDRoadUtil.Construction3DTri VertOppCutTri = null;
 //			int VertCutBufferIndex1 = -1;
 //			int VertCutBufferIndex2 = -1;
-			Vector3 VertCutBuffer1 = default(Vector3);
-			Vector3 VertCutBuffer2 = default(Vector3);
-			Vector3 VertCutBuffer3 = default(Vector3);
+			var VertCutBuffer1 = default(Vector3);
+			var VertCutBuffer2 = default(Vector3);
+			var VertCutBuffer3 = default(Vector3);
 			float tOrigHeightBuffer_Orig = 0f;
 //			if(bVerticalMeshCutoff_OppositeDir){
 //				tTriList = new List<GSD.Roads.GSDRoadUtil.Construction3DTri>();
@@ -2213,8 +2214,8 @@ namespace GSD.Roads.Splination{
 			}
 			
 			//Main loop:
-			Matrix4x4 tMatrix = new Matrix4x4();
-			for(int j=0;j<MeshCount;j++){
+			var tMatrix = new Matrix4x4();
+			for (int j=0;j<MeshCount;j++){
 				TriManuver = j*OrigTriCount;
 				vManuver = j*OrigMVL;
 				vManuver_Prev = (j-1)*OrigMVL;
@@ -2327,8 +2328,8 @@ namespace GSD.Roads.Splination{
 					}	
 					
 					if(j==(MeshCount-1)){
-						Vector3 tAdd = default(Vector3);
-						if(Axis == AxisTypeEnum.X){
+						var tAdd = default(Vector3);
+						if (Axis == AxisTypeEnum.X){
 							tAdd = new Vector3(mMaxDiff*-1f,0f,0f);
 						}else{
 							tAdd = new Vector3(0f,0f,mMaxDiff);
@@ -2357,8 +2358,8 @@ namespace GSD.Roads.Splination{
 				}
 
 				//If j > 0, the previous max vects need to match current min vects:
-				Vector3 mVect = default(Vector3);
-				if(j>0){
+				var mVect = default(Vector3);
+				if (j>0){
 //					foreach(KeyValuePair<int,int> KVP in MatchingIndices){
 //						tNormals[vManuver+KVP.Key] = tNormals[KVP.Value];
 //					}
@@ -2432,9 +2433,9 @@ namespace GSD.Roads.Splination{
 						}
 
 						float tTotalDistDown = 0f;
-						Vector3 pVect1 = default(Vector3);
-						Vector3 pVect2 = default(Vector3);
-						foreach(KeyValuePair<int,int> KVP in MatchingIndices){
+						var pVect1 = default(Vector3);
+						var pVect2 = default(Vector3);
+						foreach (KeyValuePair<int,int> KVP in MatchingIndices){
 							pVect1 = tVerts[vManuver+KVP.Key];
 							pVect2 = tVerts[vManuver+KVP.Value];
 							tTotalDistDown = Vector3.Distance(pVect1,pVect2);
@@ -2472,9 +2473,9 @@ namespace GSD.Roads.Splination{
 						}
 
 						float tTotalDistDown = 0f;
-						Vector3 pVect1 = default(Vector3);
-						Vector3 pVect2 = default(Vector3);
-						foreach(KeyValuePair<int,int> KVP in MatchingIndices){
+						var pVect1 = default(Vector3);
+						var pVect2 = default(Vector3);
+						foreach (KeyValuePair<int,int> KVP in MatchingIndices){
 							pVect1 = tVerts[vManuver+KVP.Key];
 							pVect2 = tVerts[vManuver+KVP.Value];
 							tTotalDistDown = Vector3.Distance(pVect1,pVect2);
@@ -2503,12 +2504,12 @@ namespace GSD.Roads.Splination{
 				//Ending objects:
 				if(j==0 && EndCapStartObj != null){
 					if(bEndCapCustomMatchStart && MinVectorIndices.Count > 0){
-						Vector3[] bVerts = new Vector3[MinVectorIndices.Count];
-						for(int g=0;g<MinVectorIndices.Count;g++){
+						var bVerts = new Vector3[MinVectorIndices.Count];
+						for (int g=0;g<MinVectorIndices.Count;g++){
 							bVerts[g] = tVerts[vManuver+MinVectorIndices[g]];
 						}
-						Vector3 tVect5 = GetVector3Average(bVerts);
-						Vector3 tVect6 = tSpline.GetSplineValue(tSpline.GetClosestParam(tVect5,false,false),false);
+						var tVect5 = GetVector3Average(bVerts);
+						var tVect6 = tSpline.GetSplineValue(tSpline.GetClosestParam(tVect5,false,false),false);
 						tVect5.y = tVect6.y;
 						EndCapStartObj.transform.position = tVect5;
 					}else{
@@ -2520,7 +2521,7 @@ namespace GSD.Roads.Splination{
 						tRayHit = null;
 						float tHitY = 0f;
 //						int tHitIndex = 0;
-						Vector3 HitVect = EndCapStartObj.transform.position;
+						var HitVect = EndCapStartObj.transform.position;
 						tRay = new Ray(HitVect+new Vector3(0f,1f,0f),Vector3.down);
 						tRayHit = Physics.RaycastAll(tRay);
 						if(tRayHit.Length > 0){
@@ -2546,13 +2547,13 @@ namespace GSD.Roads.Splination{
 					
 				}else if(j==(MeshCount-1) && EndCapEndObj != null){
 					if(bEndCapCustomMatchStart && MaxVectorIndices.Count > 0){
-						Vector3[] bVerts = new Vector3[MaxVectorIndices.Count];
-						for(int g=0;g<MaxVectorIndices.Count;g++){
+						var bVerts = new Vector3[MaxVectorIndices.Count];
+						for (int g=0;g<MaxVectorIndices.Count;g++){
 							bVerts[g] = tVerts[vManuver+MaxVectorIndices[g]];
 						}
-						Vector3 tVect5 = GetVector3Average(bVerts);
-						Vector3 tVect6 = tSpline.GetSplineValue(tSpline.GetClosestParam(tVect5,false,false),false);
-						if(!float.IsNaN(tVect6.y)){
+						var tVect5 = GetVector3Average(bVerts);
+						var tVect6 = tSpline.GetSplineValue(tSpline.GetClosestParam(tVect5,false,false),false);
+						if (!float.IsNaN(tVect6.y)){
 							tVect5.y = tVect6.y;	
 						}
 						EndCapEndObj.transform.position = tVect5;
@@ -2565,7 +2566,7 @@ namespace GSD.Roads.Splination{
 						tRayHit = null;
 						float tHitY = 0f;
 //						int tHitIndex = 0;
-						Vector3 HitVect = EndCapEndObj.transform.position;
+						var HitVect = EndCapEndObj.transform.position;
 						tRay = new Ray(HitVect+new Vector3(0f,1f,0f),Vector3.down);
 						tRayHit = Physics.RaycastAll(tRay);
 
@@ -2631,15 +2632,15 @@ namespace GSD.Roads.Splination{
 			}
 			
 			if(CapMesh1 != null){
-				Vector3[] cap1_verts = new Vector3[CapOrigMVL1];	
+				var cap1_verts = new Vector3[CapOrigMVL1];
 				System.Array.Copy(CapOrigVerts1,cap1_verts,CapOrigMVL1);
-				int[] cap1_tris = new int[CapTriCount1];
+				var cap1_tris = new int[CapTriCount1];
 				System.Array.Copy(CapOrigTris1,cap1_tris,CapTriCount1);
-				Vector2[] cap1_uv = new Vector2[CapOrigMVL1];
+				var cap1_uv = new Vector2[CapOrigMVL1];
 				System.Array.Copy(CapOrigUV1,cap1_uv,CapOrigMVL1);
-				Vector3[] cap1_normals = new Vector3[CapOrigMVL1];
+				var cap1_normals = new Vector3[CapOrigMVL1];
 				System.Array.Copy(CapOrigNormals1,cap1_normals,CapOrigMVL1);
-				bool[] cap1_hit = new bool[CapOrigMVL1];
+				var cap1_hit = new bool[CapOrigMVL1];
 				bool bcapstart = true;
 				float tHeight = 0f;
 				
@@ -2669,10 +2670,10 @@ namespace GSD.Roads.Splination{
 					}
 				}
 				
-				Vector3[] nVerts = new Vector3[CapOrigMVL1+tVerts.Length];
-				Vector3[] nNormals = new Vector3[CapOrigMVL1+tNormals.Length];
-				int[] nTris = new int[CapTriCount1+tTris.Length];
-				Vector2[] nUV = new Vector2[CapOrigMVL1+tUV.Length];
+				var nVerts = new Vector3[CapOrigMVL1+tVerts.Length];
+				var nNormals = new Vector3[CapOrigMVL1+tNormals.Length];
+				var nTris = new int[CapTriCount1+tTris.Length];
+				var nUV = new Vector2[CapOrigMVL1+tUV.Length];
 				int OldTriCount = tTris.Length;
 				int OldMVL = tVerts.Length;
 				
@@ -2697,15 +2698,15 @@ namespace GSD.Roads.Splination{
 			}
 			
 			if(CapMesh2 != null){
-				Vector3[] cap2_verts = new Vector3[CapOrigMVL2];
+				var cap2_verts = new Vector3[CapOrigMVL2];
 				System.Array.Copy(CapOrigVerts2,cap2_verts,CapOrigMVL2);
-				int[] cap2_tris = new int[CapTriCount2];
+				var cap2_tris = new int[CapTriCount2];
 				System.Array.Copy(CapOrigTris2,cap2_tris,CapTriCount2);
-				Vector2[] cap2_uv = new Vector2[CapOrigMVL2];
+				var cap2_uv = new Vector2[CapOrigMVL2];
 				System.Array.Copy(CapOrigUV2,cap2_uv,CapOrigMVL2);
-				Vector3[] cap2_normals = new Vector3[CapOrigMVL2];
+				var cap2_normals = new Vector3[CapOrigMVL2];
 				System.Array.Copy(CapOrigNormals2,cap2_normals,CapOrigMVL2);
-				bool[] cap2_hit = new bool[CapOrigMVL2];
+				var cap2_hit = new bool[CapOrigMVL2];
 				bool bcapstart = true;
 				float tHeight = 0f;
 				
@@ -2737,10 +2738,10 @@ namespace GSD.Roads.Splination{
 					}
 				}
 				
-				Vector3[] nVerts = new Vector3[CapOrigMVL2+tVerts.Length];
-				Vector3[] nNormals = new Vector3[CapOrigMVL2+tNormals.Length];
-				int[] nTris = new int[CapTriCount2+tTris.Length];
-				Vector2[] nUV = new Vector2[CapOrigMVL2+tUV.Length];
+				var nVerts = new Vector3[CapOrigMVL2+tVerts.Length];
+				var nNormals = new Vector3[CapOrigMVL2+tNormals.Length];
+				var nTris = new int[CapTriCount2+tTris.Length];
+				var nUV = new Vector2[CapOrigMVL2+tUV.Length];
 				int OldTriCount = tTris.Length;
 				int OldMVL = tVerts.Length;
 
@@ -2776,14 +2777,14 @@ namespace GSD.Roads.Splination{
 			}
 			
 			//Mesh creation:
-			Mesh xMesh = new Mesh();
+			var xMesh = new Mesh();
 			xMesh.vertices = tVerts;
 			xMesh.triangles = tTris;
 			xMesh.normals = tNormals;
 			xMesh.uv = tUV;
 			xMesh.RecalculateNormals();
 			tNormals = xMesh.normals;
-			Vector3 tAvgNormal = default(Vector3);
+			var tAvgNormal = default(Vector3);
 			tIntBuffer1 = 0;
 			if(!bIsStretch){
 				for(int j=1;j<MeshCount;j++){
@@ -2818,7 +2819,7 @@ namespace GSD.Roads.Splination{
 			MeshCollider MC = null;
 			if(CollisionType == CollisionTypeEnum.SimpleMeshTriangle){
 				MC = Output.AddComponent<MeshCollider>();
-				Mesh cMesh = new Mesh();
+				var cMesh = new Mesh();
 				cMesh.vertices = cVerts;
 				cMesh.triangles = cTris;
 				cMesh.normals = new Vector3[cVerts.Length];
@@ -2834,7 +2835,7 @@ namespace GSD.Roads.Splination{
 				}
 			}else if(CollisionType == CollisionTypeEnum.SimpleMeshTrapezoid){
 				MC = Output.AddComponent<MeshCollider>();
-				Mesh cMesh = new Mesh();
+				var cMesh = new Mesh();
 				cMesh.vertices = cVerts;
 				cMesh.triangles = cTris;
 				cMesh.normals = new Vector3[cVerts.Length];
@@ -2857,25 +2858,25 @@ namespace GSD.Roads.Splination{
 				}
 			}else if(CollisionType == CollisionTypeEnum.BoxCollision){
 				//Primitive collider:
-				GameObject BC_Obj = new GameObject("Primitive");
-				BoxCollider BC = BC_Obj.AddComponent<BoxCollider>();
+				var BC_Obj = new GameObject("Primitive");
+				var BC = BC_Obj.AddComponent<BoxCollider>();
 				BC_Obj.transform.position = tNode.pos;
 				BC_Obj.transform.rotation = Quaternion.LookRotation(tNode.tangent);
 				
-				Vector3 BCCenter = default(Vector3);
-//				if(bStraightLineMatchStartEnd){
-//					if(tNode.bIsBridge && tNode.bIsBridgeMatched && tNode.BridgeCounterpartNode != null){
-//						BCCenter = ((tNode.pos - tNode.BridgeCounterpartNode.pos)*0.5f)+tNode.BridgeCounterpartNode.pos;
-//					}else if(tNode.idOnSpline < (tSpline.GetNodeCount()-1)){
-//						BCCenter = ((tNode.pos - tSpline.mNodes[tNode.idOnSpline+1].pos)*0.5f)+tSpline.mNodes[tNode.idOnSpline+1].pos;
-//					}else{
-//						
-//					}
-//					BCCenter.y -= VerticalRaise;
-//					BCCenter.y -= (mMaxHeight*0.5f);
-//				}else{
-					Vector3 POS = default(Vector3);
-					tSpline.GetSplineValue_Both(StartTime,out tVect1, out POS);
+				var BCCenter = default(Vector3);
+				//				if(bStraightLineMatchStartEnd){
+				//					if(tNode.bIsBridge && tNode.bIsBridgeMatched && tNode.BridgeCounterpartNode != null){
+				//						BCCenter = ((tNode.pos - tNode.BridgeCounterpartNode.pos)*0.5f)+tNode.BridgeCounterpartNode.pos;
+				//					}else if(tNode.idOnSpline < (tSpline.GetNodeCount()-1)){
+				//						BCCenter = ((tNode.pos - tSpline.mNodes[tNode.idOnSpline+1].pos)*0.5f)+tSpline.mNodes[tNode.idOnSpline+1].pos;
+				//					}else{
+				//						
+				//					}
+				//					BCCenter.y -= VerticalRaise;
+				//					BCCenter.y -= (mMaxHeight*0.5f);
+				//				}else{
+				var POS = default(Vector3);
+				tSpline.GetSplineValue_Both(StartTime,out tVect1, out POS);
 					//Goes right if not neg:
 					tVect1 = (tVect1 + new Vector3(HorizontalSep*POS.normalized.z,0,HorizontalSep*-POS.normalized.x));
 					tSpline.GetSplineValue_Both(EndTime,out tVect2, out POS);
@@ -2898,9 +2899,9 @@ namespace GSD.Roads.Splination{
 				
 //				
 
-				Vector3 BCCenter2 = new Vector3(BCCenter.z,BCCenter.y,BCCenter.x);
-				
-				
+				var BCCenter2 = new Vector3(BCCenter.z,BCCenter.y,BCCenter.x);
+
+
 				BCCenter2 += StretchBC_LocOffset;
 			
 				
@@ -2923,10 +2924,10 @@ namespace GSD.Roads.Splination{
 			
 			
 			//Use prefab mats if no material override:
-			MeshRenderer MR = Output.AddComponent<MeshRenderer>();
-			if(SplinatedMaterial1 == null && !bMaterialOverride){
-				MeshRenderer PrefabMR = tObj.GetComponent<MeshRenderer>();
-				if(PrefabMR != null && PrefabMR.sharedMaterials != null){
+			var MR = Output.AddComponent<MeshRenderer>();
+			if (SplinatedMaterial1 == null && !bMaterialOverride){
+				var PrefabMR = tObj.GetComponent<MeshRenderer>();
+				if (PrefabMR != null && PrefabMR.sharedMaterials != null){
 					MR.materials = PrefabMR.sharedMaterials;	
 				}
 			}else{
@@ -2939,8 +2940,8 @@ namespace GSD.Roads.Splination{
 					}
 				}
 				if(tIntBuffer1 > 0){
-					Material[] tMats = new Material[tIntBuffer1];
-					if(SplinatedMaterial1 != null){
+					var tMats = new Material[tIntBuffer1];
+					if (SplinatedMaterial1 != null){
 						tMats[0] = SplinatedMaterial1;
 						if(SplinatedMaterial2 != null){
 							tMats[1] = SplinatedMaterial2;
@@ -2965,8 +2966,8 @@ namespace GSD.Roads.Splination{
 			if(Cap1 != null){ Object.DestroyImmediate(Cap1); }
 			if(Cap2 != null){ Object.DestroyImmediate(Cap2); }
 			
-			Material[] fMats = MR.sharedMaterials;
-			
+			var fMats = MR.sharedMaterials;
+
 			//Set the new object with the specified vertical raise:
 			Output.transform.name = tName;
 			Output.transform.parent = MasterObjTrans;
@@ -2974,8 +2975,8 @@ namespace GSD.Roads.Splination{
 				EndCapStartObj.transform.parent = Output.transform;
 				EndCapStartOutput = EndCapStartObj;
 				
-				MeshRenderer eMR = EndCapStartObj.GetComponent<MeshRenderer>();
-				if(eMR == null){ eMR = EndCapStartObj.AddComponent<MeshRenderer>(); }
+				var eMR = EndCapStartObj.GetComponent<MeshRenderer>();
+				if (eMR == null){ eMR = EndCapStartObj.AddComponent<MeshRenderer>(); }
 				if(eMR.sharedMaterials == null || (eMR.sharedMaterial != null && eMR.sharedMaterial.name.ToLower().Contains("default-diffuse"))){
 					eMR.sharedMaterials = fMats;
 				}
@@ -2983,8 +2984,8 @@ namespace GSD.Roads.Splination{
 			if(EndCapEndObj != null){
 				EndCapEndObj.transform.parent = Output.transform;
 				EndCapEndOutput = EndCapEndObj;
-				MeshRenderer eMR = EndCapEndObj.GetComponent<MeshRenderer>();
-				if(eMR == null){ eMR = EndCapEndObj.AddComponent<MeshRenderer>(); }
+				var eMR = EndCapEndObj.GetComponent<MeshRenderer>();
+				if (eMR == null){ eMR = EndCapEndObj.AddComponent<MeshRenderer>(); }
 				if(eMR.sharedMaterials == null || (eMR.sharedMaterial != null && eMR.sharedMaterial.name.ToLower().Contains("default-diffuse"))){
 					eMR.sharedMaterials = fMats;
 				}
@@ -3000,18 +3001,18 @@ namespace GSD.Roads.Splination{
 			#if UNITY_EDITOR
 			if(!tNode.GSDSpline.tRoad.GSDRS.opt_bSaveMeshes){ return; }
 			//string tSceneName = System.IO.Path.GetFileName(UnityEditor.EditorApplication.currentScene).ToLower().Replace(".unity","");
-            string tSceneName = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().name;
-            tSceneName = tSceneName.Replace("/","");
+            var tSceneName = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().name;
+			tSceneName = tSceneName.Replace("/","");
 			tSceneName = tSceneName.Replace(".","");
-			string tFolderName = "Assets/RoadArchitect/Mesh/Generated/Extrusions/";
-			string tRoadName = tNode.GSDSpline.tRoad.transform.name;
-			string FinalName = tFolderName + tSceneName + "-" + tRoadName + "-" + tName + ".asset";
-			if(bIsCollider){
+			var tFolderName = "Assets/RoadArchitect/Mesh/Generated/Extrusions/";
+			var tRoadName = tNode.GSDSpline.tRoad.transform.name;
+			var FinalName = tFolderName + tSceneName + "-" + tRoadName + "-" + tName + ".asset";
+			if (bIsCollider){
 				FinalName = tFolderName + tSceneName + "-" + tRoadName + "-" + tName + "-collider.asset";	
 			}
 			
-			string xPath = Application.dataPath.Replace("/Assets","/" + tFolderName);
-			if(!System.IO.Directory.Exists(xPath)){
+			var xPath = Application.dataPath.Replace("/Assets","/" + tFolderName);
+			if (!System.IO.Directory.Exists(xPath)){
 				System.IO.Directory.CreateDirectory(xPath);
 			}
 			
@@ -3022,22 +3023,22 @@ namespace GSD.Roads.Splination{
 		}
 		
 		void DoStretch(ref Vector3[] OrigVerts,ref Vector2[] OrigUV, ref int[] OrigTris,ref List<int> MaxVectorIndices,ref List<int> MinVectorIndices,float mMaxDiff, out Vector3[] tVerts, out Vector2[] tUV, out Vector3[] tNormals, out int[] tTris){
-			Vector3 tVect1 = tNode.pos;
-			Vector3 tVect2 = default(Vector3);
-			
-//			if(bStraightLineMatchStartEnd){
-//				if(tNode.bIsBridge && tNode.bIsBridgeMatched && tNode.BridgeCounterpartNode != null){
-//					tVect2 = tNode.BridgeCounterpartNode.pos;
-//				}else if(tNode.idOnSpline < (tSpline.GetNodeCount()-1)){
-//					tVect2 = tSpline.mNodes[tNode.idOnSpline+1].pos;	
-//				}
-//			}
-			
-			Vector3 POS = default(Vector3);
-			Vector3 tDir = tNode.tangent;
+			var tVect1 = tNode.pos;
+			var tVect2 = default(Vector3);
 
-//			if(!bStraightLineMatchStartEnd){
-				tSpline.GetSplineValue_Both(StartTime,out tVect1, out POS);
+			//			if(bStraightLineMatchStartEnd){
+			//				if(tNode.bIsBridge && tNode.bIsBridgeMatched && tNode.BridgeCounterpartNode != null){
+			//					tVect2 = tNode.BridgeCounterpartNode.pos;
+			//				}else if(tNode.idOnSpline < (tSpline.GetNodeCount()-1)){
+			//					tVect2 = tSpline.mNodes[tNode.idOnSpline+1].pos;	
+			//				}
+			//			}
+
+			var POS = default(Vector3);
+			var tDir = tNode.tangent;
+
+			//			if(!bStraightLineMatchStartEnd){
+			tSpline.GetSplineValue_Both(StartTime,out tVect1, out POS);
 				//Goes right if not neg:
 				tVect1 = (tVect1 + new Vector3(HorizontalSep*POS.normalized.z,0,HorizontalSep*-POS.normalized.x));
 				
@@ -3050,8 +3051,8 @@ namespace GSD.Roads.Splination{
 				tDir = tSpline.GetSplineValue(StartTime,true);
 //			}
 			
-			Matrix4x4 tMatrixStart = new Matrix4x4();
-			Matrix4x4 tMatrixEnd = new Matrix4x4();
+			var tMatrixStart = new Matrix4x4();
+			var tMatrixEnd = new Matrix4x4();
 			int OrigMVL = OrigVerts.Length;
 			
 			tVerts = new Vector3[OrigMVL];
@@ -3068,8 +3069,8 @@ namespace GSD.Roads.Splination{
 			//Rotate and set vertex positions:
 			float NewDiff = Vector3.Distance(tVect1,tVect2);
 			float UVMod = NewDiff / mMaxDiff;	
-			Vector3 xVect = default(Vector3);
-			for(int i=0;i<OrigMVL;i++){
+			var xVect = default(Vector3);
+			for (int i=0;i<OrigMVL;i++){
 				xVect = OrigVerts[i];
 				if(MaxVectorIndices.Contains(i)){
 					tVerts[i] = tMatrixEnd.MultiplyPoint3x4(xVect);
@@ -3090,15 +3091,15 @@ namespace GSD.Roads.Splination{
 		}
 		
 		Vector3 GetAverageNormalToGround(GameObject tObj){
-			Ray tRay = default(Ray);
+			var tRay = default(Ray);
 			RaycastHit[] tRayHit = null;
 			float tHitY = 0f;
 			int tHitIndex = 0;
-			Vector3 tHitNormal = default(Vector3);
-		
-			Bounds tBounds = tObj.GetComponent<MeshFilter>().sharedMesh.bounds;
+			var tHitNormal = default(Vector3);
 
-			Vector3[] tVects = new Vector3[8];
+			var tBounds = tObj.GetComponent<MeshFilter>().sharedMesh.bounds;
+
+			var tVects = new Vector3[8];
 			tVects[0] = tBounds.min;
 		    tVects[1] = tBounds.max;
 		    tVects[2] = new Vector3(tVects[0].x, tVects[0].y, tVects[1].z);
@@ -3108,9 +3109,9 @@ namespace GSD.Roads.Splination{
 		    tVects[6] = new Vector3(tVects[1].x, tVects[0].y, tVects[1].z);
 		    tVects[7] = new Vector3(tVects[1].x, tVects[1].y, tVects[0].z);
 			
-			List<Vector3> xVects = new List<Vector3>();
+			var xVects = new List<Vector3>();
 
-			for(int i=0;i<8;i++){
+			for (int i=0;i<8;i++){
 				tRay = new Ray(tVects[i]+new Vector3(0f,1f,0f),Vector3.down);
 				tRayHit = Physics.RaycastAll(tRay);
 				tHitIndex = -1;

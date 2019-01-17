@@ -27,11 +27,11 @@ namespace MapMagicDemo
 			{
 				if (tfm == null) continue;
 				if (tfm.name == "ObjectPool Unused") continue;
-				Vector3 camPos = Camera.main.transform.position;
+				var camPos = Camera.main.transform.position;
 				foreach (Transform child in tfm)
 				{
 					float distSq = (camPos - child.position).sqrMagnitude;
-					LODGroup lodGroup = child.GetComponent<LODGroup>();
+					var lodGroup = child.GetComponent<LODGroup>();
 					if (lodGroup == null) continue;
 
 					if (distSq > maxDist*maxDist && lodGroup.enabled) lodGroup.enabled = false;
@@ -53,7 +53,7 @@ namespace MapMagicDemo
 				foreach (Transform child in tfm)
 				{
 					if (!child.gameObject.activeSelf) continue;
-					LODGroup lodGroup = child.GetComponent<LODGroup>();
+					var lodGroup = child.GetComponent<LODGroup>();
 					if (lodGroup == null) continue;
 
 					numLodgroups++;

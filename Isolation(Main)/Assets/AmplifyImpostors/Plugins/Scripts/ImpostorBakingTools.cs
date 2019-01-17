@@ -51,12 +51,12 @@ namespace AmplifyImpostors
 
 		public static string OpenFolderForImpostor( this AmplifyImpostor instance )
 		{
-			string oneLevelUp = Application.dataPath + "/../";
-			string directory = Path.GetFullPath( oneLevelUp ).Replace( "\\", "/" );
-			string objectPath = AssetDatabase.GetAssetPath( instance.RootTransform );
+			var oneLevelUp = Application.dataPath + "/../";
+			var directory = Path.GetFullPath( oneLevelUp ).Replace( "\\", "/" );
+			var objectPath = AssetDatabase.GetAssetPath( instance.RootTransform );
 
 			// Find Path next to prefab
-			if( string.IsNullOrEmpty( objectPath ) )
+			if ( string.IsNullOrEmpty( objectPath ) )
 			{
 #if UNITY_2018_2_OR_NEWER
 				objectPath = AssetDatabase.GetAssetPath( PrefabUtility.GetCorrespondingObjectFromSource( instance.RootTransform ) );
@@ -66,9 +66,9 @@ namespace AmplifyImpostors
 			}
 
 			GlobalRelativeFolder = EditorPrefs.GetString( PrefGlobalRelativeFolder, "" );
-			string fullpath = string.Empty;
-			string suggestedRelativePath = directory + objectPath;
-			if( string.IsNullOrEmpty( objectPath ) )
+			var fullpath = string.Empty;
+			var suggestedRelativePath = directory + objectPath;
+			if ( string.IsNullOrEmpty( objectPath ) )
 				suggestedRelativePath = Application.dataPath;
 			else
 				suggestedRelativePath = Path.GetDirectoryName( suggestedRelativePath ).Replace( "\\", "/" );
@@ -85,14 +85,14 @@ namespace AmplifyImpostors
 			else
 				fullpath = Application.dataPath;
 
-			string fileName = instance.name + "_Impostor";
-			if( !string.IsNullOrEmpty( instance.m_impostorName ) )
+			var fileName = instance.name + "_Impostor";
+			if ( !string.IsNullOrEmpty( instance.m_impostorName ) )
 				fileName = instance.m_impostorName;
 
 			//Debug.Log( fullpath );
 			//Debug.Log( fileName );
 
-			string folderpath = EditorUtility.SaveFilePanelInProject( "Save Impostor to folder", fileName, "asset", "", FileUtil.GetProjectRelativePath( fullpath ) );
+			var folderpath = EditorUtility.SaveFilePanelInProject( "Save Impostor to folder", fileName, "asset", "", FileUtil.GetProjectRelativePath( fullpath ) );
 			fileName = Path.GetFileNameWithoutExtension( folderpath );
 
 			if( !string.IsNullOrEmpty( fileName ) )
@@ -144,10 +144,10 @@ namespace AmplifyImpostors
 				}
 				if( GUILayout.Button( "...", "minibutton", GUILayout.Width(20)/*GUILayout.MaxWidth( Screen.width * 0.5f )*/ ) )
 				{
-					string oneLevelUp = Application.dataPath + "/../";
-					string directory = Path.GetFullPath( oneLevelUp ).Replace( "\\", "/" );
-					string fullpath = directory + GlobalFolder;
-					string folderpath = EditorUtility.SaveFolderPanel( "Save Impostor to folder", FileUtil.GetProjectRelativePath( fullpath ), null );
+					var oneLevelUp = Application.dataPath + "/../";
+					var directory = Path.GetFullPath( oneLevelUp ).Replace( "\\", "/" );
+					var fullpath = directory + GlobalFolder;
+					var folderpath = EditorUtility.SaveFolderPanel( "Save Impostor to folder", FileUtil.GetProjectRelativePath( fullpath ), null );
 
 					folderpath = FileUtil.GetProjectRelativePath( folderpath );
 					if( !string.IsNullOrEmpty( folderpath ) )

@@ -212,7 +212,7 @@ public class GSDTerrainEditor : Editor{
 	private void LoadSplatSingleChoice(){
 		tRoads = null;
 		tRoadsString = null;
-		Object[] xRoads = GameObject.FindObjectsOfType(typeof(GSDRoad));	
+		var xRoads = GameObject.FindObjectsOfType(typeof(GSDRoad));
 		int xRoadsCount = xRoads.Length;
 		tRoads = new string[xRoadsCount];
 		tRoadsString = new string[xRoadsCount];
@@ -233,8 +233,8 @@ public class GSDTerrainEditor : Editor{
 		}
 		
 		if(tBytes != null && tBytes.Length > 3){
-			string tPath = UnityEditor.EditorUtility.SaveFilePanel("Save splat map",Application.dataPath,"Splat","png");
-			if(tPath != null && tPath.Length > 3){
+			var tPath = UnityEditor.EditorUtility.SaveFilePanel("Save splat map",Application.dataPath,"Splat","png");
+			if (tPath != null && tPath.Length > 3){
 	       		System.IO.File.WriteAllBytes(tPath, tBytes);
 			}
 			tBytes = null;

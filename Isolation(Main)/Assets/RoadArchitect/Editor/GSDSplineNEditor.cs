@@ -455,8 +455,8 @@ public class GSDSplineNEditor : Editor {
 		EditorGUILayout.LabelField("");
 		
 		if(GUILayout.Button("Save group",EditorStyles.miniButton,GUILayout.Width(108f)) || GUILayout.Button(btnSaveText,GSDImageButton,GUILayout.Width(16f))){
-			GSDSaveWindow tSave = EditorWindow.GetWindow<GSDSaveWindow>();
-			if(tNode.bIsBridge){
+			var tSave = EditorWindow.GetWindow<GSDSaveWindow>();
+			if (tNode.bIsBridge){
 				tSave.Initialize(ref tSceneRect,GSDSaveWindow.WindowTypeEnum.BridgeWizard,tNode);
 			}else{
 				tSave.Initialize(ref tSceneRect,GSDSaveWindow.WindowTypeEnum.BridgeWizard,tNode);
@@ -468,8 +468,8 @@ public class GSDSplineNEditor : Editor {
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("");
 		if(GUILayout.Button("Open Wizard",GSDLoadButton,GUILayout.Width(128f))){// || GUILayout.Button(btnLoadText,GSDImageButton,GUILayout.Width(16f))){
-			GSDWizard tWiz = EditorWindow.GetWindow<GSDWizard>();
-			if(tSceneRect.x < 0){ tSceneRect.x = 0f; }
+			var tWiz = EditorWindow.GetWindow<GSDWizard>();
+			if (tSceneRect.x < 0){ tSceneRect.x = 0f; }
 			if(tSceneRect.y < 0){ tSceneRect.y = 0f; }
 			tWiz.xRect = tSceneRect;
 			if(tNode.bIsBridgeStart){
@@ -637,7 +637,7 @@ public class GSDSplineNEditor : Editor {
 				SMM.Setup();
 			}
 			if(GUILayout.Button(btnSaveText,GSDImageButton,GUILayout.Width(16f))){
-				GSDSaveWindow tSave = EditorWindow.GetWindow<GSDSaveWindow>();
+				var tSave = EditorWindow.GetWindow<GSDSaveWindow>();
 				tSave.Initialize(ref tSceneRect,GSDSaveWindow.WindowTypeEnum.Extrusion,tNode,SMM);
 			}
 			if(GUILayout.Button(btnCopyText,GSDImageButton,GUILayout.Width(16f))){
@@ -1129,7 +1129,7 @@ public class GSDSplineNEditor : Editor {
 				EOM.Setup();
 			}
 			if(GUILayout.Button(btnSaveText,GSDImageButton,GUILayout.Width(16f))){
-				GSDSaveWindow tSave = EditorWindow.GetWindow<GSDSaveWindow>();
+				var tSave = EditorWindow.GetWindow<GSDSaveWindow>();
 				tSave.Initialize(ref tSceneRect,GSDSaveWindow.WindowTypeEnum.Edge,tNode,null,EOM);
 			}
 			
@@ -1420,9 +1420,9 @@ public class GSDSplineNEditor : Editor {
 	#region "Quick adds"
 	private void BridgeAdd_TopBase(float tHorizSep = 0f, float tVertRaise = -0.01f, string tMat = "Assets/RoadArchitect/Materials/GSDConcrete2.mat", bool bOverridePrefab = false, string OverridePrefab = ""){
 		SMM = tNode.AddSplinatedObject();
-		string tBridgeTopBaseToAdd = "";
-		string tName = "";
-		if(tNode.GSDSpline.tRoad.opt_Lanes == 2){
+		var tBridgeTopBaseToAdd = "";
+		var tName = "";
+		if (tNode.GSDSpline.tRoad.opt_Lanes == 2){
 			if(tBridgeTopBaseQuickAdd == BridgeTopBaseDefaultsEnum.Base1MOver){
 				tBridgeTopBaseToAdd = "Assets/RoadArchitect/Mesh/RoadObj/Bridges/BridgeBase-19w-5l-1d.fbx";
 				tName = "BridgeTop1M-1M";
@@ -1483,9 +1483,9 @@ public class GSDSplineNEditor : Editor {
 
 	private void BridgeAdd_BottomBase(float tHorizSep = 0f, float tVertRaise = -1.01f, string tMat = "Assets/RoadArchitect/Materials/GSDConcrete2.mat", bool bOverridePrefab = false, string OverridePrefab = ""){
 		SMM = tNode.AddSplinatedObject();
-		string tBridgeBottomBaseToAdd = "";
-		string tName = "";
-		if(tNode.GSDSpline.tRoad.opt_Lanes == 2){
+		var tBridgeBottomBaseToAdd = "";
+		var tName = "";
+		if (tNode.GSDSpline.tRoad.opt_Lanes == 2){
 			if(tBridgeBottomBaseQuickAdd == BridgeBottomBaseDefaultsEnum.BridgeBase2){
 				tBridgeBottomBaseToAdd = "Assets/RoadArchitect/Mesh/RoadObj/Bridges/BridgeBase2-18w-5l-3d.fbx";
 				tName = "BridgeBase2";
@@ -1649,7 +1649,7 @@ public class GSDSplineNEditor : Editor {
 	#endregion
 
     public void OnSceneGUI() {
-		Event current = Event.current;
+		var current = Event.current;
 		int controlID = GUIUtility.GetControlID(GetHashCode(), FocusType.Passive);
 		bool bUsed = false;
 
@@ -1683,8 +1683,8 @@ public class GSDSplineNEditor : Editor {
 		}
 		//Drag with left click release:
 		if(Event.current.type == EventType.MouseUp && Event.current.button == 0){
-			Object[] xNodeObjects = GameObject.FindObjectsOfType(typeof(GSDSplineN));
-			foreach(GSDSplineN xNode in xNodeObjects){
+			var xNodeObjects = GameObject.FindObjectsOfType(typeof(GSDSplineN));
+			foreach (GSDSplineN xNode in xNodeObjects){
 				if(Vector3.Distance(xNode.transform.position,tNode.transform.position) < 33f){
 					if(xNode == tNode){ continue; }
 					if(tNode.bSpecialEndNode || xNode.bSpecialEndNode){ continue; }
@@ -1728,8 +1728,8 @@ public class GSDSplineNEditor : Editor {
 		
 		//Enforce maximum road grade:
 		if(bMouseDragHasProcessed){
-			Vector3 vChangeChecker = tNode.transform.position;
-			if(VectorDiff(vChangeChecker,tNode.pos)){
+			var vChangeChecker = tNode.transform.position;
+			if (VectorDiff(vChangeChecker,tNode.pos)){
 				tNode.pos = vChangeChecker;
 				if(tNode.IsLegitimate() && tNode.GSDSpline.tRoad.opt_bMaxGradeEnabled){
 					tNode.EnsureGradeValidity();
@@ -1836,8 +1836,8 @@ public class GSDSplineNEditor : Editor {
 	}
 	
 	GameObject GetEndObjectQuickAdd(){
-		string tPath = "";
-		if(tEndObjectAdd == EndObjectsDefaultsEnum.WarningSign1_Static){
+		var tPath = "";
+		if (tEndObjectAdd == EndObjectsDefaultsEnum.WarningSign1_Static){
 			tPath = "Assets/RoadArchitect/Mesh/RoadObj/Interactive/GSDWarningSign_Static.prefab";
 		}else if(tEndObjectAdd == EndObjectsDefaultsEnum.WarningSign2_Static){
 			tPath = "Assets/RoadArchitect/Mesh/RoadObj/Interactive/GSDWarningSign2_Static.prefab";

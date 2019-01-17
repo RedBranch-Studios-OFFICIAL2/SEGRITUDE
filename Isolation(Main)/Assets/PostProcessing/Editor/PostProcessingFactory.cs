@@ -28,8 +28,8 @@ namespace UnityEditor.PostProcessing
     {
         public override void Action(int instanceId, string pathName, string resourceFile)
         {
-            PostProcessingProfile profile = PostProcessingFactory.CreatePostProcessingProfileAtPath(pathName);
-            ProjectWindowUtil.ShowCreatedAsset(profile);
+            var profile = PostProcessingFactory.CreatePostProcessingProfileAtPath(pathName);
+			ProjectWindowUtil.ShowCreatedAsset(profile);
         }
     }
 }

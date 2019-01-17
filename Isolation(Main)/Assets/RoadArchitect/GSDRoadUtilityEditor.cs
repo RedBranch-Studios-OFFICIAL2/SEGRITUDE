@@ -9,8 +9,8 @@ namespace GSD.Roads{
 			Material tMat2; 
 			
 			Material[] tMats;
-			Material tMat = (Material)AssetDatabase.LoadAssetAtPath(tPath, typeof(Material));
-			if(tPath2.Length > 0){
+			var tMat = (Material)AssetDatabase.LoadAssetAtPath(tPath, typeof(Material));
+			if (tPath2.Length > 0){
 				tMats = new Material[2];
 				tMats[0] = tMat;
 				tMat2 = (Material)AssetDatabase.LoadAssetAtPath(tPath2, typeof(Material));

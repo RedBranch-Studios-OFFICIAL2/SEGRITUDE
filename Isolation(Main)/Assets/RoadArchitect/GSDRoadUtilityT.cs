@@ -94,8 +94,8 @@ namespace GSD.Threaded{
 		
 		private static void GetTempHeights_Coordinates(ref Vector3 tVect,ref GSD.Roads.GSDTerraforming.TempTerrainData TTD, out int x, out int y){
 			//Get the normalized position of this game object relative to the terrain:
-			Vector3 tempCoord = (tVect - TTD.TerrainPos);
-			
+			var tempCoord = (tVect - TTD.TerrainPos);
+
 			Vector3 coord;
 			coord.x = tempCoord.x / TTD.TerrainSize.x;
 			coord.y = tempCoord.y / TTD.TerrainSize.y;
@@ -108,8 +108,8 @@ namespace GSD.Threaded{
 		
 		private static void GetTempDetails_Coordinates(ref Vector3 tVect,ref GSD.Roads.GSDTerraforming.TempTerrainData TTD, out int x, out int y){
 			//Get the normalized position of this game object relative to the terrain:
-			Vector3 tempCoord = (tVect - TTD.TerrainPos);
-			
+			var tempCoord = (tVect - TTD.TerrainPos);
+
 			Vector3 coord;
 			coord.x = tempCoord.x / TTD.TerrainSize.x;
 			coord.y = tempCoord.y / TTD.TerrainSize.y;
@@ -128,9 +128,9 @@ namespace GSD.Threaded{
 		private static void DoRectsDo(ref GSDSplineC tSpline,ref GSD.Roads.GSDTerraforming.TempTerrainData TTD){
 			float Sep = tSpline.tRoad.RoadWidth()*0.5f;
 			float HeightSep = Sep + (tSpline.tRoad.opt_MatchHeightsDistance * 0.5f);
-			List<TerrainBoundsMaker> TBMList = new List<TerrainBoundsMaker>();
-//			List<GSD.Roads.GSDRoadUtil.Construction3DTri> triList = new List<GSD.Roads.GSDRoadUtil.Construction3DTri>();
-			List<GSD.Roads.GSDRoadUtil.Construction2DRect> TreerectList = new List<GSD.Roads.GSDRoadUtil.Construction2DRect>();
+			var TBMList = new List<TerrainBoundsMaker>();
+			//			List<GSD.Roads.GSDRoadUtil.Construction3DTri> triList = new List<GSD.Roads.GSDRoadUtil.Construction3DTri>();
+			var TreerectList = new List<GSD.Roads.GSDRoadUtil.Construction2DRect>();
 			float tStep = tSpline.tRoad.opt_RoadDefinition / tSpline.distance;
 //			tStep *= 0.5f;
 			
@@ -156,11 +156,11 @@ namespace GSD.Threaded{
 			
 			FinalMax = FinalMax + tStep;
 			
-			Vector3 tVect1 = default(Vector3);
-			Vector3 tVect2 = default(Vector3);
-			Vector3 POS1 = default(Vector3);
-			Vector3 POS2 = default(Vector3);
-			if(FinalMax > 1f){ FinalMax = 1f; }
+			var tVect1 = default(Vector3);
+			var tVect2 = default(Vector3);
+			var POS1 = default(Vector3);
+			var POS2 = default(Vector3);
+			if (FinalMax > 1f){ FinalMax = 1f; }
 
 			float tNext = 0f;
 			float fValue1,fValue2;
@@ -182,10 +182,10 @@ namespace GSD.Threaded{
 			bool bIntStr2_Full = false;
 			bool bIntStr2_FullPrev = false;
 			bool bIntStr2_FullNext = false;
-			Vector3 tVect3 = default(Vector3);
-//			bool bStarted = false;
-//			bool T3Added = false;
-			List<int[]> tXYs = new List<int[]>();
+			var tVect3 = default(Vector3);
+			//			bool bStarted = false;
+			//			bool T3Added = false;
+			var tXYs = new List<int[]>();
 			float TreeClearDist = tSpline.tRoad.opt_ClearTreesDistance;
 			if(TreeClearDist < tSpline.tRoad.RoadWidth()){ TreeClearDist = tSpline.tRoad.RoadWidth(); }
 			GSD.Roads.GSDRoadUtil.Construction2DRect tRect = null;
@@ -348,8 +348,8 @@ namespace GSD.Threaded{
 			if(tSpline.tRoad.opt_TreeModEnabled && TreerectList != null && TreerectList.Count > 0){
 				int tCount = TTD.TreeSize;
 				int jCount = TreerectList.Count;
-				Vector3 tVect3D = default(Vector3);
-				Vector2 tVect2D = default(Vector2);
+				var tVect3D = default(Vector3);
+				var tVect2D = default(Vector2);
 				TreeInstance tTree;
 				for(int i=0;i<tCount;i++){
 					tTree = TTD.TreesCurrent[i];
@@ -463,27 +463,27 @@ namespace GSD.Threaded{
 		}
 		
 		private static int[] CreateTris(float i, float i2,ref Vector3 tVect1,ref Vector3 POS1,ref Vector3 tVect2,ref Vector3 POS2, float Sep, ref List<TerrainBoundsMaker> tList, ref float T1SUB, ref float T2SUB,ref GSD.Roads.GSDTerraforming.TempTerrainData TTD, float HeightSep){
-			Vector3 lVect1 = (tVect1 + new Vector3(Sep*-POS1.normalized.z,0,Sep*POS1.normalized.x));
-			Vector3 rVect1 = (tVect1 + new Vector3(Sep*POS1.normalized.z,0,Sep*-POS1.normalized.x));
-			Vector3 lVect2 = (tVect2 + new Vector3(Sep*-POS2.normalized.z,0,Sep*POS2.normalized.x));
-			Vector3 rVect2 = (tVect2 + new Vector3(Sep*POS2.normalized.z,0,Sep*-POS2.normalized.x));
-			
+			var lVect1 = (tVect1 + new Vector3(Sep*-POS1.normalized.z,0,Sep*POS1.normalized.x));
+			var rVect1 = (tVect1 + new Vector3(Sep*POS1.normalized.z,0,Sep*-POS1.normalized.x));
+			var lVect2 = (tVect2 + new Vector3(Sep*-POS2.normalized.z,0,Sep*POS2.normalized.x));
+			var rVect2 = (tVect2 + new Vector3(Sep*POS2.normalized.z,0,Sep*-POS2.normalized.x));
+
 			lVect1.y = T1SUB;
 			rVect1.y = T1SUB;
 			lVect2.y = T2SUB;
 			rVect2.y = T2SUB;
 			
-			TerrainBoundsMaker TBM = new TerrainBoundsMaker();
+			var TBM = new TerrainBoundsMaker();
 			TBM.triList = new List<GSD.Roads.GSDRoadUtil.Construction3DTri>();
 			
 			TBM.triList.Add(new GSD.Roads.GSDRoadUtil.Construction3DTri(lVect1,rVect1,lVect2,i,i2));
 			TBM.triList.Add(new GSD.Roads.GSDRoadUtil.Construction3DTri(lVect2,rVect1,rVect2,i,i2));
 
-			Vector3 lVect1far = (tVect1 + new Vector3(HeightSep*-POS1.normalized.z,0,HeightSep*POS1.normalized.x));
-			Vector3 rVect1far = (tVect1 + new Vector3(HeightSep*POS1.normalized.z,0,HeightSep*-POS1.normalized.x));
-			Vector3 lVect2far = (tVect2 + new Vector3(HeightSep*-POS2.normalized.z,0,HeightSep*POS2.normalized.x));
-			Vector3 rVect2far = (tVect2 + new Vector3(HeightSep*POS2.normalized.z,0,HeightSep*-POS2.normalized.x));
-			
+			var lVect1far = (tVect1 + new Vector3(HeightSep*-POS1.normalized.z,0,HeightSep*POS1.normalized.x));
+			var rVect1far = (tVect1 + new Vector3(HeightSep*POS1.normalized.z,0,HeightSep*-POS1.normalized.x));
+			var lVect2far = (tVect2 + new Vector3(HeightSep*-POS2.normalized.z,0,HeightSep*POS2.normalized.x));
+			var rVect2far = (tVect2 + new Vector3(HeightSep*POS2.normalized.z,0,HeightSep*-POS2.normalized.x));
+
 			lVect1far.y = lVect1.y;
 			lVect2far.y = lVect2.y;
 			rVect1far.y = rVect1.y;
@@ -503,9 +503,9 @@ namespace GSD.Threaded{
 			
 			tList.Add(TBM);
 				
-			int[] Xs = new int[4];
-			int[] Ys = new int[4];
-			
+			var Xs = new int[4];
+			var Ys = new int[4];
+
 			int x1,y1;
 			GetTempHeights_Coordinates(ref lVect1far,ref TTD,out x1, out y1);
 			Xs[0] = x1;
@@ -533,11 +533,11 @@ namespace GSD.Threaded{
 		}
 		
 		private static GSD.Roads.GSDRoadUtil.Construction2DRect SetDetailCoords(float param,ref Vector3 tVect1,ref Vector3 POS1,ref Vector3 tVect2,ref Vector3 POS2, float Sep, float TreeSep, ref GSD.Roads.GSDTerraforming.TempTerrainData TTD, ref GSDSplineC tSpline){
-			Vector3 lVect1far = default(Vector3);
-			Vector3 rVect1far = default(Vector3);
-			Vector3 lVect2far = default(Vector3);
-			Vector3 rVect2far = default(Vector3);
-			
+			var lVect1far = default(Vector3);
+			var rVect1far = default(Vector3);
+			var lVect2far = default(Vector3);
+			var rVect2far = default(Vector3);
+
 			bool bIsInBridge = tSpline.IsInBridgeTerrain(param);
 			bool bIsInTunnel = tSpline.IsInTunnelTerrain(param);
 			int x2,y2,x3,y3;
@@ -636,9 +636,9 @@ namespace GSD.Threaded{
 				lVect2far = (tVect2 + new Vector3(Sep*-POS2.normalized.z,0,Sep*POS2.normalized.x));
 				rVect2far = (tVect2 + new Vector3(Sep*POS2.normalized.z,0,Sep*-POS2.normalized.x));
 				
-				int[] Xs = new int[4];
-				int[] Ys = new int[4];
-				
+				var Xs = new int[4];
+				var Ys = new int[4];
+
 				int x1,y1;
 				GetTempDetails_Coordinates(ref lVect1far,ref TTD,out x1, out y1);
 				Xs[0] = x1;
@@ -728,7 +728,7 @@ namespace GSD.Threaded{
 			if(MaxX < 0){ MaxX = 0; }
 			if(MaxY < 0){ MaxY = 0; }
 			
-			Vector3 xVect = default(Vector3);
+			var xVect = default(Vector3);
 			bool bAdjusted = false;
 			float tHeight = -1f;
 			float tReturnFloat = 0f;
@@ -794,7 +794,7 @@ namespace GSD.Threaded{
 
 			float y1 = tHeight * TTD.TerrainSize.y;
 
-			Vector3 xVect = new Vector3(z1,y1,x1);
+			var xVect = new Vector3(z1,y1,x1);
 			xVect += TTD.TerrainPos;
 			
 			return xVect;
@@ -808,8 +808,8 @@ namespace GSD.Threaded{
 			TerrainBoundsMaker TBM;
 			bAdjusted = false;
 			tHeight = 0f;
-			Vector2 t2D = new Vector2(xVect.x,xVect.z);
-			for(int i=0;i<mCount;i++){
+			var t2D = new Vector2(xVect.x,xVect.z);
+			for (int i=0;i<mCount;i++){
 				TBM = tList[i];
 				if(param < TBM.MinI){
 					return;	
@@ -861,7 +861,7 @@ namespace GSD.Threaded{
 			RoadJob_DoPrelim(ref tRoad);
 		}
 		private static void RoadJob_DoPrelim(ref GSDRoad tRoad){
-			GSDSplineC tSpline = tRoad.GSDSpline;
+			var tSpline = tRoad.GSDSpline;
 			//Road,shoulder,ramp and lane widths:
 			float RoadWidth = tRoad.RoadWidth();
 			float ShoulderWidth = tRoad.opt_ShoulderWidth;
@@ -875,37 +875,37 @@ namespace GSD.Threaded{
 			float ShoulderSep2Lane = (ShoulderSeperation + (LaneWidth*1.5f));
 			
 			//Vector3 buffers used in construction:
-			Vector3 rVect = default(Vector3);
-			Vector3 lVect = default(Vector3);
-			Vector3 ShoulderR_rVect = default(Vector3);
-			Vector3 ShoulderR_lVect = default(Vector3);
-			Vector3 ShoulderL_rVect = default(Vector3);
-			Vector3 ShoulderL_lVect = default(Vector3);
-			Vector3 RampR_R = default(Vector3);
-			Vector3 RampR_L = default(Vector3);
-			Vector3 RampL_R = default(Vector3);
-			Vector3 RampL_L = default(Vector3);
+			var rVect = default(Vector3);
+			var lVect = default(Vector3);
+			var ShoulderR_rVect = default(Vector3);
+			var ShoulderR_lVect = default(Vector3);
+			var ShoulderL_rVect = default(Vector3);
+			var ShoulderL_lVect = default(Vector3);
+			var RampR_R = default(Vector3);
+			var RampR_L = default(Vector3);
+			var RampL_R = default(Vector3);
+			var RampL_L = default(Vector3);
 			float ShoulderR_OuterAngle = 0f; if(ShoulderR_OuterAngle < 0f){ }
 			float ShoulderL_OuterAngle = 0f; if(ShoulderL_OuterAngle < 0f){ }
 //			Vector3 ShoulderR_OuterDirection = default(Vector3);
 //			Vector3 ShoulderL_OuterDirection = default(Vector3);
 			
 			//Previous temp storage values:
-			Vector3 tVect_Prev = default(Vector3);				if(tVect_Prev == default(Vector3)){ } //Prev step storage of road variable.
-			Vector3 rVect_Prev = default(Vector3);				if(rVect_Prev == default(Vector3)){ }//Prev step storage of road variable.
-			Vector3 lVect_Prev = default(Vector3);				if(lVect_Prev == default(Vector3)){ }//Prev step storage of road variable.
-			Vector3 ShoulderR_PrevLVect = default(Vector3);		if(ShoulderR_PrevLVect == default(Vector3)){ }//Prev step storage of shoulder variable.
-			Vector3 ShoulderL_PrevRVect = default(Vector3);		if(ShoulderL_PrevRVect == default(Vector3)){ }//Prev step storage of shoulder variable.
-			Vector3 ShoulderR_PrevRVect = default(Vector3);		if(ShoulderR_PrevRVect == default(Vector3)){ }//Prev step storage of shoulder variable.
-			Vector3 ShoulderL_PrevLVect = default(Vector3);		if(ShoulderL_PrevLVect == default(Vector3)){ }//Prev step storage of shoulder variable.
+			var tVect_Prev = default(Vector3); if (tVect_Prev == default(Vector3)){ } //Prev step storage of road variable.
+			var rVect_Prev = default(Vector3); if (rVect_Prev == default(Vector3)){ }//Prev step storage of road variable.
+			var lVect_Prev = default(Vector3); if (lVect_Prev == default(Vector3)){ }//Prev step storage of road variable.
+			var ShoulderR_PrevLVect = default(Vector3); if (ShoulderR_PrevLVect == default(Vector3)){ }//Prev step storage of shoulder variable.
+			var ShoulderL_PrevRVect = default(Vector3); if (ShoulderL_PrevRVect == default(Vector3)){ }//Prev step storage of shoulder variable.
+			var ShoulderR_PrevRVect = default(Vector3); if (ShoulderR_PrevRVect == default(Vector3)){ }//Prev step storage of shoulder variable.
+			var ShoulderL_PrevLVect = default(Vector3); if (ShoulderL_PrevLVect == default(Vector3)){ }//Prev step storage of shoulder variable.
 //			Vector3 ShoulderR_PrevRVect2 = default(Vector3);	//Prev storage of shoulder variable (2 step history).
 //			Vector3 ShoulderL_PrevLVect2 = default(Vector3);	//Prev storage of shoulder variable (2 step history).
 //			Vector3 ShoulderR_PrevRVect3 = default(Vector3);	//Prev storage of shoulder variable (3 step history).
 //			Vector3 ShoulderL_PrevLVect3 = default(Vector3);	//Prev storage of shoulder variable (3 step history).
-			Vector3 RampR_PrevR = default(Vector3);				if(RampR_PrevR == default(Vector3)){ }//Prev storage of ramp variables (outer shoulder).
-			Vector3 RampR_PrevL = default(Vector3);				if(RampR_PrevL == default(Vector3)){ }//Prev storage of ramp variables (outer shoulder).
-			Vector3 RampL_PrevR = default(Vector3);				if(RampL_PrevR == default(Vector3)){ }//Prev storage of ramp variables (outer shoulder).
-			Vector3 RampL_PrevL = default(Vector3);				if(RampL_PrevL == default(Vector3)){ }//Prev storage of ramp variables (outer shoulder).
+			var RampR_PrevR = default(Vector3); if (RampR_PrevR == default(Vector3)){ }//Prev storage of ramp variables (outer shoulder).
+			var RampR_PrevL = default(Vector3); if (RampR_PrevL == default(Vector3)){ }//Prev storage of ramp variables (outer shoulder).
+			var RampL_PrevR = default(Vector3); if (RampL_PrevR == default(Vector3)){ }//Prev storage of ramp variables (outer shoulder).
+			var RampL_PrevL = default(Vector3); if (RampL_PrevL == default(Vector3)){ }//Prev storage of ramp variables (outer shoulder).
 //			Vector3 ShoulderR_OuterDirectionPrev = default(Vector3);	//Prev storage of outer shoulder direction (euler).
 //			Vector3 ShoulderL_OuterDirectionPrev = default(Vector3);	//Prev storage of outer shoulder direction (euler).
 			
@@ -914,22 +914,22 @@ namespace GSD.Threaded{
 //			float OrigStep = 0.06f;
 			float Step = tRoad.opt_RoadDefinition / tSpline.distance;
 //			float AngleStep = 5f;
-			Vector3 tHeight0 = new Vector3(0f,0.1f,0f);
-//			Vector3 tHeight2 = new Vector3(0f,0.15f,0f);
-//			Vector3 tHeight1 = new Vector3(0f,0.2f,0f);
+			var tHeight0 = new Vector3(0f,0.1f,0f);
+			//			Vector3 tHeight2 = new Vector3(0f,0.15f,0f);
+			//			Vector3 tHeight1 = new Vector3(0f,0.2f,0f);
 			float OuterShoulderWidthR = 0f;
 			float OuterShoulderWidthL = 0f;
 			float RampOuterWidthR = (OuterShoulderWidthR / 6f) + OuterShoulderWidthR;
 			float RampOuterWidthL = (OuterShoulderWidthL / 6f) + OuterShoulderWidthL;
-			Vector3 tVect = default(Vector3);
-			Vector3 POS = default(Vector3);
+			var tVect = default(Vector3);
+			var POS = default(Vector3);
 			float TempY = 0f;
 //			bool bTempYWasNegative = false;
 //			Vector3 tY = new Vector3(0f,0f,0f);
 			float tHeightAdded = 0f;		if(tHeightAdded < 0f){ }
 //			float[] HeightChecks = new float[5];
-			Vector3 gHeight = default(Vector3);
-			
+			var gHeight = default(Vector3);
+
 			//Bridge variables:
 			bool bIsBridge = false;			if(bIsBridge == false){ }
 			bool bTempbridge = false;		if(bTempbridge == false){ }
@@ -962,8 +962,8 @@ namespace GSD.Threaded{
 			float tLastInterHeight = -4f;
 			bool bOverrideRampR = false;
 			bool bOverrideRampL = false;
-			Vector3 RampR_Override = default(Vector3);
-			Vector3 RampL_Override = default(Vector3);
+			var RampR_Override = default(Vector3);
+			var RampL_Override = default(Vector3);
 			bool bFirstInterNode = false;
 			bool bInter_PrevWasCorner = false; if(bInter_PrevWasCorner == false){ }
 			bool bInter_CurreIsCorner = false;
@@ -975,17 +975,17 @@ namespace GSD.Threaded{
 			bool bInter_PrevWasCornerRL = false;
 			bool bInter_PrevWasCornerLL = false;
 			bool bInter_PrevWasCornerLR = false;
-			Vector3 iTemp_HeightVect = default(Vector3);
-			Vector3 rVect_iTemp = default(Vector3);
-			Vector3 lVect_iTemp = default(Vector3);
-			Vector3 ShoulderR_R_iTemp = default(Vector3);
-			Vector3 ShoulderL_L_iTemp = default(Vector3);
-			Vector3 RampR_R_iTemp = default(Vector3);
-			Vector3 RampR_L_iTemp = default(Vector3);
-			Vector3 RampL_R_iTemp = default(Vector3);
-			Vector3 RampL_L_iTemp = default(Vector3);
-			Vector3 tempIVect_Prev = default(Vector3);
-			Vector3 tempIVect = tVect;
+			var iTemp_HeightVect = default(Vector3);
+			var rVect_iTemp = default(Vector3);
+			var lVect_iTemp = default(Vector3);
+			var ShoulderR_R_iTemp = default(Vector3);
+			var ShoulderL_L_iTemp = default(Vector3);
+			var RampR_R_iTemp = default(Vector3);
+			var RampR_L_iTemp = default(Vector3);
+			var RampL_R_iTemp = default(Vector3);
+			var RampL_L_iTemp = default(Vector3);
+			var tempIVect_Prev = default(Vector3);
+			var tempIVect = tVect;
 			bool b0LAdded = false; if(b0LAdded == false){ }
 			bool b1LAdded = false; if(b1LAdded == false){ }
 			bool b2LAdded = false; if(b2LAdded == false){ }
@@ -1021,18 +1021,18 @@ namespace GSD.Threaded{
 			bool bDynamicCut = false;
 			float CullDistanceSQ = (3f * RoadWidth) * (3f * RoadWidth);
 			float mCornerDist = 0f;
-			Vector2 CornerRR = default(Vector2);		if(CornerRR == default(Vector2)){ }
-			Vector2 CornerRL = default(Vector2);		if(CornerRL == default(Vector2)){ }
-			Vector2 CornerLR = default(Vector2);		if(CornerLR == default(Vector2)){ }
-			Vector2 CornerLL = default(Vector2);		if(CornerLL == default(Vector2)){ }
-			Vector2 rVect2D = default(Vector2);			if(rVect2D == default(Vector2)){ }
-			Vector2 lVect2D = default(Vector2);			if(lVect2D == default(Vector2)){ }
-			Vector3 tempIVect_prev = default(Vector3);	if(tempIVect_prev == default(Vector3)){ }
-			Vector3 POS_Next = default(Vector3);		if(POS_Next == default(Vector3)){ }
-			Vector3 tVect_Next = default(Vector3);		if(tVect_Next == default(Vector3)){ }
-			Vector3 rVect_Next = default(Vector3);		if(rVect_Next == default(Vector3)){ }
-			Vector3 lVect_Next = default(Vector3);		if(lVect_Next == default(Vector3)){ }
-			Vector3 xHeight = default(Vector3); 		if(xHeight == default(Vector3)){ }
+			var CornerRR = default(Vector2); if (CornerRR == default(Vector2)){ }
+			var CornerRL = default(Vector2); if (CornerRL == default(Vector2)){ }
+			var CornerLR = default(Vector2); if (CornerLR == default(Vector2)){ }
+			var CornerLL = default(Vector2); if (CornerLL == default(Vector2)){ }
+			var rVect2D = default(Vector2); if (rVect2D == default(Vector2)){ }
+			var lVect2D = default(Vector2); if (lVect2D == default(Vector2)){ }
+			var tempIVect_prev = default(Vector3); if (tempIVect_prev == default(Vector3)){ }
+			var POS_Next = default(Vector3); if (POS_Next == default(Vector3)){ }
+			var tVect_Next = default(Vector3); if (tVect_Next == default(Vector3)){ }
+			var rVect_Next = default(Vector3); if (rVect_Next == default(Vector3)){ }
+			var lVect_Next = default(Vector3); if (lVect_Next == default(Vector3)){ }
+			var xHeight = default(Vector3); if (xHeight == default(Vector3)){ }
 			bool bLRtoRR = false;
 			bool bLLtoLR = false;
 			bool bLine = false;
@@ -2343,14 +2343,14 @@ namespace GSD.Threaded{
 					
 					//Get this and prev lvect rvect rects:
 					if((Vector3.SqrMagnitude(xNode.pos-tVect) < CullDistanceSQ) && bGoAhead){
-							GSD.Roads.GSDRoadUtil.Construction2DRect vRect = new GSD.Roads.GSDRoadUtil.Construction2DRect(
+							var vRect = new GSD.Roads.GSDRoadUtil.Construction2DRect(
 								new Vector2(lVect.x,lVect.z),
 								new Vector2(rVect.x,rVect.z),
 								new Vector2(lVect_Prev.x,lVect_Prev.z),
 								new Vector2(rVect_Prev.x,rVect_Prev.z), 
 								tLastInterHeight
 								);
-						
+
 						tRoad.RCS.tIntersectionBounds.Add(vRect);
 //						GameObject tObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
 //						tObj.transform.position = lVect;
@@ -2644,7 +2644,7 @@ namespace GSD.Threaded{
 //			float ExtraHeight = 0f;
 //			float RampPercent = 0.2f;
 			if(tSpline.bSpecialEndNode_IsStart_Delay){
-				Vector3[] RoadConn_verts = new Vector3[4];
+				var RoadConn_verts = new Vector3[4];
 
 				RampR_R = tRoad.RCS.ShoulderR_Vectors[7];
 				ShoulderR_rVect = tRoad.RCS.ShoulderR_Vectors[3];
@@ -2715,7 +2715,7 @@ namespace GSD.Threaded{
 				RoadConn_verts[2] = lVect + tHeight0;
 				RoadConn_verts[3] = rVect + tHeight0;
 				//Tris:
-				int[] RoadConn_tris = new int[6];
+				var RoadConn_tris = new int[6];
 				RoadConn_tris[0] = 2;
 				RoadConn_tris[1] = 0;
 				RoadConn_tris[2] = 3;
@@ -2723,12 +2723,12 @@ namespace GSD.Threaded{
 				RoadConn_tris[4] = 1;
 				RoadConn_tris[5] = 3;
 
-				Vector3[] RoadConn_normals = new Vector3[4];
+				var RoadConn_normals = new Vector3[4];
 				RoadConn_normals[0] = -Vector3.forward;
 				RoadConn_normals[1] = -Vector3.forward;
 				RoadConn_normals[2] = -Vector3.forward;
 				RoadConn_normals[3] = -Vector3.forward;
-				Vector2[] RoadConn_uv = new Vector2[4];
+				var RoadConn_uv = new Vector2[4];
 				float tMod1 = -1;
 				float tMod2 = -1;
 				
@@ -2750,7 +2750,7 @@ namespace GSD.Threaded{
 				tRoad.RCS.RoadConnections_normals.Add(RoadConn_normals);
 				tRoad.RCS.RoadConnections_uv.Add(RoadConn_uv);
 			}else if(tSpline.bSpecialEndNode_IsEnd_Delay){
-				Vector3[] RoadConn_verts = new Vector3[4];
+				var RoadConn_verts = new Vector3[4];
 				int rrCount = tRoad.RCS.ShoulderR_Vectors.Count;
 				RampR_R = tRoad.RCS.ShoulderR_Vectors[rrCount-1];
 				ShoulderR_rVect = tRoad.RCS.ShoulderR_Vectors[rrCount-3];
@@ -2824,7 +2824,7 @@ namespace GSD.Threaded{
 				RoadConn_verts[2] = lVect;
 				RoadConn_verts[3] = rVect;
 				//Tris:
-				int[] RoadConn_tris = new int[6];
+				var RoadConn_tris = new int[6];
 				RoadConn_tris[0] = 0;
 				RoadConn_tris[1] = 2;
 				RoadConn_tris[2] = 1;
@@ -2832,12 +2832,12 @@ namespace GSD.Threaded{
 				RoadConn_tris[4] = 3;
 				RoadConn_tris[5] = 1;
 				
-				Vector3[] RoadConn_normals = new Vector3[4];
+				var RoadConn_normals = new Vector3[4];
 				RoadConn_normals[0] = -Vector3.forward;
 				RoadConn_normals[1] = -Vector3.forward;
 				RoadConn_normals[2] = -Vector3.forward;
 				RoadConn_normals[3] = -Vector3.forward;
-				Vector2[] RoadConn_uv = new Vector2[4];
+				var RoadConn_uv = new Vector2[4];
 				float tMod = (RoadWidth / tSpline.SpecialEndNodeDelay_End_Result)/2f;
 				RoadConn_uv[0] = new Vector2(tMod,0f);
 				RoadConn_uv[1] = new Vector2(tMod*3f,0f);
@@ -3016,7 +3016,7 @@ namespace GSD.Threaded{
 		
 		#region "Intersection Prelim"
 		private static void RoadJob_Prelim_Inter(ref GSDRoad tRoad){
-			GSDSplineC tSpline = tRoad.GSDSpline;
+			var tSpline = tRoad.GSDSpline;
 			float RoadWidth = tRoad.RoadWidth();
 			float ShoulderWidth = tRoad.opt_ShoulderWidth;
 			float RoadSeperation = RoadWidth / 2f;
@@ -3025,7 +3025,7 @@ namespace GSD.Threaded{
 			float LaneWidth = tRoad.opt_LaneWidth;
 			float RoadSep1Lane = (RoadSeperation + (LaneWidth*0.5f));
 			float RoadSep2Lane = (RoadSeperation + (LaneWidth*1.5f));
-			Vector3 POS = default(Vector3);
+			var POS = default(Vector3);
 			bool bIsPastInter = false;
 			bool bOldMethod = false;
             //bool bCancel = false; if (bTempCancel) { }
@@ -3087,11 +3087,11 @@ namespace GSD.Threaded{
 			GSDSplineN oNode2 = null;
 			float PreInterPrecision1 = -1f;
 			float PreInterPrecision2 = -1f;
-			Vector3 PreInterVect = default(Vector3);
-			Vector3 PreInterVectR = default(Vector3);
-			Vector3 PreInterVectR_RightTurn = default(Vector3);
-			Vector3 PreInterVectL = default(Vector3);
-			Vector3 PreInterVectL_RightTurn = default(Vector3);
+			var PreInterVect = default(Vector3);
+			var PreInterVectR = default(Vector3);
+			var PreInterVectR_RightTurn = default(Vector3);
+			var PreInterVectL = default(Vector3);
+			var PreInterVectL_RightTurn = default(Vector3);
 			GSDRoadIntersection GSDRI = null;
 			
 			for(int j=0;j<mCount;j++){
@@ -3218,7 +3218,7 @@ namespace GSD.Threaded{
 					int N2RCount = oNode2.iConstruction.tempconstruction_R.Count;
 					int N2LCount = oNode2.iConstruction.tempconstruction_L.Count;
 					
-					int[] tCounts = new int[4];
+					var tCounts = new int[4];
 					tCounts[0] = N1RCount;
 					tCounts[1] = N1LCount;
 					tCounts[2] = N2RCount;
@@ -3369,11 +3369,11 @@ namespace GSD.Threaded{
 					}
 					
 					//Find corners:
-					Vector2 tFoundVectRR = default(Vector2);
-					Vector2 tFoundVectRL = default(Vector2);
-					Vector2 tFoundVectLR = default(Vector2);
-					Vector2 tFoundVectLL = default(Vector2);
-					if(!bOldMethod){
+					var tFoundVectRR = default(Vector2);
+					var tFoundVectRL = default(Vector2);
+					var tFoundVectLR = default(Vector2);
+					var tFoundVectLL = default(Vector2);
+					if (!bOldMethod){
 						//RR:
 						if(!bFlipped){
 							if(GSDRI.rType == GSDRoadIntersection.RoadTypeEnum.BothTurnLanes){
@@ -3568,24 +3568,24 @@ namespace GSD.Threaded{
 					oNode1.iConstruction.tempconstruction_HasProcessed_Inter2 = true;
 					oNode2.iConstruction.tempconstruction_HasProcessed_Inter2 = true;
 					
-					Vector3 tVectRR = new Vector3(tFoundVectRR.x,0f,tFoundVectRR.y);
-					Vector3 tVectRL = new Vector3(tFoundVectRL.x,0f,tFoundVectRL.y);
-					Vector3 tVectLR = new Vector3(tFoundVectLR.x,0f,tFoundVectLR.y);
-					Vector3 tVectLL = new Vector3(tFoundVectLL.x,0f,tFoundVectLL.y);
-					
+					var tVectRR = new Vector3(tFoundVectRR.x,0f,tFoundVectRR.y);
+					var tVectRL = new Vector3(tFoundVectRL.x,0f,tFoundVectRL.y);
+					var tVectLR = new Vector3(tFoundVectLR.x,0f,tFoundVectLR.y);
+					var tVectLL = new Vector3(tFoundVectLL.x,0f,tFoundVectLL.y);
+
 					oNode1.GSDRI.CornerRR = tVectRR;
 					oNode1.GSDRI.CornerRL = tVectRL;
 					oNode1.GSDRI.CornerLR = tVectLR;
 					oNode1.GSDRI.CornerLL = tVectLL;
 					
-					float[] tMaxFloats = new float[4];
+					var tMaxFloats = new float[4];
 					tMaxFloats[0] = Vector3.Distance(((tVectRR-tVectRL)*0.5f)+tVectRL,oNode1.pos) * 1.25f;
 					tMaxFloats[1] = Vector3.Distance(((tVectRR-tVectLR)*0.5f)+tVectLR,oNode1.pos) * 1.25f;
 					tMaxFloats[2] = Vector3.Distance(((tVectRL-tVectLL)*0.5f)+tVectLL,oNode1.pos) * 1.25f;
 					tMaxFloats[3] = Vector3.Distance(((tVectLR-tVectLL)*0.5f)+tVectLL,oNode1.pos) * 1.25f;
 					GSDRI.MaxInterDistance = Mathf.Max(tMaxFloats);
 					
-					float[] tMaxFloatsSQ = new float[4];
+					var tMaxFloatsSQ = new float[4];
 					tMaxFloatsSQ[0] = Vector3.SqrMagnitude((((tVectRR-tVectRL)*0.5f)+tVectRL)-oNode1.pos) * 1.25f;
 					tMaxFloatsSQ[1] = Vector3.SqrMagnitude((((tVectRR-tVectLR)*0.5f)+tVectLR)-oNode1.pos) * 1.25f;
 					tMaxFloatsSQ[2] = Vector3.SqrMagnitude((((tVectRL-tVectLL)*0.5f)+tVectLL)-oNode1.pos) * 1.25f;
@@ -3706,13 +3706,13 @@ namespace GSD.Threaded{
 		private static Vector2 IntersectionCornerCalc(ref List<Vector2> PrimaryList,ref List<Vector2> SecondaryList){
 			int PrimaryCount = PrimaryList.Count;
 			int SecondaryCount = SecondaryList.Count;
-			Vector2 t2D_Line1Start = default(Vector2);
-			Vector2 t2D_Line1End = default(Vector2);
-			Vector2 t2D_Line2Start = default(Vector2);
-			Vector2 t2D_Line2End = default(Vector2);
+			var t2D_Line1Start = default(Vector2);
+			var t2D_Line1End = default(Vector2);
+			var t2D_Line2Start = default(Vector2);
+			var t2D_Line2End = default(Vector2);
 			bool bDidIntersect = false;
-			Vector2 tIntersectLocation = default(Vector2);
-			for(int i=1;i<PrimaryCount;i++){
+			var tIntersectLocation = default(Vector2);
+			for (int i=1;i<PrimaryCount;i++){
 					bDidIntersect = false;
 					t2D_Line1Start = PrimaryList[i-1];
 					t2D_Line1End = PrimaryList[i];
@@ -3744,42 +3744,42 @@ namespace GSD.Threaded{
 			bool bIsPastInter = false;
 			bool bMaxIntersection = false;
 			bool bWasPrevMaxInter = false;
-			Vector3 tVect = default(Vector3);
-			Vector3 POS = default(Vector3);
+			var tVect = default(Vector3);
+			var POS = default(Vector3);
 			float tIntHeight = 0f;
 			float tIntStrength = 0f;
 			float tIntStrength_temp = 0f;
 //			float tIntDistCheck = 75f;
 			bool bFirstInterNode = false;
-			Vector3 tVect_Prev = default(Vector3); 		if(tVect_Prev == default(Vector3)){ }
-			Vector3 rVect_Prev = default(Vector3); 		if(rVect_Prev == default(Vector3)){ }
-			Vector3 lVect_Prev = default(Vector3); 		if(lVect_Prev == default(Vector3)){ }
-			Vector3 rVect = default(Vector3);			if(rVect == default(Vector3)){ }
-			Vector3 lVect = default(Vector3);			if(lVect == default(Vector3)){ }
-			Vector3 ShoulderR_rVect = default(Vector3);	if(ShoulderR_rVect == default(Vector3)){ }
-			Vector3 ShoulderR_lVect = default(Vector3);	if(ShoulderR_lVect == default(Vector3)){ }
-			Vector3 ShoulderL_rVect = default(Vector3);	if(ShoulderL_rVect == default(Vector3)){ }
-			Vector3 ShoulderL_lVect = default(Vector3);	if(ShoulderL_lVect == default(Vector3)){ }
+			var tVect_Prev = default(Vector3); if (tVect_Prev == default(Vector3)){ }
+			var rVect_Prev = default(Vector3); if (rVect_Prev == default(Vector3)){ }
+			var lVect_Prev = default(Vector3); if (lVect_Prev == default(Vector3)){ }
+			var rVect = default(Vector3); if (rVect == default(Vector3)){ }
+			var lVect = default(Vector3); if (lVect == default(Vector3)){ }
+			var ShoulderR_rVect = default(Vector3); if (ShoulderR_rVect == default(Vector3)){ }
+			var ShoulderR_lVect = default(Vector3); if (ShoulderR_lVect == default(Vector3)){ }
+			var ShoulderL_rVect = default(Vector3); if (ShoulderL_rVect == default(Vector3)){ }
+			var ShoulderL_lVect = default(Vector3); if (ShoulderL_lVect == default(Vector3)){ }
 			
-			Vector3 RampR_R = default(Vector3);
-			Vector3 RampR_L = default(Vector3);
-			Vector3 RampL_R = default(Vector3);
-			Vector3 RampL_L = default(Vector3);
+			var RampR_R = default(Vector3);
+			var RampR_L = default(Vector3);
+			var RampL_R = default(Vector3);
+			var RampL_L = default(Vector3);
 			float ShoulderR_OuterAngle = 0f;	if(ShoulderR_OuterAngle < 0f){ }
 			float ShoulderL_OuterAngle = 0f;	if(ShoulderL_OuterAngle < 0f){ }
-			Vector3 ShoulderR_PrevLVect = default(Vector3); if(ShoulderR_PrevLVect == default(Vector3)){ }
-			Vector3 ShoulderL_PrevRVect = default(Vector3); if(ShoulderL_PrevRVect == default(Vector3)){ }
-			Vector3 ShoulderR_PrevRVect = default(Vector3); if(ShoulderR_PrevRVect == default(Vector3)){ }
-			Vector3 ShoulderL_PrevLVect = default(Vector3); if(ShoulderL_PrevLVect == default(Vector3)){ }
+			var ShoulderR_PrevLVect = default(Vector3); if (ShoulderR_PrevLVect == default(Vector3)){ }
+			var ShoulderL_PrevRVect = default(Vector3); if (ShoulderL_PrevRVect == default(Vector3)){ }
+			var ShoulderR_PrevRVect = default(Vector3); if (ShoulderR_PrevRVect == default(Vector3)){ }
+			var ShoulderL_PrevLVect = default(Vector3); if (ShoulderL_PrevLVect == default(Vector3)){ }
 //			Vector3 ShoulderR_PrevRVect2 = default(Vector3);
 //			Vector3 ShoulderL_PrevLVect2 = default(Vector3);
 //			Vector3 ShoulderR_PrevRVect3 = default(Vector3);
 //			Vector3 ShoulderL_PrevLVect3 = default(Vector3);
-			Vector3 RampR_PrevR = default(Vector3); if(RampR_PrevR == default(Vector3)){ }
-			Vector3 RampR_PrevL = default(Vector3); if(RampR_PrevL == default(Vector3)){ }
-			Vector3 RampL_PrevR = default(Vector3); if(RampL_PrevR == default(Vector3)){ }
-			Vector3 RampL_PrevL = default(Vector3); if(RampL_PrevL == default(Vector3)){ }
-			GSDSplineC tSpline = tRoad.GSDSpline;
+			var RampR_PrevR = default(Vector3); if (RampR_PrevR == default(Vector3)){ }
+			var RampR_PrevL = default(Vector3); if (RampR_PrevL == default(Vector3)){ }
+			var RampL_PrevR = default(Vector3); if (RampL_PrevR == default(Vector3)){ }
+			var RampL_PrevL = default(Vector3); if (RampL_PrevL == default(Vector3)){ }
+			var tSpline = tRoad.GSDSpline;
 			//Road width:
 			float RoadWidth = tRoad.RoadWidth();
 			float ShoulderWidth = tRoad.opt_ShoulderWidth;
@@ -4128,13 +4128,13 @@ namespace GSD.Threaded{
 		
 		private static void Inter_OrganizeVerticesMatchShoulder(ref List<Vector3> tShoulderList,ref List<Vector3> tToMatch, int StartI, ref Vector3 StartVec, ref Vector3 EndVect, float tHeight, bool bIsF = false){
 //			return;
-			List<Vector3> BackupList = new List<Vector3>();
-			for(int i=0;i<tToMatch.Count;i++){
+			var BackupList = new List<Vector3>();
+			for (int i=0;i<tToMatch.Count;i++){
 				BackupList.Add(tToMatch[i]);
 			}
-			Vector2 t2D = default(Vector2);
-			Vector2 t2D_Start = ConvertVect3_To_Vect2(StartVec);
-			Vector2 t2D_End = ConvertVect3_To_Vect2(EndVect);
+			var t2D = default(Vector2);
+			var t2D_Start = ConvertVect3_To_Vect2(StartVec);
+			var t2D_End = ConvertVect3_To_Vect2(EndVect);
 			int RealStartID = -1;
 			StartI = StartI - 30;
 			if(StartI < 0){ StartI = 0; }
@@ -4208,9 +4208,9 @@ namespace GSD.Threaded{
 		}
 		
 		private static void Inter_OrganizeVertices(ref GSDSplineN tNode, ref GSDRoad tRoad){
-			GSD.Roads.GSDIntersections.iConstructionMaker iCon = tNode.iConstruction;
-			GSDRoadIntersection GSDRI = tNode.GSDRI;
-			
+			var iCon = tNode.iConstruction;
+			var GSDRI = tNode.GSDRI;
+
 			//Skipping (3 ways):
 			bool bSkipF = false;
 			if(iCon.iFLane0L.Count == 0){
@@ -4295,9 +4295,9 @@ namespace GSD.Threaded{
 			}
 
 			bool bError = false;
-			string tWarning = "Intersection " + GSDRI.tName + " in road " + tRoad.tName + " at too extreme angle to process this intersection type. Reduce angle or reduce lane count.";
-			
-			if(GSDRI.rType == GSDRoadIntersection.RoadTypeEnum.NoTurnLane){
+			var tWarning = "Intersection " + GSDRI.tName + " in road " + tRoad.tName + " at too extreme angle to process this intersection type. Reduce angle or reduce lane count.";
+
+			if (GSDRI.rType == GSDRoadIntersection.RoadTypeEnum.NoTurnLane){
 				if(!bSkipB){ bError = Inter_OrganizeVerticesMatchEdges(ref iCon.iBLane0R, ref iCon.iBLane1L); if(bError){ Debug.Log(tWarning); } }
 				if(!bSkipF){ bError = Inter_OrganizeVerticesMatchEdges(ref iCon.iFLane0R, ref iCon.iFLane1L); if(bError){ Debug.Log(tWarning); } }
 			}else if(GSDRI.rType == GSDRoadIntersection.RoadTypeEnum.TurnLane){
@@ -4375,8 +4375,8 @@ namespace GSD.Threaded{
 			
 			mCount = tRoad.RCS.RoadVectors.Count;
 //			float mDistance = 0.05f;
-			Vector3 tVect = default(Vector3);
-			
+			var tVect = default(Vector3);
+
 			bool biBLane0L = (iCon.iBLane0L.Count > 0);				if(biBLane0L == false){ }
 			bool biBLane0R = (iCon.iBLane0R.Count > 0);				if(biBLane0R == false){ }
 			bool biBMainPlateL = (iCon.iBMainPlateL.Count > 0);		if(biBMainPlateL == false){ }
@@ -4637,7 +4637,7 @@ namespace GSD.Threaded{
 		private static List<Vector3> InterVertices(List<Vector3> tL, List<Vector3> tR, float tHeight){
 			if(tL.Count == 0 || tR.Count == 0){ return null;	}
 			
-			List<Vector3> tList = new List<Vector3>();
+			var tList = new List<Vector3>();
 			int tCountL = tL.Count;
 			int tCountR = tR.Count;
 			int spamcheck = 0;
@@ -4816,7 +4816,7 @@ namespace GSD.Threaded{
 		
 		#region "Intersection Cleanup"
 		private static void ProcessRoad_IntersectionCleanup(ref GSD.Roads.RoadConstructorBufferMaker RCS){
-			List<GSD.Roads.GSDRoadUtil.Construction2DRect> tList = RCS.tIntersectionBounds;
+			var tList = RCS.tIntersectionBounds;
 			int mCount = tList.Count;
 			RCS.ShoulderR_Vectors = ProcessRoad_IntersectionCleanup_Helper(ref RCS.ShoulderR_Vectors,ref tList,mCount,ref RCS.ImmuneVects);
 			RCS.ShoulderL_Vectors = ProcessRoad_IntersectionCleanup_Helper(ref RCS.ShoulderL_Vectors,ref tList,mCount,ref RCS.ImmuneVects);
@@ -4826,8 +4826,8 @@ namespace GSD.Threaded{
 			GSD.Roads.GSDRoadUtil.Construction2DRect tRect = null;
 			int MVL = tVects.Count;
 			//Vector3 tVect = default(Vector3);
-			Vector2 Vect2D = default(Vector2);
-			Vector2 tNearVect = default(Vector2);
+			var Vect2D = default(Vector2);
+			var tNearVect = default(Vector2);
 			float tMax2 = 2000f;
 			float tMax2SQ = 0f;
 //			GameObject tObj = GameObject.Find("Inter1");
@@ -4943,8 +4943,8 @@ namespace GSD.Threaded{
 			int x1,x2,x3;
 			int xCount = (int)(MVL*0.25f*6)-6;
 //			if(xCount < 0){ xCount = 0; }
-			int[] tri = new int[xCount];
-			for(int i=0;i<MVL;i+=4){ 
+			var tri = new int[xCount];
+			for (int i=0;i<MVL;i+=4){ 
 				if(i+4 == MVL){ break; }
 				
 				x1 = i;
@@ -4971,10 +4971,10 @@ namespace GSD.Threaded{
 			int cCount = RCS.RoadCuts.Count;
 			int PrevRoadCutIndex = 0;
 			int CurrentRoadCutIndex = 0;
-			List<List<Vector3>> tVects = new List<List<Vector3>>();
+			var tVects = new List<List<Vector3>>();
 			List<Vector3> tVectListSingle = null;
-			Vector3 xVect = default(Vector3);
-			for(int j=0;j<cCount;j++){
+			var xVect = default(Vector3);
+			for (int j=0;j<cCount;j++){
 				CurrentRoadCutIndex = RCS.RoadCuts[j];
 				tVectListSingle = new List<Vector3>();
 				RCS.cut_RoadVectorsHome.Add(RCS.RoadVectors[PrevRoadCutIndex]);
@@ -4996,9 +4996,9 @@ namespace GSD.Threaded{
 			tVects.Add(tVectListSingle);
 
 			int vCount = tVects.Count;
-			List<int[]> tTris = new List<int[]>();
-			for(int i=0;i<vCount;i++){
-				int[] tTriSingle = ProcessRoad_Tris_Bulk_Helper(tVects[i].Count);
+			var tTris = new List<int[]>();
+			for (int i=0;i<vCount;i++){
+				var tTriSingle = ProcessRoad_Tris_Bulk_Helper(tVects[i].Count);
 				tTris.Add(tTriSingle);
 			}
 
@@ -5010,10 +5010,10 @@ namespace GSD.Threaded{
 			int cCount = RCS.ShoulderCutsR.Count;
 			int PrevRoadCutIndex = 0;
 			int CurrentRoadCutIndex = 0;
-			List<List<Vector3>> tVects = new List<List<Vector3>>();
+			var tVects = new List<List<Vector3>>();
 			List<Vector3> tVectListSingle = null;
-			Vector3 xVect = default(Vector3);
-			for(int j=0;j<cCount;j++){
+			var xVect = default(Vector3);
+			for (int j=0;j<cCount;j++){
 				CurrentRoadCutIndex = RCS.ShoulderCutsR[j];
 				tVectListSingle = new List<Vector3>();
 				RCS.cut_ShoulderR_VectorsHome.Add(RCS.ShoulderR_Vectors[PrevRoadCutIndex]);
@@ -5035,9 +5035,9 @@ namespace GSD.Threaded{
 			tVects.Add(tVectListSingle);
 
 			int vCount = tVects.Count;
-			List<int[]> tTris = new List<int[]>();
-			for(int i=0;i<vCount;i++){
-				int[] tTriSingle = ProcessRoad_Tris_Shoulder(tVects[i].Count);
+			var tTris = new List<int[]>();
+			for (int i=0;i<vCount;i++){
+				var tTriSingle = ProcessRoad_Tris_Shoulder(tVects[i].Count);
 				tTris.Add(tTriSingle);
 			}
 
@@ -5049,10 +5049,10 @@ namespace GSD.Threaded{
 			int cCount = RCS.ShoulderCutsL.Count;
 			int PrevRoadCutIndex = 0;
 			int CurrentRoadCutIndex = 0;
-			List<List<Vector3>> tVects = new List<List<Vector3>>();
+			var tVects = new List<List<Vector3>>();
 			List<Vector3> tVectListSingle = null;
-			Vector3 xVect = default(Vector3);
-			for(int j=0;j<cCount;j++){
+			var xVect = default(Vector3);
+			for (int j=0;j<cCount;j++){
 				CurrentRoadCutIndex = RCS.ShoulderCutsR[j];
 				tVectListSingle = new List<Vector3>();
 				RCS.cut_ShoulderL_VectorsHome.Add(RCS.ShoulderL_Vectors[PrevRoadCutIndex]);
@@ -5074,9 +5074,9 @@ namespace GSD.Threaded{
 			tVects.Add(tVectListSingle);
 
 			int vCount = tVects.Count;
-			List<int[]> tTris = new List<int[]>();
-			for(int i=0;i<vCount;i++){
-				int[] tTriSingle = ProcessRoad_Tris_Shoulder(tVects[i].Count);
+			var tTris = new List<int[]>();
+			for (int i=0;i<vCount;i++){
+				var tTriSingle = ProcessRoad_Tris_Shoulder(tVects[i].Count);
 				tTris.Add(tTriSingle);
 			}
 
@@ -5091,8 +5091,8 @@ namespace GSD.Threaded{
 			if(xCount < 0){ xCount = 0; }
 			xCount = xCount * 2;
 			
-			int[] tri = new int[xCount];
-			for(int i=0;i<MVL;i+=8){ 
+			var tri = new int[xCount];
+			for (int i=0;i<MVL;i+=8){ 
 				if(i+8 == MVL){ break; }
 				
 				x1 = i;
@@ -5149,11 +5149,11 @@ namespace GSD.Threaded{
 			//With the normals added, the plane will be correctly shaded but remember that you need a light in the scene to see the effect. 
 			//Bridge normals are processed at same time as tris.
 			int MVL = RCS.RoadVectors.Count;
-			Vector3[] normals = new Vector3[MVL];
-//			Vector3 tVect = -Vector3.forward;
-//			for(int i=0;i<MVL;i++){
-//				normals[i] = tVect;
-//			}
+			var normals = new Vector3[MVL];
+			//			Vector3 tVect = -Vector3.forward;
+			//			for(int i=0;i<MVL;i++){
+			//				normals[i] = tVect;
+			//			}
 			RCS.normals = normals;
 			
 			//Road cuts normals:
@@ -5191,11 +5191,11 @@ namespace GSD.Threaded{
 			int cCount = RCS.cut_RoadVectors.Count;
 			for(int j=0;j<cCount;j++){
 				int MVL = RCS.cut_RoadVectors[j].Count;
-				Vector3[] normals = new Vector3[MVL];
-//				Vector3 tVect = -Vector3.forward;
-//				for(int i=0;i<MVL;i++){
-//					normals[i] = tVect;
-//				}
+				var normals = new Vector3[MVL];
+				//				Vector3 tVect = -Vector3.forward;
+				//				for(int i=0;i<MVL;i++){
+				//					normals[i] = tVect;
+				//				}
 				RCS.cut_normals.Add(normals);
 			}
 		}
@@ -5204,11 +5204,11 @@ namespace GSD.Threaded{
 			int cCount = RCS.cut_ShoulderR_Vectors.Count;
 			for(int j=0;j<cCount;j++){
 				int MVL = RCS.cut_ShoulderR_Vectors[j].Count;
-				Vector3[] normals = new Vector3[MVL];
-//				Vector3 tVect = -Vector3.forward;
-//				for(int i=0;i<MVL;i++){
-//					normals[i] = tVect;
-//				}
+				var normals = new Vector3[MVL];
+				//				Vector3 tVect = -Vector3.forward;
+				//				for(int i=0;i<MVL;i++){
+				//					normals[i] = tVect;
+				//				}
 				RCS.cut_normals_ShoulderR.Add(normals);
 			}
 		}
@@ -5217,11 +5217,11 @@ namespace GSD.Threaded{
 			int cCount = RCS.cut_ShoulderL_Vectors.Count;
 			for(int j=0;j<cCount;j++){
 				int MVL = RCS.cut_ShoulderL_Vectors[j].Count;
-				Vector3[] normals = new Vector3[MVL];
-//				Vector3 tVect = -Vector3.forward;
-//				for(int i=0;i<MVL;i++){
-//					normals[i] = tVect;
-//				}
+				var normals = new Vector3[MVL];
+				//				Vector3 tVect = -Vector3.forward;
+				//				for(int i=0;i<MVL;i++){
+				//					normals[i] = tVect;
+				//				}
 				RCS.cut_normals_ShoulderL.Add(normals);
 			}
 		}
@@ -5231,11 +5231,11 @@ namespace GSD.Threaded{
 			//The normals for the flat plane are very simple - they are all identical and point in the negative Z direction in the plane's local space. 
 			//With the normals added, the plane will be correctly shaded but remember that you need a light in the scene to see the effect. 
 			int MVL = RCS.ShoulderL_Vectors.Count;
-			Vector3[] normals = new Vector3[MVL];
-//			Vector3 tVect = -Vector3.forward;
-//			for(int i=0;i<MVL;i++){
-//				normals[i] = tVect;
-//			}
+			var normals = new Vector3[MVL];
+			//			Vector3 tVect = -Vector3.forward;
+			//			for(int i=0;i<MVL;i++){
+			//				normals[i] = tVect;
+			//			}
 			RCS.normals_ShoulderL = normals;
 			//Right:
 			MVL = RCS.ShoulderR_Vectors.Count;
@@ -5270,7 +5270,7 @@ namespace GSD.Threaded{
 			//Finally, adding texture coordinates to the mesh will enable it to display a material correctly. 
 			//Assuming we want to show the whole image across the plane, the UV values will all be 0 or 1, corresponding to the corners of the texture. 
 			int MVL = tVerts.Length;
-			Vector2[] uv = new Vector2[MVL];
+			var uv = new Vector2[MVL];
 			int i=0;
 			bool bOddToggle = true;
 			float tDistance= 0f;
@@ -5328,10 +5328,10 @@ namespace GSD.Threaded{
 			float tDistanceRightSum = 0f;
 			float tDistanceSum = 0f;
 			for(int j=0;j<cCount;j++){
-				Vector3[] tVerts = RCS.cut_RoadVectors[j].ToArray();
+				var tVerts = RCS.cut_RoadVectors[j].ToArray();
 				int MVL = tVerts.Length;
-				Vector2[] uv = new Vector2[MVL];
-				Vector2[] uv_world = new Vector2[MVL];
+				var uv = new Vector2[MVL];
+				var uv_world = new Vector2[MVL];
 				int i=0;
 				bool bOddToggle = true;
 				while(i+6 < MVL){
@@ -5376,7 +5376,7 @@ namespace GSD.Threaded{
 		
 		private static Vector2[] ProcessRoad_UVs_Shoulder(Vector3[] tVerts){
 			int MVL = tVerts.Length;
-			Vector2[] uv = new Vector2[MVL];
+			var uv = new Vector2[MVL];
 			int i=0;
 //			bool bOddToggle = true;
 //			float tDistance= 0f;
@@ -5501,8 +5501,8 @@ namespace GSD.Threaded{
 			int MVL = tVerts.Length;
 			
 			//World:
-			Vector2[] uv_world = new Vector2[MVL];
-			for(i=0;i<MVL;i++){
+			var uv_world = new Vector2[MVL];
+			for (i=0;i<MVL;i++){
 				uv_world[i] = new Vector2(tVerts[i].x*0.2f,tVerts[i].z*0.2f);
 			}
 			if(bIsLeft){
@@ -5514,7 +5514,7 @@ namespace GSD.Threaded{
 			//Marks:
 			float tDistance= 0f;
 			float tDistanceSum = 0f;
-			Vector2[] uv = new Vector2[MVL];
+			var uv = new Vector2[MVL];
 			float rDistance1 = 0f;
 			float rDistance2 = 0f;
 			bool bOddToggle = true;
@@ -5672,7 +5672,7 @@ namespace GSD.Threaded{
 			//Assuming we want to show the whole image across the plane, the UV values will all be 0 or 1, corresponding to the corners of the texture. 
 			//int MVL = tMesh.vertices.Length;
 			int MVL = tVerts.Length;
-			Vector2[] uv = new Vector2[MVL];
+			var uv = new Vector2[MVL];
 			int i=0;
 			bool bOddToggle = true;
 			float tDistance= 0f;
@@ -5723,7 +5723,7 @@ namespace GSD.Threaded{
 			//Assuming we want to show the whole image across the plane, the UV values will all be 0 or 1, corresponding to the corners of the texture. 
 			//int MVL = tMesh.vertices.Length;
 			int MVL = tVerts.Length;
-			Vector2[] uv = new Vector2[MVL];
+			var uv = new Vector2[MVL];
 			int i=0;
 			bool bOddToggle = true;
 			float tDistance= 0f;
@@ -5783,7 +5783,7 @@ namespace GSD.Threaded{
 			//Assuming we want to show the whole image across the plane, the UV values will all be 0 or 1, corresponding to the corners of the texture. 
 			//int MVL = tMesh.vertices.Length;
 			int MVL = tVerts.Length;
-			Vector2[] uv = new Vector2[MVL];
+			var uv = new Vector2[MVL];
 			int i=0;
 			bool bOddToggle = true;
 			float tDistance= 0f;
@@ -5842,7 +5842,7 @@ namespace GSD.Threaded{
 			//Assuming we want to show the whole image across the plane, the UV values will all be 0 or 1, corresponding to the corners of the texture. 
 			//int MVL = tMesh.vertices.Length;
 			int MVL = tVerts.Length;
-			Vector2[] uv = new Vector2[MVL];
+			var uv = new Vector2[MVL];
 			int i=0;
 			bool bOddToggle = true;
 			float tDistance= 0f;
@@ -5910,7 +5910,7 @@ namespace GSD.Threaded{
 			//Assuming we want to show the whole image across the plane, the UV values will all be 0 or 1, corresponding to the corners of the texture. 
 			//int MVL = tMesh.vertices.Length;
 			int MVL = tVerts.Length;
-			Vector2[] uv = new Vector2[MVL];
+			var uv = new Vector2[MVL];
 			int i=0;
 			bool bOddToggle = true;
 			float tDistanceLeft = 0f;
@@ -5964,7 +5964,7 @@ namespace GSD.Threaded{
 			//Assuming we want to show the whole image across the plane, the UV values will all be 0 or 1, corresponding to the corners of the texture. 
 			//int MVL = tMesh.vertices.Length;
 			int MVL = tVerts.Length;
-			Vector2[] uv = new Vector2[MVL];
+			var uv = new Vector2[MVL];
 			int i=0;
 //			bool bOddToggle = true;
 //			float tDistance= 0f;
@@ -6039,7 +6039,7 @@ namespace GSD.Threaded{
 			//Assuming we want to show the whole image across the plane, the UV values will all be 0 or 1, corresponding to the corners of the texture. 
 			//int MVL = tMesh.vertices.Length;
 			int MVL = tVerts.Length;
-			Vector2[] uv = new Vector2[MVL];
+			var uv = new Vector2[MVL];
 			int i=0;
 			bool bOddToggle = true;
 //			float tDistance= 0f;

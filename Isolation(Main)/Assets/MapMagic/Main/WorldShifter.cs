@@ -18,9 +18,9 @@ namespace MapMagic
 		public static void Update (int shiftThreshold, int excludeLayers=0)
 		{
 			if (Camera.main == null) return;
-			Vector3 camPos = Camera.main.transform.position;
-			
-			Vector2 shift = Vector2.zero;
+			var camPos = Camera.main.transform.position;
+
+			var shift = Vector2.zero;
 			if (camPos.x < -shiftThreshold) shift = new Vector2(shiftThreshold, 0);
 			if (camPos.x > shiftThreshold)  shift = new Vector2(-shiftThreshold, 0);
 			if (camPos.z < -shiftThreshold)  shift = new Vector2(0, shiftThreshold);
@@ -43,12 +43,12 @@ namespace MapMagic
 			#endif
 
 			#if UNITY_5_5_OR_NEWER
-			GameObject[] allObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
+			var allObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
 			for (int i=0; i<allObjects.Length; i++)
 			{
 				if ((allObjects[i].layer & excludeLayers) != allObjects[i].layer) continue;
 
-				Vector3 oldPos = allObjects[i].transform.position;
+				var oldPos = allObjects[i].transform.position;
 				allObjects[i].transform.position = new Vector3(oldPos.x+x, oldPos.y, oldPos.z+z);
 			}			
 			#else
@@ -69,13 +69,13 @@ namespace MapMagic
 
 		public static void ShiftParticles (float x, float z, int excludeLayers=0)
 		{
-			ParticleSystem[] allParticles = GameObject.FindObjectsOfType<ParticleSystem>();	
+			var allParticles = GameObject.FindObjectsOfType<ParticleSystem>();
 
 			ParticleSystem.Particle[] tempParticles = null;
 
 			for (int i=0; i<allParticles.Length; i++)
             {
-                ParticleSystem particles = allParticles[i];
+                var particles = allParticles[i];
 
 				if ((particles.gameObject.layer & excludeLayers) != particles.gameObject.layer) continue;
 
@@ -102,7 +102,7 @@ namespace MapMagic
 				int numParticles = particles.GetParticles(tempParticles);
 				for (int j=0; j<numParticles; j++) 
 				{
-					Vector3 oldPosition = tempParticles[j].position;
+					var oldPosition = tempParticles[j].position;
 					tempParticles[j].position = new Vector3(oldPosition.x+x, oldPosition.y, oldPosition.z+z);
 				}
 				particles.SetParticles(tempParticles, numParticles);

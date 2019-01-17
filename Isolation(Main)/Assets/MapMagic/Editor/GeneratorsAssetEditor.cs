@@ -15,8 +15,8 @@ namespace MapMagic
 
 		public override void OnInspectorGUI () 
 		{
-			GeneratorsAsset gens = (GeneratorsAsset)target;
-			
+			var gens = (GeneratorsAsset)target;
+
 			if (layout == null) layout = new Layout();
 			layout.margin = 0;
 			layout.field = Layout.GetInspectorRect();

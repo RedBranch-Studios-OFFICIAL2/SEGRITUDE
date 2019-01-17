@@ -59,7 +59,7 @@ namespace MapMagic
 			public void OnRemove (int n) 
 			{ 
 				input.Link(null,null); 
-				Input connectedInput = output.GetConnectedInput(MapMagic.instance.gens.list);
+				var connectedInput = output.GetConnectedInput(MapMagic.instance.gens.list);
 				if (connectedInput != null) connectedInput.Link(null, null);
 			}
 			public void OnSwitch (int o, int n) { }
@@ -77,9 +77,9 @@ namespace MapMagic
 		
 		public void UnlinkLayer (int num)
 		{
-			Layer layer = baseLayers[num];
+			var layer = baseLayers[num];
 			layer.input.Link(null,null); 
-			Input connectedInput = layer.output.GetConnectedInput(MapMagic.instance.gens.list);
+			var connectedInput = layer.output.GetConnectedInput(MapMagic.instance.gens.list);
 			if (connectedInput != null) connectedInput.Link(null, null);
 		}
 
@@ -116,7 +116,7 @@ namespace MapMagic
 			if ((stop!=null && stop(0)) || !enabled) return;
 
 			//loading inputs
-			Matrix[] matrices = new Matrix[baseLayers.Length];
+			var matrices = new Matrix[baseLayers.Length];
 			for (int i = 0; i < baseLayers.Length; i++)
 			{
 				if (baseLayers[i].input != null)
@@ -136,7 +136,7 @@ namespace MapMagic
 			matrices[0].Fill(1);
 
 			//populating opacity array
-			float[] opacities = new float[matrices.Length];
+			var opacities = new float[matrices.Length];
 			for (int i = 0; i < baseLayers.Length; i++)
 				opacities[i] = baseLayers[i].opacity;
 			opacities[0] = 1;
@@ -168,7 +168,7 @@ namespace MapMagic
 			if (stop!=null && stop(0)) return;
 
 			//creating control textures array
-			Color[][] colors = new Color[4][];
+			var colors = new Color[4][];
 
 			//filling arrays
 			foreach (CustomShaderOutput gen in MapMagic.instance.gens.GeneratorsOfType<CustomShaderOutput>(onlyEnabled:true, checkBiomes:true))
@@ -177,7 +177,7 @@ namespace MapMagic
 				Matrix biomeMask = null;
 				if (gen.biome != null)
 				{
-					object biomeMaskObj = gen.biome.mask.GetObject(results);
+					var biomeMaskObj = gen.biome.mask.GetObject(results);
 					if (biomeMaskObj == null) continue; //adding nothing if biome has no mask
 					biomeMask = (Matrix)biomeMaskObj;
 					if (biomeMask == null) continue;
@@ -187,10 +187,10 @@ namespace MapMagic
 				for (int i=0; i<gen.baseLayers.Length; i++)
 				{
 					//reading output directly
-					Output output = gen.baseLayers[i].output;
+					var output = gen.baseLayers[i].output;
 					if (stop!=null && stop(0)) return; //checking stop before reading output
 					if (!results.results.ContainsKey(output)) continue;
-					Matrix matrix = (Matrix)results.results[output];
+					var matrix = (Matrix)results.results[output];
 					if (matrix.IsEmpty()) continue;
 
 					for (int x=0; x<rect.size.x; x++)
@@ -419,7 +419,7 @@ namespace MapMagic
 			#endif
 
 			//loading objects
-			Color[][] colors = (Color[][])dataBox;
+			var colors = (Color[][])dataBox;
 			if (colors == null) yield break;
 
 			//finding number of textures
@@ -434,10 +434,10 @@ namespace MapMagic
 			if (mode == Mode.MegaSplat) numTextures = 2; //_SplatControl and _SplatParams
 
 			//creating control textures
-			Texture2D[] textures = new Texture2D[numTextures];
+			var textures = new Texture2D[numTextures];
 			for (int i=0; i<textures.Length; i++)
 			{
-				Texture2D tex = new Texture2D(MapMagic.instance.resolution, MapMagic.instance.resolution, formatARGB? TextureFormat.ARGB32 : TextureFormat.RGBA32, false, true);
+				var tex = new Texture2D(MapMagic.instance.resolution, MapMagic.instance.resolution, formatARGB? TextureFormat.ARGB32 : TextureFormat.RGBA32, false, true);
 				tex.wrapMode = TextureWrapMode.Clamp;
 				//tex.hideFlags = HideFlags.DontSave;
 				//tex.filterMode = FilterMode.Point;
@@ -449,7 +449,7 @@ namespace MapMagic
 			}
 
 			//finding texture names (it will be used in welding)
-			string[] texNames = new string[numTextures];
+			var texNames = new string[numTextures];
 			switch (mode)
 			{
 				case Mode.Custom: for (int t=0; t<numTextures; t++) texNames[t] = controlTexturesNames[t]; break;
@@ -463,31 +463,31 @@ namespace MapMagic
 			{
 				for (int t=0; t<textures.Length; t++)
 				{
-					Texture2D tex = textures[t];
-					string texName = texNames[t];
+					var tex = textures[t];
+					var texName = texNames[t];
 
-					Coord coord = Coord.PickCell(rect.offset, MapMagic.instance.resolution);
+					var coord = Coord.PickCell(rect.offset, MapMagic.instance.resolution);
 					//Chunk chunk = MapMagic.instance.chunks[coord.x, coord.z];
-				
-					Chunk neigPrevX = MapMagic.instance.chunks[coord.x-1, coord.z];
+
+					var neigPrevX = MapMagic.instance.chunks[coord.x-1, coord.z];
 					if (neigPrevX!=null && neigPrevX.worker.ready && neigPrevX.terrain.materialTemplate.HasProperty(texName)) 
 					{
 						WeldTerrains.WeldTextureToPrevX(tex, (Texture2D)neigPrevX.terrain.materialTemplate.GetTexture(texName));
 					}
 
-					Chunk neigNextX = MapMagic.instance.chunks[coord.x+1, coord.z];
+					var neigNextX = MapMagic.instance.chunks[coord.x+1, coord.z];
 					if (neigNextX!=null && neigNextX.worker.ready && neigNextX.terrain.materialTemplate.HasProperty(texName)) 
 					{
 						WeldTerrains.WeldTextureToNextX(tex, (Texture2D)neigNextX.terrain.materialTemplate.GetTexture(texName));
 					}
 				
-					Chunk neigPrevZ = MapMagic.instance.chunks[coord.x, coord.z-1];
+					var neigPrevZ = MapMagic.instance.chunks[coord.x, coord.z-1];
 					if (neigPrevZ!=null && neigPrevZ.worker.ready && neigPrevZ.terrain.materialTemplate.HasProperty(texName)) 
 					{
 						WeldTerrains.WeldTextureToPrevZ(tex, (Texture2D)neigPrevZ.terrain.materialTemplate.GetTexture(texName));
 					}
 
-					Chunk neigNextZ = MapMagic.instance.chunks[coord.x, coord.z+1];
+					var neigNextZ = MapMagic.instance.chunks[coord.x, coord.z+1];
 					if (neigNextZ!=null && neigNextZ.worker.ready && neigNextZ.terrain.materialTemplate.HasProperty(texName)) 
 					{
 						WeldTerrains.WeldTextureToNextZ(tex, (Texture2D)neigNextZ.terrain.materialTemplate.GetTexture(texName));
@@ -607,7 +607,7 @@ namespace MapMagic
 					switch (mode)
 					{
 						case Mode.Custom:
-							Shader shader = Shader.Find("Standard");
+							var shader = Shader.Find("Standard");
 							MapMagic.instance.customTerrainMaterial = new Material(shader);
 							break;
 						case Mode.CTS:
@@ -712,7 +712,7 @@ namespace MapMagic
 			layout.Par(5); layout.Foldout(ref guiMaterial, "Material Template");
 			if (guiMaterial)
 			{
-				Rect anchor = layout.lastRect;
+				var anchor = layout.lastRect;
 				layout.margin += 5;
 
 				layout.Field(ref MapMagic.instance.customTerrainMaterial);
@@ -722,7 +722,7 @@ namespace MapMagic
 				//instant update
 				if (MapMagic.instance != null)
 				{
-					MapMagic mapMagic = MapMagic.instance;
+					var mapMagic = MapMagic.instance;
 					layout.Toggle(ref instantUpdateMaterial, "Instant Update", disabled:!mapMagic.assignCustomTerrainMaterial && mapMagic.terrainMaterialType!=Terrain.MaterialType.Custom);
 					if (layout.Button("Update Now", disabled:!mapMagic.assignCustomTerrainMaterial && mapMagic.terrainMaterialType!=Terrain.MaterialType.Custom, monitorChange:false))
 						UpdateCustomShaderMaterials();
@@ -737,7 +737,7 @@ namespace MapMagic
 			layout.Par(5); layout.Foldout(ref guiTexture, "Control Texture");
 			if (guiTexture)
 			{
-				Rect anchor = layout.lastRect;
+				var anchor = layout.lastRect;
 				layout.margin += 5;
 
 				layout.Toggle(ref formatARGB, "ARGB Format");
@@ -820,7 +820,7 @@ namespace MapMagic
 
 		public void OnLayerGUI (Layout layout, bool selected, int num)
 		{
-			Layer layer = baseLayers[num];
+			var layer = baseLayers[num];
 			if (layer == null) { layer = new Layer(); baseLayers[num] = layer; }
 
 			layout.Par(40); 
@@ -894,7 +894,7 @@ namespace MapMagic
 			{
 				baseLayers[i].input.Link(null,null); 
 
-				Input connectedInput = baseLayers[i].output.GetConnectedInput(MapMagic.instance.gens.list);
+				var connectedInput = baseLayers[i].output.GetConnectedInput(MapMagic.instance.gens.list);
 				if (connectedInput != null) connectedInput.Link(null, null);
 			}
 
@@ -935,11 +935,11 @@ namespace MapMagic
 
 			foreach (Chunk chunk in MapMagic.instance.chunks.All())
 			{
-				Material mat = chunk.terrain.materialTemplate;
+				var mat = chunk.terrain.materialTemplate;
 				if (mat == null) continue;
 
 				//saving control maps
-				Texture[] textures = new Texture[texIds.Length];
+				var textures = new Texture[texIds.Length];
 				for (int t=0; t<texIds.Length; t++)
 					if (mat.HasProperty(texIds[t])) textures[t] = mat.GetTexture(texIds[t]);
 

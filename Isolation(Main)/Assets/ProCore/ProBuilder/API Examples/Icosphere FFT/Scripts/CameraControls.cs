@@ -38,7 +38,7 @@ namespace ProBuilder2.Examples
 
 		void LateUpdate()
 		{
-			Vector3 eulerRotation = transform.localRotation.eulerAngles;
+			var eulerRotation = transform.localRotation.eulerAngles;
 			eulerRotation.z = 0f;
 
 			// orbits

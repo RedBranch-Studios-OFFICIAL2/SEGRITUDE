@@ -144,32 +144,32 @@ namespace MapMagic
 			float pixelSize = GetPixelSize();
 
 			//preparing shader
-			Shader previewShader = Shader.Find("MapMagic/TerrainPreview");
+			var previewShader = Shader.Find("MapMagic/TerrainPreview");
 
 			//apply matrix textures to all objects
 			foreach (Transform tfm in mapMagic.Transforms())
 			{
-				MeshRenderer renderer = tfm.GetComponent<MeshRenderer>();
-				Terrain terrain = tfm.GetComponent<Terrain>();
+				var renderer = tfm.GetComponent<MeshRenderer>();
+				var terrain = tfm.GetComponent<Terrain>();
 				if (renderer == null && terrain == null) continue;
 
 				//finding object rect
-				Rect worldRect = new Rect(0,0,0,0);
+				var worldRect = new Rect(0,0,0,0);
 				if (renderer != null) worldRect = new Rect(renderer.bounds.min.x, renderer.bounds.min.z, renderer.bounds.size.x, renderer.bounds.size.z);
 				else if (terrain != null) worldRect = new Rect(terrain.transform.position.x, terrain.transform.position.z, terrain.terrainData.size.x, terrain.terrainData.size.z);
 				
-				CoordRect matrixRect = CoordRect.PickIntersectingCellsByPos(worldRect, pixelSize);
+				var matrixRect = CoordRect.PickIntersectingCellsByPos(worldRect, pixelSize);
 
 				//finding a matrix/texture that object should use
-				Coord center = matrixRect.Center;
+				var center = matrixRect.Center;
 				foreach (KeyValuePair<Matrix,Texture2D> kvp in matrices)
 				{
-					Matrix matrix = kvp.Key;
+					var matrix = kvp.Key;
 
 					// Using the matrix that contains center - it would be the biggest intersection
 					if (matrix.rect.Contains(center.x, center.z)) 
 					{
-						Texture2D texture = kvp.Value;
+						var texture = kvp.Value;
 
 						//assigning material
 						Material material = null;
@@ -197,7 +197,7 @@ namespace MapMagic
 						material.name = tfm.name + " Preview";
 
 						//calculate parent MM object offset
-						Vector3 offset = tfm.parent.position / (worldRect.size.x/matrix.rect.size.x); // /pixelsize
+						var offset = tfm.parent.position / (worldRect.size.x/matrix.rect.size.x); // /pixelsize
 
 						material.SetTexture("_Preview", texture);
 						material.SetVector("_Rect", new Vector4(matrix.rect.offset.x+offset.x, matrix.rect.offset.z+offset.z, matrix.rect.size.x, matrix.rect.size.z ) );
@@ -217,7 +217,7 @@ namespace MapMagic
 			{
 				if (result==null || !result.results.ContainsKey(previewOutput)) continue;
 
-				object previewBox = Preview.previewOutput.GetObject<object>(result);
+				var previewBox = Preview.previewOutput.GetObject<object>(result);
 				if (previewBox == null) continue;
 
 				if (previewBox is Matrix)
@@ -240,12 +240,12 @@ namespace MapMagic
 			{
 				if (result==null || !result.results.ContainsKey(previewOutput)) continue;
 
-				object previewBox = Preview.previewOutput.GetObject<object>(result);
+				var previewBox = Preview.previewOutput.GetObject<object>(result);
 
 				if (previewBox is Matrix) 
 				{
-					Matrix matrix = (Matrix)previewBox;
-					Texture2D texture = matrix.SimpleToTexture(rangeMin:rangeMin, rangeMax:rangeMax);
+					var matrix = (Matrix)previewBox;
+					var texture = matrix.SimpleToTexture(rangeMin:rangeMin, rangeMax:rangeMax);
 					texture.wrapMode = TextureWrapMode.Clamp;
 					matrices.Add(matrix, texture);
 				}
@@ -259,8 +259,8 @@ namespace MapMagic
 			{
 				if (result==null || !result.results.ContainsKey(previewOutput)) continue;
 
-				object objsBox =  Preview.previewOutput.GetObject<object>(result);
-				
+				var objsBox =  Preview.previewOutput.GetObject<object>(result);
+
 				SpatialHash objs = null; 
 				if (objsBox is SpatialHash) objs = (SpatialHash)objsBox;
 				if (objs == null) continue;
@@ -273,7 +273,7 @@ namespace MapMagic
 				{
 					float height = 0;
 					if (result.heights != null) height = result.heights.GetInterpolated(obj.pos.x, obj.pos.y);
-					Vector3 pos = new Vector3(obj.pos.x*pixelSize, (obj.height+height)*terrainHeight, obj.pos.y*pixelSize);
+					var pos = new Vector3(obj.pos.x*pixelSize, (obj.height+height)*terrainHeight, obj.pos.y*pixelSize);
 					pos += MapMagic.instance.transform.position;
 
 					UnityEditor.Handles.color = new Color(0.3f,1,0.2f,1);
@@ -282,7 +282,7 @@ namespace MapMagic
 
 					if (objsCount < 300)
 					{
-						Vector3 oldPoint = pos;
+						var oldPoint = pos;
 						foreach (Vector3 point in pos.CircleAround(obj.size/2f, objsCount<100? 12 : 4, true))
 						{
 							UnityEditor.Handles.DrawLine(oldPoint,point);

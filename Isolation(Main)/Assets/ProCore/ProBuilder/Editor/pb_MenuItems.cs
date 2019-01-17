@@ -39,7 +39,7 @@ public class pb_MenuItems : EditorWindow
 	[MenuItem("Tools/" + pb_Constant.PRODUCT_NAME + "/Geometry/Extrude %e", true)]
 	private static bool MenuVerifyExtrude()
 	{
-		pb_Editor e = pb_Editor.instance;
+		var e = pb_Editor.instance;
 
 		return 	e != null &&
 				e.editLevel == EditLevel.Geometry &&

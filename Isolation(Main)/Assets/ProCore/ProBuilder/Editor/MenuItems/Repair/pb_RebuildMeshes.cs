@@ -40,8 +40,8 @@ namespace ProBuilder2.Actions
 						((float)i / targets.Length));
 				}
 
-				pb_Object pb = targets[i];
-				
+				var pb = targets[i];
+
 				try
 				{
 					pb.ToMesh();
@@ -66,8 +66,8 @@ namespace ProBuilder2.Actions
 		{
 			try
 			{
-			 	GameObject go = pb.gameObject;
-	 			pb.dontDestroyMeshOnDelete = true;
+			 	var go = pb.gameObject;
+				pb.dontDestroyMeshOnDelete = true;
 	 			Undo.DestroyObjectImmediate(pb);
 
 	 			// don't delete pb_Entity here because it won't

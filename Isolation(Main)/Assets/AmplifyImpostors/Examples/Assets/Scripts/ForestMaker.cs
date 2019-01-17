@@ -22,8 +22,8 @@ public class ForestMaker : MonoBehaviour
 			{
 				if( Random.Range( 0f, 1.0f ) > 0.5f )
 					continue;
-				GameObject newGo = Instantiate<GameObject>( m_treePrefab);
-				Vector3 newPos = Vector3.zero;
+				var newGo = Instantiate<GameObject>( m_treePrefab);
+				var newPos = Vector3.zero;
 				newPos.x = ( i + j * 0.5f - (int)((j < 0?j-1f:j) / 2.0f) ) * 2 * m_radiusDistance;
 				newPos.z = ( j ) * 1.866f * m_radiusDistance;
 				newGo.transform.position = newPos;

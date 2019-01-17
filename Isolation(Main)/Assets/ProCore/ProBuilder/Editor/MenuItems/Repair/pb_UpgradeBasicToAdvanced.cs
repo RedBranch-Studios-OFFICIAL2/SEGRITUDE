@@ -40,9 +40,9 @@ namespace ProBuilder2.Actions
 
 			for(int i = 0 ; i < all.Length; i++)
 			{
-				pb_Object pb = all[i];
+				var pb = all[i];
 
-				if(interactive)
+				if (interactive)
 				{
 					EditorUtility.DisplayProgressBar(
 						"Applying Materials",

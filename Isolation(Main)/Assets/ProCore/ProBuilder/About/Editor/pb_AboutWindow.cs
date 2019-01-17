@@ -241,9 +241,9 @@ namespace ProBuilder2.EditorCommon
 		{
 			InitGuiStyles();
 
-			Texture2D banner = bannerStyle.normal.background;
+			var banner = bannerStyle.normal.background;
 
-			if(banner == null)
+			if (banner == null)
 			{
 				Debug.LogWarning("Could not load About window resources");
 				this.Close();
@@ -272,9 +272,9 @@ namespace ProBuilder2.EditorCommon
 
 			if(File.Exists(about.changelogPath))
 			{
-				string raw = File.ReadAllText(about.changelogPath);
+				var raw = File.ReadAllText(about.changelogPath);
 
-				if(!string.IsNullOrEmpty(raw))
+				if (!string.IsNullOrEmpty(raw))
 				{
 					pb_VersionInfo vi;
 					pb_VersionUtil.FormatChangelog(raw, out vi, out changelogRichText);
@@ -289,9 +289,9 @@ namespace ProBuilder2.EditorCommon
 
 		void OnGUI()
 		{
-			Vector2 mousePosition = Event.current.mousePosition;
+			var mousePosition = Event.current.mousePosition;
 
-			if( GUILayout.Button(gc_Banner, bannerStyle) )
+			if ( GUILayout.Button(gc_Banner, bannerStyle) )
 				Application.OpenURL(VIDEO_URL);
 
 			if(GUILayoutUtility.GetLastRect().Contains(mousePosition))
@@ -337,8 +337,8 @@ namespace ProBuilder2.EditorCommon
 		 */
 		void HorizontalLine()
 		{
-			Rect r = GUILayoutUtility.GetLastRect();
-			Color og = GUI.backgroundColor;
+			var r = GUILayoutUtility.GetLastRect();
+			var og = GUI.backgroundColor;
 			GUI.backgroundColor = Color.black;
 			GUI.Box(new Rect(0f, r.y + r.height + 2, Screen.width, 2f), "");
 			GUI.backgroundColor = og;

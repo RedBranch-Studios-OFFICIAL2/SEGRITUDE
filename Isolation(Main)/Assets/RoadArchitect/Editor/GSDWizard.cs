@@ -137,13 +137,13 @@ public class GSDWizard : EditorWindow{
 			
 			if(bClicked){
 				if(tWindowType == WindowTypeEnum.Extrusion){
-					GSD.Roads.Splination.SplinatedMeshMaker SMM = tNode.AddSplinatedObject();
+					var SMM = tNode.AddSplinatedObject();
 					SMM.SetDefaultTimes(tNode.bIsEndPoint,tNode.tTime,tNode.NextTime,tNode.idOnSpline,tNode.GSDSpline.distance);
 					SMM.LoadFromLibrary(oList[i].FileName,oList[i].bIsDefault);
 					SMM.bIsGSD = oList[i].bIsDefault;
 					SMM.Setup(true);
 				}else if(tWindowType == WindowTypeEnum.Edge){
-					GSD.Roads.EdgeObjects.EdgeObjectMaker EOM = tNode.AddEdgeObject();
+					var EOM = tNode.AddEdgeObject();
 					EOM.SetDefaultTimes(tNode.bIsEndPoint,tNode.tTime,tNode.NextTime,tNode.idOnSpline,tNode.GSDSpline.distance);
 					EOM.LoadFromLibrary(oList[i].FileName,oList[i].bIsDefault);
 					EOM.bIsGSD = oList[i].bIsDefault;
@@ -253,14 +253,14 @@ public class GSDWizard : EditorWindow{
 	
 	private void LoadGroupObjs(ref string[] tNames, ref string[] tPaths, bool bIsBridge){
 		int tCount = tNames.Length;
-		string tPath = "";
-//		string tStringPath = "";
-//		string tDesc = "";
-//		string tDisplayName = "";
-//		string ThumbString = "";
-		for(int i=0;i<tCount;i++){
-			GSDRoadUtil.WizardObject tO = GSDRoadUtil.WizardObject.LoadFromLibrary(tPaths[i]);
-			if(tO == null){ continue; }
+		var tPath = "";
+		//		string tStringPath = "";
+		//		string tDesc = "";
+		//		string tDisplayName = "";
+		//		string ThumbString = "";
+		for (int i=0;i<tCount;i++){
+			var tO = GSDRoadUtil.WizardObject.LoadFromLibrary(tPaths[i]);
+			if (tO == null){ continue; }
 			if(tO.bIsBridge != bIsBridge){ continue; }
 			try{
 				tO.Thumb = (Texture2D)AssetDatabase.LoadAssetAtPath(tO.ThumbString,typeof(Texture2D)) as Texture2D;	
@@ -359,8 +359,8 @@ public class GSDWizard : EditorWindow{
 			xPath = GSDRootUtil.Dir_GetLibrary();
 		}
 
-		string LaneText = "-2L";
-		if(Lanes == 4){
+		var LaneText = "-2L";
+		if (Lanes == 4){
 			LaneText = "-4L";
 		}else if(Lanes == 6){
 			LaneText = "-6L";
@@ -375,7 +375,7 @@ public class GSDWizard : EditorWindow{
 			info = new DirectoryInfo(xPath + "B/");
 		}
 
-		FileInfo[] fileInfo = info.GetFiles();
+		var fileInfo = info.GetFiles();
 		int tCount = 0;
 		foreach(FileInfo tInfo in fileInfo){
 			if(tInfo.Extension.ToLower().Contains("gsd")){
@@ -432,27 +432,27 @@ public class GSDWizard : EditorWindow{
 	
 	private void LoadObjs(ref string[] tNames, ref string[] tPaths, bool bIsDefault = false){
 		int tCount = tNames.Length;
-		string tPath = "";
-		string tStringPath = "";
-		string tDesc = "";
-		string tDisplayName = "";
-		string ThumbString = "";
+		var tPath = "";
+		var tStringPath = "";
+		var tDesc = "";
+		var tDisplayName = "";
+		var ThumbString = "";
 		bool bIsBridge = false;
 		for(int i=0;i<tCount;i++){
 			bIsBridge = false;
 			tPath = tPaths[i];
 			
 			if(tWindowType == WindowTypeEnum.Extrusion){
-				SplinatedMeshMaker.SplinatedMeshLibraryMaker SLM = (SplinatedMeshMaker.SplinatedMeshLibraryMaker)GSDRootUtil.LoadXML<SplinatedMeshMaker.SplinatedMeshLibraryMaker>(ref tPath);
-				if(SLM == null){ continue; }
+				var SLM = (SplinatedMeshMaker.SplinatedMeshLibraryMaker)GSDRootUtil.LoadXML<SplinatedMeshMaker.SplinatedMeshLibraryMaker>(ref tPath);
+				if (SLM == null){ continue; }
 				tStringPath = SLM.CurrentSplinationString;
 				tDesc = SLM.Desc;
 				tDisplayName = SLM.DisplayName;
 				ThumbString = SLM.ThumbString;
 				bIsBridge = SLM.bIsBridge;
 			}else if(tWindowType == WindowTypeEnum.Edge){
-				EdgeObjectMaker.EdgeObjectLibraryMaker ELM = (EdgeObjectMaker.EdgeObjectLibraryMaker)GSDRootUtil.LoadXML<EdgeObjectMaker.EdgeObjectLibraryMaker>(ref tPath);
-				if(ELM == null){ continue; }
+				var ELM = (EdgeObjectMaker.EdgeObjectLibraryMaker)GSDRootUtil.LoadXML<EdgeObjectMaker.EdgeObjectLibraryMaker>(ref tPath);
+				if (ELM == null){ continue; }
 				tStringPath = ELM.EdgeObjectString;
 				tDesc = ELM.Desc;
 				tDisplayName = ELM.DisplayName;
@@ -463,15 +463,16 @@ public class GSDWizard : EditorWindow{
 			//Don't continue if bridge pieces and this is not a bridge piece:
 			if(tWindowType == WindowTypeEnum.Extrusion && bIsBridge){ continue; }
 			
-			GSDRoadUtil.WizardObject tO = new GSDRoadUtil.WizardObject();
-			try{
+			var tO = new GSDRoadUtil.WizardObject();
+			try
+			{
 				tO.Thumb = (Texture2D)AssetDatabase.LoadAssetAtPath(ThumbString,typeof(Texture2D)) as Texture2D;	
 			}catch{
 				tO.Thumb = null;
 			}
 			if(tO.Thumb == null){
 				try{
-					GameObject xObj = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath(tStringPath,typeof(GameObject)) as GameObject;
+					var xObj = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath(tStringPath,typeof(GameObject)) as GameObject;
 					tO.Thumb = AssetPreview.GetAssetPreview(xObj);
 				}catch{
 					tO.Thumb = null;

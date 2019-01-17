@@ -117,8 +117,8 @@ public class AIController : MonoBehaviour {
     #region Patrolling
 
     Vector3 RandomPointInArea(Transform enemy, Vector3 center, Vector3 size) {
-        Vector3 randomDirection = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), Random.Range(-size.z / 2, size.z / 2));
-        NavMeshHit hit;
+        var randomDirection = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), Random.Range(-size.z / 2, size.z / 2));
+		NavMeshHit hit;
 
         NavMesh.SamplePosition(randomDirection, out hit, 10, NavMesh.AllAreas);
 
@@ -146,8 +146,8 @@ public class AIController : MonoBehaviour {
     Collider closestCover;
     Vector3 correctCover;
     void TakeCover() {
-        Vector3 cover = ClosestCover();
-        if (player != null) {
+        var cover = ClosestCover();
+		if (player != null) {
             LookForPlayer();
         }
          correctCover = CheckCoverSide();
@@ -157,8 +157,8 @@ public class AIController : MonoBehaviour {
     }
 
     void LookForPlayer() {
-        Ray toPlayer = new Ray(this.transform.position, player.transform.position);
-        RaycastHit playerHit;
+        var toPlayer = new Ray(this.transform.position, player.transform.position);
+		RaycastHit playerHit;
         this.transform.LookAt(player.transform);
 
         if (Physics.Raycast(toPlayer, out playerHit)) {
@@ -169,8 +169,8 @@ public class AIController : MonoBehaviour {
     }
 
     Vector3 CheckCoverSide() {
-        Vector3 oppositeSide = closestCover.transform.localScale + this.transform.position;
-        if (correctCover == null) {
+        var oppositeSide = closestCover.transform.localScale + this.transform.position;
+		if (correctCover == null) {
             return oppositeSide;
         } else
             return correctCover;
@@ -181,10 +181,10 @@ public class AIController : MonoBehaviour {
     Vector3 ClosestCover() {
         
         //Get all Colliders of the covers in the area;
-        Collider[] coverColliders = Physics.OverlapSphere(this.transform.position, this.coverRadius, this.coverLayer);
+        var coverColliders = Physics.OverlapSphere(this.transform.position, this.coverRadius, this.coverLayer);
 
-        //Get the distance to the closest cover
-        float distanceToClosestCover = Mathf.Infinity;
+		//Get the distance to the closest cover
+		float distanceToClosestCover = Mathf.Infinity;
 
         foreach (Collider coverCollider in coverColliders) {
             // Calculate the distance to the cover

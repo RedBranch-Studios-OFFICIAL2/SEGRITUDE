@@ -351,7 +351,7 @@ public bool guiInstantUpdateEnabled = false;
 
 		public void ResetChunks ()
 		{
-			Coord[] pinned = chunks.PinnedCoords;
+			var pinned = chunks.PinnedCoords;
 			chunks.Clear();
 			for (int c=0; c<pinned.Length; c++)
 				chunks.Create(pinned[c], this, pin:true);
@@ -430,8 +430,8 @@ public bool guiInstantUpdateEnabled = false;
 					Debug.Log("MapMagic: Loading outdated scene format. Please check node consistency and re-save the scene.");
 				
 					serializer.ClearLinks();
-					GeneratorsList generators = new GeneratorsList();
-					generators = (GeneratorsList)serializer.Retrieve(0);
+					var generators = new GeneratorsList();
+				generators = (GeneratorsList)serializer.Retrieve(0);
 					serializer.ClearLinks();
 
 					gens = ScriptableObject.CreateInstance<GeneratorsAsset>();

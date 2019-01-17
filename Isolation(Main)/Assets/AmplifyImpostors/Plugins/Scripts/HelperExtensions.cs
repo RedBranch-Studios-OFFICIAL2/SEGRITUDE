@@ -77,7 +77,7 @@ namespace AmplifyImpostors
 		public static byte[] EncodeToTGA( this Texture2D tex, bool withAlpha = true )
 		{
 			int elementCount = withAlpha ? 4 : 3;
-			byte[] pixels = tex.GetRawTextureData();
+			var pixels = tex.GetRawTextureData();
 
 			int pixelLength = pixels.Length;
 
@@ -91,7 +91,7 @@ namespace AmplifyImpostors
 
 			int length = 18 + footerSize + dataSize;
 
-			byte[] buffer = new byte[ length ];
+			var buffer = new byte[ length ];
 
 			int index = 0;
 
@@ -128,9 +128,9 @@ namespace AmplifyImpostors
 
 		public static void GenerateOutline( Texture2D texture, Rect rect, float detail, byte alphaTolerance, bool holeDetection, out Vector2[][] paths )
 		{
-			Vector2[][] opaths = new Vector2[ 0 ][];
-			object[] parameters = new object[] { texture, rect, detail, alphaTolerance, holeDetection, opaths };
-			MethodInfo method = Type.GetMethod( "GenerateOutline", BindingFlags.Static | BindingFlags.NonPublic );
+			var opaths = new Vector2[ 0 ][];
+			var parameters = new object[] { texture, rect, detail, alphaTolerance, holeDetection, opaths };
+			var method = Type.GetMethod( "GenerateOutline", BindingFlags.Static | BindingFlags.NonPublic );
 			method.Invoke( null, parameters );
 			paths = (Vector2[][])parameters[ 5 ];
 		}
@@ -158,9 +158,9 @@ namespace AmplifyImpostors
 			if( P.Length > 1 )
 			{
 				int n = P.Length, k = 0;
-				Vector2[] H = new Vector2[ 2 * n ];
+				var H = new Vector2[ 2 * n ];
 
-				Comparison<Vector2> comparison = new Comparison<Vector2>( ( a, b ) =>
+				var comparison = new Comparison<Vector2>( ( a, b ) =>
 				{
 					if( a.x == b.x )
 						return a.y.CompareTo( b.y );
@@ -201,8 +201,8 @@ namespace AmplifyImpostors
 
 		public static Vector2[] ScaleAlongNormals( Vector2[] P, float scaleAmount )
 		{
-			Vector2[] normals = new Vector2[ P.Length ];
-			for( int i = 0; i < normals.Length; i++ )
+			var normals = new Vector2[ P.Length ];
+			for ( int i = 0; i < normals.Length; i++ )
 			{
 				int prev = i - 1;
 				int next = i + 1;
@@ -211,9 +211,9 @@ namespace AmplifyImpostors
 				if( i == P.Length - 1 )
 					next = 0;
 
-				Vector2 ba = P[ i ] - P[ prev ];
-				Vector2 bc = P[ i ] - P[ next ];
-				Vector2 normal = ( ba.normalized + bc.normalized ).normalized;
+				var ba = P[ i ] - P[ prev ];
+				var bc = P[ i ] - P[ next ];
+				var normal = ( ba.normalized + bc.normalized ).normalized;
 				normals[ i ] = normal;
 			}
 
@@ -230,8 +230,8 @@ namespace AmplifyImpostors
 			float currentArea = 0;
 			int smallestIndex = 0;
 			int replacementIndex = 0;
-			Vector2 newPos = Vector2.zero;
-			for( int i = 0; i < P.Length; i++ )
+			var newPos = Vector2.zero;
+			for ( int i = 0; i < P.Length; i++ )
 			{
 				int next = i + 1;
 				int upNext = i + 2;
@@ -243,8 +243,8 @@ namespace AmplifyImpostors
 				if( finalNext >= P.Length )
 					finalNext -= P.Length;
 
-				Vector2 intersect = GetIntersectionPointCoordinates( P[ i ], P[ next ], P[ upNext ], P[ finalNext ] );
-				if( i == 0 )
+				var intersect = GetIntersectionPointCoordinates( P[ i ], P[ next ], P[ upNext ], P[ finalNext ] );
+				if ( i == 0 )
 				{
 					currentArea = intersect.TriangleArea( P[ next ], P[ upNext ] );
 
@@ -283,8 +283,8 @@ namespace AmplifyImpostors
 			if( maxVertices == 4 )
 			{
 				// turn into a box
-				Rect newBox = new Rect( P[ 0 ].x, P[ 0 ].y, 0f, 0f );
-				for( int i = 0; i < P.Length; i++ )
+				var newBox = new Rect( P[ 0 ].x, P[ 0 ].y, 0f, 0f );
+				for ( int i = 0; i < P.Length; i++ )
 				{
 					newBox.xMin = Mathf.Min( newBox.xMin, P[ i ].x );
 					newBox.xMax = Mathf.Max( newBox.xMax, P[ i ].x );

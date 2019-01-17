@@ -33,7 +33,7 @@ namespace MapMagic
 			lastGizmoFrame = Time.renderedFrameCount;
 			
 			if (MapMagic.instance==null || MapMagic.instance.chunks==null) return; 
-			MapMagic mapMagic = MapMagic.instance;
+			var mapMagic = MapMagic.instance;
 
 			//previewing
 			//foreach (Chunk tw in MapMagic.instance.chunks.All()) tw.Preview(); 
@@ -82,15 +82,15 @@ namespace MapMagic
 				pixelsPerPoint = EditorGUIUtility.pixelsPerPoint;
 				#endif
 
-				SceneView sceneview = UnityEditor.SceneView.lastActiveSceneView;
+				var sceneview = UnityEditor.SceneView.lastActiveSceneView;
 				if (sceneview==null || sceneview.camera==null) return;
 				
-				Vector2 mousePos = Event.current.mousePosition;
+				var mousePos = Event.current.mousePosition;
 				mousePos = new Vector2(mousePos.x/sceneview.camera.pixelWidth, 1f/pixelsPerPoint - mousePos.y/sceneview.camera.pixelHeight) * pixelsPerPoint;
-				Ray aimRay = sceneview.camera.ViewportPointToRay(mousePos);
+				var aimRay = sceneview.camera.ViewportPointToRay(mousePos);
 
 				//aiming terrain or empty place
-				Vector3 aimPos = Vector3.zero;
+				var aimPos = Vector3.zero;
 				RaycastHit hit;
 				if (Physics.Raycast(aimRay, out hit, Mathf.Infinity)) aimPos = hit.point;
 				else
@@ -101,7 +101,7 @@ namespace MapMagic
 				}
 				aimPos -= MapMagic.instance.transform.position;
 
-				Coord aimCoord = aimPos.FloorToCoord(MapMagic.instance.terrainSize);
+				var aimCoord = aimPos.FloorToCoord(MapMagic.instance.terrainSize);
 
 				if (selectionMode == SelectionMode.nailing && !Event.current.alt)
 				{
@@ -120,7 +120,7 @@ namespace MapMagic
 						}
 						else 
 						{
-							Terrain terrain = MapMagic.instance.chunks[aimCoord].terrain;
+							var terrain = MapMagic.instance.chunks[aimCoord].terrain;
 							if (terrain != null) Undo.DestroyObjectImmediate(terrain.gameObject);
 							Undo.RecordObject(MapMagic.instance, "MapMagic Unpin Terrain");
 							MapMagic.instance.setDirty = !MapMagic.instance.setDirty;
@@ -136,7 +136,7 @@ namespace MapMagic
 
 				if (selectionMode == SelectionMode.locking  && !Event.current.alt)
 				{
-					Chunk aimedTerrain = MapMagic.instance.chunks[aimCoord];
+					var aimedTerrain = MapMagic.instance.chunks[aimCoord];
 					if (aimedTerrain != null)
 					{
 						//drawing selection frame
@@ -157,7 +157,7 @@ namespace MapMagic
 
 				if (selectionMode == SelectionMode.exporting && !Event.current.alt)
 				{
-					Chunk aimedTerrain = MapMagic.instance.chunks[aimCoord];
+					var aimedTerrain = MapMagic.instance.chunks[aimCoord];
 					if (aimedTerrain != null)
 					{
 						//drawing selection frame
@@ -167,7 +167,7 @@ namespace MapMagic
 						//exporting
 						if (Event.current.type == EventType.MouseDown && Event.current.button == 0)
 						{
-							string path= UnityEditor.EditorUtility.SaveFilePanel(
+							var path= UnityEditor.EditorUtility.SaveFilePanel(
 										"Export Terrain Data",
 										"",
 										"TerrainData.asset", 
@@ -178,8 +178,8 @@ namespace MapMagic
 								if (!path.Contains("Assets")) { Debug.LogError("MapMagic: Path is out of the Assets folder"); return; }
 								if (AssetDatabase.LoadAssetAtPath(path, typeof(TerrainData)) as TerrainData == aimedTerrain.terrain.terrainData) { Debug.Log("MapMagic: this terrain was already exported at the given path"); return; }
      
-								Terrain terrain = aimedTerrain.terrain;
-								float[,,] splats = terrain.terrainData.GetAlphamaps(0,0,terrain.terrainData.alphamapResolution, terrain.terrainData.alphamapResolution);
+								var terrain = aimedTerrain.terrain;
+								var splats = terrain.terrainData.GetAlphamaps(0,0,terrain.terrainData.alphamapResolution, terrain.terrainData.alphamapResolution);
 								//else splats = new float[terrain.terrainData.alphamapResolution,terrain.terrainData.alphamapResolution,1];
 
 								if (terrain.terrainData.alphamapLayers==1 && terrain.terrainData.alphamapTextures[0].width==2)
@@ -221,9 +221,9 @@ namespace MapMagic
 			int numSteps = 50;
 			float sideSize = MapMagic.instance.terrainSize - margins*2f;
 			float stepDist = sideSize / numSteps;
-			Vector3 start = coord.ToVector3(MapMagic.instance.terrainSize) + new Vector3(margins,0,margins) + MapMagic.instance.transform.position;
+			var start = coord.ToVector3(MapMagic.instance.terrainSize) + new Vector3(margins,0,margins) + MapMagic.instance.transform.position;
 
-			Chunk chunk = MapMagic.instance.chunks[coord];
+			var chunk = MapMagic.instance.chunks[coord];
 
 			if (chunk==null || chunk.terrain==null)
 			{
@@ -243,7 +243,7 @@ namespace MapMagic
 		public void DrawLineOnTerrain (Terrain terrain, Vector3 start, Vector3 step, int numSteps, float width=3f)
 		{
 			if (terrain == null || terrain.terrainData == null) return;
-			Vector3[] steps = new Vector3[numSteps];
+			var steps = new Vector3[numSteps];
 			for (int i=0; i<steps.Length; i++)
 			{
 				steps[i] = start + step*i;
@@ -258,35 +258,35 @@ namespace MapMagic
 			float lineLength = terrain.terrainData.size.x - margins*2;
 			float step = lineLength / (numSteps-1);
 
-			Vector3[] poses = new Vector3[numSteps];
-			float[] heights = new float[numSteps];
+			var poses = new Vector3[numSteps];
+			var heights = new float[numSteps];
 
 			GetTerrainHeightsX(terrain, relativeMargins, ref heights, fromEnd:false);
 			for (int i=0; i<poses.Length; i++)
 			{
-				Vector3 pos = new Vector3(margins + i*step, heights[i], margins);
+				var pos = new Vector3(margins + i*step, heights[i], margins);
 				pos += terrain.transform.position; //pos = terrain.transform.TransformPoint(pos);
 				poses[i] = pos;
 			}
 			Handles.DrawAAPolyLine(width, poses);
-			Vector3 lastPosStart = poses[poses.Length-1];
-			Vector3 firstPosStart = poses[0];
+			var lastPosStart = poses[poses.Length-1];
+			var firstPosStart = poses[0];
 
 			GetTerrainHeightsX(terrain, relativeMargins, ref heights, fromEnd:true);
 			for (int i=0; i<poses.Length; i++)
 			{
-				Vector3 pos = new Vector3(margins + i*step, heights[i], terrain.terrainData.size.x-margins);
+				var pos = new Vector3(margins + i*step, heights[i], terrain.terrainData.size.x-margins);
 				pos += terrain.transform.position; //pos = terrain.transform.TransformPoint(pos);
 				poses[i] = pos;
 			}
 			Handles.DrawAAPolyLine(width, poses);
-			Vector3 lastPosEnd = poses[poses.Length-1];
-			Vector3 firstPosEnd = poses[0];
+			var lastPosEnd = poses[poses.Length-1];
+			var firstPosEnd = poses[0];
 
 			GetTerrainHeightsZ(terrain, relativeMargins, ref heights, fromEnd:false);
 			for (int i=0; i<poses.Length; i++)
 			{
-				Vector3 pos = new Vector3(margins, heights[i], margins + i*step);
+				var pos = new Vector3(margins, heights[i], margins + i*step);
 				pos += terrain.transform.position; //pos = terrain.transform.TransformPoint(pos);
 				poses[i] = pos;
 			}
@@ -296,7 +296,7 @@ namespace MapMagic
 			GetTerrainHeightsZ(terrain, relativeMargins, ref heights, fromEnd:true);
 			for (int i=0; i<poses.Length; i++)
 			{
-				Vector3 pos = new Vector3(terrain.terrainData.size.x-margins, heights[i], margins + i*step);
+				var pos = new Vector3(terrain.terrainData.size.x-margins, heights[i], margins + i*step);
 				pos += terrain.transform.position; //pos = terrain.transform.TransformPoint(pos);
 				poses[i] = pos;
 			}
@@ -310,7 +310,7 @@ namespace MapMagic
 			int arrLength = terrain.terrainData.heightmapResolution - margin*2;
 			float step = 1f * arrLength / heights.Length;
 			
-			float[,] array = terrain.terrainData.GetHeights(margin,fromEnd? terrain.terrainData.heightmapResolution-margin-1 : margin, arrLength,1);
+			var array = terrain.terrainData.GetHeights(margin,fromEnd? terrain.terrainData.heightmapResolution-margin-1 : margin, arrLength,1);
 
 			for (int i=0; i<heights.Length; i++)
 			{
@@ -325,7 +325,7 @@ namespace MapMagic
 			int arrLength = terrain.terrainData.heightmapResolution - margin*2;
 			float step = 1f * arrLength / heights.Length;
 			
-			float[,] array = terrain.terrainData.GetHeights(fromEnd? terrain.terrainData.heightmapResolution-margin-1 : margin,margin, 1,arrLength);
+			var array = terrain.terrainData.GetHeights(fromEnd? terrain.terrainData.heightmapResolution-margin-1 : margin,margin, 1,arrLength);
 
 			for (int i=0; i<heights.Length; i++)
 			{
@@ -388,7 +388,7 @@ namespace MapMagic
 			layout.Par(8); layout.Foldout(ref script.guiSettings, "General Settings");
 			if (script.guiSettings)
 			{
-				Rect anchor = layout.lastRect;
+				var anchor = layout.lastRect;
 				layout.margin += 10; layout.rightMargin += 5;
 				
 				//layout.Field(ref MapMagic.instance.voxelandMode, "Voxeland Mode");
@@ -446,8 +446,8 @@ namespace MapMagic
 				
 				layout.Par(10);
 				layout.Par(0,padding:0); layout.Inset();
-				Rect internalAnchor = layout.lastRect;
-					layout.Toggle(ref script.copyLayersTags, "Copy Layers and Tags to Terrains");
+				var internalAnchor = layout.lastRect;
+				layout.Toggle(ref script.copyLayersTags, "Copy Layers and Tags to Terrains");
 					layout.Toggle(ref script.copyComponents, "Copy Components to Terrains");
 				layout.Foreground(internalAnchor);
 
@@ -483,9 +483,9 @@ namespace MapMagic
 				layout.Foreground(internalAnchor);
 
 				//debug
-				BuildTargetGroup buildGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
-				string defineSymbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(buildGroup);
-				
+				var buildGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
+				var defineSymbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(buildGroup);
+
 				bool debug = false;
 				if (defineSymbols.Contains("WDEBUG;") || defineSymbols.EndsWith("WDEBUG")) debug = true;
 				
@@ -513,7 +513,7 @@ namespace MapMagic
 			layout.Par(8); layout.Foldout(ref script.guiTerrainSettings, "Terrain Settings");
 			if (script.guiTerrainSettings)
 			{
-				Rect anchor = layout.lastRect;
+				var anchor = layout.lastRect;
 				layout.margin += 10; layout.rightMargin += 5;
 
 				layout.Field(ref script.pixelError, "Pixel Error", min:0, max:200, slider:true);
@@ -537,7 +537,7 @@ namespace MapMagic
 			layout.Par(8); layout.Foldout(ref script.guiTreesGrassSettings, "Trees, Details and Grass Settings");
 			if (script.guiTreesGrassSettings)
 			{
-				Rect anchor = layout.lastRect;
+				var anchor = layout.lastRect;
 				layout.margin += 10; layout.rightMargin += 5;
 
 				layout.Field(ref script.detailDraw, "Draw");
@@ -567,7 +567,7 @@ namespace MapMagic
 			layout.Par(8); layout.Foldout(ref script.guiMassPin, "Mass Pin/Lock");
 			if (script.guiMassPin)
 			{
-				Rect anchor = layout.lastRect;
+				var anchor = layout.lastRect;
 				layout.margin += 10; layout.rightMargin += 5;
 
 				layout.Par(52);
@@ -587,7 +587,7 @@ namespace MapMagic
 				if (layout.Button("Pin", layout.Inset(0.333f)))
 				{
 					Undo.RegisterFullObjectHierarchyUndo(MapMagic.instance, "MapMagic Mass Pin Terrain");
-					Coord min = script.guiPinRect.Min; Coord max = script.guiPinRect.Max;
+					var min = script.guiPinRect.Min; var max = script.guiPinRect.Max;
 					for (int x=min.x; x<max.x; x++)
 						for (int z=min.z; z<max.z; z++)
 							MapMagic.instance.chunks.Create(new Coord(x,z), script, pin:true); 
@@ -615,11 +615,11 @@ namespace MapMagic
 			layout.Par(8); layout.Foldout(ref script.guiAbout, "About");
 			if (script.guiAbout)
 			{
-				Rect anchor = layout.lastRect;
+				var anchor = layout.lastRect;
 				layout.margin += 10; layout.rightMargin += 5;
 
-				Rect savedCursor = layout.cursor;
-				
+				var savedCursor = layout.cursor;
+
 				layout.Par(100, padding:0);
 				layout.Icon("MapMagicAbout", layout.Inset(100,padding:0));
 
@@ -654,7 +654,7 @@ namespace MapMagic
 				return;
 			}
 
-			GameObject go = new GameObject();
+			var go = new GameObject();
 			go.name = "Map Magic";
 			MapMagic.instance = go.AddComponent<MapMagic>();
 
@@ -687,8 +687,8 @@ namespace MapMagic
 		public static void ShowEditor ()
 		{
 			//GeneratorsAsset gens = FindObjectOfType<GeneratorsAsset>();
-			MapMagic mm = FindObjectOfType<MapMagic>();
-			GeneratorsAsset gens = mm!=null? mm.gens : null;
+			var mm = FindObjectOfType<MapMagic>();
+			var gens = mm!=null? mm.gens : null;
 			MapMagicWindow.Show(gens, mm, forceOpen:true);
 		}
 

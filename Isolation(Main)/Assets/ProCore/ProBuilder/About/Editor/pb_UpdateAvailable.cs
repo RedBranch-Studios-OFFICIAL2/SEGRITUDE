@@ -8,7 +8,7 @@ namespace ProBuilder2.EditorCommon
 	{
 		public static void Init(pb_VersionInfo newVersion, string changelog)
 		{
-			pb_UpdateAvailable win = EditorWindow.GetWindow<pb_UpdateAvailable>(true, "ProBuilder Update Available", true);
+			var win = EditorWindow.GetWindow<pb_UpdateAvailable>(true, "ProBuilder Update Available", true);
 			win.m_NewVersion = newVersion;
 			win.m_NewChangelog = changelog;
 		}

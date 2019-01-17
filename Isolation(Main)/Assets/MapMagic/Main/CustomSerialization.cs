@@ -26,7 +26,7 @@ namespace MapMagic
 		public static Type GetStandardAssembliesType (string s)
 		{
 			if (s.StartsWith("Plugins.")) s = s.Replace("Plugins", typeof(CustomSerialization).Namespace);
-			Type type = Type.GetType(s);
+			var type = Type.GetType(s);
 			if (type == null) type = Type.GetType(s + ", UnityEngine");
 			if (type == null) type = Type.GetType(s + ", Assembly-CSharp-Editor"); //trying to load from editor assembly
 			if (type == null) type = Type.GetType(s + ", Assembly-CSharp"); //or from non-editor
@@ -55,12 +55,12 @@ namespace MapMagic
 
 		private static IEnumerable<Value> Values (object obj)
 		{
-			Type objType = obj.GetType();
+			var objType = obj.GetType();
 
 			if (objType.IsArray)
 			{
-				Type elementType = objType.GetElementType();
-				Array array = (Array)obj;
+				var elementType = objType.GetElementType();
+				var array = (Array)obj;
 
 				//simple array
 				if (elementType.IsPrimitive) 
@@ -97,9 +97,9 @@ namespace MapMagic
 			if (references.Contains(obj)) return references.IndexOf(obj);
 
 			//obj type
-			System.Type objType = obj.GetType();
-			System.Type elementType = objType.IsArray? objType.GetElementType() : null;
-			string objTypeName = objType.ToString();
+			var objType = obj.GetType();
+			var elementType = objType.IsArray? objType.GetElementType() : null;
+			var objTypeName = objType.ToString();
 
 			//reserving a place in array
 			int slotNum = classes.Count;
@@ -110,7 +110,7 @@ namespace MapMagic
 			references[slotNum] = obj;
 		
 			//writing
-			StringWriter writer = new StringWriter();
+			var writer = new StringWriter();
 
 			//header
 			writer.Write("<" + objTypeName);
@@ -131,7 +131,7 @@ namespace MapMagic
 				//string
 				else if (val.type==typeof(string)) 
 				{
-					string str = (string)val.obj;
+					var str = (string)val.obj;
 					str = str.Replace("\n", "\\n");
 					str = str.Replace(" ", "\\_");
 					writer.WriteLine("\t<" + val.name + " type=" + val.type + " value=" + str + "/>"); //same as primitive, but after null
@@ -151,7 +151,7 @@ namespace MapMagic
 				//float array
 				else if (objType == typeof(float[])) //note that obj should be used here, not val.obj
 				{
-					float[] array = (float[])obj;
+					var array = (float[])obj;
 					writer.WriteLine("\t<items type=" + val.type + " start=" + floats.Count + " length=" + array.Length + "/>");
 					floats.AddRange(array);
 				}
@@ -161,7 +161,7 @@ namespace MapMagic
 				{
 					writer.Write("\t<items type=" + val.type + " values=");
 
-					Array array = (Array)obj;
+					var array = (Array)obj;
 					for (int i=0; i<array.Length; i++)
 					{
 						writer.Write(array.GetValue(i));
@@ -205,7 +205,7 @@ namespace MapMagic
 				//Vector2
 				else if (val.type == typeof(Vector2))
 				{
-					Vector2 v2 = (Vector2)val.obj;
+					var v2 = (Vector2)val.obj;
 					writer.WriteLine("\t<" + val.name + " type=" + val.type + " x=" + v2.x + " y=" + v2.y + "/>");
 					//writer.WriteLine("\t<" + val.name + " type=" + val.type + " val=" + floats.Count + "/>");
 					//floats.Add(v2.x); floats.Add(v2.y);
@@ -214,7 +214,7 @@ namespace MapMagic
 				//Vector3
 				else if (val.type == typeof(Vector3))
 				{
-					Vector3 v3 = (Vector3)val.obj;
+					var v3 = (Vector3)val.obj;
 					writer.WriteLine("\t<" + val.name + " type=" + val.type + " x=" + v3.x + " y=" + v3.y + " z=" + v3.z + "/>");
 					//writer.WriteLine("\t<" + val.name + " type=" + val.type + " val=" + floats.Count + "/>");
 					//floats.Add(v3.x); floats.Add(v3.y); floats.Add(v3.z);
@@ -223,7 +223,7 @@ namespace MapMagic
 				//Rect
 				else if (val.type == typeof(Rect))
 				{
-					Rect rect = (Rect)val.obj;
+					var rect = (Rect)val.obj;
 					writer.WriteLine("\t<" + val.name + " type=" + val.type + " x=" + rect.x + " y=" + rect.y + " width=" + rect.width + " height=" + rect.height + "/>");
 					//writer.WriteLine("\t<" + val.name + " type=" + val.type + " val=" + floats.Count + "/>");
 					//floats.Add(rect.x); floats.Add(rect.y); floats.Add(rect.width); floats.Add(rect.height);
@@ -232,21 +232,21 @@ namespace MapMagic
 				//Color
 				else if (val.type == typeof(Color))
 				{
-					Color c = (Color)val.obj;
+					var c = (Color)val.obj;
 					writer.WriteLine("\t<" + val.name + " type=" + val.type + " r=" + c.r + " g=" + c.g + " b=" + c.b + " a=" + c.a + "/>");
 				}
 
 				//Vector4
 				else if (val.type == typeof(Vector4))
 				{
-					Vector4 v4 = (Vector4)val.obj;
+					var v4 = (Vector4)val.obj;
 					writer.WriteLine("\t<" + val.name + " type=" + val.type + " x=" + v4.x + " y=" + v4.y + " z=" + v4.z + " w=" + v4.w + "/>");
 				}
 
 				//Quaternion
 				else if (val.type == typeof(Quaternion))
 				{
-					Quaternion q = (Quaternion)val.obj;
+					var q = (Quaternion)val.obj;
 					writer.WriteLine("\t<" + val.name + " type=" + val.type + " x=" + q.x + " y=" + q.y + " z=" + q.z + " w=" + q.w + "/>");
 				}
 
@@ -257,7 +257,7 @@ namespace MapMagic
 				//keyframe
 				else if (val.type == typeof(Keyframe))
 				{
-					Keyframe k = (Keyframe)val.obj;
+					var k = (Keyframe)val.obj;
 					writer.WriteLine("\t<" + val.name + " type=" + val.type + " time=" + k.time + " value=" + k.value + " in=" + k.inTangent + " out=" + k.outTangent + " mode=" + k.tangentMode + "/>");
 				}
 
@@ -284,25 +284,25 @@ namespace MapMagic
 
 			object obj = null;
 
-			StringReader reader = new StringReader(classes[slotNum]);
+			var reader = new StringReader(classes[slotNum]);
 
 			//reading header
-			string header = reader.ReadLine();
+			var header = reader.ReadLine();
 			header = header.Substring(1,header.Length-2);
 
 			//getting the array length
 			int arrayLength = 0;
 			if (header.Contains(" length=")) 
 			{
-				string[] headerMembers = header.Split(' ');
+				var headerMembers = header.Split(' ');
 				arrayLength = (int)headerMembers[1].Parse(typeof(int));
 				header = headerMembers[0];
 			}
 
 			//finding object type
-			System.Type objType = GetStandardAssembliesType(header);
+			var objType = GetStandardAssembliesType(header);
 			if (objType == null) { Debug.Log("Could not load " + header + " as this type does not exists anymore"); return null; }
-			System.Type elementType = objType.IsArray? objType.GetElementType() : null;
+			var elementType = objType.IsArray? objType.GetElementType() : null;
 
 			//creating object
 			if (objType.IsArray) obj = Activator.CreateInstance(objType, arrayLength);
@@ -310,23 +310,23 @@ namespace MapMagic
 			references[slotNum] = obj;
 
 			//reading values
-			List<Value> values = new List<Value>();
+			var values = new List<Value>();
 			while (true)
 			{
-				string line = reader.ReadLine();
+				var line = reader.ReadLine();
 				if (line==null || line.StartsWith("</")) break;
 
 				//if (line.StartsWith("\t")) line = line.Remove(0,1); //removing tab if any
 				line = line.Substring(2,line.Length-4); //removing < and />
-				string[] lineMembers = line.Split(' ', ',');
+				var lineMembers = line.Split(' ', ',');
 
-				Value val = new Value();
-			
+				var val = new Value();
+
 				//name
 				val.name = lineMembers[0];
 			
 				//type
-				string typeName = lineMembers[1].Remove(0,5); 
+				var typeName = lineMembers[1].Remove(0,5);
 				val.type = GetStandardAssembliesType(typeName);
 				if (val.type == null) { Debug.Log("Could not load " + typeName + " as this type does not exists anymore"); continue; } 
 
@@ -397,7 +397,7 @@ namespace MapMagic
 					//string
 					else if (val.type==typeof(string))
 					{
-						string str = (string)lineMembers[2].Parse(val.type);
+						var str = (string)lineMembers[2].Parse(val.type);
 						str = str.Replace("\\n", "\n");
 						str = str.Replace("\\_", " ");
 						val.obj = str;
@@ -442,7 +442,7 @@ namespace MapMagic
 					//Quaternion
 					else if (val.type == typeof(Keyframe))
 					{
-						Keyframe k = new Keyframe( (float)lineMembers[2].Parse(typeof(float)), (float)lineMembers[3].Parse(typeof(float)), (float)lineMembers[4].Parse(typeof(float)), (float)lineMembers[5].Parse(typeof(float)) );
+						var k = new Keyframe( (float)lineMembers[2].Parse(typeof(float)), (float)lineMembers[3].Parse(typeof(float)), (float)lineMembers[4].Parse(typeof(float)), (float)lineMembers[5].Parse(typeof(float)) );
 						k.tangentMode = (int)lineMembers[6].Parse(typeof(int));
 						val.obj = k;
 					}
@@ -459,7 +459,7 @@ namespace MapMagic
 			int valuesCount = values.Count;
 			if (objType.IsArray)
 			{
-				Array array = (Array)obj;
+				var array = (Array)obj;
 				for (int i=0; i<array.Length; i++) array.SetValue(values[i].obj, i);
 			}
 			else 
@@ -468,8 +468,8 @@ namespace MapMagic
 				//TODO: use attributes
 				foreach (FieldInfo field in objType.UsableFields(includeStatic:true))  
 				{
-					string fieldName = field.Name;
-					Type fieldType = field.FieldType;
+					var fieldName = field.Name;
+					var fieldType = field.FieldType;
 
 					for (int i=0; i<valuesCount; i++)
 						try {
@@ -478,8 +478,8 @@ namespace MapMagic
 				}
 				foreach (PropertyInfo prop in objType.UsableProperties())
 				{
-					string propName = prop.Name;
-					Type propType = prop.PropertyType;
+					var propName = prop.Name;
+					var propType = prop.PropertyType;
 
 					for (int i=0; i<valuesCount; i++)
 						if (values[i].name == propName  &&  values[i].type == propType) prop.SetValue(obj, values[i].obj, null);
@@ -492,11 +492,11 @@ namespace MapMagic
 
 		public static object DeepCopy (object src)
 		{
-			List<string> classes = new List<string>();
-			List<UnityEngine.Object> objects = new List<UnityEngine.Object>();
-			List<float> floats = new List<float>();
-			List<object> saveReferences = new List<object>();
-			List<object> loadReferences = new List<object>();
+			var classes = new List<string>();
+			var objects = new List<UnityEngine.Object>();
+			var floats = new List<float>();
+			var saveReferences = new List<object>();
+			var loadReferences = new List<object>();
 
 			int num = CustomSerialization.WriteClass(src, classes, objects, floats, saveReferences);
 			return CustomSerialization.ReadClass(num, classes, objects, floats, loadReferences);
@@ -504,7 +504,7 @@ namespace MapMagic
 	
 		public static string ExportXML (List<string> classes, List<UnityEngine.Object> objects, List<float> floats)
 		{
-			StringWriter writer = new StringWriter();
+			var writer = new StringWriter();
 
 			for (int i=0; i<classes.Count; i++)
 				writer.Write(classes[i]);
@@ -512,7 +512,7 @@ namespace MapMagic
 			#if UNITY_EDITOR
 			for (int i=0; i<objects.Count; i++)
 			{
-				string path = UnityEditor.AssetDatabase.GetAssetPath(objects[i]);
+				var path = UnityEditor.AssetDatabase.GetAssetPath(objects[i]);
 				path = path.Replace(" ","*");
 				writer.WriteLine("<Object type=" + objects[i].GetType() + " path=" + path + "/>");
 			}
@@ -533,8 +533,8 @@ namespace MapMagic
 
 		public static void ImportXML (string xml, out List<string> classes, out List<UnityEngine.Object> objects, out List<float> floats)
 		{
-			StringReader reader = new StringReader(xml);
-			
+			var reader = new StringReader(xml);
+
 			classes = new List<string>();
 			objects = new List<UnityEngine.Object>();
 			floats = new List<float>();
@@ -542,7 +542,7 @@ namespace MapMagic
 			StringWriter writer = null;
 			while (true)
 			{
-				string line = reader.ReadLine();
+				var line = reader.ReadLine();
 				if (line==null) break;
 
 				//objects
@@ -550,13 +550,13 @@ namespace MapMagic
 				{
 					#if UNITY_EDITOR
 					line = line.Replace("/>","");
-					string[] lineMemebers = line.Split(' ');
+					var lineMemebers = line.Split(' ');
 
-					string path = lineMemebers[2].Replace("path=","");
+					var path = lineMemebers[2].Replace("path=","");
 					path = path.Replace("*", " ");
 					objects.Add(UnityEditor.AssetDatabase.LoadMainAssetAtPath(path));
 
-					Type type = GetStandardAssembliesType( lineMemebers[1].Replace("type=","") );
+					var type = GetStandardAssembliesType( lineMemebers[1].Replace("type=","") );
 					if (type==typeof(Transform) && objects[objects.Count-1]!=null) objects[objects.Count-1] = ((GameObject)objects[objects.Count-1]).transform; //converting to transform instead of gameobject
 					#endif
 
@@ -570,7 +570,7 @@ namespace MapMagic
 					line = line.Replace("/>","");
 					if (line.Length==0) continue;
 
-					string[] lineMemebers = line.Split(',');
+					var lineMemebers = line.Split(',');
 					for (int i=0; i<lineMemebers.Length; i++) floats.Add(float.Parse(lineMemebers[i]));
 
 					continue;

@@ -47,8 +47,8 @@ namespace MapMagic
 		public static Vector2 V2 (this Vector3 v3) { return new Vector2(v3.x, v3.z); }
 		public static Vector3 ToV3 (this float f) { return new Vector3(f,f, f); }
 
-		public static Quaternion EulerToQuat (this Vector3 v) { Quaternion rotation = Quaternion.identity; rotation.eulerAngles = v; return rotation; }
-		public static Quaternion EulerToQuat (this float f) { Quaternion rotation = Quaternion.identity; rotation.eulerAngles = new Vector3(0,f,0); return rotation; }
+		public static Quaternion EulerToQuat (this Vector3 v) { var rotation = Quaternion.identity; rotation.eulerAngles = v; return rotation; }
+		public static Quaternion EulerToQuat (this float f) { var rotation = Quaternion.identity; rotation.eulerAngles = new Vector3(0,f,0); return rotation; }
 
 		public static Vector3 Direction (this float angle) { return new Vector3( Mathf.Sin(angle*Mathf.Deg2Rad), 0, Mathf.Cos(angle*Mathf.Deg2Rad) ); }
 		public static float Angle (this Vector3 dir) { return Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg; }
@@ -60,12 +60,12 @@ namespace MapMagic
 
 		public static Rect ToRect(this Vector3 center, float range) { return new Rect(center.x-range, center.z-range, range*2, range*2); }
 
-		public static Vector3 Average (this Vector3[] vecs) { Vector3 result = Vector3.zero; for (int i=0; i<vecs.Length; i++) result+=vecs[i]; return result / vecs.Length; }
+		public static Vector3 Average (this Vector3[] vecs) { var result = Vector3.zero; for (int i=0; i<vecs.Length; i++) result+=vecs[i]; return result / vecs.Length; }
 
 		public static bool Intersects (this Rect r1, Rect r2)
 		{
-			Vector2 r1min = r1.min; Vector2 r1max = r1.max;
-			Vector2 r2min = r2.min; Vector2 r2max = r2.max;
+			var r1min = r1.min; var r1max = r1.max;
+			var r2min = r2.min; var r2max = r2.max;
 			if (r2max.x < r1min.x || r2min.x > r1max.x || r2max.y < r1min.y || r2min.y > r1max.y) return false;
 			else return true;
 		}
@@ -78,8 +78,8 @@ namespace MapMagic
 
 		public static bool Contains (this Rect r1, Rect r2)
 		{
-			Vector2 r1min = r1.min; Vector2 r1max = r1.max;
-			Vector2 r2min = r2.min; Vector2 r2max = r2.max;
+			var r1min = r1.min; var r1max = r1.max;
+			var r2min = r2.min; var r2max = r2.max;
 			if (r2min.x > r1min.x && r2max.x < r1max.x && r2min.y > r1min.y && r2max.y < r1max.y) return true;
 			else return false;
 		}
@@ -187,15 +187,15 @@ namespace MapMagic
 		public static Coord RoundToCoord (this Vector3 pos, float cellSize) { return new Coord( Mathf.RoundToInt(pos.x / cellSize),		Mathf.RoundToInt(pos.z / cellSize)  ); }
 		public static CoordRect ToCoordRect (this Vector3 pos, float range, float cellSize) //this one works with Terrain Sculptor
 		{
-			Coord min = new Coord( Mathf.FloorToInt((pos.x-range)/cellSize),	Mathf.FloorToInt((pos.z-range)/cellSize)  );
-			Coord max = new Coord( Mathf.FloorToInt((pos.x+range)/cellSize),	Mathf.FloorToInt((pos.z+range)/cellSize)  )  +  1;
+			var min = new Coord( Mathf.FloorToInt((pos.x-range)/cellSize),	Mathf.FloorToInt((pos.z-range)/cellSize)  );
+			var max = new Coord( Mathf.FloorToInt((pos.x+range)/cellSize),	Mathf.FloorToInt((pos.z+range)/cellSize)  )  +  1;
 			return new CoordRect(min, max-min);
 		}
 
 		public static CoordRect ToFixedSizeCoordRect (this Vector3 pos, float range, float cellSize)
 		{
-			Coord size = (Vector3.one*range*2).CeilToCoord(cellSize) + 1;
-			Coord offset = pos.RoundToCoord(cellSize) - size/2;
+			var size = (Vector3.one*range*2).CeilToCoord(cellSize) + 1;
+			var offset = pos.RoundToCoord(cellSize) - size/2;
 			return new CoordRect (offset, size);
 		}
 
@@ -237,8 +237,8 @@ namespace MapMagic
 
 		public static Texture2D ColorTexture (int width, int height, Color color)
 		{
-			Texture2D result = new Texture2D(width, height);
-			Color[] pixels = result.GetPixels(0,0,width,height);
+			var result = new Texture2D(width, height);
+			var pixels = result.GetPixels(0,0,width,height);
 			for (int i=0;i<pixels.Length;i++) pixels[i] = color;
 			result.SetPixels(0,0,width,height, pixels);
 			result.Apply();
@@ -261,7 +261,7 @@ namespace MapMagic
 		{
 			for (int i=tfm.childCount-1; i>=0; i--)
 			{
-				Transform child = tfm.GetChild(i);
+				var child = tfm.GetChild(i);
 				GameObject.DestroyImmediate(child.gameObject); 
 			}
 		}
@@ -275,7 +275,7 @@ namespace MapMagic
 
 			for (int i=0; i<numChildren; i++)
 			{
-				Transform result = tfm.GetChild(i).FindChildRecursive(name);
+				var result = tfm.GetChild(i).FindChildRecursive(name);
 				if (result != null) return result;
 			}
 
@@ -449,7 +449,7 @@ namespace MapMagic
 
 		public static Transform AddChild (this Transform tfm, string name="", Vector3 offset=new Vector3())
 		{
-			GameObject go = new GameObject();
+			var go = new GameObject();
 			go.name = name;
 			go.transform.parent = tfm;
 			go.transform.localPosition = offset;
@@ -459,7 +459,7 @@ namespace MapMagic
 
 		public static T CreateObjectWithComponent<T> (string name="", Transform parent=null, Vector3 offset=new Vector3()) where T : MonoBehaviour
 		{
-			GameObject go = new GameObject();
+			var go = new GameObject();
 			if (name != null) 
 			if (parent != null) go.transform.parent = parent.transform;
 			go.transform.localPosition = offset;
@@ -474,7 +474,7 @@ namespace MapMagic
 			for (int i=0; i<numPoints; i++)
 			{
 				float angle = i*radianStep;
-				Vector3 dir = new Vector3( Mathf.Sin(angle), 0, Mathf.Cos(angle) );
+				var dir = new Vector3( Mathf.Sin(angle), 0, Mathf.Cos(angle) );
 				yield return center + dir*radius;
 			}
 		}
@@ -527,7 +527,7 @@ namespace MapMagic
 
 		public static Keyframe[] Copy (this Keyframe[] src)
 		{
-			Keyframe[] dst = new Keyframe[src.Length];
+			var dst = new Keyframe[src.Length];
 			for (int k=0; k<src.Length; k++) 
 			{
 				dst[k].value = src[k].value;
@@ -540,7 +540,7 @@ namespace MapMagic
 
 		public static AnimationCurve Copy (this AnimationCurve src)
 		{
-			AnimationCurve dst = new AnimationCurve();
+			var dst = new AnimationCurve();
 			dst.keys = src.keys.Copy();
 			return dst;
 		}
@@ -551,16 +551,16 @@ namespace MapMagic
 			// editor assembly is Assembly-CSharp-Editor
 			// main is Assembly-CSharp
 
-			Assembly a = Assembly.Load(assembly);
-			Type t = a.GetType(type);
+			var a = Assembly.Load(assembly);
+			var t = a.GetType(type);
 			return t.GetMethod(method).Invoke(null, parameters);
 		}
 
 		public static void GetPropertiesFrom<T1,T2> (this T1 dst, T2 src) where T1:class where T2:class
 		{
-			PropertyInfo[] srcProps = src.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty);
-			PropertyInfo[] dstProps = src.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetProperty);
-         
+			var srcProps = src.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty);
+			var dstProps = src.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetProperty);
+
 			for (int sp=0; sp<srcProps.Length; sp++)
 				for (int dp=0; dp<dstProps.Length; dp++)
 			{
@@ -572,14 +572,14 @@ namespace MapMagic
 
 		public static IEnumerable<FieldInfo> UsableFields (this Type type, bool nonPublic=false, bool includeStatic=false)
 		{
-			BindingFlags flags = BindingFlags.Public | BindingFlags.Instance;
+			var flags = BindingFlags.Public | BindingFlags.Instance;
 			if (nonPublic) flags = flags | BindingFlags.NonPublic; 
 			if (includeStatic) flags = flags | BindingFlags.Static; 
 
-			FieldInfo[] fields = type.GetFields(flags);
+			var fields = type.GetFields(flags);
 			for (int i=0; i<fields.Length; i++)
 			{
-				FieldInfo field = fields[i];
+				var field = fields[i];
 				if (field.IsLiteral) continue; //leaving constant fields blank
 				if (field.FieldType.IsPointer) continue; //skipping pointers (they make unity crash. Maybe require unsafe)
 				if (field.IsNotSerialized) continue;
@@ -594,10 +594,10 @@ namespace MapMagic
 			if (nonPublic) flags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance; 
 			else flags = BindingFlags.Public | BindingFlags.Instance; 
 
-			PropertyInfo[] properties = type.GetProperties(flags);
+			var properties = type.GetProperties(flags);
 			for (int i=0;i<properties.Length;i++) 
 			{
-				PropertyInfo prop = properties[i];
+				var prop = properties[i];
 				if (!prop.CanWrite) continue;
 				if (skipItems && prop.Name=="Item") continue; //ignoring this[x] 
 
@@ -611,10 +611,10 @@ namespace MapMagic
 			if (nonPublic) flags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance; 
 			else flags = BindingFlags.Public | BindingFlags.Instance; 
 
-			FieldInfo[] fields = type.GetFields(flags);
+			var fields = type.GetFields(flags);
 			for (int i=0; i<fields.Length; i++)
 			{
-				FieldInfo field = fields[i];
+				var field = fields[i];
 				if (field.IsLiteral) continue; //leaving constant fields blank
 				if (field.FieldType.IsPointer) continue; //skipping pointers (they make unity crash. Maybe require unsafe)
 				if (field.IsNotSerialized) continue;
@@ -622,10 +622,10 @@ namespace MapMagic
 				yield return field;
 			}
 
-			PropertyInfo[] properties = type.GetProperties(flags);
+			var properties = type.GetProperties(flags);
 			for (int i=0;i<properties.Length;i++) 
 			{
-				PropertyInfo prop = properties[i];
+				var prop = properties[i];
 				if (!prop.CanWrite) continue;
 				if (skipItems && prop.Name=="Item") continue; //ignoring this[x] 
 
@@ -635,9 +635,9 @@ namespace MapMagic
 
 		public static Component CopyComponent (Component src, GameObject go)
 		{
-			System.Type type = src.GetType();
-			
-			Component dst = go.GetComponent(src.GetType());
+			var type = src.GetType();
+
+			var dst = go.GetComponent(src.GetType());
 			if (dst==null) dst = go.AddComponent(type);
 
 			foreach (FieldInfo field in type.UsableFields(nonPublic:true)) field.SetValue(dst, field.GetValue(src));
@@ -665,35 +665,35 @@ namespace MapMagic
 
 		public static IEnumerable<Type> Subtypes (this Type parent)
 		{
-			Assembly assembly = Assembly.GetAssembly(parent);  //Assembly[] assembleys = AppDomain.CurrentDomain.GetAssemblies();
-			Type[] types = assembly.GetTypes();
+			var assembly = Assembly.GetAssembly(parent);  //Assembly[] assembleys = AppDomain.CurrentDomain.GetAssemblies();
+			var types = assembly.GetTypes();
 			for (int t=0; t<types.Length; t++) 
 			{
-				Type type = types[t];
+				var type = types[t];
 				if (type.IsSubclassOf(parent) && !type.IsInterface && !type.IsAbstract) yield return type;
 			}
 		}
 
 		public static T GetAddComponent<T> (this GameObject go) where T:Component
 		{
-			T c = go.GetComponent<T>();
+			var c = go.GetComponent<T>();
 			if (c==null) c = go.AddComponent<T>();
 			return c;
 		}
 
 		public static void ReflectionReset<T> (this T obj) 
 		{
-			Type type = obj.GetType();
-			T empty = (T)Activator.CreateInstance(type);
-			
+			var type = obj.GetType();
+			var empty = (T)Activator.CreateInstance(type);
+
 			foreach (FieldInfo field in type.UsableFields(nonPublic:true)) field.SetValue(obj, field.GetValue(empty));
 			foreach (PropertyInfo prop in type.UsableProperties(nonPublic:true)) prop.SetValue(obj, prop.GetValue(empty,null), null);
 		}
 
 		public static T ReflectionCopy<T> (this T obj)
 		{
-			Type type = obj.GetType();
-			T copy = (T)Activator.CreateInstance(type);
+			var type = obj.GetType();
+			var copy = (T)Activator.CreateInstance(type);
 
 			foreach (FieldInfo field in type.UsableFields(nonPublic:true)) field.SetValue(copy, field.GetValue(obj));
 			foreach (PropertyInfo prop in type.UsableProperties(nonPublic:true)) prop.SetValue(copy, prop.GetValue(obj,null), null);
@@ -703,12 +703,12 @@ namespace MapMagic
 
 		public static void ReflectionCopyFrom<T> (this T dst, object src)
 		{
-			Type dstType = dst.GetType();
-			Type srcType = src.GetType();
+			var dstType = dst.GetType();
+			var srcType = src.GetType();
 
 			foreach (FieldInfo dstField in dstType.UsableFields(nonPublic:true))
 			{
-				FieldInfo srcField = srcType.GetField(dstField.Name);
+				var srcField = srcType.GetField(dstField.Name);
 				if (srcField != null && srcField.FieldType == dstField.FieldType) dstField.SetValue(dst, srcField.GetValue(src));
 			}
 
@@ -806,7 +806,7 @@ namespace MapMagic
 			}
 			else
 			{
-				Camera mainCam = Camera.main;
+				var mainCam = Camera.main;
 				if (mainCam==null) mainCam = GameObject.FindObjectOfType<Camera>(); //in case it was destroyed or something
 				return mainCam;
 			}
@@ -842,7 +842,7 @@ namespace MapMagic
 				int counter = 0;
 				if (genAroundMainCam) 
 				{
-					Camera mainCam = Camera.main;
+					var mainCam = Camera.main;
 					if (mainCam==null) mainCam = GameObject.FindObjectOfType<Camera>(); //in case it was destroyed or something
 					camPoses[0] = mainCam.transform.position;
 					counter++;
@@ -859,9 +859,9 @@ namespace MapMagic
 			if (IsEditor()) 
 			{
 				#if UNITY_EDITOR
-				UnityEditor.SceneView sceneview = UnityEditor.SceneView.lastActiveSceneView;
+				var sceneview = UnityEditor.SceneView.lastActiveSceneView;
 				if (sceneview==null || sceneview.camera==null || Event.current==null) return Vector2.zero;
-				Vector2 mousePos = Event.current.mousePosition;
+				var mousePos = Event.current.mousePosition;
 				mousePos = new Vector2(mousePos.x/sceneview.camera.pixelWidth, mousePos.y/sceneview.camera.pixelHeight);
 				#if UNITY_5_4_OR_NEWER 	
 				mousePos *= UnityEditor.EditorGUIUtility.pixelsPerPoint;
@@ -877,14 +877,14 @@ namespace MapMagic
 
 		public static void GizmosDrawFrame (Vector3 center, Vector3 size, int resolution, float level = 30)
 		{
-			Vector3 offset = center-size/2;
-			
-			Vector3 prevP1=Vector3.zero; Vector3 prevP2=Vector3.zero;
+			var offset = center-size/2;
+
+			var prevP1=Vector3.zero; var prevP2=Vector3.zero;
 			for (float x=0; x < size.x+0.0001f; x += 1f*size.x/resolution)
 			{
-				RaycastHit hit = new RaycastHit();
+				var hit = new RaycastHit();
 
-				Vector3 p1 = new Vector3(offset.x+x, 10000, offset.z);
+				var p1 = new Vector3(offset.x+x, 10000, offset.z);
 				if (Physics.Raycast(new Ray(p1, Vector3.down*20000), out hit, 20000)) p1.y = hit.point.y; 
 				else if (Physics.Raycast(new Ray(p1+new Vector3(1,0,0), Vector3.down*20000), out hit, 20000)) p1.y = hit.point.y;
 				else if (Physics.Raycast(new Ray(p1+new Vector3(-1,0,0), Vector3.down*20000), out hit, 20000)) p1.y = hit.point.y;
@@ -894,7 +894,7 @@ namespace MapMagic
 				if (x>0.0001f) Gizmos.DrawLine(prevP1, p1);
 				prevP1 = p1;
 
-				Vector3 p2 = new Vector3(offset.x+x, 10000, offset.z+size.z);
+				var p2 = new Vector3(offset.x+x, 10000, offset.z+size.z);
 				if (Physics.Raycast(new Ray(p2, Vector3.down*20000), out hit, 20000)) p2.y = hit.point.y;
 				else if (Physics.Raycast(new Ray(p2+new Vector3(1,0,0), Vector3.down*20000), out hit, 20000)) p2.y = hit.point.y;
 				else if (Physics.Raycast(new Ray(p2+new Vector3(-1,0,0), Vector3.down*20000), out hit, 20000)) p2.y = hit.point.y;
@@ -907,9 +907,9 @@ namespace MapMagic
 
 			for (float z=0; z < size.z+0.0001f; z += 1f*size.z/resolution)
 			{
-				RaycastHit hit = new RaycastHit();
+				var hit = new RaycastHit();
 
-				Vector3 p1 = new Vector3(offset.x, 10000, offset.z+z);
+				var p1 = new Vector3(offset.x, 10000, offset.z+z);
 				if (Physics.Raycast(new Ray(p1, Vector3.down*20000), out hit, 20000)) p1.y = hit.point.y; 
 				else if (Physics.Raycast(new Ray(p1+new Vector3(1,0,0), Vector3.down*20000), out hit, 20000)) p1.y = hit.point.y;
 				else if (Physics.Raycast(new Ray(p1+new Vector3(-1,0,0), Vector3.down*20000), out hit, 20000)) p1.y = hit.point.y;
@@ -919,7 +919,7 @@ namespace MapMagic
 				if (z>0.0001f) Gizmos.DrawLine(prevP1, p1);
 				prevP1 = p1;
 
-				Vector3 p2 = new Vector3(offset.x+size.x, 10000, offset.z+z);
+				var p2 = new Vector3(offset.x+size.x, 10000, offset.z+z);
 				if (Physics.Raycast(new Ray(p2, Vector3.down*20000), out hit, 20000)) p2.y = hit.point.y;
 				else if (Physics.Raycast(new Ray(p2+new Vector3(1,0,0), Vector3.down*20000), out hit, 20000)) p2.y = hit.point.y;
 				else if (Physics.Raycast(new Ray(p2+new Vector3(-1,0,0), Vector3.down*20000), out hit, 20000)) p2.y = hit.point.y;
@@ -935,9 +935,9 @@ namespace MapMagic
 		{
 			float step = size / resolution;
 
-			Vector3[] verts = new Vector3[(resolution+1)*(resolution+1)];
-			Vector2[] uvs = new Vector2[verts.Length];
-			int[] tris = new int[resolution*resolution*2*3];
+			var verts = new Vector3[(resolution+1)*(resolution+1)];
+			var uvs = new Vector2[verts.Length];
+			var tris = new int[resolution*resolution*2*3];
 
 			int vertCounter = 0;
 			int triCounter = 0;
@@ -968,11 +968,11 @@ namespace MapMagic
 		{
 			#if UNITY_EDITOR
 			//finding path
-			string path= UnityEditor.EditorUtility.SaveFilePanel(label, "Assets", fileName, "asset");
+			var path= UnityEditor.EditorUtility.SaveFilePanel(label, "Assets", fileName, "asset");
 			if (path==null || path.Length==0) return data;
 
 			//releasing data on re-save
-			T newData = data;
+			var newData = data;
 			if (UnityEditor.AssetDatabase.Contains(data)) newData = (T)data.Clone();
 
 			//saving
@@ -1004,7 +1004,7 @@ namespace MapMagic
 
 		public static string LogBinary (this int src)
 		{
-			string result = "";
+			var result = "";
 			for (int i=0; i<32; i++)
 			{
 				if (i%4==0) result=" "+result;
@@ -1018,7 +1018,7 @@ namespace MapMagic
 
 		public static string ToStringArray<T> (this T[] array)
 		{
-			string result = "";
+			var result = "";
 			for (int i=0; i<array.Length; i++)
 			{
 				result += array[i].ToString();
@@ -1029,7 +1029,7 @@ namespace MapMagic
 
 		public static Color[] ToColors (this Vector4[] src)
 		{
-			Color[] dst = new Color[src.Length];
+			var dst = new Color[src.Length];
 			for (int i=0; i<src.Length; i++)
 				dst[i] = src[i];
 			return dst;

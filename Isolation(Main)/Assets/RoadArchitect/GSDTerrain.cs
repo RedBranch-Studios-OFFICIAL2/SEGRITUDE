@@ -44,9 +44,9 @@ public class GSDTerrain : MonoBehaviour{
 		}
 	}
 	private int GetNewID(){
-		Object[] tTerrainObjs = GameObject.FindObjectsOfType(typeof(GSDTerrain));
-		List<int> AllIDS = new List<int>();
-		foreach(GSDTerrain TID in tTerrainObjs){
+		var tTerrainObjs = GameObject.FindObjectsOfType(typeof(GSDTerrain));
+		var AllIDS = new List<int>();
+		foreach (GSDTerrain TID in tTerrainObjs){
 			if(TID.GSDID > 0){
 				AllIDS.Add (TID.GSDID);	
 			}

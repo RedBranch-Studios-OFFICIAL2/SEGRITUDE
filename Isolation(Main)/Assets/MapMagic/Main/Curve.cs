@@ -33,8 +33,8 @@ namespace MapMagic
 			{
 				if (time > points[p].time && time <= points[p+1].time)
 				{
-					Point prev = points[p];
-					Point next = points[p+1];
+					var prev = points[p];
+					var next = points[p+1];
 
 					float delta = next.time - prev.time;
 					float relativeTime = (time - prev.time) / delta;

@@ -125,7 +125,7 @@ class EditorCallbackViewer : EditorWindow
 			GUILayout.Label("Callback Log", EditorStyles.boldLabel);
 		GUILayout.EndHorizontal();
 
-		Rect r = GUILayoutUtility.GetLastRect();
+		var r = GUILayoutUtility.GetLastRect();
 		r.x = 0;
 		r.y = r.y + r.height + 6;
 		r.width = this.position.width;

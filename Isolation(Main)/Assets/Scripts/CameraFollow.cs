@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CameraFollow : MonoBehaviour {
-
+public class CameraFollow : MonoBehaviour
+{
 	public float CameraMoveSpeed = 120.0f;
 	public GameObject CameraFollowObj;
-	Vector3 FollowPOS;
+	private Vector3 FollowPOS;
 	public float clampAngle = 80.0f;
 	public float inputSensitivity = 150.0f;
 	public GameObject CameraObj;
@@ -23,50 +21,47 @@ public class CameraFollow : MonoBehaviour {
 	private float rotY = 0.0f;
 	private float rotX = 0.0f;
 
-    private float inputX;
-    private float inputZ;
-
-
+	private float inputX;
+	private float inputZ;
 
 	// Use this for initialization
-	void Start () {
-		Vector3 rot = transform.localRotation.eulerAngles;
+	private void Start()
+	{
+		var rot = transform.localRotation.eulerAngles;
 		rotY = rot.y;
 		rotX = rot.x;
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 	}
-	
-	
-	void Update () {
 
-
-		mouseX = Input.GetAxis ("Mouse X");
-		mouseY = Input.GetAxis ("Mouse Y");
+	private void Update()
+	{
+		mouseX = Input.GetAxis("Mouse X");
+		mouseY = Input.GetAxis("Mouse Y");
 		finalInputX = inputX + mouseX;
 		finalInputZ = inputZ + mouseY;
 
 		rotY += finalInputX * inputSensitivity * Time.deltaTime;
 		rotX += finalInputZ * inputSensitivity * Time.deltaTime;
 
-		rotX = Mathf.Clamp (rotX, -clampAngle, clampAngle);
+		rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle);
 
-		Quaternion localRotation = Quaternion.Euler (rotX, rotY, 0.0f);
+		var localRotation = Quaternion.Euler(rotX, rotY, 0.0f);
 		transform.rotation = localRotation;
-
-
 	}
 
-	void LateUpdate () {
-		CameraUpdater ();
+	private void LateUpdate()
+	{
+		CameraUpdater();
 	}
 
-	void CameraUpdater() {
+	private void CameraUpdater()
+	{
 		// set the target object to follow
-		Transform target = CameraFollowObj.transform;
+		var target = CameraFollowObj.transform;
 
 		//move towards the game object that is the target
 		float step = CameraMoveSpeed * Time.deltaTime;
-		transform.position = Vector3.MoveTowards (transform.position, target.position, step);
+		transform.position = Vector3.MoveTowards(transform.position, target.position, step);
 	}
 }

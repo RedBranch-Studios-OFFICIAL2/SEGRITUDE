@@ -37,29 +37,29 @@ public class GSDObjExporter : ScriptableObject{
  
     private static string MeshToString(MeshFilter mf, Dictionary<string, ObjMaterial> materialList) 
     {
-        Mesh m = mf.sharedMesh;
-        Renderer rend = mf.GetComponent<Renderer>();
-        //Material[] mats = mf.renderer.sharedMaterials;
-        Material[] mats = rend.sharedMaterials;
- 
-        StringBuilder sb = new StringBuilder();
- 
-        sb.Append("g ").Append(mf.name).Append("\n");
+        var m = mf.sharedMesh;
+		var rend = mf.GetComponent<Renderer>();
+		//Material[] mats = mf.renderer.sharedMaterials;
+		var mats = rend.sharedMaterials;
+
+		var sb = new StringBuilder();
+
+		sb.Append("g ").Append(mf.name).Append("\n");
         foreach(Vector3 lv in m.vertices) 
         {
-        	Vector3 wv = mf.transform.TransformPoint(lv);
- 
-        	//This is sort of ugly - inverting x-component since we're in
-        	//a different coordinate system than "everyone" is "used to".
-            sb.Append(string.Format("v {0} {1} {2}\n",-wv.x,wv.y,wv.z));
+        	var wv = mf.transform.TransformPoint(lv);
+
+			//This is sort of ugly - inverting x-component since we're in
+			//a different coordinate system than "everyone" is "used to".
+			sb.Append(string.Format("v {0} {1} {2}\n",-wv.x,wv.y,wv.z));
         }
         sb.Append("\n");
  
         foreach(Vector3 lv in m.normals) 
         {
-        	Vector3 wv = mf.transform.TransformDirection(lv);
- 
-            sb.Append(string.Format("vn {0} {1} {2}\n",-wv.x,wv.y,wv.z));
+        	var wv = mf.transform.TransformDirection(lv);
+
+			sb.Append(string.Format("vn {0} {1} {2}\n",-wv.x,wv.y,wv.z));
         }
         sb.Append("\n");
  
@@ -76,9 +76,9 @@ public class GSDObjExporter : ScriptableObject{
             //See if this material is already in the materiallist.
             try
        		{
-          		ObjMaterial objMaterial = new ObjMaterial();
- 
-          		objMaterial.name = mats[material].name;
+          		var objMaterial = new ObjMaterial();
+
+				objMaterial.name = mats[material].name;
  
           		if (mats[material].mainTexture)
           			objMaterial.textureName = AssetDatabase.GetAssetPath(mats[material].mainTexture);
@@ -93,8 +93,8 @@ public class GSDObjExporter : ScriptableObject{
         	}
  
  
-            int[] triangles = m.GetTriangles(material);
-            for (int i=0;i<triangles.Length;i+=3) 
+            var triangles = m.GetTriangles(material);
+			for (int i=0;i<triangles.Length;i+=3) 
             {
             	//Because we inverted the x-component, we also needed to alter the triangle winding.
                 sb.Append(string.Format("f {1}/{1}/{1} {0}/{0}/{0} {2}/{2}/{2}\n", 
@@ -140,18 +140,18 @@ public class GSDObjExporter : ScriptableObject{
  
 				if (kvp.Value.textureName != null)
 				{
-					string destinationFile = kvp.Value.textureName;
- 
- 
+					var destinationFile = kvp.Value.textureName;
+
+
 					int stripIndex = destinationFile.LastIndexOf('/');//FIXME: Should be Path.PathSeparator;
  
        				if (stripIndex >= 0)
             			destinationFile = destinationFile.Substring(stripIndex + 1).Trim();
  
  
-            		string relativeFile = destinationFile;
- 
-            		destinationFile = folder + "/" + destinationFile;
+            		var relativeFile = destinationFile;
+
+					destinationFile = folder + "/" + destinationFile;
  
 //					Debug.Log("Copying texture from " + kvp.Value.textureName + " to " + destinationFile);
  
@@ -176,9 +176,9 @@ public class GSDObjExporter : ScriptableObject{
  
     private static void MeshToFile(MeshFilter mf, string folder, string filename) 
     {
-    	Dictionary<string, ObjMaterial> materialList = PrepareFileWrite();
- 
-        using (StreamWriter sw = new StreamWriter(folder +"/" + filename + ".obj")) 
+    	var materialList = PrepareFileWrite();
+
+		using (StreamWriter sw = new StreamWriter(folder +"/" + filename + ".obj")) 
         {
         	sw.Write("mtllib ./" + filename + ".mtl\n");
  
@@ -190,9 +190,9 @@ public class GSDObjExporter : ScriptableObject{
  
     private static void MeshesToFile(MeshFilter[] mf, string folder, string filename) 
     {
-    	Dictionary<string, ObjMaterial> materialList = PrepareFileWrite();
- 
-        using (StreamWriter sw = new StreamWriter(folder +"/" + filename + ".obj")) 
+    	var materialList = PrepareFileWrite();
+
+		using (StreamWriter sw = new StreamWriter(folder +"/" + filename + ".obj")) 
         {
         	sw.Write("mtllib ./" + filename + ".mtl\n");
  
@@ -226,9 +226,9 @@ public class GSDObjExporter : ScriptableObject{
     	if (!CreateTargetFolder())
     		return;
  
-        Transform[] selection = Selection.GetTransforms(SelectionMode.Editable | SelectionMode.ExcludePrefab);
- 
-        if (selection.Length == 0)
+        var selection = Selection.GetTransforms(SelectionMode.Editable | SelectionMode.ExcludePrefab);
+
+		if (selection.Length == 0)
         {
         	EditorUtility.DisplayDialog("No source object selected!", "Please select one or more target objects", "");
         	return;
@@ -238,9 +238,9 @@ public class GSDObjExporter : ScriptableObject{
  
        	for (int i = 0; i < selection.Length; i++)
        	{
-       		Component[] meshfilter = selection[i].GetComponentsInChildren(typeof(MeshFilter));
- 
-       		for (int m = 0; m < meshfilter.Length; m++)
+       		var meshfilter = selection[i].GetComponentsInChildren(typeof(MeshFilter));
+
+			for (int m = 0; m < meshfilter.Length; m++)
        		{
        			exportedObjects++;
        			MeshToFile((MeshFilter)meshfilter[m], targetFolder, selection[i].name + "_" + i + "_" + m);
@@ -260,9 +260,9 @@ public class GSDObjExporter : ScriptableObject{
     		return;
  
  
-        Transform[] selection = Selection.GetTransforms(SelectionMode.Editable | SelectionMode.ExcludePrefab);
- 
-        if (selection.Length == 0)
+        var selection = Selection.GetTransforms(SelectionMode.Editable | SelectionMode.ExcludePrefab);
+
+		if (selection.Length == 0)
         {
         	EditorUtility.DisplayDialog("No source object selected!", "Please select one or more target objects", "");
         	return;
@@ -270,13 +270,13 @@ public class GSDObjExporter : ScriptableObject{
  
         int exportedObjects = 0;
  
-        ArrayList mfList = new ArrayList();
- 
-       	for (int i = 0; i < selection.Length; i++)
+        var mfList = new ArrayList();
+
+		for (int i = 0; i < selection.Length; i++)
        	{
-       		Component[] meshfilter = selection[i].GetComponentsInChildren(typeof(MeshFilter));
- 
-       		for (int m = 0; m < meshfilter.Length; m++)
+       		var meshfilter = selection[i].GetComponentsInChildren(typeof(MeshFilter));
+
+			for (int m = 0; m < meshfilter.Length; m++)
        		{
        			exportedObjects++;
        			mfList.Add(meshfilter[m]);
@@ -285,19 +285,19 @@ public class GSDObjExporter : ScriptableObject{
  
        	if (exportedObjects > 0)
        	{
-       		MeshFilter[] mf = new MeshFilter[mfList.Count];
- 
-       		for (int i = 0; i < mfList.Count; i++)
+       		var mf = new MeshFilter[mfList.Count];
+
+			for (int i = 0; i < mfList.Count; i++)
        		{
        			mf[i] = (MeshFilter)mfList[i];
        		}
 
 
-            string tSceneName = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().name;
-            //string filename = EditorApplication.currentScene + "_" + exportedObjects;
-            string filename = tSceneName + "_" + exportedObjects;
+            var tSceneName = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().name;
+			//string filename = EditorApplication.currentScene + "_" + exportedObjects;
+			var filename = tSceneName + "_" + exportedObjects;
 
-            int stripIndex = filename.LastIndexOf('/');//FIXME: Should be Path.PathSeparator
+			int stripIndex = filename.LastIndexOf('/');//FIXME: Should be Path.PathSeparator
  
        		if (stripIndex >= 0)
             	filename = filename.Substring(stripIndex + 1).Trim();
@@ -319,9 +319,9 @@ public class GSDObjExporter : ScriptableObject{
     	if (!CreateTargetFolder())
     		return;
  
-        Transform[] selection = Selection.GetTransforms(SelectionMode.Editable | SelectionMode.ExcludePrefab);
- 
-        if (selection.Length == 0)
+        var selection = Selection.GetTransforms(SelectionMode.Editable | SelectionMode.ExcludePrefab);
+
+		if (selection.Length == 0)
         {
         	EditorUtility.DisplayDialog("No source object selected!", "Please select one or more target objects", "");
         	return;
@@ -332,11 +332,11 @@ public class GSDObjExporter : ScriptableObject{
  
        	for (int i = 0; i < selection.Length; i++)
        	{
-       		Component[] meshfilter = selection[i].GetComponentsInChildren(typeof(MeshFilter));
- 
-       		MeshFilter[] mf = new MeshFilter[meshfilter.Length];
- 
-       		for (int m = 0; m < meshfilter.Length; m++)
+       		var meshfilter = selection[i].GetComponentsInChildren(typeof(MeshFilter));
+
+			var mf = new MeshFilter[meshfilter.Length];
+
+			for (int m = 0; m < meshfilter.Length; m++)
        		{
        			exportedObjects++;
        			mf[m] = (MeshFilter)meshfilter[m];

@@ -16,21 +16,21 @@ namespace ProBuilder2.EditorCommon
 		[PostProcessScene]
 		public static void OnPostprocessScene()
 		{
-			Material invisibleFaceMaterial = (Material)Resources.Load("Materials/InvisibleFace");
+			var invisibleFaceMaterial = (Material)Resources.Load("Materials/InvisibleFace");
 
 			/**
 			 * Hide nodraw faces if present.
 			 */
-			foreach(pb_Object pb in GameObject.FindObjectsOfType(typeof(pb_Object)))
+			foreach (pb_Object pb in GameObject.FindObjectsOfType(typeof(pb_Object)))
 			{
 				if(pb.GetComponent<MeshRenderer>() == null)
 					continue;
 
 				if( pb.GetComponent<MeshRenderer>().sharedMaterials.Any(x => x != null && x.name.Contains("NoDraw")) )
 				{
-					Material[] mats = pb.GetComponent<MeshRenderer>().sharedMaterials;
+					var mats = pb.GetComponent<MeshRenderer>().sharedMaterials;
 
-					for(int i = 0; i < mats.Length; i++)
+					for (int i = 0; i < mats.Length; i++)
 					{
 						if(mats[i].name.Contains("NoDraw"))
 							mats[i] = invisibleFaceMaterial;
@@ -45,11 +45,11 @@ namespace ProBuilder2.EditorCommon
 
 			foreach(pb_Object pb in GameObject.FindObjectsOfType(typeof(pb_Object)))
 			{
-				GameObject go = pb.gameObject;
+				var go = pb.gameObject;
 
-				pb_Entity entity = pb.gameObject.GetComponent<pb_Entity>();
+				var entity = pb.gameObject.GetComponent<pb_Entity>();
 
-				if( entity == null )
+				if ( entity == null )
 					continue;
 
 				if(entity.entityType == EntityType.Collider || entity.entityType == EntityType.Trigger)

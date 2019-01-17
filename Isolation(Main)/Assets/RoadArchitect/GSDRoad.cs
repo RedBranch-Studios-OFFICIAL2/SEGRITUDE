@@ -334,8 +334,8 @@ public class GSDRoad : MonoBehaviour{
 	}
 	public void EditorCameraSetSingle(){
 		if(EditorPlayCamera == null){
-			Camera[] EditorCams = (Camera[])GameObject.FindObjectsOfType(typeof(Camera));
-			if(EditorCams != null && EditorCams.Length == 1){
+			var EditorCams = (Camera[])GameObject.FindObjectsOfType(typeof(Camera));
+			if (EditorCams != null && EditorCams.Length == 1){
 				EditorPlayCamera = EditorCams[0];
 			}
 		}
@@ -518,8 +518,8 @@ public class GSDRoad : MonoBehaviour{
 		
 		int cCount = transform.childCount;
 		GameObject tMainMeshes = null;
-		List<GameObject> tObjs = new List<GameObject>();
-		for(int i=0;i<cCount;i++){
+		var tObjs = new List<GameObject>();
+		for (int i=0;i<cCount;i++){
 			if(transform.GetChild(i).transform.name.ToLower().Contains("mainmeshes")){
 				tMainMeshes = transform.GetChild(i).transform.gameObject;
 				tObjs.Add(tMainMeshes);
@@ -560,7 +560,7 @@ public class GSDRoad : MonoBehaviour{
 		
 		
 		//Check if road takes place on only 1 terrain:
-		Terrain tTerrain = GSD.Roads.GSDRoadUtil.GetTerrain(GSDSpline.mNodes[0].pos);
+		var tTerrain = GSD.Roads.GSDRoadUtil.GetTerrain(GSDSpline.mNodes[0].pos);
 		bool bSameTerrain = true;
 		for(int i=1;i<mCount;i++){
 			if(tTerrain != GSD.Roads.GSDRoadUtil.GetTerrain(GSDSpline.mNodes[0].pos)){
@@ -594,8 +594,8 @@ public class GSDRoad : MonoBehaviour{
             #region "Terrain history"
 	public void ConstructRoad_StoreTerrainHistory(bool bDiskOnly = false){
 		if(!bDiskOnly){
-        	GSDRoad tRoad = this;
-        	GSDRoadUtil.ConstructRoad_StoreTerrainHistory(ref tRoad);
+        	var tRoad = this;
+			GSDRoadUtil.ConstructRoad_StoreTerrainHistory(ref tRoad);
 		}
 
 		if(opt_SaveTerrainHistoryOnDisk && TerrainHistory != null && TerrainHistory.Count > 0){
@@ -617,8 +617,8 @@ public class GSDRoad : MonoBehaviour{
 		}
 	}
 	public void ConstructRoad_ResetTerrainHistory(){
-        GSDRoad tRoad = this;
-		if(opt_SaveTerrainHistoryOnDisk && TerrainHistory != null){
+        var tRoad = this;
+		if (opt_SaveTerrainHistoryOnDisk && TerrainHistory != null){
 			GSDGeneralEditor.TerrainHistory_Delete(this);
 		}else{
 			GSDRoadUtil.ConstructRoad_ResetTerrainHistory(ref tRoad);
@@ -660,8 +660,8 @@ public class GSDRoad : MonoBehaviour{
 		}
 		
 		EditorProgress = 50;
-		GSDRoad tRoad = this;
-		if(bProfiling){
+		var tRoad = this;
+		if (bProfiling){
             UnityEngine.Profiling.Profiler.BeginSample("RoadCon_RoadPrelim");
 		}
 	
@@ -707,7 +707,7 @@ public class GSDRoad : MonoBehaviour{
 		} EditorProgress = 60;
 		
 		if(TerrainCalcsJob != null){ TerrainCalcsJob.Abort(); TerrainCalcsJob = null; }
-		GSDRoad tRoad = this;
+		var tRoad = this;
 		EditorProgress = 72;
 		RoadCalcsJob1 = new GSD.Threaded.RoadCalcs1();
 		RoadCalcsJob1.Setup(ref RCS, ref tRoad);
@@ -786,7 +786,7 @@ public class GSDRoad : MonoBehaviour{
 			}
 				
 			if(PiggyBacks != null){
-				GSDSplineC tPiggy = PiggyBacks[0];
+				var tPiggy = PiggyBacks[0];
 				GSDSplineC[] NewPiggys = null;
 				
 				PiggyBacks[0] = null;
@@ -871,9 +871,9 @@ public class GSDRoad : MonoBehaviour{
 	
 	
 	static void DoShort(int LoopMax){
-		ushort[] tSubject = new ushort[25000];
-//		int tInt = 0;
-		for(int i=0;i<LoopMax;i++){
+		var tSubject = new ushort[25000];
+		//		int tInt = 0;
+		for (int i=0;i<LoopMax;i++){
 			for(int j=0;j<25000;j++){
 				tSubject[j] = (ushort)(j+1);
 //				int xTemp = (int)tSubject[j];
@@ -882,9 +882,9 @@ public class GSDRoad : MonoBehaviour{
 	}
 	
 	static void DoInt(int LoopMax){
-		int[] tSubject = new int[25000];
-//		int tInt = 0;
-		for(int i=0;i<LoopMax;i++){
+		var tSubject = new int[25000];
+		//		int tInt = 0;
+		for (int i=0;i<LoopMax;i++){
 			for(int j=0;j<25000;j++){
 				tSubject[j] = j+1;
 //				int xTemp = tSubject[j];
@@ -893,9 +893,9 @@ public class GSDRoad : MonoBehaviour{
 	}
 	
 	static void DoLong(int LoopMax){
-		long[] tSubject = new long[25000];
-//		int tInt = 0;
-		for(int i=0;i<LoopMax;i++){
+		var tSubject = new long[25000];
+		//		int tInt = 0;
+		for (int i=0;i<LoopMax;i++){
 			for(int j=0;j<25000;j++){
 				tSubject[j] = (long)(j+1);
 //				int xTemp = (int)tSubject[j];
@@ -905,15 +905,15 @@ public class GSDRoad : MonoBehaviour{
 	
             #region "Default materials retrieval"
 	public bool DetectInvalidDefaultMatsForUndo(){
-		string tNameLower = "";
+		var tNameLower = "";
 		int tCounter = 0;
 		if(!MeshRoad){ return false; }
 		
-		MeshRenderer[] MRs = MeshRoad.GetComponentsInChildren<MeshRenderer>();
-		Material tMat2 = GSD.Roads.GSDRoadUtilityEditor.GiveMaterial("Assets/RoadArchitect/Materials/Markers/GSDWhiteYellowDouble.mat");
-		Material tMat4 = GSD.Roads.GSDRoadUtilityEditor.GiveMaterial("Assets/RoadArchitect/Materials/Markers/GSDWhiteYellowDouble-4L.mat");
-		Material tMat6 = GSD.Roads.GSDRoadUtilityEditor.GiveMaterial("Assets/RoadArchitect/Materials/Markers/GSDWhiteYellowDouble-6L.mat");
-		foreach(MeshRenderer MR in MRs){
+		var MRs = MeshRoad.GetComponentsInChildren<MeshRenderer>();
+		var tMat2 = GSD.Roads.GSDRoadUtilityEditor.GiveMaterial("Assets/RoadArchitect/Materials/Markers/GSDWhiteYellowDouble.mat");
+		var tMat4 = GSD.Roads.GSDRoadUtilityEditor.GiveMaterial("Assets/RoadArchitect/Materials/Markers/GSDWhiteYellowDouble-4L.mat");
+		var tMat6 = GSD.Roads.GSDRoadUtilityEditor.GiveMaterial("Assets/RoadArchitect/Materials/Markers/GSDWhiteYellowDouble-6L.mat");
+		foreach (MeshRenderer MR in MRs){
 			tNameLower = MR.transform.name.ToLower();
 			if(tNameLower.Contains("marker")){
 				if(opt_Lanes == 2){
@@ -944,13 +944,13 @@ public class GSDRoad : MonoBehaviour{
 	}
 	
 	public void SetAllCutsToCurrentMaterials(){
-		string tNameLower = "";
-		if(!MeshRoad){ return; }
+		var tNameLower = "";
+		if (!MeshRoad){ return; }
 		
-		MeshRenderer[] MRs = MeshRoad.GetComponentsInChildren<MeshRenderer>();
-		Material[] tMats_World = GetMaterials_RoadWorld();
-		Material[] tMats_Marker = GetMaterials_RoadMarker();
-		foreach(MeshRenderer MR in MRs){
+		var MRs = MeshRoad.GetComponentsInChildren<MeshRenderer>();
+		var tMats_World = GetMaterials_RoadWorld();
+		var tMats_Marker = GetMaterials_RoadMarker();
+		foreach (MeshRenderer MR in MRs){
 			tNameLower = MR.transform.name.ToLower();
 			if(tNameLower.Contains("marker")){
 				if(tMats_Marker != null){
@@ -1013,8 +1013,8 @@ public class GSDRoad : MonoBehaviour{
 			}
 		}
 		if(mCounter > 0){
-			Material[] tMats = new Material[mCounter];
-			if(RoadMaterial1 != null){
+			var tMats = new Material[mCounter];
+			if (RoadMaterial1 != null){
 				tMats[0] = RoadMaterial1;
 				if(RoadMaterial2 != null){
 					tMats[1] = RoadMaterial2;	
@@ -1047,8 +1047,8 @@ public class GSDRoad : MonoBehaviour{
 			}
 		}
 		if(mCounter > 0){
-			Material[] tMats = new Material[mCounter];
-			if(RoadMaterialMarker1 != null){
+			var tMats = new Material[mCounter];
+			if (RoadMaterialMarker1 != null){
 				tMats[0] = RoadMaterialMarker1;
 				if(RoadMaterialMarker2 != null){
 					tMats[1] = RoadMaterialMarker2;	
@@ -1085,8 +1085,8 @@ public class GSDRoad : MonoBehaviour{
 			}
 		}
 		if(mCounter > 0){
-			Material[] tMats = new Material[mCounter];
-			if(ShoulderMaterial1 != null){
+			var tMats = new Material[mCounter];
+			if (ShoulderMaterial1 != null){
 				tMats[0] = ShoulderMaterial1;
 				if(ShoulderMaterial2 != null){
 					tMats[1] = ShoulderMaterial2;	
@@ -1123,8 +1123,8 @@ public class GSDRoad : MonoBehaviour{
 			}
 		}
 		if(mCounter > 0){
-			Material[] tMats = new Material[mCounter];
-			if(ShoulderMaterialMarker1 != null){
+			var tMats = new Material[mCounter];
+			if (ShoulderMaterialMarker1 != null){
 				tMats[0] = ShoulderMaterialMarker1;
 				if(ShoulderMaterialMarker2 != null){
 					tMats[1] = ShoulderMaterialMarker2;	
@@ -1256,7 +1256,7 @@ public class GSDRoad : MonoBehaviour{
             #endregion
 	
 	public void Wireframes_Toggle(){
-		MeshRenderer[] tMRs = transform.GetComponentsInChildren<MeshRenderer>();
+		var tMRs = transform.GetComponentsInChildren<MeshRenderer>();
 		Wireframes_Toggle_Help(ref tMRs);
 		
 		if(GSDSpline != null){
@@ -1305,11 +1305,11 @@ public class GSDRoad : MonoBehaviour{
 	}
 
     public void DuplicateRoad() {
-        GameObject tRoadObj = GSDRS.AddRoad();
-        UnityEditor.Undo.RegisterCreatedObjectUndo(tRoadObj, "Duplicate");
+        var tRoadObj = GSDRS.AddRoad();
+		UnityEditor.Undo.RegisterCreatedObjectUndo(tRoadObj, "Duplicate");
 
-        GSDRoad xRoad = tRoadObj.GetComponent<GSDRoad>();
-        if (xRoad == null) { return; }
+        var xRoad = tRoadObj.GetComponent<GSDRoad>();
+		if (xRoad == null) { return; }
 
         //Road editor options: 
         xRoad.opt_LaneWidth = opt_LaneWidth;					//Done.
@@ -1393,8 +1393,8 @@ public class GSDRoad : MonoBehaviour{
     private void FixZ_Mobile() {
         //This road:
         Object[] tMarkerObjs = transform.GetComponentsInChildren<MeshRenderer>();
-        Vector3 tVect = default(Vector3);
-        foreach (MeshRenderer MR in tMarkerObjs) {
+        var tVect = default(Vector3);
+		foreach (MeshRenderer MR in tMarkerObjs) {
             if (MR.transform.name.Contains("Marker")) {
                 tVect = new Vector3(0f, 0.02f, 0f);
                 MR.transform.localPosition = tVect;
@@ -1431,8 +1431,8 @@ public class GSDRoad : MonoBehaviour{
     private void FixZ_Win() {
         //This road:
         Object[] tMarkerObjs = transform.GetComponentsInChildren<MeshRenderer>();
-        Vector3 tVect = default(Vector3);
-        foreach (MeshRenderer MR in tMarkerObjs) {
+        var tVect = default(Vector3);
+		foreach (MeshRenderer MR in tMarkerObjs) {
             if (MR.transform.name.Contains("Marker")) {
                 tVect = new Vector3(0f, 0.01f, 0f);
                 MR.transform.localPosition = tVect;

@@ -77,9 +77,9 @@ namespace MapMagic
 				Undo.RecordObject (gens, "MapMagic Create Generator");
 				gens.setDirty = !gens.setDirty;
 
-				Generator gen = gens.CreateGenerator(type, guiPos);
+				var gen = gens.CreateGenerator(type, guiPos);
 
-				if (mapMagic != null)
+			if (mapMagic != null)
 				{
 					mapMagic.ClearResults(gen);
 					mapMagic.Generate();
@@ -163,9 +163,9 @@ namespace MapMagic
 				Undo.RecordObject (gens, "MapMagic Duplicate Generator"); 
 				gens.setDirty = !gens.setDirty;
 
-				Generator[] copyGens = gens.SmartDuplicateGenerators(gen);
+				var copyGens = gens.SmartDuplicateGenerators(gen);
 
-				if (mapMagic != null)
+			if (mapMagic != null)
 				{
 					mapMagic.ClearResults(copyGens);
 					mapMagic.Generate();
@@ -187,9 +187,9 @@ namespace MapMagic
 				Undo.RecordObject (gens, "MapMagic Import Generators"); 
 				gens.setDirty = !gens.setDirty;
 
-				Generator[] copyGens = gens.ImportGenerator(pos);
+				var copyGens = gens.ImportGenerator(pos);
 
-				if (mapMagic != null)
+			if (mapMagic != null)
 				{
 					mapMagic.ClearResults(copyGens);
 					mapMagic.Generate();
@@ -214,16 +214,16 @@ namespace MapMagic
 
 				//Generator[] copyGens = gens.SmartDuplicateGenerators(gen);
 
-				System.Type type = gen.GetType();
-				GeneratorMenuAttribute attribute = System.Attribute.GetCustomAttribute(type, typeof(GeneratorMenuAttribute)) as GeneratorMenuAttribute;
+				var type = gen.GetType();
+			var attribute = System.Attribute.GetCustomAttribute(type, typeof(GeneratorMenuAttribute)) as GeneratorMenuAttribute;
 
-				//finding type to replace
-				System.Type newType = null;
+			//finding type to replace
+			System.Type newType = null;
 				if (attribute.updateType != null) newType = attribute.updateType;
 				else
 				{
-					string name = attribute.name;
-					name = name.Split(new string[] {" (Legacy"}, System.StringSplitOptions.None)[0];
+					var name = attribute.name;
+				name = name.Split(new string[] {" (Legacy"}, System.StringSplitOptions.None)[0];
 
 					//iterating types starting from current version
 					for (int v=MapMagic.version; v>=0; v--)
@@ -242,9 +242,9 @@ namespace MapMagic
 				}
 				if (newType == null) { Debug.Log("Could not find a proper type to update"); return; }
 				
-				Generator newGen = System.Activator.CreateInstance(newType) as Generator;
+				var newGen = System.Activator.CreateInstance(newType) as Generator;
 
-				newGen.ReflectionCopyFrom(gen); 
+			newGen.ReflectionCopyFrom(gen); 
 
 				//changing links
 				for (int g=0; g<gens.list.Length; g++)
@@ -268,10 +268,10 @@ namespace MapMagic
 			{
 				if (gen == null) return false;
 				
-				System.Type type = gen.GetType();
-				GeneratorMenuAttribute attribute = System.Attribute.GetCustomAttribute(type, typeof(GeneratorMenuAttribute)) as GeneratorMenuAttribute;
+				var type = gen.GetType();
+			var attribute = System.Attribute.GetCustomAttribute(type, typeof(GeneratorMenuAttribute)) as GeneratorMenuAttribute;
 
-				if (attribute.menu == "Legacy") return true;
+			if (attribute.menu == "Legacy") return true;
 				else return false;
 			}
 
@@ -290,7 +290,7 @@ namespace MapMagic
 			//finding mapmagic object if window is empty (has no gens)
 			if (gens==null)
 			{
-				MapMagic mm = GameObject.FindObjectOfType<MapMagic>();
+				var mm = GameObject.FindObjectOfType<MapMagic>();
 				if (mm!=null)
 				{
 					mapMagic = mm;
@@ -364,7 +364,7 @@ namespace MapMagic
 			titleContent.image =gens.layout.GetIcon("MapMagic_WindowIcon");
 
 			//drawing background
-			Vector2 windowZeroPos =gens.layout.ToInternal(Vector2.zero);
+			var windowZeroPos =gens.layout.ToInternal(Vector2.zero);
 			windowZeroPos.x = ((int)(windowZeroPos.x/64f)) * 64; 
 			windowZeroPos.y = ((int)(windowZeroPos.y/64f)) * 64; 
 			gens.layout.Icon( 
@@ -377,7 +377,7 @@ namespace MapMagic
 			//script.layout.Button("Zero", new Rect(-10,-10,20,20));
 
 			//calculating visible area
-			Rect visibleArea = gens.layout.ToInternal( new Rect(0,0,position.size.x,position.size.y) );
+			var visibleArea = gens.layout.ToInternal( new Rect(0,0,position.size.x,position.size.y) );
 			if (forceAll) { visibleArea = new Rect(-200000,-200000,400000,400000); forceAll = false; }
 			//visibleArea = new Rect(visibleArea.x+100, visibleArea.y+100, visibleArea.width-200, visibleArea.height-200);
 			//layout.Label("Area", helpBox:true, rect:visibleArea);
@@ -397,10 +397,10 @@ namespace MapMagic
 				for(int i=0; i<gens.list.Length; i++)
 				{
 					if (!(gens.list[i] is Group)) continue;
-					Group group = gens.list[i] as Group;
+					var group = gens.list[i] as Group;
 
-					//checking if this is withinscript.layout field
-					if (group.guiRect.x > visibleArea.x+visibleArea.width || group.guiRect.y > visibleArea.y+visibleArea.height ||
+				//checking if this is withinscript.layout field
+				if (group.guiRect.x > visibleArea.x+visibleArea.width || group.guiRect.y > visibleArea.y+visibleArea.height ||
 						group.guiRect.x+group.guiRect.width < visibleArea.x || group.guiRect.y+group.guiRect.height < visibleArea.y) 
 							if (group.guiRect.width > 0.001f && gens.layout.dragState != Layout.DragState.Drag) continue; //if guiRect initialized and not dragging
 
@@ -424,8 +424,8 @@ namespace MapMagic
 						if (input==null || input.link == null) continue; //input could be null in layered generators
 						if (gen is Portal)
 						{ 
-							Portal portal = (Portal)gen;
-							if (!portal.drawInputConnection) continue;
+							var portal = (Portal)gen;
+						if (!portal.drawInputConnection) continue;
 						}
 						gens.layout.Spline(input.link.guiConnectionPos, input.guiConnectionPos, color:GeneratorsAsset.CanConnect(input.link,input)? input.guiColor : Color.red);
 					}
@@ -448,8 +448,8 @@ namespace MapMagic
 								if (inout2.guiRect.Contains(gens.layout.dragPos)) target = inout2;
 
 						//converting inout to Input (or Output) and target to Output (or Input)
-						Generator.Input input = inout as Generator.Input;		if (input==null) input = target as Generator.Input;
-						Generator.Output output = inout as Generator.Output;	if (output==null) output = target as Generator.Output;
+						var input = inout as Generator.Input; if (input==null) input = target as Generator.Input;
+						var output = inout as Generator.Output; if (output==null) output = target as Generator.Output;
 
 						//connection validity test
 						bool canConnect = input!=null && output!=null && GeneratorsAsset.CanConnect(output,input);
@@ -457,8 +457,8 @@ namespace MapMagic
 						//infinite loop test
 						if (canConnect)
 						{ 
-							Generator outputGen = output.GetGenerator(gens.list);
-							Generator inputGen = input.GetGenerator(gens.list);
+							var outputGen = output.GetGenerator(gens.list);
+							var inputGen = input.GetGenerator(gens.list);
 							if (inputGen == outputGen || gens.CheckDependence(inputGen,outputGen)) canConnect = false;
 						}
 
@@ -495,8 +495,8 @@ namespace MapMagic
 
 				for(int i=0; i<gens.list.Length; i++)
 				{
-					Generator gen = gens.list[i];
-					if (gen is Group) continue; //skipping groups
+					var gen = gens.list[i];
+				if (gen is Group) continue; //skipping groups
 
 					//checking if this generator is withinscript.layout field
 					if (gen.guiRect.x > visibleArea.x+visibleArea.width || gen.guiRect.y > visibleArea.y+visibleArea.height ||
@@ -577,8 +577,8 @@ namespace MapMagic
 					//drawing biome "edit" button. Rather hacky, but we have to call editor method when pressing "Edit"
 					if (gen is Biome)
 					{
-						Biome biome = (Biome)gen;
-						if (gen.layout.Button("Edit", disabled:biome.data==null)) 
+						var biome = (Biome)gen;
+					if (gen.layout.Button("Edit", disabled:biome.data==null)) 
 						{
 							MapMagicWindow.Show(biome.data, mapMagic, forceOpen:true,asBiome: true);
 							Repaint();
@@ -627,7 +627,7 @@ namespace MapMagic
 					//TODO: changed sign
 
 					//mapmagic name
-					Rect nameLabelRect = toolbarLayout.Inset(100); nameLabelRect.y+=1; //nameLabelRect.height-=4;
+					var nameLabelRect = toolbarLayout.Inset(100); nameLabelRect.y+=1; //nameLabelRect.height-=4;
 					EditorGUI.LabelField(nameLabelRect, mapMagic.gameObject.name, EditorStyles.miniLabel);
 
 					//generate buttons
@@ -645,12 +645,12 @@ namespace MapMagic
 
 					//seed field
 					toolbarLayout.Inset(10);
-					Rect seedLabelRect = toolbarLayout.Inset(34); seedLabelRect.y+=1; seedLabelRect.height-=4;
-					Rect seedFieldRect = toolbarLayout.Inset(64); seedFieldRect.y+=2; seedFieldRect.height-=4;
+					var seedLabelRect = toolbarLayout.Inset(34); seedLabelRect.y+=1; seedLabelRect.height-=4;
+					var seedFieldRect = toolbarLayout.Inset(64); seedFieldRect.y+=2; seedFieldRect.height-=4;
 				}
 				else
 				{
-					Rect nameLabelRect = toolbarLayout.Inset(300); nameLabelRect.y+=1; //nameLabelRect.height-=4;
+					var nameLabelRect = toolbarLayout.Inset(300); nameLabelRect.y+=1; //nameLabelRect.height-=4;
 					EditorGUI.LabelField(nameLabelRect, "External data '" + AssetDatabase.GetAssetPath(gens) + "'", EditorStyles.miniLabel); 
 				}
 
@@ -658,8 +658,8 @@ namespace MapMagic
 				toolbarLayout.Inset(toolbarLayout.field.width - toolbarLayout.cursor.x - 150 - 22,padding:0);
 
 				//drawing exit biome button
-				Rect biomeRect = toolbarLayout.Inset(80, padding:0);
-				if (gensBiomeHierarchy.Count>1) 
+				var biomeRect = toolbarLayout.Inset(80, padding:0);
+			if (gensBiomeHierarchy.Count>1) 
 				{
 					if (toolbarLayout.Button("", biomeRect, icon:"MapMagic_ExitBiome", style:EditorStyles.toolbarButton)) 
 					{
@@ -689,8 +689,8 @@ namespace MapMagic
 				//dragging generators
 				for(int i=gens.list.Length-1; i>=0; i--)
 				{
-					Generator gen = gens.list[i];
-					if (gen is Group) continue;
+					var gen = gens.list[i];
+				if (gen is Group) continue;
 					gen.layout.field = gen.guiRect;
 
 					//dragging
@@ -715,8 +715,8 @@ namespace MapMagic
 							//moving group
 							if (gen is Group)
 							{
-								Group group = gen as Group;
-								for (int g=0; g<group.generators.Count; g++) //group.generators[g].Move(delta,false);
+								var group = gen as Group;
+							for (int g=0; g<group.generators.Count; g++) //group.generators[g].Move(delta,false);
 								{
 									group.generators[g].layout.field.position += gens.layout.dragDelta;
 									group.generators[g].guiRect = gens.layout.field;
@@ -740,8 +740,8 @@ namespace MapMagic
 				for (int i=gens.list.Length-1; i>=0; i--)
 				{
 					//Generator gen = gens.list[i];
-					Group group = gens.list[i] as Group;
-					if (group == null) continue;
+					var group = gens.list[i] as Group;
+				if (group == null) continue;
 					group.layout.field = group.guiRect;
 
 					//resizing
@@ -807,8 +807,8 @@ namespace MapMagic
 			//GeneratorsAsset gens = MapMagic.instance.guiGens;
 			//if (MapMagic.instance.guiGens != null) gens = MapMagic.instance.guiGens;
 			
-			Vector2 mousePos = gens.layout.ToInternal(Event.current.mousePosition);
-				
+			var mousePos = gens.layout.ToInternal(Event.current.mousePosition);
+
 			//finding something that was clicked
 			Generator clickedGenerator = null;
 			Group clickedGroup = null;
@@ -816,7 +816,7 @@ namespace MapMagic
 
 			for (int i=0; i<gens.list.Length; i++) 
 			{
-				Generator gen = gens.list[i];
+				var gen = gens.list[i];
 				if (gen.guiRect.Contains(mousePos))
 				{
 					if (!(gen is Group)) clickedGenerator = gens.list[i];
@@ -829,18 +829,18 @@ namespace MapMagic
 			if (clickedGenerator == null) clickedGenerator = clickedGroup;
 			
 			//create
-			Dictionary<string, PopupMenu.MenuItem> itemsDict = new Dictionary<string, PopupMenu.MenuItem>();
-			
+			var itemsDict = new Dictionary<string, PopupMenu.MenuItem>();
+
 			foreach (System.Type type in typeof(Generator).Subtypes())
 			{
 				if (System.Attribute.IsDefined(type, typeof(GeneratorMenuAttribute)))
 				{
-					GeneratorMenuAttribute attribute = System.Attribute.GetCustomAttribute(type, typeof(GeneratorMenuAttribute)) as GeneratorMenuAttribute;
-					System.Type genType = type;
+					var attribute = System.Attribute.GetCustomAttribute(type, typeof(GeneratorMenuAttribute)) as GeneratorMenuAttribute;
+					var genType = type;
 
 					if (attribute.disabled) continue;
 
-					PopupMenu.MenuItem item = new PopupMenu.MenuItem(attribute.name, delegate () { CreateGenerator(genType, mousePos); });
+					var item = new PopupMenu.MenuItem(attribute.name, delegate () { CreateGenerator(genType, mousePos); });
 					item.priority = attribute.priority;
 
 					if (attribute.menu.Length != 0)
@@ -860,7 +860,7 @@ namespace MapMagic
 			itemsDict["Biome"].priority = 6;
 			itemsDict["Legacy"].priority = 7;
 
-			PopupMenu.MenuItem[] createItems = new PopupMenu.MenuItem[itemsDict.Count];
+			var createItems = new PopupMenu.MenuItem[itemsDict.Count];
 			itemsDict.Values.CopyTo(createItems, 0);
 
 			//create group
@@ -876,14 +876,14 @@ namespace MapMagic
 			}*/
 
 			//preview
-			PopupMenu.MenuItem[] previewSubs = new PopupMenu.MenuItem[]
+			var previewSubs = new PopupMenu.MenuItem[]
 			{
 				new PopupMenu.MenuItem("On Terrain", delegate() {PreviewOutput(clickedGenerator, clickedOutput, false);}, disabled:clickedOutput==null||clickedGenerator==null, priority:0), 
 				new PopupMenu.MenuItem("In Window", delegate() {PreviewOutput(clickedGenerator, clickedOutput, true);}, disabled:clickedOutput==null||clickedGenerator==null, priority:1),
 				new PopupMenu.MenuItem("Clear", delegate() {PreviewOutput(null, null, false);}, priority:2 )//, disabled:MapMagic.instance.previewOutput==null)
 			};
 
-			PopupMenu.MenuItem[] popupItems = new PopupMenu.MenuItem[]
+			var popupItems = new PopupMenu.MenuItem[]
 			{
 				new PopupMenu.MenuItem("Create", createItems, priority:0),
 				new PopupMenu.MenuItem("Export",	delegate () { ExportGenerator(clickedGenerator, mousePos); }, priority:1),
@@ -907,7 +907,7 @@ namespace MapMagic
 			int entersNum = 0;
 			for (int g=0; g<gens.list.Length; g++)
 			{
-				Portal portal = gens.list[g] as Portal;
+				var portal = gens.list[g] as Portal;
 				if (portal == null) continue;
 				if (portal.form == Portal.PortalForm.Out) continue;
 				if (portal.type != type) continue;
@@ -915,11 +915,11 @@ namespace MapMagic
 				entersNum++;
 			}
 			
-			PopupMenu.MenuItem[] popupItems = new PopupMenu.MenuItem[entersNum];
+			var popupItems = new PopupMenu.MenuItem[entersNum];
 			int counter = 0;
 			for (int g=0; g<gens.list.Length; g++)
 			{
-				Portal enter = gens.list[g] as Portal;
+				var enter = gens.list[g] as Portal;
 				if (enter == null) continue;
 				if (enter.form == Portal.PortalForm.Out) continue;
 				if (enter.type != type) continue;
@@ -947,22 +947,22 @@ namespace MapMagic
 			//if (MapMagic.instance.guiGens == null) MapMagic.instance.guiGens = MapMagic.instance.gens;
 			
 			//finding generators center
-			Vector2 min = new Vector2(2000000,2000000); Vector2 max = new Vector2(-2000000,-2000000);
+			var min = new Vector2(2000000,2000000); var max = new Vector2(-2000000,-2000000);
 			for (int g=0; g<gens.list.Length; g++)
 			{
-				Generator gen = gens.list[g];
+				var gen = gens.list[g];
 				if (gen.guiRect.x<min.x) min.x = gen.guiRect.x;
 				if (gen.guiRect.y<min.y) min.y = gen.guiRect.y;
 				if (gen.guiRect.max.x>max.x) max.x = gen.guiRect.max.x;
 				if (gen.guiRect.max.y>max.y) max.y = gen.guiRect.max.y;
 			}
-			Vector2 center = (min+max)/2f;
+			var center = (min+max)/2f;
 
 			//focusing
 			//center =script.layout.ToDisplay(center);
-		//	center *= MapMagic.instance.guiZoom;
-		//	MapMagic.instance.layout.scroll = -center;
-		//	MapMagic.instance.layout.scroll += new Vector2(this.position.width/2f, this.position.height/2f);
+			//	center *= MapMagic.instance.guiZoom;
+			//	MapMagic.instance.layout.scroll = -center;
+			//	MapMagic.instance.layout.scroll += new Vector2(this.position.width/2f, this.position.height/2f);
 			gens.layout.Focus(center);
 
 			
@@ -987,7 +987,7 @@ namespace MapMagic
 			//finding instance
 			if (instance == null)
 			{
-				MapMagicWindow[] windows = Resources.FindObjectsOfTypeAll<MapMagicWindow>();
+				var windows = Resources.FindObjectsOfTypeAll<MapMagicWindow>();
 				if (windows.Length==0) return;
 				instance = windows[0];
 			}

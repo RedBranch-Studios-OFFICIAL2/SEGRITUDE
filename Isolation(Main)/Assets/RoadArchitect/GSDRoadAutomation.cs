@@ -29,10 +29,10 @@ namespace GSD.Roads {
         /// <param name="NodeLocation">The location of the newly created node.</param>
         /// <returns></returns>
         public static GSDRoad CreateRoad_Programmatically(GSDRoadSystem GSDRS, ref List<Vector3> tLocs) {
-            GameObject tRoadObj = GSDRS.AddRoad(false);
-            GSDRoad tRoad = tRoadObj.GetComponent<GSDRoad>();
+            var tRoadObj = GSDRS.AddRoad(false);
+			var tRoad = tRoadObj.GetComponent<GSDRoad>();
 
-            int hCount = tLocs.Count;
+			int hCount = tLocs.Count;
             for (int i = 0; i < hCount; i++) {
                 CreateNode_Programmatically(tRoad, tLocs[i]);
             }
@@ -49,11 +49,11 @@ namespace GSD.Roads {
         /// <returns></returns>
         public static GSDSplineN CreateNode_Programmatically(GSDRoad tRoad, Vector3 NodeLocation) {
             int SplineChildCount = tRoad.GSDSpline.transform.childCount;
-			GameObject tNodeObj = new GameObject("Node" + (SplineChildCount+1).ToString());
-			GSDSplineN tNode = tNodeObj.AddComponent<GSDSplineN>(); //Add the node component.
+			var tNodeObj = new GameObject("Node" + (SplineChildCount+1).ToString());
+			var tNode = tNodeObj.AddComponent<GSDSplineN>(); //Add the node component.
 
-            //Set node location:
-            if (NodeLocation.y < 0.03f) { NodeLocation.y = 0.03f; }     //Make sure it doesn't try to create a node below 0 height.
+			//Set node location:
+			if (NodeLocation.y < 0.03f) { NodeLocation.y = 0.03f; }     //Make sure it doesn't try to create a node below 0 height.
             tNodeObj.transform.position = NodeLocation;
 
             //Set the node's parent:
@@ -77,8 +77,8 @@ namespace GSD.Roads {
         /// <returns></returns>
 		public static GSDSplineN InsertNode_Programmatically(GSDRoad RS, Vector3 NodeLocation){
 			GameObject tNodeObj;
-			Object[] tWorldNodeCount = GameObject.FindObjectsOfType(typeof(GSDSplineN));
-            tNodeObj = new GameObject("Node" + tWorldNodeCount.Length.ToString());	
+			var tWorldNodeCount = GameObject.FindObjectsOfType(typeof(GSDSplineN));
+			tNodeObj = new GameObject("Node" + tWorldNodeCount.Length.ToString());	
 			
             //Set node location:
             if (NodeLocation.y < 0.03f) { NodeLocation.y = 0.03f; }     //Make sure it doesn't try to create a node below 0 height.
@@ -106,8 +106,8 @@ namespace GSD.Roads {
 			
             //Figure out where to insert the node:
 			for(int i=0;i<cCount;i++){
-				GSDSplineN xNode = RS.GSDSpline.mNodes[i];
-				if(!bZeroInsert && !bEndInsert){
+				var xNode = RS.GSDSpline.mNodes[i];
+				if (!bZeroInsert && !bEndInsert){
 					if(tParam > xNode.tTime){
 						iStart = xNode.idOnSpline+1;
 					}
@@ -117,7 +117,7 @@ namespace GSD.Roads {
 				RS.GSDSpline.mNodes[i].idOnSpline+=1;
 			}
 			
-			GSDSplineN tNode = tNodeObj.AddComponent<GSDSplineN>();
+			var tNode = tNodeObj.AddComponent<GSDSplineN>();
 			tNode.GSDSpline = RS.GSDSpline;
 			tNode.idOnSpline = iStart;
             tNode.pos = NodeLocation;
@@ -152,17 +152,17 @@ namespace GSD.Roads {
             Object[] GSDRoadObjs = Object.FindObjectsOfType<GSDRoad>();
 
             //20m increments to gather collection of which roads intersect
-            List<GSDRoad> xRoads = new List<GSDRoad>();
-            foreach (GSDRoad xRoad in GSDRoadObjs) {
+            var xRoads = new List<GSDRoad>();
+			foreach (GSDRoad xRoad in GSDRoadObjs) {
                 if (tRoad != xRoad) {
                     float EarlyDistanceCheckMeters = 10f;
                     float EarlyDistanceCheckThreshold = 50f;
                     bool EarlyDistanceFound = false;
                     float tRoadMod = EarlyDistanceCheckMeters / tRoad.GSDSpline.distance;
                     float xRoadMod = EarlyDistanceCheckMeters / xRoad.GSDSpline.distance;
-                    Vector3 tVect1 = default(Vector3);
-                    Vector3 tVect2 = default(Vector3);
-                    for (float i = 0f; i < 1.0000001f; i += tRoadMod) {
+                    var tVect1 = default(Vector3);
+					var tVect2 = default(Vector3);
+					for (float i = 0f; i < 1.0000001f; i += tRoadMod) {
                         tVect1 = tRoad.GSDSpline.GetSplineValue(i);
                         for (float x = 0f; x < 1.000001f; x += xRoadMod) {
                             tVect2 = xRoad.GSDSpline.GetSplineValue(x);
@@ -180,8 +180,8 @@ namespace GSD.Roads {
             }
 
             //See if any end point nodes are on top of each other already since T might not intersect all the time.:
-            List<KeyValuePair<GSDSplineN, GSDSplineN>> tKVP = new List<KeyValuePair<GSDSplineN, GSDSplineN>>();
-            foreach (GSDRoad xRoad in xRoads) {
+            var tKVP = new List<KeyValuePair<GSDSplineN, GSDSplineN>>();
+			foreach (GSDRoad xRoad in xRoads) {
                 foreach (GSDSplineN IntersectionNode1 in tRoad.GSDSpline.mNodes) {
                     if (IntersectionNode1.bIsIntersection || !IntersectionNode1.IsLegitimate()) { continue; }
                     foreach (GSDSplineN IntersectionNode2 in xRoad.GSDSpline.mNodes) {
@@ -197,9 +197,9 @@ namespace GSD.Roads {
             }
             foreach (KeyValuePair<GSDSplineN, GSDSplineN> KVP in tKVP) {
                 //Now create the fucking intersection:
-                GameObject tInter = GSD.Roads.GSDIntersections.CreateIntersection(KVP.Key, KVP.Value);
-                GSDRoadIntersection GSDRI_JustCreated = tInter.GetComponent<GSDRoadIntersection>();
-                GSDRI_JustCreated.iStopType = iStopType;
+                var tInter = GSD.Roads.GSDIntersections.CreateIntersection(KVP.Key, KVP.Value);
+				var GSDRI_JustCreated = tInter.GetComponent<GSDRoadIntersection>();
+				GSDRI_JustCreated.iStopType = iStopType;
                 GSDRI_JustCreated.rType = rType;
             }
 
@@ -211,13 +211,13 @@ namespace GSD.Roads {
                     bool EarlyDistanceFound = false;
                     float tRoadMod = DistanceCheckMeters / tRoad.GSDSpline.distance;
                     float xRoadMod = DistanceCheckMeters / xRoad.GSDSpline.distance;
-                    Vector3 tVect = default(Vector3);
-                    Vector2 iVect1 = default(Vector2);
-                    Vector2 iVect2 = default(Vector2);
-                    Vector2 xVect1 = default(Vector2);
-                    Vector2 xVect2 = default(Vector2);
-                    Vector2 IntersectPoint2D = default(Vector2);
-                    float i2 = 0f;
+                    var tVect = default(Vector3);
+					var iVect1 = default(Vector2);
+					var iVect2 = default(Vector2);
+					var xVect1 = default(Vector2);
+					var xVect2 = default(Vector2);
+					var IntersectPoint2D = default(Vector2);
+					float i2 = 0f;
                     for (float i = 0f; i < 1.0000001f; i += tRoadMod) {
                         i2 = (i + tRoadMod);
                         if (i2 > 1f) { i2 = 1f; }
@@ -240,8 +240,8 @@ namespace GSD.Roads {
                                 //Get height of intersection on primary road:
                                 float tHeight = 0f;
                                 float hParam = tRoad.GSDSpline.GetClosestParam(new Vector3(IntersectPoint2D.x, 0f, IntersectPoint2D.y));
-                                Vector3 hVect = tRoad.GSDSpline.GetSplineValue(hParam);
-                                tHeight = hVect.y;
+                                var hVect = tRoad.GSDSpline.GetSplineValue(hParam);
+								tHeight = hVect.y;
 
                                 //if any intersections already within 75m or 100m, dont create intersection here
                                 Object[] AllInterectionObjects = Object.FindObjectsOfType<GSDRoadIntersection>();
@@ -253,11 +253,11 @@ namespace GSD.Roads {
 
                                 GSDSplineN IntersectionNode1 = null;
                                 GSDSplineN IntersectionNode2 = null;
-                                Vector3 IntersectionPoint3D = new Vector3(IntersectPoint2D.x, tHeight, IntersectPoint2D.y);
-                                //Debug.Log("Instersect found road: " + xRoad.transform.name + " at point: " + IntersectionPoint3D.ToString());
+                                var IntersectionPoint3D = new Vector3(IntersectPoint2D.x, tHeight, IntersectPoint2D.y);
+								//Debug.Log("Instersect found road: " + xRoad.transform.name + " at point: " + IntersectionPoint3D.ToString());
 
-                                //Check primary road if any nodes are nearby and usable for intersection
-                                foreach(GSDSplineN tNode in tRoad.GSDSpline.mNodes){
+								//Check primary road if any nodes are nearby and usable for intersection
+								foreach (GSDSplineN tNode in tRoad.GSDSpline.mNodes){
                                     if (tNode.IsLegitimate()) {
                                         if (Vector2.Distance(new Vector2(tNode.transform.position.x, tNode.transform.position.z), IntersectPoint2D) < 30f) {
                                             IntersectionNode1 = tNode;
@@ -289,9 +289,9 @@ namespace GSD.Roads {
                                 }
 
                                 //Now create the fucking intersection:
-                                GameObject tInter = GSD.Roads.GSDIntersections.CreateIntersection(IntersectionNode1, IntersectionNode2);
-                                GSDRoadIntersection GSDRI_JustCreated = tInter.GetComponent<GSDRoadIntersection>();
-                                GSDRI_JustCreated.iStopType = iStopType;
+                                var tInter = GSD.Roads.GSDIntersections.CreateIntersection(IntersectionNode1, IntersectionNode2);
+								var GSDRI_JustCreated = tInter.GetComponent<GSDRoadIntersection>();
+								GSDRI_JustCreated.iStopType = iStopType;
                                 GSDRI_JustCreated.rType = rType;
                             }
 

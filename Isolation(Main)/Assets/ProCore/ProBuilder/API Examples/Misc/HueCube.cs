@@ -21,17 +21,17 @@ namespace ProBuilder2.Examples
 			// Cycle through each unique vertex in the cube (8 total), and assign a color
 			// to the index in the sharedIndices array.
 			int si_len = pb.sharedIndices.Length;
-			Color[] vertexColors = new Color[si_len];
-			for(int i = 0; i < si_len; i++)
+			var vertexColors = new Color[si_len];
+			for (int i = 0; i < si_len; i++)
 			{
 				vertexColors[i] = HSVtoRGB( (i/(float)si_len) * 360f, 1f, 1f);
 			}
 
 			// Now go through each face (vertex colors are stored the pb_Face class) and
 			// assign the pre-calculated index color to each index in the triangles array.
-			Color[] colors = pb.colors;
+			var colors = pb.colors;
 
-			for(int CurSharedIndex = 0; CurSharedIndex < pb.sharedIndices.Length; CurSharedIndex++)
+			for (int CurSharedIndex = 0; CurSharedIndex < pb.sharedIndices.Length; CurSharedIndex++)
 			{
 				foreach(int CurIndex in pb.sharedIndices[CurSharedIndex].array)
 				{

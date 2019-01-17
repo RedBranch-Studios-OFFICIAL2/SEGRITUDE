@@ -83,8 +83,8 @@ namespace MapMagic
 		public void ClampCount (Transform prefab, int newCount)
 		{
 			if (!instances.ContainsKey(prefab)) return;
-			List<Instance> list = instances[prefab];
-			
+			var list = instances[prefab];
+
 			if (list.Count > newCount) 
 			{
 				for (int i=list.Count-1; i>=newCount; i--)
@@ -100,7 +100,7 @@ namespace MapMagic
 		public void Clear (Transform prefab)
 		{
 			if (!instances.ContainsKey(prefab)) return;
-			List<Instance> list = instances[prefab];
+			var list = instances[prefab];
 
 			int listCount = list.Count;
 			for (int i=0; i<listCount; i++)
@@ -115,7 +115,7 @@ namespace MapMagic
 		public void ClearRect (Transform prefab, Rect rect)
 		{
 			if (!instances.ContainsKey(prefab)) return;
-			List<Instance> list = instances[prefab];
+			var list = instances[prefab];
 
 			float minX = rect.x; float minZ = rect.y;
 			float maxX = rect.x+rect.width; float maxZ = rect.y+rect.height;
@@ -147,7 +147,7 @@ namespace MapMagic
 		{
 			foreach (KeyValuePair<Transform,List<Instance>> kvp in instances)
 			{
-				Transform prefab = kvp.Key;
+				var prefab = kvp.Key;
 				if (usedPrefabs.Contains(prefab)) continue;
 				ClearRect(kvp.Key,rect);
 			}
@@ -157,7 +157,7 @@ namespace MapMagic
 		{
 			foreach (KeyValuePair<Transform,List<Instance>> kvp in instances)
 			{
-				Transform prefab = kvp.Key;
+				var prefab = kvp.Key;
 				if (usedPrefabs.ContainsKey(prefab)) continue;
 				ClearRect(kvp.Key,rect);
 			}
@@ -173,7 +173,7 @@ namespace MapMagic
 
 		public void RemoveEmptyPools ()
 		{
-			List<Transform> prefabsToRemove = new List<Transform>();
+			var prefabsToRemove = new List<Transform>();
 
 			foreach (KeyValuePair<Transform,List<Instance>> kvp in instances) //cannot remove directly changes the dictionary
 				if (kvp.Value.Count == 0) prefabsToRemove.Add(kvp.Key);
@@ -197,12 +197,12 @@ namespace MapMagic
 			if (instances.ContainsKey(prefab)) list = instances[prefab];
 			else { list = new List<Instance>(); instances.Add(prefab,list); }
 
-			Quaternion prefabRotation = prefab.rotation;
-			Vector3 prefabScale = prefab.localScale;
+			var prefabRotation = prefab.rotation;
+			var prefabScale = prefab.localScale;
 
 
 			//extracting objects within rect
-			Stack<Transform> pool = new Stack<Transform>();
+			var pool = new Stack<Transform>();
 
 			float minX = rect.x; float minZ = rect.y;
 			float maxX = rect.x+rect.width; float maxZ = rect.y+rect.height;
@@ -228,7 +228,7 @@ namespace MapMagic
 			int count = Mathf.Min(transitions.Count, pool.Count);
 			for (int i=0; i<count; i++)
 			{
-				Transform tfm = pool.Pop();
+				var tfm = pool.Pop();
 
 				tfm.transform.position = transitions[i].pos;
 
@@ -265,7 +265,7 @@ namespace MapMagic
 			int counter = 0;
 			for (int i=initialPoolCount; i<transitions.Count; i++)
 			{
-				Instance instance = Instantiate(prefab, transitions[i], parent, prefabRotation:prefabRotation, prefabScale:prefabScale);
+				var instance = Instantiate(prefab, transitions[i], parent, prefabRotation:prefabRotation, prefabScale:prefabScale);
 				list.Add(instance);
 
 				if (root != null)
@@ -280,7 +280,7 @@ namespace MapMagic
 
 		public void RepositionNow (Transform prefab, Rect rect, List<Transition> transitions, bool regardRotation=false, bool regardScale=false, Transform parent=null)
 		{
-			IEnumerator e = RepositionCoroutine(prefab, rect, transitions, parent:parent, objsPerFrame:1000000000);
+			var e = RepositionCoroutine(prefab, rect, transitions, parent:parent, objsPerFrame:1000000000);
 			while (e.MoveNext()) { }
 		}
 
@@ -303,13 +303,13 @@ namespace MapMagic
 				int i = 0;
 				foreach (KeyValuePair<Transform,List<Instance>> kvp in instances)
 				{
-					Transform prefab = kvp.Key;
-					List<Instance> list = kvp.Value;
+					var prefab = kvp.Key;
+				var list = kvp.Value;
 
-					int listCount = list.Count;
+				int listCount = list.Count;
 					
-					InstanceHolder instanceHolder = serializedInstances[i];
-					if (instanceHolder.list == null || instanceHolder.list.Length!=listCount) 
+					var instanceHolder = serializedInstances[i];
+				if (instanceHolder.list == null || instanceHolder.list.Length!=listCount) 
 					{ 
 						instanceHolder = new InstanceHolder() { list = new Instance[listCount] };
 						serializedInstances[i] = instanceHolder; 
@@ -332,12 +332,12 @@ namespace MapMagic
 
 				for (int i=0; i<serializedInstances.Length; i++)
 				{
-					Transform prefab = serializedPrefabs[i];
-					if (prefab == null) continue;
+					var prefab = serializedPrefabs[i];
+				if (prefab == null) continue;
 					if (serializedInstances[i].list == null) continue;
 
-					List<Instance> list = new List<Instance>();
-					list.AddRange(serializedInstances[i].list);
+					var list = new List<Instance>();
+				list.AddRange(serializedInstances[i].list);
 
 					instances.Add(prefab, list);
 				}

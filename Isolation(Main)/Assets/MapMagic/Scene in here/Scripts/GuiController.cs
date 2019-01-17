@@ -40,8 +40,8 @@ namespace MapMagicDemo
 		{
 			if (objects.ContainsKey(name)) return (T)objects[name];
 
-			Transform tfm = transform.FindChildRecursive(name); if (tfm == null) return null;
-			T obj = tfm.GetComponent<T>(); 
+			var tfm = transform.FindChildRecursive(name); if (tfm == null) return null;
+			var obj = tfm.GetComponent<T>();
 			if (obj == null) return null;
 			
 			objects.Add(name, obj);
@@ -54,7 +54,7 @@ namespace MapMagicDemo
 			if (gameObject.GetComponent<GraphicRaycaster>()==null) gameObject.AddComponent<GraphicRaycaster>();
 			
 			//switching fullscreen
-			Toggle fullscreenToggle = GetObject<Toggle>("Fullscreen");
+			var fullscreenToggle = GetObject<Toggle>("Fullscreen");
 			if (Input.GetKeyDown("f")) fullscreenToggle.isOn = !fullscreenToggle.isOn;
 			if (fullscreenToggle.isOn && !Screen.fullScreen)
 			{
@@ -69,7 +69,7 @@ namespace MapMagicDemo
 			fullscreenToggle.isOn = Screen.fullScreen;
 
 			//setting mouse look
-			Toggle mouseToggle = GetObject<Toggle>("MouseLook");
+			var mouseToggle = GetObject<Toggle>("MouseLook");
 			if (Input.GetKeyDown("m")) mouseToggle.isOn = !mouseToggle.isOn;
 			cameraController.lockCursor = mouseToggle.isOn;
 
@@ -106,14 +106,14 @@ namespace MapMagicDemo
 			
 
 			//displaing generate mark
-			GameObject generateMark = GetObject<RectTransform>("GenerateMark").gameObject;
+			var generateMark = GetObject<RectTransform>("GenerateMark").gameObject;
 			bool isWorking = ThreadWorker.IsWorking("MapMagic");
 			if (!isWorking && generateMark.activeSelf) generateMark.SetActive(false);
 			if (isWorking && !generateMark.activeSelf) generateMark.SetActive(true);
 
 			if (generateMark.activeSelf) 
 			{
-				RectTransform icon = GetObject<RectTransform>("GenerateMarkIcon");
+				var icon = GetObject<RectTransform>("GenerateMarkIcon");
 				iconRotation -= Time.deltaTime*100;
 				iconRotation = iconRotation%360;
 				icon.rotation = Quaternion.Euler(0,0,iconRotation);

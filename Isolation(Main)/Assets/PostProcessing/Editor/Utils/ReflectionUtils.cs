@@ -87,9 +87,9 @@ namespace UnityEditor.PostProcessing
         public static object GetFieldValueFromPath(object source, ref Type baseType, string path)
         {
             var splittedPath = path.Split('.');
-            object srcObject = source;
+            var srcObject = source;
 
-            foreach (var t in splittedPath)
+			foreach (var t in splittedPath)
             {
                 var fieldInfo = baseType.GetField(t, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
 

@@ -125,7 +125,7 @@ namespace AmplifyImpostors
 
 			ImpostorBakingTools.LoadDefaults();
 
-			Shader alphaShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( AlphaGUID ) );
+			var alphaShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( AlphaGUID ) );
 			m_alphaMaterial = new Material( alphaShader );
 
 			if( m_instance.m_cutMode == CutMode.Automatic )
@@ -144,16 +144,16 @@ namespace AmplifyImpostors
 				{
 					if( m_instance.LodGroup != null )
 					{
-						LOD[] lods = m_instance.LodGroup.GetLODs();
+						var lods = m_instance.LodGroup.GetLODs();
 
 						// is last lod a billboard?
 						int vertexCount = 0;
-						Renderer[] rend = lods[ lods.Length - 1 ].renderers;
+						var rend = lods[ lods.Length - 1 ].renderers;
 
-						for( int i = 0; i < rend.Length; i++ )
+						for ( int i = 0; i < rend.Length; i++ )
 						{
-							MeshFilter mf = rend[ i ].GetComponent<MeshFilter>();
-							if( mf != null && mf.sharedMesh != null )
+							var mf = rend[ i ].GetComponent<MeshFilter>();
+							if ( mf != null && mf.sharedMesh != null )
 								vertexCount += mf.sharedMesh.vertexCount;
 						}
 
@@ -195,7 +195,7 @@ namespace AmplifyImpostors
 				{
 					for( int i = 0; i < 4; i++ )
 					{
-						TextureOutput elem = m_currentData.Preset.Output[ i ].Clone();
+						var elem = m_currentData.Preset.Output[ i ].Clone();
 						elem.Index = i;
 						elem.OverrideMask = OverrideMask.FileFormat;
 						elem.ImageFormat = ImageFormat.PNG;
@@ -211,7 +211,7 @@ namespace AmplifyImpostors
 
 		public void ReCheckRenderers()
 		{
-			LOD[] lods = m_instance.LodGroup.GetLODs();
+			var lods = m_instance.LodGroup.GetLODs();
 			int lastIndex = lods.Length - 1;
 
 			switch( m_instance.m_lodReplacement )
@@ -312,7 +312,7 @@ namespace AmplifyImpostors
 		{
 			if( m_currentData.Preset.RuntimeShader != null )
 			{
-				Material m = new Material( m_currentData.Preset.RuntimeShader );
+				var m = new Material( m_currentData.Preset.RuntimeShader );
 				m_shaderTag = m.GetTag( "ImpostorType", true );
 				DestroyImmediate( m );
 			}
@@ -321,20 +321,20 @@ namespace AmplifyImpostors
 		private void DrawHeader( Rect rect )
 		{
 			rect.xMax -= 20;
-			Rect alphaRect = rect;
+			var alphaRect = rect;
 			alphaRect.width = 20;
 			alphaRect.x = rect.xMax;
 			alphaRect.height = 24;
 
 			rect.xMax -= 35;
-			Rect overrideRect = rect;
+			var overrideRect = rect;
 			overrideRect.width = 32;
 			EditorGUI.LabelField( overrideRect, AmplifyImpostorBakePresetEditor.TargetsStr );
 			overrideRect = rect;
 			overrideRect.xMin += 40;
 			overrideRect.width = EditorGUIUtility.labelWidth - overrideRect.xMin + 18;
 			EditorGUI.LabelField( overrideRect, AmplifyImpostorBakePresetEditor.SuffixStr );
-			Rect optionRect = rect;
+			var optionRect = rect;
 			optionRect.xMin = EditorGUIUtility.labelWidth + 18;
 			float fullwidth = optionRect.width;
 			optionRect.width = fullwidth * m_tableSizes[ 0 ];
@@ -355,24 +355,24 @@ namespace AmplifyImpostors
 		private void DrawElement( Rect rect, int index, bool active, bool focused )
 		{
 			rect.y += 2;
-			Rect maskRect = rect;
+			var maskRect = rect;
 			maskRect.width = 20;
 			maskRect.height = EditorGUIUtility.singleLineHeight;
 			maskRect.x = rect.xMax - maskRect.width;
 			rect.xMax -= maskRect.width;
 
-			Rect labelRect = rect;
+			var labelRect = rect;
 			labelRect.width = 16;
 			labelRect.height = EditorGUIUtility.singleLineHeight;
 			
-			TextureOutput drawElem = m_currentData.OverrideOutput.Find( ( x ) => { return x.Index == index; } );
+			var drawElem = m_currentData.OverrideOutput.Find( ( x ) => { return x.Index == index; } );
 			bool overrideExists = drawElem != null;
 
 			labelRect.x += 10;
 			EditorGUI.LabelField( labelRect, new GUIContent( index.ToString() ) );
 
 
-			Rect toggleRect = rect;
+			var toggleRect = rect;
 			toggleRect.x = labelRect.xMax;
 			toggleRect.width = 16;
 			toggleRect.y -= 1;
@@ -392,7 +392,7 @@ namespace AmplifyImpostors
 			if( overrideExists )
 				EditorGUI.BeginDisabledGroup( !drawElem.Active );
 
-			Rect nameRect = rect;
+			var nameRect = rect;
 			nameRect.height = EditorGUIUtility.singleLineHeight;
 			nameRect.width = EditorGUIUtility.labelWidth - 5;
 			nameRect.xMin = toggleRect.xMax;
@@ -411,7 +411,7 @@ namespace AmplifyImpostors
 			}
 
 			float fullwidth = maskRect.xMin - nameRect.xMax - 35;
-			Rect optionRect = rect;
+			var optionRect = rect;
 			optionRect.height = EditorGUIUtility.singleLineHeight;
 			optionRect.x = nameRect.xMax;
 			optionRect.width = fullwidth * m_tableSizes[ 0 ];
@@ -504,7 +504,7 @@ namespace AmplifyImpostors
 			{
 				if( mask != 0 && drawElem == null )
 				{
-					TextureOutput elem = m_currentData.Preset.Output[ index ].Clone();
+					var elem = m_currentData.Preset.Output[ index ].Clone();
 					elem.Index = index;
 					elem.OverrideMask = mask;
 					m_currentData.OverrideOutput.Add( elem );
@@ -518,10 +518,10 @@ namespace AmplifyImpostors
 				}
 				else if( overrideExists )
 				{
-					TextureOutput elem = m_currentData.Preset.Output[ index ].Clone();
+					var elem = m_currentData.Preset.Output[ index ].Clone();
 
 					// copy only new fields
-					if( ( drawElem.OverrideMask & OverrideMask.NameSuffix ) != OverrideMask.NameSuffix && ( mask & OverrideMask.NameSuffix ) == OverrideMask.NameSuffix )
+					if ( ( drawElem.OverrideMask & OverrideMask.NameSuffix ) != OverrideMask.NameSuffix && ( mask & OverrideMask.NameSuffix ) == OverrideMask.NameSuffix )
 						drawElem.Name = elem.Name;
 					if( ( drawElem.OverrideMask & OverrideMask.RelativeScale ) != OverrideMask.RelativeScale && ( mask & OverrideMask.RelativeScale ) == OverrideMask.RelativeScale )
 						drawElem.Scale = elem.Scale;
@@ -593,7 +593,7 @@ namespace AmplifyImpostors
 			m_instance.LodGroup = EditorGUILayout.ObjectField( LODGroupStr, m_instance.LodGroup, typeof( LODGroup ), true ) as LODGroup;
 
 			EditorGUILayout.BeginHorizontal();
-			Color tempC = GUI.color;
+			var tempC = GUI.color;
 			GUI.color = m_flash;
 			EditorGUI.BeginChangeCheck();
 			EditorGUILayout.PropertyField( m_renderers, RenderersStr, true );
@@ -759,10 +759,10 @@ namespace AmplifyImpostors
 					EditorGUILayout.BeginHorizontal();
 					if( m_billboardMesh )
 					{
-						Rect rect = GUILayoutUtility.GetRect( cutPreviewSize + 10, cutPreviewSize + 10, cutPreviewSize + 10, cutPreviewSize + 10 );
+						var rect = GUILayoutUtility.GetRect( cutPreviewSize + 10, cutPreviewSize + 10, cutPreviewSize + 10, cutPreviewSize + 10 );
 						int controlID = GUIUtility.GetControlID( "miniShapeEditorControl".GetHashCode(), FocusType.Passive, rect );
-						Rect texRect = new Rect( 5, 5, cutPreviewSize, cutPreviewSize );
-						Rect hotRect = new Rect( 0, 0, cutPreviewSize + 10, cutPreviewSize + 10 );
+						var texRect = new Rect( 5, 5, cutPreviewSize, cutPreviewSize );
+						var hotRect = new Rect( 0, 0, cutPreviewSize + 10, cutPreviewSize + 10 );
 						GUI.BeginClip( rect );
 
 						if( m_instance.m_alphaTex != null )
@@ -772,12 +772,12 @@ namespace AmplifyImpostors
 
 						if( m_outdatedTexture )
 						{
-							Color tx = GUI.color;
+							var tx = GUI.color;
 							GUI.color = new Color( 1, 1, 1, 0.2f );
 							EditorGUI.DrawPreviewTexture( texRect, Texture2D.whiteTexture );
 							GUI.color = tx;
 
-							Rect updateButton = texRect;
+							var updateButton = texRect;
 							updateButton.xMin += 50;
 							updateButton.xMax -= 50;
 							updateButton.yMin += 70;
@@ -799,8 +799,8 @@ namespace AmplifyImpostors
 							{
 								for( int i = 0; i < m_currentData.ShapePoints.Length; i++ )
 								{
-									Rect handleRect = new Rect( m_currentData.ShapePoints[ i ].x * cutPreviewSize, m_currentData.ShapePoints[ i ].y * cutPreviewSize, 10, 10 );
-									if( Event.current.type == EventType.MouseDown && handleRect.Contains( Event.current.mousePosition ) )
+									var handleRect = new Rect( m_currentData.ShapePoints[ i ].x * cutPreviewSize, m_currentData.ShapePoints[ i ].y * cutPreviewSize, 10, 10 );
+										if ( Event.current.type == EventType.MouseDown && handleRect.Contains( Event.current.mousePosition ) )
 									{
 										EditorGUI.FocusTextInControl( null );
 										m_activeHandle = i;
@@ -846,15 +846,15 @@ namespace AmplifyImpostors
 
 						if( Event.current.type == EventType.Repaint )
 						{
-							Vector3[] allpoints = new Vector3[ m_currentData.ShapePoints.Length + 1 ];
-							for( int i = 0; i < m_currentData.ShapePoints.Length; i++ )
+							var allpoints = new Vector3[ m_currentData.ShapePoints.Length + 1 ];
+							for ( int i = 0; i < m_currentData.ShapePoints.Length; i++ )
 							{
 								allpoints[ i ] = new Vector3( m_currentData.ShapePoints[ i ].x * cutPreviewSize + 5, m_currentData.ShapePoints[ i ].y * cutPreviewSize + 5, 0 );
 							}
 							allpoints[ m_currentData.ShapePoints.Length ] = allpoints[ 0 ];
 
-							Dictionary<string, bool> drawnList = new Dictionary<string, bool>();
-							for( int i = 0; i < m_currentData.ShapePoints.Length; i++ )
+							var drawnList = new Dictionary<string, bool>();
+							for ( int i = 0; i < m_currentData.ShapePoints.Length; i++ )
 							{
 								if( i == m_currentData.ShapePoints.Length - 1 )
 									drawnList.Add( ( "0" + i ), true );
@@ -865,7 +865,7 @@ namespace AmplifyImpostors
 							if( m_previewMesh != null && m_instance.m_cutMode == CutMode.Manual )
 							{
 								//draw inside
-								Color cache = Handles.color;
+								var cache = Handles.color;
 								Handles.color = new Color( 1, 1, 1, 0.5f );
 								//Handles.color = Color.black;
 								for( int i = 0; i < m_previewMesh.triangles.Length - 1; i += 3 )
@@ -873,14 +873,14 @@ namespace AmplifyImpostors
 									int vert = m_previewMesh.triangles[ i ];
 									int vert2 = m_previewMesh.triangles[ i + 1 ];
 									int vert3 = m_previewMesh.triangles[ i + 2 ];
-									string ab = vert < vert2 ? vert + "" + vert2 : vert2 + "" + vert;
-									string bc = vert2 < vert3 ? vert2 + "" + vert3 : vert3 + "" + vert2;
-									string ac = vert < vert3 ? vert + "" + vert3 : vert3 + "" + vert;
+									var ab = vert < vert2 ? vert + "" + vert2 : vert2 + "" + vert;
+									var bc = vert2 < vert3 ? vert2 + "" + vert3 : vert3 + "" + vert2;
+									var ac = vert < vert3 ? vert + "" + vert3 : vert3 + "" + vert;
 
-									Vector3 a = new Vector3( m_currentData.ShapePoints[ vert ].x * cutPreviewSize + 5, m_currentData.ShapePoints[ vert ].y * cutPreviewSize + 5, 0 );
-									Vector3 b = new Vector3( m_currentData.ShapePoints[ vert2 ].x * cutPreviewSize + 5, m_currentData.ShapePoints[ vert2 ].y * cutPreviewSize + 5, 0 );
-									Vector3 c = new Vector3( m_currentData.ShapePoints[ vert3 ].x * cutPreviewSize + 5, m_currentData.ShapePoints[ vert3 ].y * cutPreviewSize + 5, 0 );
-									if( !drawnList.ContainsKey( ab ) )
+									var a = new Vector3( m_currentData.ShapePoints[ vert ].x * cutPreviewSize + 5, m_currentData.ShapePoints[ vert ].y * cutPreviewSize + 5, 0 );
+									var b = new Vector3( m_currentData.ShapePoints[ vert2 ].x * cutPreviewSize + 5, m_currentData.ShapePoints[ vert2 ].y * cutPreviewSize + 5, 0 );
+									var c = new Vector3( m_currentData.ShapePoints[ vert3 ].x * cutPreviewSize + 5, m_currentData.ShapePoints[ vert3 ].y * cutPreviewSize + 5, 0 );
+									if ( !drawnList.ContainsKey( ab ) )
 									{
 										Handles.DrawAAPolyLine( new Vector3[] { a, b } );
 										drawnList.Add( ab, true );
@@ -905,7 +905,7 @@ namespace AmplifyImpostors
 							{
 								for( int i = 0; i < m_currentData.ShapePoints.Length; i++ )
 								{
-									Rect handleRect = new Rect( m_currentData.ShapePoints[ i ].x * cutPreviewSize + 1, m_currentData.ShapePoints[ i ].y * cutPreviewSize + 1, 8, 8 );
+									var handleRect = new Rect( m_currentData.ShapePoints[ i ].x * cutPreviewSize + 1, m_currentData.ShapePoints[ i ].y * cutPreviewSize + 1, 8, 8 );
 									Handles.DrawSolidRectangleWithOutline( handleRect, ( m_activeHandle == i ? Color.cyan : Color.clear ), ( m_lastPointSelected == i && m_instance.m_cutMode == CutMode.Manual ? Color.cyan : Color.white ) );
 								}
 							}
@@ -913,7 +913,7 @@ namespace AmplifyImpostors
 							{
 								for( int i = 0; i < m_currentData.ShapePoints.Length; i++ )
 								{
-									Rect handleRect = new Rect( m_currentData.ShapePoints[ i ].x * cutPreviewSize + 3, m_currentData.ShapePoints[ i ].y * cutPreviewSize + 3, 4, 4 );
+									var handleRect = new Rect( m_currentData.ShapePoints[ i ].x * cutPreviewSize + 3, m_currentData.ShapePoints[ i ].y * cutPreviewSize + 3, 4, 4 );
 									Handles.DrawSolidRectangleWithOutline( handleRect, Color.white, Color.white );
 								}
 							}
@@ -981,10 +981,10 @@ namespace AmplifyImpostors
 					m_currentData.Preset = EditorGUILayout.ObjectField( m_currentData.Preset, typeof( AmplifyImpostorBakePreset ), false ) as AmplifyImpostorBakePreset;
 					if( GUILayout.Button( "New", "minibutton", GUILayout.Width( 50 ) ) )
 					{
-						string folderpath = EditorUtility.SaveFilePanelInProject( "Create new Bake Preset", "New Preset", "asset", "", AssetDatabase.GetAssetPath( m_currentData ) );
-						if( !string.IsNullOrEmpty( folderpath ) )
+						var folderpath = EditorUtility.SaveFilePanelInProject( "Create new Bake Preset", "New Preset", "asset", "", AssetDatabase.GetAssetPath( m_currentData ) );
+						if ( !string.IsNullOrEmpty( folderpath ) )
 						{
-							AmplifyImpostorBakePreset basset = CreateInstance<AmplifyImpostorBakePreset>();
+							var basset = CreateInstance<AmplifyImpostorBakePreset>();
 							AssetDatabase.CreateAsset( basset, folderpath );
 
 							m_currentData.Preset = AssetDatabase.LoadAssetAtPath<AmplifyImpostorBakePreset>( folderpath );
@@ -1030,7 +1030,7 @@ namespace AmplifyImpostors
 				m_recalculateMesh = false;
 
 				// create a 2d texture for calculations
-				Rect testRect = new Rect( 0, 0, m_instance.m_alphaTex.width, m_instance.m_alphaTex.height );
+				var testRect = new Rect( 0, 0, m_instance.m_alphaTex.width, m_instance.m_alphaTex.height );
 				Vector2[][] paths;
 				SpriteUtilityEx.GenerateOutline( m_instance.m_alphaTex, testRect, m_currentData.Tolerance, 254, false, out paths );
 				int sum = 0;
@@ -1139,8 +1139,8 @@ namespace AmplifyImpostors
 			bool createLodGroup = false;
 			if( ImpostorBakingTools.GlobalCreateLodGroup )
 			{
-				LODGroup group = m_instance.RootTransform.GetComponentInParent<LODGroup>();
-				if( group == null )
+				var group = m_instance.RootTransform.GetComponentInParent<LODGroup>();
+				if ( group == null )
 					group = m_instance.RootTransform.GetComponentInChildren<LODGroup>();
 				if( group == null && m_instance.LodGroup == null )
 					createLodGroup = true;
@@ -1148,14 +1148,14 @@ namespace AmplifyImpostors
 
 			if( createLodGroup && m_instance.m_lastImpostor != null )
 			{
-				GameObject lodgo = new GameObject( m_instance.name + "_LODGroup" );
-				LODGroup lodGroup = lodgo.AddComponent<LODGroup>();
+				var lodgo = new GameObject( m_instance.name + "_LODGroup" );
+				var lodGroup = lodgo.AddComponent<LODGroup>();
 				lodGroup.transform.position = m_instance.transform.position;
 				int hierIndex = m_instance.transform.GetSiblingIndex();
 
 				m_instance.transform.SetParent( lodGroup.transform, true );
 				m_instance.m_lastImpostor.transform.SetParent( lodGroup.transform, true );
-				LOD[] lods = lodGroup.GetLODs();
+				var lods = lodGroup.GetLODs();
 				ArrayUtility.RemoveAt<LOD>( ref lods, 2 );
 				lods[ 0 ].fadeTransitionWidth = 0.5f;
 				lods[ 0 ].screenRelativeTransitionHeight = 0.15f;
@@ -1184,16 +1184,16 @@ namespace AmplifyImpostors
 
 		public Mesh GeneratePreviewMesh( Vector2[] points, bool invertY = true )
 		{
-			Triangulator tr = new Triangulator( points, invertY );
-			int[] indices = tr.Triangulate();
+			var tr = new Triangulator( points, invertY );
+			var indices = tr.Triangulate();
 
-			Vector3[] vertices = new Vector3[ tr.Points.Count ];
-			for( int i = 0; i < vertices.Length; i++ )
+			var vertices = new Vector3[ tr.Points.Count ];
+			for ( int i = 0; i < vertices.Length; i++ )
 			{
 				vertices[ i ] = new Vector3( tr.Points[ i ].x, tr.Points[ i ].y, 0 );
 			}
 
-			Mesh mesh = new Mesh
+			var mesh = new Mesh
 			{
 				vertices = vertices,
 				uv = points,

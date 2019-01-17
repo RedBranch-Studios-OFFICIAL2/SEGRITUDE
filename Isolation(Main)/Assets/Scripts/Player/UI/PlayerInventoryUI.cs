@@ -1,4 +1,5 @@
-﻿using Segritude.Inventory.UI;
+﻿using Segritude.Camera;
+using Segritude.Inventory.UI;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace Segritude.Player.UI
 					return;
 				open = value;
 				inventoryPanel.SetActive(open);
+				CameraController.UseCamera = !open;
 				if (open)
 					UpdateUI();
 			}
@@ -59,8 +61,8 @@ namespace Segritude.Player.UI
 		{
 			base.UpdateUI(inventory);
 			for (int i = 0; i < toolbar.Length; i++)
-				toolbar[i].Stack = Player.Instance.ToolBar[i];
-			weightCounter.text = $"{ (Holder.Inventory.TotalWeight + Player.Instance.ToolBar.Where(x => !(x is null)).Sum(x => x.Quantity * x.Item.Weight)) / 10f} / {Player.Instance.MaxWeight / 10f}";
+				toolbar[i].Stack = PlayerBehaviour.Instance.ToolBar[i];
+			weightCounter.text = $"{ (Holder.Inventory.TotalWeight + PlayerBehaviour.Instance.ToolBar.Where(x => !(x is null)).Sum(x => x.Quantity * x.Item.Weight)) / 10f} / {PlayerBehaviour.Instance.MaxWeight / 10f}";
 		}
 
 		#endregion Public Methods

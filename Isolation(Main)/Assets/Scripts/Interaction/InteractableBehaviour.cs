@@ -131,7 +131,7 @@ namespace Segritude.Interaction
 			if (IsInteracting)
 			{
 				_CurrentHoldTime += Time.deltaTime;
-				if (_CurrentHoldTime >= HoldTime)
+				if (_CurrentHoldTime >= HoldTime || !Hold)
 				{
 					if (!Repeat)
 						EndInteraction(_Type);

@@ -12,12 +12,12 @@ namespace MapMagic
 		public static void ShowWindow ()
 		{
 			//opening if force open
-			CompatibilityManagerWindow instance = (CompatibilityManagerWindow)EditorWindow.GetWindow (typeof (CompatibilityManagerWindow), utility:true);
-			
+			var instance = (CompatibilityManagerWindow)EditorWindow.GetWindow (typeof (CompatibilityManagerWindow), utility:true);
+
 			//finding instance
 			if (instance == null)
 			{
-				CompatibilityManagerWindow[] windows = Resources.FindObjectsOfTypeAll<CompatibilityManagerWindow>();
+				var windows = Resources.FindObjectsOfTypeAll<CompatibilityManagerWindow>();
 				if (windows.Length==0) return;
 				instance = windows[0];
 			}
@@ -32,8 +32,8 @@ namespace MapMagic
 
 		public void OnGUI () 
 		{
-			BuildTargetGroup group = EditorUserBuildSettings.selectedBuildTargetGroup;
-			string symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
+			var group = EditorUserBuildSettings.selectedBuildTargetGroup;
+			var symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
 
 			bool auto = false;
 
@@ -89,9 +89,9 @@ namespace MapMagic
 
 		static void EnableKeyword (string keyword)
 		{
-			BuildTargetGroup group = EditorUserBuildSettings.selectedBuildTargetGroup;
-			string symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
-				
+			var group = EditorUserBuildSettings.selectedBuildTargetGroup;
+			var symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
+
 			if (!symbols.Contains(keyword+";") && !symbols.EndsWith(keyword)) 
 			{
 				symbols += (symbols.Length!=0? ";" : "") + keyword;
@@ -104,9 +104,9 @@ namespace MapMagic
 
 		static void DisableKeyword (string keyword)
 		{
-			BuildTargetGroup group = EditorUserBuildSettings.selectedBuildTargetGroup;
-			string symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
-				
+			var group = EditorUserBuildSettings.selectedBuildTargetGroup;
+			var symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
+
 			if (symbols.Contains(keyword+";") || symbols.EndsWith(keyword)) 
 			{
 				symbols = symbols.Replace(keyword,""); 

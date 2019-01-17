@@ -38,9 +38,9 @@ namespace ProBuilder2.EditorCommon
 		{
 			about = null;
 
-			string[] matches = Directory.GetFiles("./Assets", "pc_AboutEntry_ProBuilder.txt", SearchOption.AllDirectories);
+			var matches = Directory.GetFiles("./Assets", "pc_AboutEntry_ProBuilder.txt", SearchOption.AllDirectories);
 
-			if(matches == null || matches.Length < 1)
+			if (matches == null || matches.Length < 1)
 				return false;
 
 			for(int i = 0; i < matches.Length && about == null; i++)
@@ -71,12 +71,12 @@ namespace ProBuilder2.EditorCommon
 			bool success = true;
 
 			// get first version entry
-			string[] split = Regex.Split(raw, "(?mi)^#\\s", RegexOptions.Multiline);
+			var split = Regex.Split(raw, "(?mi)^#\\s", RegexOptions.Multiline);
 
 			// get the version info
 			try
 			{
-				Match versionMatch = Regex.Match(split[1], @"(?<=^ProBuilder\s).[0-9]*\.[0-9]*\.[0-9]*[a-z][0-9]*");
+				var versionMatch = Regex.Match(split[1], @"(?<=^ProBuilder\s).[0-9]*\.[0-9]*\.[0-9]*[a-z][0-9]*");
 				version = pb_VersionInfo.FromString(versionMatch.Success ? versionMatch.Value : split[1].Split('\n')[0]);
 			}
 			catch
@@ -87,9 +87,9 @@ namespace ProBuilder2.EditorCommon
 
 			try
 			{
-				StringBuilder sb = new StringBuilder();
-				string[] newLineSplit = split[1].Trim().Split('\n');
-				for(int i = 2; i < newLineSplit.Length; i++)
+				var sb = new StringBuilder();
+				var newLineSplit = split[1].Trim().Split('\n');
+				for (int i = 2; i < newLineSplit.Length; i++)
 					sb.AppendLine(newLineSplit[i]);
 
 				formatted_changes = sb.ToString();
@@ -111,9 +111,9 @@ namespace ProBuilder2.EditorCommon
 			if (!File.Exists(path))
 				return null;
 
-			pb_AboutEntry about = new pb_AboutEntry();
+			var about = new pb_AboutEntry();
 
-			foreach(string str in File.ReadAllLines(path))
+			foreach (string str in File.ReadAllLines(path))
 			{
 				if(str.StartsWith(pb_AboutEntry.KEY_NAME))
 					about.name = str.Replace(pb_AboutEntry.KEY_NAME, "").Trim();

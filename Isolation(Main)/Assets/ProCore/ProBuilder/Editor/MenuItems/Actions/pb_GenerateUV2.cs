@@ -17,9 +17,9 @@ namespace ProBuilder2.Actions
 		[MenuItem("Tools/" + pb_Constant.PRODUCT_NAME + "/Actions/Generate UV2 - Selection", false, pb_Constant.MENU_ACTIONS + 20)]
 		public static void MenuGenerateUV2Selection()
 		{
-			pb_Object[] sel = Selection.transforms.GetComponents<pb_Object>();
+			var sel = Selection.transforms.GetComponents<pb_Object>();
 
-			if( !Menu_GenerateUV2(sel) )
+			if ( !Menu_GenerateUV2(sel) )
 				return;	// user canceled
 
 			if(sel.Length > 0)
@@ -31,9 +31,9 @@ namespace ProBuilder2.Actions
 		[MenuItem("Tools/" + pb_Constant.PRODUCT_NAME + "/Actions/Generate UV2 - Scene", false, pb_Constant.MENU_ACTIONS + 20)]
 		public static void MenuGenerateUV2Scene()
 		{
-			pb_Object[] sel = (pb_Object[])FindObjectsOfType(typeof(pb_Object));
+			var sel = (pb_Object[])FindObjectsOfType(typeof(pb_Object));
 
-			if( !Menu_GenerateUV2(sel) )
+			if ( !Menu_GenerateUV2(sel) )
 				return;
 
 			if(sel.Length > 0)

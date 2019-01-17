@@ -94,11 +94,11 @@ namespace MapMagic
 
 				public void OnCreate (object parentBox)
 				{
-					MapMagic mapMagic = (MapMagic)parentBox;
+					var mapMagic = (MapMagic)parentBox;
 
-					//creating terrain
-					GameObject go = new GameObject();
-					go.name = "Terrain " + coord.x + "," + coord.z;
+			//creating terrain
+			var go = new GameObject();
+			go.name = "Terrain " + coord.x + "," + coord.z;
 					go.transform.parent = mapMagic.transform;
 					go.transform.localPosition = coord.ToVector3(mapMagic.terrainSize);
 					go.transform.localScale = Vector3.one; //no need to make it every move
@@ -108,8 +108,8 @@ namespace MapMagic
 					terrain = go.AddComponent<Terrain>();
 					terrainCollider = go.AddComponent<TerrainCollider>();
 
-					TerrainData terrainData = new TerrainData();
-					terrain.terrainData = terrainData;
+					var terrainData = new TerrainData();
+			terrain.terrainData = terrainData;
 					terrainCollider.terrainData = terrainData;
 					terrainData.size = new Vector3(mapMagic.terrainSize, mapMagic.terrainHeight, mapMagic.terrainSize);
 					
@@ -135,9 +135,9 @@ namespace MapMagic
 					terrain.transform.localPosition = coord.ToVector3(MapMagic.instance.terrainSize);
 					
 					//clearing pools
-					Rect terrainRect = new Rect(oldCoord.x*MapMagic.instance.terrainSize, oldCoord.z*MapMagic.instance.terrainSize, MapMagic.instance.terrainSize, MapMagic.instance.terrainSize);
-						//using oldCoords because instances are bound to old coordinates
-					MapMagic.instance.objectsPool.ClearAllRect(terrainRect);
+					var terrainRect = new Rect(oldCoord.x*MapMagic.instance.terrainSize, oldCoord.z*MapMagic.instance.terrainSize, MapMagic.instance.terrainSize, MapMagic.instance.terrainSize);
+			//using oldCoords because instances are bound to old coordinates
+			MapMagic.instance.objectsPool.ClearAllRect(terrainRect);
 
 				//	foreach (KeyValuePair<Transform,ObjectPool> kvp in MapMagic.pools)
 				//		kvp.Value.ClearAllRect(terrainRect);
@@ -155,8 +155,8 @@ namespace MapMagic
 					}
 					
 					//clearing pools
-					Rect terrainRect = new Rect(coord.x*MapMagic.instance.terrainSize, coord.z*MapMagic.instance.terrainSize, MapMagic.instance.terrainSize, MapMagic.instance.terrainSize);
-					MapMagic.instance.objectsPool.ClearAllRect(terrainRect);
+					var terrainRect = new Rect(coord.x*MapMagic.instance.terrainSize, coord.z*MapMagic.instance.terrainSize, MapMagic.instance.terrainSize, MapMagic.instance.terrainSize);
+			MapMagic.instance.objectsPool.ClearAllRect(terrainRect);
 
 				//	foreach (KeyValuePair<Transform,ObjectPool> kvp in MapMagic.pools)
 				//		kvp.Value.ClearAllRect(terrainRect);
@@ -175,9 +175,9 @@ namespace MapMagic
 					Profiler.BeginSample("Set Neighbors");
 					#endif
 
-					ChunkGrid<Chunk> chunks = MapMagic.instance.chunks;
+					var chunks = MapMagic.instance.chunks;
 
-					if (terrain == null || terrain.terrainData == null || terrain.terrainData.heightmapResolution < 64) 
+			if (terrain == null || terrain.terrainData == null || terrain.terrainData.heightmapResolution < 64) 
 					{
 						#if WDEBUG
 						Profiler.EndSample();
@@ -186,20 +186,20 @@ namespace MapMagic
 						return;
 					}
 					
-					Chunk newNeig_x_chunk = chunks[coord.x-1, coord.z];
-					Terrain newNeig_x = (newNeig_x_chunk!= null && newNeig_x_chunk.worker.ready)? newNeig_x_chunk.terrain : null;
+					var newNeig_x_chunk = chunks[coord.x-1, coord.z];
+			var newNeig_x = (newNeig_x_chunk!= null && newNeig_x_chunk.worker.ready)? newNeig_x_chunk.terrain : null;
 
-					Chunk newNeig_Z_chunk = chunks[coord.x, coord.z+1];
-					Terrain newNeig_Z = (newNeig_Z_chunk!= null && newNeig_Z_chunk.worker.ready)? newNeig_Z_chunk.terrain : null;
+			var newNeig_Z_chunk = chunks[coord.x, coord.z+1];
+			var newNeig_Z = (newNeig_Z_chunk!= null && newNeig_Z_chunk.worker.ready)? newNeig_Z_chunk.terrain : null;
 
-					Chunk newNeig_X_chunk = chunks[coord.x+1, coord.z];
-					Terrain newNeig_X = (newNeig_X_chunk!= null && newNeig_X_chunk.worker.ready)? newNeig_X_chunk.terrain : null;
+			var newNeig_X_chunk = chunks[coord.x+1, coord.z];
+			var newNeig_X = (newNeig_X_chunk!= null && newNeig_X_chunk.worker.ready)? newNeig_X_chunk.terrain : null;
 
-					Chunk newNeig_z_chunk = chunks[coord.x, coord.z-1];
-					Terrain newNeig_z = (newNeig_z_chunk!= null && newNeig_z_chunk.worker.ready)? newNeig_z_chunk.terrain : null;
+			var newNeig_z_chunk = chunks[coord.x, coord.z-1];
+			var newNeig_z = (newNeig_z_chunk!= null && newNeig_z_chunk.worker.ready)? newNeig_z_chunk.terrain : null;
 
 
-					if (oldNeig_x != newNeig_x || oldNeig_Z != newNeig_Z || oldNeig_X != newNeig_X || oldNeig_z != newNeig_z || force)
+			if (oldNeig_x != newNeig_x || oldNeig_Z != newNeig_Z || oldNeig_X != newNeig_X || oldNeig_z != newNeig_z || force)
 					{
 						terrain.SetNeighbors( newNeig_x, newNeig_Z, newNeig_X, newNeig_z );
 
@@ -219,9 +219,9 @@ namespace MapMagic
 
 			public void ThreadFn ()
 			{
-				Size size = new Size(MapMagic.instance.resolution, MapMagic.instance.terrainSize, MapMagic.instance.terrainHeight);
+				var size = new Size(MapMagic.instance.resolution, MapMagic.instance.terrainSize, MapMagic.instance.terrainHeight);
 
-				try { MapMagic.instance.gens.Calculate(rect, results, size, MapMagic.instance.seed, worker.StopCallback); }
+			try { MapMagic.instance.gens.Calculate(rect, results, size, MapMagic.instance.seed, worker.StopCallback); }
 				catch (System.Exception e) 
 				{ 
 					Debug.LogError("Error generating chunk: " + coord + ": " + e);  
@@ -235,8 +235,8 @@ namespace MapMagic
 				//bool containsHeight = results.apply.ContainsKey(typeof(HeightOutput));
 				//bool containsSplat = results.apply.ContainsKey(typeof(SplatOutput));
 
-				IEnumerator e = MapMagic.instance.gens.Apply(rect,results,terrain,worker.StopCallback,purge:!locked);
-				while (e.MoveNext()) 
+				var e = MapMagic.instance.gens.Apply(rect,results,terrain,worker.StopCallback,purge:!locked);
+			while (e.MoveNext()) 
 				{				
 					if (terrain==null) yield break; //guard in case max terrains count < actual terrains: terrain destroyed or still processing
 					yield return null;
@@ -248,9 +248,9 @@ namespace MapMagic
 
 			public void SetSettings ()
 			{
-				MapMagic magic = MapMagic.instance;
+				var magic = MapMagic.instance;
 
-				terrain.heightmapPixelError = magic.pixelError;
+			terrain.heightmapPixelError = magic.pixelError;
 				if (magic.showBaseMap) terrain.basemapDistance = magic.baseMapDist;
 				else terrain.basemapDistance = 999999;
 				terrain.castShadows = magic.castShadows;
@@ -300,16 +300,16 @@ namespace MapMagic
 				//copy layer, tag, scripts from mm to terrains
 				if (MapMagic.instance.copyLayersTags)
 				{
-					GameObject go = terrain.gameObject;
-					go.layer = MapMagic.instance.gameObject.layer;
+					var go = terrain.gameObject;
+				go.layer = MapMagic.instance.gameObject.layer;
 					go.isStatic = MapMagic.instance.gameObject.isStatic;
 					try { go.tag = MapMagic.instance.gameObject.tag; } catch { Debug.LogError("MapMagic: could not copy object tag"); }
 				}
 				if (MapMagic.instance.copyComponents)
 				{
-					GameObject go = terrain.gameObject;
-					MonoBehaviour[] components = MapMagic.instance.GetComponents<MonoBehaviour>();
-					for (int i=0; i<components.Length; i++)
+					var go = terrain.gameObject;
+				var components = MapMagic.instance.GetComponents<MonoBehaviour>();
+				for (int i=0; i<components.Length; i++)
 					{
 						if (components[i] is MapMagic || components[i] == null) continue; //if MapMagic itself or script not assigned
 						if (terrain.gameObject.GetComponent(components[i].GetType()) == null) Extensions.CopyComponent(components[i], go);

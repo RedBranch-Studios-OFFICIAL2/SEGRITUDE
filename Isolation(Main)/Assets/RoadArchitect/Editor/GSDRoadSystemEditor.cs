@@ -304,7 +304,7 @@ public class GSDRoadSystemEditor : Editor {
 	
 	void DoHotKeyCheck(){
 		bool bUsed = false;
-		Event current = Event.current;
+		var current = Event.current;
 		int controlID = GUIUtility.GetControlID(GetHashCode(), FocusType.Passive);
 
 //		if(current.type == EventType.KeyDown){

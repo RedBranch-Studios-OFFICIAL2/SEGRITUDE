@@ -63,10 +63,10 @@ namespace AmplifyImpostors
 		{
 			if( Activated )
 			{
-				DataHolder data = new DataHolder();
-				if( ImportData.TryGetValue( assetPath, out data ) )
+				var data = new DataHolder();
+				if ( ImportData.TryGetValue( assetPath, out data ) )
 				{
-					TextureImporter textureImporter = (TextureImporter)assetImporter;
+					var textureImporter = (TextureImporter)assetImporter;
 					textureImporter.sRGBTexture = data.SRGB;
 					textureImporter.alphaSource = data.Alpha ? TextureImporterAlphaSource.FromInput : TextureImporterAlphaSource.None;
 					textureImporter.textureCompression = (TextureImporterCompression)data.Compression;
@@ -206,10 +206,10 @@ namespace AmplifyImpostors
 #if UNITY_EDITOR
 		public void RenderToTexture( ref RenderTexture tex, string path, ImageFormat imageFormat, int resizeScale, TextureChannels channels )
 		{
-			Texture2D outfile = AssetDatabase.LoadAssetAtPath<Texture2D>( path );
+			var outfile = AssetDatabase.LoadAssetAtPath<Texture2D>( path );
 			outfile = new Texture2D( (int)m_data.TexSize.x / resizeScale, (int)m_data.TexSize.y / resizeScale, channels == TextureChannels.RGB ? TextureFormat.RGB24 : TextureFormat.RGBA32, true );
 			outfile.name = Path.GetFileNameWithoutExtension( path );
-			RenderTexture temp = RenderTexture.active;
+			var temp = RenderTexture.active;
 			RenderTexture.active = tex;
 			outfile.ReadPixels( new Rect( 0, 0, (int)m_data.TexSize.x / resizeScale, (int)m_data.TexSize.y / resizeScale ), 0, 0 );
 			RenderTexture.active = temp;
@@ -228,7 +228,7 @@ namespace AmplifyImpostors
 
 			int BytesToWrite, BufIndex;
 			int bytesLength = bytes.Length;
-			FileStream FSFile = new FileStream( path, FileMode.Create, FileAccess.Write, FileShare.None, BlockSize, false );
+			var FSFile = new FileStream( path, FileMode.Create, FileAccess.Write, FileShare.None, BlockSize, false );
 			BufIndex = 0;
 			do
 			{
@@ -243,9 +243,9 @@ namespace AmplifyImpostors
 
 		public void ChangeTextureImporter( ref RenderTexture tex, string path, bool sRGB = true, bool changeResolution = false, TextureCompression compression = TextureCompression.Normal, bool alpha = true )
 		{
-			Texture2D outfile = AssetDatabase.LoadAssetAtPath<Texture2D>( path );
-			TextureImporter tImporter = AssetImporter.GetAtPath( path ) as TextureImporter;
-			if( tImporter != null )
+			var outfile = AssetDatabase.LoadAssetAtPath<Texture2D>( path );
+			var tImporter = AssetImporter.GetAtPath( path ) as TextureImporter;
+			if ( tImporter != null )
 			{
 				if( (tImporter.alphaSource == TextureImporterAlphaSource.FromInput && !alpha) || ( tImporter.textureCompression != (TextureImporterCompression)compression ) || tImporter.sRGBTexture != sRGB || ( changeResolution && tImporter.maxTextureSize != (int)m_data.TexSize.x ) )
 				{
@@ -279,29 +279,29 @@ namespace AmplifyImpostors
 			{
 				for( int y = 0; y <= vframes; y++ )
 				{
-					Bounds frameBounds = new Bounds();
-					Matrix4x4 camMatrixRot = Matrix4x4.identity;
+					var frameBounds = new Bounds();
+					var camMatrixRot = Matrix4x4.identity;
 
-					if( impostorType == ImpostorType.Spherical ) //SPHERICAL
+					if ( impostorType == ImpostorType.Spherical ) //SPHERICAL
 					{
 						float fractionY = 0;
 						if( vframes > 0 )
 							fractionY = -( 180.0f / vframes );
-						Quaternion hRot = Quaternion.Euler( fractionY * y + StartYRotation, 0, 0 );
-						Quaternion vRot = Quaternion.Euler( 0, ( 360.0f / hframes ) * x + StartXRotation, 0 );
+						var hRot = Quaternion.Euler( fractionY * y + StartYRotation, 0, 0 );
+						var vRot = Quaternion.Euler( 0, ( 360.0f / hframes ) * x + StartXRotation, 0 );
 						camMatrixRot = Matrix4x4.Rotate( hRot * vRot );
 
 					}
 					else if( impostorType == ImpostorType.Octahedron ) //OCTAHEDRON
 					{
-						Vector3 forw = OctahedronToVector( ( (float)( x ) / ( (float)hframes - 1 ) ) * 2f - 1f, ( (float)( y ) / ( (float)vframes - 1 ) ) * 2f - 1f );
-						Quaternion octa = Quaternion.LookRotation( new Vector3( forw.x * -1, forw.z * -1, forw.y * -1 ), Vector3.up );
+						var forw = OctahedronToVector( ( (float)( x ) / ( (float)hframes - 1 ) ) * 2f - 1f, ( (float)( y ) / ( (float)vframes - 1 ) ) * 2f - 1f );
+						var octa = Quaternion.LookRotation( new Vector3( forw.x * -1, forw.z * -1, forw.y * -1 ), Vector3.up );
 						camMatrixRot = Matrix4x4.Rotate( octa ).inverse;
 					}
 					else if( impostorType == ImpostorType.HemiOctahedron ) //HEMIOCTAHEDRON
 					{
-						Vector3 forw = HemiOctahedronToVector( ( (float)( x ) / ( (float)hframes - 1 ) ) * 2f - 1f, ( (float)( y ) / ( (float)vframes - 1 ) ) * 2f - 1f );
-						Quaternion octa = Quaternion.LookRotation( new Vector3( forw.x * -1, forw.z * -1, forw.y * -1 ), Vector3.up );
+						var forw = HemiOctahedronToVector( ( (float)( x ) / ( (float)hframes - 1 ) ) * 2f - 1f, ( (float)( y ) / ( (float)vframes - 1 ) ) * 2f - 1f );
+						var octa = Quaternion.LookRotation( new Vector3( forw.x * -1, forw.z * -1, forw.y * -1 ), Vector3.up );
 						camMatrixRot = Matrix4x4.Rotate( octa ).inverse;
 					}
 
@@ -341,13 +341,13 @@ namespace AmplifyImpostors
 			if( dilateMat == null )
 			{
 				destroyMaterial = true;
-				Shader dilateShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( DilateGUID ) );
+				var dilateShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( DilateGUID ) );
 				dilateMat = new Material( dilateShader );
 			}
 
-			RenderTexture tempTex = RenderTexture.GetTemporary( mainTex.width, mainTex.height, mainTex.depth, mainTex.format );
-			RenderTexture tempMask = RenderTexture.GetTemporary( maskTex.width, maskTex.height, maskTex.depth, maskTex.format );
-			RenderTexture dilatedMask = RenderTexture.GetTemporary( maskTex.width, maskTex.height, maskTex.depth, maskTex.format );
+			var tempTex = RenderTexture.GetTemporary( mainTex.width, mainTex.height, mainTex.depth, mainTex.format );
+			var tempMask = RenderTexture.GetTemporary( maskTex.width, maskTex.height, maskTex.depth, maskTex.format );
+			var dilatedMask = RenderTexture.GetTemporary( maskTex.width, maskTex.height, maskTex.depth, maskTex.format );
 
 			Graphics.Blit( maskTex, dilatedMask );
 
@@ -379,7 +379,7 @@ namespace AmplifyImpostors
 			if( packerMat == null )
 			{
 				destroyMaterial = true;
-				Shader packerShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( PackerGUID ) );
+				var packerShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( PackerGUID ) );
 				packerMat = new Material( packerShader );
 			}
 
@@ -391,9 +391,9 @@ namespace AmplifyImpostors
 				int width = src.width;
 				int height = src.height;
 				int depth = src.depth;
-				RenderTextureFormat format = src.format;
+				var format = src.format;
 
-				RenderTexture tempTex = RenderTexture.GetTemporary( width, height, depth, format );
+				var tempTex = RenderTexture.GetTemporary( width, height, depth, format );
 				Graphics.Blit( src, tempTex, packerMat, passIndex );
 				Graphics.Blit( tempTex, dst );
 				RenderTexture.ReleaseTemporary( tempTex );
@@ -426,20 +426,20 @@ namespace AmplifyImpostors
 			int alphaIndex = m_data.Preset.BakeShader == null ? 2 : m_data.Preset.AlphaIndex;
 			
 			// Render just alpha
-			RenderTexture combinedAlphaTexture = RenderTexture.GetTemporary( MinAlphaResolution, MinAlphaResolution, m_alphaGBuffers[ alphaIndex ].depth, m_alphaGBuffers[ alphaIndex ].format );
+			var combinedAlphaTexture = RenderTexture.GetTemporary( MinAlphaResolution, MinAlphaResolution, m_alphaGBuffers[ alphaIndex ].depth, m_alphaGBuffers[ alphaIndex ].format );
 			PackingRemapping( ref m_alphaGBuffers[ alphaIndex ], ref combinedAlphaTexture, 8 );
 
 			ClearAlphaBuffers();
 
 			RenderTexture.active = combinedAlphaTexture;
-			Texture2D tempTex = new Texture2D( combinedAlphaTexture.width, combinedAlphaTexture.height, TextureFormat.RGBAFloat, false );
+			var tempTex = new Texture2D( combinedAlphaTexture.width, combinedAlphaTexture.height, TextureFormat.RGBAFloat, false );
 			tempTex.ReadPixels( new Rect( 0, 0, combinedAlphaTexture.width, combinedAlphaTexture.height ), 0, 0 );
 			tempTex.Apply();
 			RenderTexture.active = null;
 
 			RenderTexture.ReleaseTemporary( combinedAlphaTexture );
 
-			Rect testRect = new Rect( 0, 0, tempTex.width, tempTex.height );
+			var testRect = new Rect( 0, 0, tempTex.width, tempTex.height );
 			Vector2[][] paths;
 			SpriteUtilityEx.GenerateOutline( tempTex, testRect, 0.2f, 0, false, out paths );
 			int sum = 0;
@@ -448,7 +448,7 @@ namespace AmplifyImpostors
 				sum += paths[ i ].Length;
 			}
 
-			Vector2[] minMaxPoints = new Vector2[ sum ];
+			var minMaxPoints = new Vector2[ sum ];
 			int index = 0;
 			for( int i = 0; i < paths.Length; i++ )
 			{
@@ -460,10 +460,10 @@ namespace AmplifyImpostors
 				}
 			}
 
-			Vector2 mins = Vector2.one;
-			Vector2 maxs = Vector2.zero;
+			var mins = Vector2.one;
+			var maxs = Vector2.zero;
 
-			for( int i = 0; i < minMaxPoints.Length; i++ )
+			for ( int i = 0; i < minMaxPoints.Length; i++ )
 			{
 				mins.x = Mathf.Min( minMaxPoints[ i ].x, mins.x );
 				mins.y = Mathf.Min( minMaxPoints[ i ].y, mins.y );
@@ -479,8 +479,8 @@ namespace AmplifyImpostors
 		// For inspector
 		public void RenderCombinedAlpha( AmplifyImpostorAsset data = null )
 		{
-			AmplifyImpostorAsset tempData = m_data;
-			if( data != null )
+			var tempData = m_data;
+			if ( data != null )
 				m_data = data;
 
 			CalculatePixelBounds( m_data.Preset.Output.Count );
@@ -495,7 +495,7 @@ namespace AmplifyImpostors
 
 			int alphaIndex = m_data.Preset.BakeShader == null ? 2 : m_data.Preset.AlphaIndex;
 
-			RenderTexture combinedAlphaTexture = RenderTexture.GetTemporary( MinAlphaResolution, MinAlphaResolution, m_alphaGBuffers[ alphaIndex ].depth, m_alphaGBuffers[ alphaIndex ].format );
+			var combinedAlphaTexture = RenderTexture.GetTemporary( MinAlphaResolution, MinAlphaResolution, m_alphaGBuffers[ alphaIndex ].depth, m_alphaGBuffers[ alphaIndex ].format );
 			PackingRemapping( ref m_alphaGBuffers[ alphaIndex ], ref combinedAlphaTexture, 8 );
 
 			ClearAlphaBuffers();
@@ -513,14 +513,14 @@ namespace AmplifyImpostors
 
 		public void CreateAssetFile( AmplifyImpostorAsset data = null )
 		{
-			string folderPath = this.OpenFolderForImpostor();
+			var folderPath = this.OpenFolderForImpostor();
 
-			if( string.IsNullOrEmpty( folderPath ) )
+			if ( string.IsNullOrEmpty( folderPath ) )
 				return;
 
-			string fileName = m_impostorName;
+			var fileName = m_impostorName;
 
-			if( string.IsNullOrEmpty( fileName ) )
+			if ( string.IsNullOrEmpty( fileName ) )
 				fileName = m_rootTransform.name + "_Impostor";
 
 			folderPath = folderPath.TrimEnd( new char[] { '/', '*', '.', ' ' } );
@@ -530,8 +530,8 @@ namespace AmplifyImpostors
 			if( m_data == null )
 			{
 				Undo.RegisterCompleteObjectUndo( this, "Create Impostor Asset" );
-				AmplifyImpostorAsset existingAsset = AssetDatabase.LoadAssetAtPath<AmplifyImpostorAsset>( folderPath + fileName + ".asset" );
-				if( existingAsset != null )
+				var existingAsset = AssetDatabase.LoadAssetAtPath<AmplifyImpostorAsset>( folderPath + fileName + ".asset" );
+				if ( existingAsset != null )
 				{
 					m_data = existingAsset;
 				}
@@ -553,8 +553,8 @@ namespace AmplifyImpostors
 		public void RenderAllDeferredGroups( AmplifyImpostorAsset data = null )
 		{
 			
-			string folderPath = m_folderPath;
-			if( m_data == null )
+			var folderPath = m_folderPath;
+			if ( m_data == null )
 			{
 				folderPath = this.OpenFolderForImpostor();
 			}
@@ -571,9 +571,9 @@ namespace AmplifyImpostors
 				return;
 
 			DisplayProgress( 0 );
-			string fileName = m_impostorName;
+			var fileName = m_impostorName;
 
-			if( string.IsNullOrEmpty( fileName ) )
+			if ( string.IsNullOrEmpty( fileName ) )
 				fileName = m_rootTransform.name + "_Impostor";
 
 			m_folderPath = folderPath;
@@ -585,8 +585,8 @@ namespace AmplifyImpostors
 			Undo.RegisterCompleteObjectUndo( this, "Create Impostor" );
 			if( m_data == null )
 			{
-				AmplifyImpostorAsset existingAsset = AssetDatabase.LoadAssetAtPath<AmplifyImpostorAsset>( folderPath + fileName + ".asset" );
-				if( existingAsset != null )
+				var existingAsset = AssetDatabase.LoadAssetAtPath<AmplifyImpostorAsset>( folderPath + fileName + ".asset" );
+				if ( existingAsset != null )
 				{
 					m_data = existingAsset;
 				}
@@ -615,8 +615,8 @@ namespace AmplifyImpostors
 			if( m_data.Preset.BakeShader == null )
 				standardRendering = true;
 
-			List<TextureOutput> outputList = new List<TextureOutput>();
-			for( int i = 0; i < m_data.Preset.Output.Count; i++ )
+			var outputList = new List<TextureOutput>();
+			for ( int i = 0; i < m_data.Preset.Output.Count; i++ )
 				outputList.Add( m_data.Preset.Output[ i ].Clone() );
 
 			for( int i = 0; i < m_data.OverrideOutput.Count && i < m_data.Preset.Output.Count; i++ )
@@ -636,7 +636,7 @@ namespace AmplifyImpostors
 			}
 			m_fileNames = new string[ outputList.Count ];
 
-			string guid = m_data.ImpostorType == ImpostorType.Spherical ? ShaderGUID : ShaderOctaGUID;
+			var guid = m_data.ImpostorType == ImpostorType.Spherical ? ShaderGUID : ShaderOctaGUID;
 
 			CalculatePixelBounds( outputList.Count );
 			DisplayProgress( 0.1f );
@@ -661,12 +661,12 @@ namespace AmplifyImpostors
 			if( standardRendering )
 			{
 				////// SHADER STUFF //////
-				Shader packerShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( PackerGUID ) );
-				Material packerMat = new Material( packerShader );
+				var packerShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( PackerGUID ) );
+				var packerMat = new Material( packerShader );
 
 				// Switch alpha with occlusion
-				RenderTexture tempTex = RenderTexture.GetTemporary( m_rtGBuffers[ 0 ].width, m_rtGBuffers[ 0 ].height, m_rtGBuffers[ 0 ].depth, m_rtGBuffers[ 0 ].format );
-				RenderTexture tempTex2 = RenderTexture.GetTemporary( m_rtGBuffers[ 3 ].width, m_rtGBuffers[ 3 ].height, m_rtGBuffers[ 3 ].depth, m_rtGBuffers[ 3 ].format );
+				var tempTex = RenderTexture.GetTemporary( m_rtGBuffers[ 0 ].width, m_rtGBuffers[ 0 ].height, m_rtGBuffers[ 0 ].depth, m_rtGBuffers[ 0 ].format );
+				var tempTex2 = RenderTexture.GetTemporary( m_rtGBuffers[ 3 ].width, m_rtGBuffers[ 3 ].height, m_rtGBuffers[ 3 ].depth, m_rtGBuffers[ 3 ].format );
 
 				packerMat.SetTexture( "_A", m_rtGBuffers[ 2 ] );
 				Graphics.Blit( m_rtGBuffers[ 0 ], tempTex, packerMat, 4 ); //A.b
@@ -705,11 +705,11 @@ namespace AmplifyImpostors
 				DestroyImmediate( packerMat );
 				packerMat = null;
 
-				Shader dilateShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( DilateGUID ) );
-				Material dilateMat = new Material( dilateShader );
+				var dilateShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( DilateGUID ) );
+				var dilateMat = new Material( dilateShader );
 
 				// Dilation
-				for( int i = 0; i < 4; i++ )
+				for ( int i = 0; i < 4; i++ )
 				{
 					if( outputList[ i ].Active )
 						DilateRenderTextureUsingMask( ref m_rtGBuffers[ i ], ref m_rtGBuffers[ alphaIndex ], m_data.PixelPadding, alphaIndex != i, dilateMat );
@@ -722,7 +722,7 @@ namespace AmplifyImpostors
 				{
 					if( outputList[ i ].Scale != TextureScale.Full )
 					{
-						RenderTexture resTex = RenderTexture.GetTemporary( m_rtGBuffers[ i ].width / (int)outputList[ i ].Scale, m_rtGBuffers[ i ].height / (int)outputList[ i ].Scale, m_rtGBuffers[ i ].depth, m_rtGBuffers[ i ].format );
+						var resTex = RenderTexture.GetTemporary( m_rtGBuffers[ i ].width / (int)outputList[ i ].Scale, m_rtGBuffers[ i ].height / (int)outputList[ i ].Scale, m_rtGBuffers[ i ].depth, m_rtGBuffers[ i ].format );
 						Graphics.Blit( m_rtGBuffers[ i ], resTex );
 						m_rtGBuffers[ i ].Release();
 						m_rtGBuffers[ i ] = new RenderTexture( resTex.width, resTex.height, m_rtGBuffers[ i ].depth, m_rtGBuffers[ i ].format );
@@ -735,11 +735,11 @@ namespace AmplifyImpostors
 			else
 			{
 
-				Shader dilateShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( DilateGUID ) );
-				Material dilateMat = new Material( dilateShader );
+				var dilateShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( DilateGUID ) );
+				var dilateMat = new Material( dilateShader );
 
 				// Dilation
-				for( int i = 0; i < outputList.Count; i++ )
+				for ( int i = 0; i < outputList.Count; i++ )
 				{
 					if( outputList[ i ].Active )
 						DilateRenderTextureUsingMask( ref m_rtGBuffers[ i ], ref m_rtGBuffers[ alphaIndex ], m_data.PixelPadding, alphaIndex != i, dilateMat );
@@ -753,7 +753,7 @@ namespace AmplifyImpostors
 				{
 					if( outputList[ i ].Scale != TextureScale.Full )
 					{
-						RenderTexture resTex = RenderTexture.GetTemporary( m_rtGBuffers[ i ].width / (int)outputList[ i ].Scale, m_rtGBuffers[ i ].height / (int)outputList[ i ].Scale, m_rtGBuffers[ i ].depth, m_rtGBuffers[ i ].format );
+						var resTex = RenderTexture.GetTemporary( m_rtGBuffers[ i ].width / (int)outputList[ i ].Scale, m_rtGBuffers[ i ].height / (int)outputList[ i ].Scale, m_rtGBuffers[ i ].depth, m_rtGBuffers[ i ].format );
 						Graphics.Blit( m_rtGBuffers[ i ], resTex );
 						m_rtGBuffers[ i ].Release();
 						m_rtGBuffers[ i ] = new RenderTexture( resTex.width, resTex.height, m_rtGBuffers[ i ].depth, m_rtGBuffers[ i ].format );
@@ -763,11 +763,11 @@ namespace AmplifyImpostors
 					}
 				}
 
-				Shader packerShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( PackerGUID ) );
-				Material packerMat = new Material( packerShader );
+				var packerShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( PackerGUID ) );
+				var packerMat = new Material( packerShader );
 
 				// TGA
-				for( int i = 0; i < outputList.Count; i++ )
+				for ( int i = 0; i < outputList.Count; i++ )
 				{
 					if( outputList[ i ].ImageFormat == ImageFormat.TGA )
 						PackingRemapping( ref m_rtGBuffers[ i ], ref m_rtGBuffers[ i ], 6, packerMat );
@@ -793,8 +793,8 @@ namespace AmplifyImpostors
 			{
 				defaultShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( guid ) );
 			}
-			Material material = m_data.Material;
-			if( material == null )
+			var material = m_data.Material;
+			if ( material == null )
 			{
 				material = new Material( defaultShader );
 				material.name = fileName;
@@ -885,16 +885,16 @@ namespace AmplifyImpostors
 			GameObject impostorObject = null;
 			DisplayProgress( 0.65f );
 			RenderCombinedAlpha();
-			Vector4 offsetCalc = transform.worldToLocalMatrix * new Vector4( m_originalBound.center.x, m_originalBound.center.y, m_originalBound.center.z, 1 );
-			Vector3 offset = new Vector3( offsetCalc.x, offsetCalc.y, offsetCalc.z );
+			var offsetCalc = transform.worldToLocalMatrix * new Vector4( m_originalBound.center.x, m_originalBound.center.y, m_originalBound.center.z, 1 );
+			var offset = new Vector3( offsetCalc.x, offsetCalc.y, offsetCalc.z );
 
 			bool justCreated = false;
 			UnityEngine.Object targetPrefab = null;
 			GameObject tempGO = null;
 
 
-			Mesh mesh = m_data.Mesh;
-			if( mesh == null )
+			var mesh = m_data.Mesh;
+			if ( mesh == null )
 			{
 				mesh = GenerateMesh( m_data.ShapePoints, offset, m_trueFitsize, m_trueFitsize, true );
 				mesh.name = fileName;
@@ -904,7 +904,7 @@ namespace AmplifyImpostors
 			}
 			else
 			{
-				Mesh tempmesh = GenerateMesh( m_data.ShapePoints, offset, m_trueFitsize, m_trueFitsize, true );
+				var tempmesh = GenerateMesh( m_data.ShapePoints, offset, m_trueFitsize, m_trueFitsize, true );
 				EditorUtility.CopySerialized( tempmesh, mesh );
 				mesh.vertices = tempmesh.vertices;
 				mesh.triangles = tempmesh.triangles;
@@ -923,7 +923,7 @@ namespace AmplifyImpostors
 				}
 				else
 				{
-					GameObject mainGO = new GameObject( "Impostor", new Type[] { typeof( MeshFilter ), typeof( MeshRenderer ) } );
+					var mainGO = new GameObject( "Impostor", new Type[] { typeof( MeshFilter ), typeof( MeshRenderer ) } );
 					impostorObject = mainGO;
 					justCreated = true;
 				}
@@ -957,10 +957,10 @@ namespace AmplifyImpostors
 					if( isPrefab )
 					{
 						targetPrefab = PrefabUtility.GetPrefabObject( ( Selection.activeObject as GameObject ).transform.root.gameObject );
-						GameObject targetGO = AssetDatabase.LoadAssetAtPath( folderPath + ( Selection.activeObject as GameObject ).transform.root.gameObject.name + ".prefab", typeof( GameObject ) ) as GameObject;
-						UnityEngine.Object inst = PrefabUtility.InstantiatePrefab( targetGO );
+						var targetGO = AssetDatabase.LoadAssetAtPath( folderPath + ( Selection.activeObject as GameObject ).transform.root.gameObject.name + ".prefab", typeof( GameObject ) ) as GameObject;
+						var inst = PrefabUtility.InstantiatePrefab( targetGO );
 						tempGO = inst as GameObject;
-						AmplifyImpostor ai = tempGO.GetComponentInChildren<AmplifyImpostor>();
+						var ai = tempGO.GetComponentInChildren<AmplifyImpostor>();
 						impostorObject.transform.SetParent( ai.LodGroup.transform );
 						ai.m_lastImpostor = impostorObject;
 						PrefabUtility.ReplacePrefab( tempGO, targetPrefab, ReplacePrefabOptions.ConnectToPrefab );
@@ -980,9 +980,9 @@ namespace AmplifyImpostors
 						break;
 						case LODReplacement.ReplaceCulled:
 						{
-							LOD[] lods = LodGroup.GetLODs();
+							var lods = LodGroup.GetLODs();
 							Array.Resize( ref lods, lods.Length + 1 );
-							LOD lastLOD = new LOD();
+							var lastLOD = new LOD();
 							lastLOD.screenRelativeTransitionHeight = 0;
 							lastLOD.renderers = impostorObject.GetComponents<Renderer>();
 							lods[ lods.Length - 1 ] = lastLOD;
@@ -991,9 +991,9 @@ namespace AmplifyImpostors
 						break;
 						case LODReplacement.ReplaceLast:
 						{
-							LOD[] lods = LodGroup.GetLODs();
+							var lods = LodGroup.GetLODs();
 
-							foreach( Renderer item in lods[ lods.Length - 1 ].renderers )
+							foreach ( Renderer item in lods[ lods.Length - 1 ].renderers )
 								item.enabled = false;
 
 							lods[ lods.Length - 1 ].renderers = impostorObject.GetComponents<Renderer>();
@@ -1002,8 +1002,8 @@ namespace AmplifyImpostors
 						break;
 						case LODReplacement.ReplaceAllExceptFirst:
 						{
-							LOD[] lods = LodGroup.GetLODs();
-							for( int i = lods.Length - 1; i > 0; i-- )
+							var lods = LodGroup.GetLODs();
+							for ( int i = lods.Length - 1; i > 0; i-- )
 							{
 								foreach( Renderer item in lods[ i ].renderers )
 									item.enabled = false;
@@ -1017,8 +1017,8 @@ namespace AmplifyImpostors
 						break;
 						case LODReplacement.ReplaceSpecific:
 						{
-							LOD[] lods = LodGroup.GetLODs();
-							foreach( Renderer item in lods[ m_insertIndex ].renderers )
+							var lods = LodGroup.GetLODs();
+							foreach ( Renderer item in lods[ m_insertIndex ].renderers )
 								item.enabled = false;
 
 							lods[ m_insertIndex ].renderers = impostorObject.GetComponents<Renderer>();
@@ -1027,8 +1027,8 @@ namespace AmplifyImpostors
 						break;
 						case LODReplacement.ReplaceAfterSpecific:
 						{
-							LOD[] lods = LodGroup.GetLODs();
-							for( int i = lods.Length - 1; i > m_insertIndex; i-- )
+							var lods = LodGroup.GetLODs();
+							for ( int i = lods.Length - 1; i > m_insertIndex; i-- )
 							{
 								foreach( Renderer item in lods[ i ].renderers )
 									item.enabled = false;
@@ -1044,7 +1044,7 @@ namespace AmplifyImpostors
 						break;
 						case LODReplacement.InsertAfter:
 						{
-							LOD[] lods = LodGroup.GetLODs();
+							var lods = LodGroup.GetLODs();
 							Array.Resize( ref lods, lods.Length + 1 );
 							for( int i = lods.Length - 1; i > m_insertIndex; i-- )
 							{
@@ -1135,12 +1135,12 @@ namespace AmplifyImpostors
 						tex = material.GetTexture( m_propertyNames[ i ] ) as Texture2D;
 					if( tex == null )
 					{
-						string filen = folderPath + fileName + m_standardFileNames[ i ] + ".tga";
+						var filen = folderPath + fileName + m_standardFileNames[ i ] + ".tga";
 						tex = AssetDatabase.LoadAssetAtPath<Texture2D>( filen );
 					}
 					if( tex == null )
 					{
-						string filen = folderPath + fileName + m_standardFileNames[ i ] + ".png";
+						var filen = folderPath + fileName + m_standardFileNames[ i ] + ".png";
 						tex = AssetDatabase.LoadAssetAtPath<Texture2D>( filen );
 					}
 					if( tex != null )
@@ -1222,14 +1222,14 @@ namespace AmplifyImpostors
 				return;
 
 			bool isStandardBake = customShader == null;
-			Dictionary<Material, Material> bakeMats = new Dictionary<Material, Material>();
+			var bakeMats = new Dictionary<Material, Material>();
 
-			CommandBuffer commandBuffer = new CommandBuffer();
-			if( impostorMaps )
+			var commandBuffer = new CommandBuffer();
+			if ( impostorMaps )
 			{
 				commandBuffer.name = "GBufferCatcher";
-				RenderTargetIdentifier[] rtIDs = new RenderTargetIdentifier[ targetAmount ];
-				for( int i = 0; i < targetAmount; i++ )
+				var rtIDs = new RenderTargetIdentifier[ targetAmount ];
+				for ( int i = 0; i < targetAmount; i++ )
 				{
 					rtIDs[ i ] = m_rtGBuffers[ i ];
 				}
@@ -1237,12 +1237,12 @@ namespace AmplifyImpostors
 				commandBuffer.ClearRenderTarget( true, true, Color.clear, 1 );
 			}
 
-			CommandBuffer commandAlphaBuffer = new CommandBuffer();
-			if( combinedAlphas )
+			var commandAlphaBuffer = new CommandBuffer();
+			if ( combinedAlphas )
 			{
 				commandAlphaBuffer.name = "DepthAlphaCatcher";
-				RenderTargetIdentifier[] rtIDsAlpha = new RenderTargetIdentifier[ targetAmount ];
-				for( int i = 0; i < targetAmount; i++ )
+				var rtIDsAlpha = new RenderTargetIdentifier[ targetAmount ];
+				for ( int i = 0; i < targetAmount; i++ )
 				{
 					rtIDsAlpha[ i ] = m_alphaGBuffers[ i ];
 				}
@@ -1264,29 +1264,29 @@ namespace AmplifyImpostors
 			{
 				for( int y = 0; y <= vframes; y++ )
 				{
-					Bounds frameBounds = new Bounds();
-					Matrix4x4 camMatrixRot = Matrix4x4.identity;
+					var frameBounds = new Bounds();
+					var camMatrixRot = Matrix4x4.identity;
 
-					if( impostorType == ImpostorType.Spherical ) //SPHERICAL
+					if ( impostorType == ImpostorType.Spherical ) //SPHERICAL
 					{
 						float fractionY = 0;
 						if( vframes > 0 )
 							fractionY = -( 180.0f / vframes );
-						Quaternion hRot = Quaternion.Euler( fractionY * y + StartYRotation, 0, 0 );
-						Quaternion vRot = Quaternion.Euler( 0, ( 360.0f / hframes ) * x + StartXRotation, 0 );
+						var hRot = Quaternion.Euler( fractionY * y + StartYRotation, 0, 0 );
+						var vRot = Quaternion.Euler( 0, ( 360.0f / hframes ) * x + StartXRotation, 0 );
 						camMatrixRot = Matrix4x4.Rotate( hRot * vRot );
 
 					}
 					else if( impostorType == ImpostorType.Octahedron ) //OCTAHEDRON
 					{
-						Vector3 forw = OctahedronToVector( ( (float)( x ) / ( (float)hframes - 1 ) ) * 2f - 1f, ( (float)( y ) / ( (float)vframes - 1 ) ) * 2f - 1f );
-						Quaternion octa = Quaternion.LookRotation( new Vector3( forw.x * -1, forw.z * -1, forw.y * -1 ), Vector3.up );
+						var forw = OctahedronToVector( ( (float)( x ) / ( (float)hframes - 1 ) ) * 2f - 1f, ( (float)( y ) / ( (float)vframes - 1 ) ) * 2f - 1f );
+						var octa = Quaternion.LookRotation( new Vector3( forw.x * -1, forw.z * -1, forw.y * -1 ), Vector3.up );
 						camMatrixRot = Matrix4x4.Rotate( octa ).inverse;
 					}
 					else if( impostorType == ImpostorType.HemiOctahedron ) //HEMIOCTAHEDRON
 					{
-						Vector3 forw = HemiOctahedronToVector( ( (float)( x ) / ( (float)hframes - 1 ) ) * 2f - 1f, ( (float)( y ) / ( (float)vframes - 1 ) ) * 2f - 1f );
-						Quaternion octa = Quaternion.LookRotation( new Vector3( forw.x * -1, forw.z * -1, forw.y * -1 ), Vector3.up );
+						var forw = HemiOctahedronToVector( ( (float)( x ) / ( (float)hframes - 1 ) ) * 2f - 1f, ( (float)( y ) / ( (float)vframes - 1 ) ) * 2f - 1f );
+						var octa = Quaternion.LookRotation( new Vector3( forw.x * -1, forw.z * -1, forw.y * -1 ), Vector3.up );
 						camMatrixRot = Matrix4x4.Rotate( octa ).inverse;
 					}
 
@@ -1306,11 +1306,11 @@ namespace AmplifyImpostors
 
 					frameBounds = frameBounds.Transform( camMatrixRot * m_rootTransform.worldToLocalMatrix );
 
-					Matrix4x4 V = camMatrixRot.inverse * Matrix4x4.LookAt( frameBounds.center - new Vector3( 0, 0, m_depthFitsize * 0.5f ), frameBounds.center, Vector3.up );
+					var V = camMatrixRot.inverse * Matrix4x4.LookAt( frameBounds.center - new Vector3( 0, 0, m_depthFitsize * 0.5f ), frameBounds.center, Vector3.up );
 					float fitSize = m_trueFitsize * 0.5f;
 
-					Matrix4x4 P = Matrix4x4.Ortho( -fitSize, fitSize, -fitSize, fitSize, 0, -m_depthFitsize );
-					
+					var P = Matrix4x4.Ortho( -fitSize, fitSize, -fitSize, fitSize, 0, -m_depthFitsize );
+
 					commandBuffer.SetGlobalVector( "_WorldSpaceCameraPos", V.MultiplyVector( Vector3.forward ) * -m_depthFitsize );
 					
 					// Revisit this later
@@ -1343,8 +1343,8 @@ namespace AmplifyImpostors
 						if( !Renderers[ j ].enabled || Renderers[ j ].shadowCastingMode == ShadowCastingMode.ShadowsOnly )
 							continue;
 
-						Transform childTransform = Renderers[ j ].transform;
-						Material[] meshMaterials = Renderers[ j ].sharedMaterials;
+						var childTransform = Renderers[ j ].transform;
+						var meshMaterials = Renderers[ j ].sharedMaterials;
 
 						// skip non-meshes, for now
 						var meshFilter = childTransform.GetComponent<MeshFilter>();
@@ -1356,7 +1356,7 @@ namespace AmplifyImpostors
 						for( int k = 0; k < meshMaterials.Length; k++ )
 						{
 							Material renderMaterial = null;
-							Mesh mesh = meshFilter.sharedMesh;
+							var mesh = meshFilter.sharedMesh;
 							int pass = 0;
 							if( isStandardBake )
 							{
@@ -1369,8 +1369,8 @@ namespace AmplifyImpostors
 									pass = 0;
 									for( int sp = 0; sp < renderMaterial.passCount; sp++ )
 									{
-										string lightmode = renderMaterial.GetTag( "LightMode", true );
-										if( lightmode.Equals( "Deferred" ) )
+										var lightmode = renderMaterial.GetTag( "LightMode", true );
+										if ( lightmode.Equals( "Deferred" ) )
 										{
 											pass = sp;
 											break;
@@ -1393,8 +1393,8 @@ namespace AmplifyImpostors
 								}
 							}
 
-							Matrix4x4 localMatrix = m_rootTransform.worldToLocalMatrix * childTransform.localToWorldMatrix;
-							if( impostorMaps )
+							var localMatrix = m_rootTransform.worldToLocalMatrix * childTransform.localToWorldMatrix;
+							if ( impostorMaps )
 								commandBuffer.DrawMesh( mesh, localMatrix, renderMaterial, k, pass );
 
 							if( combinedAlphas )
@@ -1413,8 +1413,8 @@ namespace AmplifyImpostors
 
 			foreach( var pair in bakeMats )
 			{
-				Material bakeMat = pair.Value;
-				if( bakeMat != null )
+				var bakeMat = pair.Value;
+				if ( bakeMat != null )
 				{
 					DestroyImmediate( bakeMat );
 					bakeMat = null;
@@ -1431,7 +1431,7 @@ namespace AmplifyImpostors
 
 		private Vector3 OctahedronToVector( Vector2 oct )
 		{
-			Vector3 N = new Vector3( oct.x, oct.y, 1.0f - Mathf.Abs( oct.x ) - Mathf.Abs( oct.y ) );
+			var N = new Vector3( oct.x, oct.y, 1.0f - Mathf.Abs( oct.x ) - Mathf.Abs( oct.y ) );
 			float t = Mathf.Clamp01( -N.z );
 			N.Set( N.x + ( N.x >= 0.0f ? -t : t ), N.y + ( N.y >= 0.0f ? -t : t ), N.z );
 			N = Vector3.Normalize( N );
@@ -1440,7 +1440,7 @@ namespace AmplifyImpostors
 
 		private Vector3 OctahedronToVector( float x, float y )
 		{
-			Vector3 N = new Vector3( x, y, 1.0f - Mathf.Abs( x ) - Mathf.Abs( y ) );
+			var N = new Vector3( x, y, 1.0f - Mathf.Abs( x ) - Mathf.Abs( y ) );
 			float t = Mathf.Clamp01( -N.z );
 			N.Set( N.x + ( N.x >= 0.0f ? -t : t ), N.y + ( N.y >= 0.0f ? -t : t ), N.z );
 			N = Vector3.Normalize( N );
@@ -1454,15 +1454,15 @@ namespace AmplifyImpostors
 
 			x = ( tempx + tempy ) * 0.5f;
 			y = ( tempx - tempy ) * 0.5f;
-			Vector3 N = new Vector3( x, y, 1.0f - Mathf.Abs( x ) - Mathf.Abs( y ) );
+			var N = new Vector3( x, y, 1.0f - Mathf.Abs( x ) - Mathf.Abs( y ) );
 			N = Vector3.Normalize( N );
 			return N;
 		}
 
 		public Mesh GenerateMesh( Vector2[] points, Vector3 offset, float width = 1, float height = 1, bool invertY = true )
 		{
-			Vector2[] newPoints = new Vector2[ points.Length ];
-			Vector2[] UVs = new Vector2[ points.Length ];
+			var newPoints = new Vector2[ points.Length ];
+			var UVs = new Vector2[ points.Length ];
 			Array.Copy( points, newPoints, points.Length );
 			float halfWidth = width * 0.5f;
 			float halfHeight = height * 0.5f;
@@ -1482,11 +1482,11 @@ namespace AmplifyImpostors
 				newPoints[ i ] = new Vector2( newPoints[ i ].x * width - halfWidth, newPoints[ i ].y * height - halfHeight );
 			}
 
-			Triangulator tr = new Triangulator( newPoints );
-			int[] indices = tr.Triangulate();
+			var tr = new Triangulator( newPoints );
+			var indices = tr.Triangulate();
 
-			Vector3[] vertices = new Vector3[ tr.Points.Count ];
-			for( int i = 0; i < vertices.Length; i++ )
+			var vertices = new Vector3[ tr.Points.Count ];
+			for ( int i = 0; i < vertices.Length; i++ )
 			{
 				vertices[ i ] = new Vector3( tr.Points[ i ].x, tr.Points[ i ].y, 0 );
 			}
@@ -1497,7 +1497,7 @@ namespace AmplifyImpostors
 			//	tangents[ i ] = new Vector4( 1, 0, 0, 1 );
 			//}
 
-			Mesh mesh = new Mesh();
+			var mesh = new Mesh();
 			mesh.vertices = vertices;
 			mesh.uv = UVs;
 			//mesh.tangents = tangents;

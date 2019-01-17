@@ -42,7 +42,7 @@ namespace MapMagicDemo
 			if (hero == null) hero = transform;
 
 			//taking capsule params
-			CapsuleCollider capsuleCollider = hero.GetComponent<CapsuleCollider>();
+			var capsuleCollider = hero.GetComponent<CapsuleCollider>();
 			if (capsuleCollider != null)
 			{
 				capsuleP1 = capsuleCollider.center + Vector3.up*(capsuleCollider.height/2-capsuleCollider.radius);
@@ -65,11 +65,11 @@ namespace MapMagicDemo
 			else lookDir = hero.transform.forward;
 			
 			lookDir = lookDir.normalized;
-			Vector3 strafeDir= Vector3.Cross(Vector3.up, lookDir);
-	
+			var strafeDir= Vector3.Cross(Vector3.up, lookDir);
+
 			//moving
-			Vector3 direction = new Vector3(0,0,0);
-	
+			var direction = new Vector3(0,0,0);
+
 			if (Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.UpArrow)) {direction += lookDir; }
 			if (Input.GetKey (KeyCode.S) || Input.GetKey (KeyCode.DownArrow)) {direction -= lookDir; }
 			if (Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.RightArrow)) {direction += strafeDir; }
@@ -96,8 +96,8 @@ namespace MapMagicDemo
 
 			for (int i=0; i<numSteps; i++)
 			{			
-				Vector3 initialPos = pos; //to prevent stuck
-			
+				var initialPos = pos; //to prevent stuck
+
 				//adjusting velocity
 				if (direction.sqrMagnitude > 0.01f) //if moving
 				{
@@ -106,7 +106,7 @@ namespace MapMagicDemo
 				}
 				else 
 				{
-					Vector3 velocityModifier = velocity.normalized*acceleration*stepTime;
+					var velocityModifier = velocity.normalized*acceleration*stepTime;
 					if (velocity.sqrMagnitude > velocityModifier.sqrMagnitude) velocity -= velocityModifier; //if still moving
 					else velocity = Vector3.zero;
 				}
@@ -120,7 +120,7 @@ namespace MapMagicDemo
 					forceVelocity += Vector3.down*stepTime*9.8f; //accelerating fall
 					if (forceVelocity.y*stepTime > capsuleR) forceVelocity.y = capsuleR/stepTime; //limiting velocity
 				
-					Vector3 fallPos = pos + forceVelocity*stepTime;
+					var fallPos = pos + forceVelocity*stepTime;
 
 					if (!Physics.CheckSphere(fallPos+capsuleP2, capsuleR) && !Physics.CheckSphere(fallPos+capsuleP1, capsuleR) ) //maybe capsuleP1 is not necessary
 						{ pos = fallPos; inAir = true; } //falling if nothing under feet
@@ -150,15 +150,15 @@ namespace MapMagicDemo
 				{ return pos + moveVector; }
 
 			//preparing vectors
-			Vector3 perpHor = Vector3.Cross(moveVector, Vector3.up).normalized;
-			Vector3 perpVert = Vector3.Cross(moveVector, perpHor).normalized;
+			var perpHor = Vector3.Cross(moveVector, Vector3.up).normalized;
+			var perpVert = Vector3.Cross(moveVector, perpHor).normalized;
 			float moveDist = moveVector.magnitude;
 	
 			//if char cannot go straight - finding alternative position	
 			for (float i=0.5f; i<100f; i=i*1.5f+0.5f)	
 				for (int dir=0; dir<8; dir++)
 				{
-					Vector3 possibleDir = (moveVector + perpHor*searchDirHor[dir]*i*moveDist*0.1f + perpVert*searchDirVert[dir]*i*moveDist*0.1f).normalized;
+					var possibleDir = (moveVector + perpHor*searchDirHor[dir]*i*moveDist*0.1f + perpVert*searchDirVert[dir]*i*moveDist*0.1f).normalized;
 					possibleDir *= Vector3.Dot(moveVector, possibleDir);
 					//possibleDir = possibleDir*0.5f + possibleDir.normalized*moveDist * 0.5f;
 
@@ -180,7 +180,7 @@ namespace MapMagicDemo
 						if (xi%2 == 0) x=xi*xi; else x=-(xi+1)*(xi+1);
 						if (zi%2 == 0) z=zi*zi; else z=-(zi+1)*(zi+1);
 				
-						Vector3 dir = (new Vector3(x,150,z)).normalized;
+						var dir = (new Vector3(x,150,z)).normalized;
 						dir.y -= 0.5f;
 						dir = dir.normalized * dist;
 

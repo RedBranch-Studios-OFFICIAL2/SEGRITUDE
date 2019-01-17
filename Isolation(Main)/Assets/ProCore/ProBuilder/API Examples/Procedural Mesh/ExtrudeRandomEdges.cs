@@ -36,17 +36,17 @@ public class ExtrudeRandomEdges : MonoBehaviour
 
 	void ExtrudeEdge()
 	{
-		pb_Face sourceFace = lastExtrudedFace;
+		var sourceFace = lastExtrudedFace;
 
 		// fetch a random perimeter edge connected to the last face extruded
-		List<pb_WingedEdge> wings = pb_WingedEdge.GetWingedEdges(pb);
-		IEnumerable<pb_WingedEdge> sourceWings = wings.Where(x => x.face == sourceFace);
-		List<pb_Edge> nonManifoldEdges = sourceWings.Where(x => x.opposite == null).Select(y => y.edge.local).ToList();
+		var wings = pb_WingedEdge.GetWingedEdges(pb);
+		var sourceWings = wings.Where(x => x.face == sourceFace);
+		var nonManifoldEdges = sourceWings.Where(x => x.opposite == null).Select(y => y.edge.local).ToList();
 		int rand = (int) Random.Range(0, nonManifoldEdges.Count);
-		pb_Edge sourceEdge = nonManifoldEdges[rand];
+		var sourceEdge = nonManifoldEdges[rand];
 
 		// get the direction this edge should extrude in
-		Vector3 dir = ((pb.vertices[sourceEdge.x] + pb.vertices[sourceEdge.y]) * .5f) - sourceFace.distinctIndices.Average(x => pb.vertices[x]);
+		var dir = ((pb.vertices[sourceEdge.x] + pb.vertices[sourceEdge.y]) * .5f) - sourceFace.distinctIndices.Average(x => pb.vertices[x]);
 		dir.Normalize();
 
 		// this will be populated with the extruded edge

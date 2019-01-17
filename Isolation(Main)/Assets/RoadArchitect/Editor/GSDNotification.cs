@@ -8,8 +8,8 @@ using System.Collections;
 public class GSDNotification : EditorWindow{
     string notification = "This is a Notification";
     static void Initialize() {
-       	GSDNotification window = EditorWindow.GetWindow<GSDNotification>();
-        window.Show();
+       	var window = EditorWindow.GetWindow<GSDNotification>();
+		window.Show();
     }
     
     void OnGUI() {

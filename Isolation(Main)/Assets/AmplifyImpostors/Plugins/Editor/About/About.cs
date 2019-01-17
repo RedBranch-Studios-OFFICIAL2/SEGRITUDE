@@ -21,7 +21,7 @@ namespace AmplifyImpostors
 		[MenuItem( "Window/Amplify Impostors/About...", false, 21 )]
 		static void Init()
 		{
-			About window = (About)GetWindow( typeof( About ), true, "About Amplify Impostors" );
+			var window = (About)GetWindow( typeof( About ), true, "About Amplify Impostors" );
 			window.minSize = new Vector2( 502, 250 );
 			window.maxSize = new Vector2( 502, 250 );
 			window.Show();
@@ -50,7 +50,7 @@ namespace AmplifyImpostors
 			GUILayout.FlexibleSpace();
 			GUILayout.EndHorizontal();
 
-			GUIStyle labelStyle = new GUIStyle( EditorStyles.label );
+			var labelStyle = new GUIStyle( EditorStyles.label );
 			labelStyle.alignment = TextAnchor.MiddleCenter;
 			labelStyle.wordWrap = true;
 

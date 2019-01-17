@@ -345,8 +345,8 @@ namespace MapMagic
 					for (int j=0; j<heights.count; j++)
 					{
 						int pos = order[j];
-						Coord coord = heights.rect.CoordByNum(pos);
-						if (!area.CheckInRangeAndBounds(coord)) order[j] = -1;
+						var coord = heights.rect.CoordByNum(pos);
+				if (!area.CheckInRangeAndBounds(coord)) order[j] = -1;
 					}
 
 				#endregion
@@ -378,7 +378,7 @@ namespace MapMagic
 						*/
 
 						//getting height values
-						float[] m = heights.array; int i=pos; int sizeX = heights.rect.size.x;
+						var m = heights.array; int i=pos; int sizeX = heights.rect.size.x;
 						float h = m[i]; float hx = m[i-1]; float hX = m[i+1]; float hz = m[i-sizeX]; float hZ = m[i+sizeX];
 						float hxz = m[i-1-sizeX]; float hXz = m[i+1-sizeX]; float hxZ = m[i-1+sizeX]; float hXZ = m[i+1+sizeX]; 
 
@@ -444,7 +444,7 @@ namespace MapMagic
 						*/
 
 						//getting height values
-						float[] m = heights.array; int i=pos; int sizeX = heights.rect.size.x;
+						var m = heights.array; int i=pos; int sizeX = heights.rect.size.x;
 						float h = m[i]; float hx = m[i-1]; float hX = m[i+1]; float hz = m[i-sizeX]; float hZ = m[i+sizeX];
 
 						//height minimum
@@ -532,7 +532,7 @@ namespace MapMagic
 						
 
 						//getting height values
-						float[] m = heights.array; int sizeX = heights.rect.size.x;
+						var m = heights.array; int sizeX = heights.rect.size.x;
 						float h = m[pos]; float hx = m[pos-1]; float hX = m[pos+1]; float hz = m[pos-sizeX]; float hZ = m[pos+sizeX];
 
 						//getting sediment values
@@ -633,7 +633,7 @@ namespace MapMagic
 					int pos = order[j];
 					if (pos<0) continue;
 
-					float[] m = heights.array; int sizeX = heights.rect.size.x;
+					var m = heights.array; int sizeX = heights.rect.size.x;
 					float h = m[pos]; float hx = m[pos-1]; float hX = m[pos+1]; float hz = m[pos-sizeX]; float hZ = m[pos+sizeX];
 
 					//smoothing sediments a bit

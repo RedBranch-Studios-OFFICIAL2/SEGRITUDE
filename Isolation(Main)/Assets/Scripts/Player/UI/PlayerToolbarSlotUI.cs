@@ -11,7 +11,7 @@ namespace Segritude.Player.UI
 			{
 				Stack = InventoryUI.CurrentDrag;
 				InventoryUI.CurrentDrag = null;
-				Player.Instance.ToolBar[Index] = Stack;
+				PlayerBehaviour.Instance.ToolBar[Index] = Stack;
 				Manager.UpdateUI();
 			}
 			else
@@ -19,8 +19,8 @@ namespace Segritude.Player.UI
 				var previous = Stack;
 				Stack = InventoryUI.CurrentDrag;
 				InventoryUI.CurrentDrag = null;
-				Player.Instance.ToolBar[Index] = Stack;
-				Player.Instance.Inventory.AddItem(previous);
+				PlayerBehaviour.Instance.ToolBar[Index] = Stack;
+				PlayerBehaviour.Instance.Inventory.AddItem(previous);
 			}
 		}
 
@@ -31,7 +31,7 @@ namespace Segritude.Player.UI
 			{
 				InventoryUI.CurrentDrag = null;
 				Stack = null;
-				Player.Instance.ToolBar[Index] = null;
+				PlayerBehaviour.Instance.ToolBar[Index] = null;
 				Manager.UpdateUI();
 			}
 		}

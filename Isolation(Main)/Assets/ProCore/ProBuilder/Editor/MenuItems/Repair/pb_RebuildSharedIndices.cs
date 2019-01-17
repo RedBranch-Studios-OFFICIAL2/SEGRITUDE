@@ -40,8 +40,8 @@ namespace ProBuilder2.Actions
 						((float)i / targets.Length));
 				}
 
-				pb_Object pb = targets[i];
-				
+				var pb = targets[i];
+
 				try
 				{
 	 				pb.SetSharedIndices(pb_IntArrayUtility.ExtractSharedIndices(pb.vertices));					

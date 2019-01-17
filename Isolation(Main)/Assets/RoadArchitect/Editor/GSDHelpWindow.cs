@@ -24,7 +24,7 @@ public class GSDHelpWindow : EditorWindow{
 	
 	#region "Init"
 	public void Initialize(){
-		Rect fRect = new Rect(340,170,420,180);
+		var fRect = new Rect(340,170,420,180);
 		position = fRect;
         Show();
         titleContent.text = "Help Info";

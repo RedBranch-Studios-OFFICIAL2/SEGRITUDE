@@ -1083,7 +1083,7 @@ public class GSDRoadEditor : Editor {
 	}
 
     public void OnSceneGUI() {
-		Event current = Event.current;
+		var current = Event.current;
 		int controlID = GUIUtility.GetControlID(GetHashCode(), FocusType.Passive);
 
 		if(current.alt == true){ return; }
@@ -1098,7 +1098,7 @@ public class GSDRoadEditor : Editor {
 			// Only handle MouseMove and MouseDrag events
 			if (Event.current.type == EventType.MouseMove || Event.current.type == EventType.MouseDrag){
 				if (current.control){
-					Ray worldRay = HandleUtility.GUIPointToWorldRay (Event.current.mousePosition);
+					var worldRay = HandleUtility.GUIPointToWorldRay (Event.current.mousePosition);
 					RaycastHit hitInfo;
 					if (Physics.Raycast (worldRay, out hitInfo)){
 						if(hitInfo.collider.transform.GetComponent<Terrain>() != null || hitInfo.collider.transform.name.ToLower().Contains("terrain")){
@@ -1118,7 +1118,7 @@ public class GSDRoadEditor : Editor {
 					
 					GUI.changed = true;
 				}else if(current.shift){
-					Ray worldRay = HandleUtility.GUIPointToWorldRay (Event.current.mousePosition);
+					var worldRay = HandleUtility.GUIPointToWorldRay (Event.current.mousePosition);
 					RaycastHit hitInfo;
 					if (Physics.Raycast (worldRay, out hitInfo)){
 						if(hitInfo.collider.transform.GetComponent<Terrain>() != null){
@@ -1232,7 +1232,7 @@ public class GSDRoadEditor : Editor {
 	}
 	
 	void SetSelectionToRoad(){
-		GameObject[] tObjs = new GameObject[1];
+		var tObjs = new GameObject[1];
 		tObjs[0] = RS.transform.gameObject;
 		Selection.objects = tObjs;
 	}
@@ -1249,7 +1249,7 @@ public class GSDRoadEditor : Editor {
 	/// </param>
 	void GSDProgressBar (float tV, string tL) {
 		// Get a rect for the progress bar using the same margins as a textfield:
-		Rect rect = GUILayoutUtility.GetRect (18, 18, "TextField");
+		var rect = GUILayoutUtility.GetRect (18, 18, "TextField");
 		EditorGUI.ProgressBar (rect, tV, tL);
 		EditorGUILayout.Space ();
 	}

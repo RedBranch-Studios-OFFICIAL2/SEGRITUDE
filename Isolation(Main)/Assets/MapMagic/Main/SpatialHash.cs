@@ -57,8 +57,8 @@ namespace MapMagic
 			for (int x=0; x<resolution; x++)
 				for (int y=0; y<resolution; y++)
 			{
-				Cell cell = new Cell();
-				cell.min = new Vector2(x*cellSize, y*cellSize) + offset;
+				var cell = new Cell();
+					cell.min = new Vector2(x*cellSize, y*cellSize) + offset;
 				cell.max = new Vector2((x+1)*cellSize, (y+1)*cellSize) + offset;
 				cell.objs = new List<SpatialObject>();
 				cells[y*resolution + x] = cell;
@@ -67,14 +67,14 @@ namespace MapMagic
 
 		public SpatialHash Copy ()
 		{
-			SpatialHash result = new SpatialHash(offset, size, resolution);
+			var result = new SpatialHash(offset, size, resolution);
 			for (int i=0; i<cells.Length; i++) 
 			{
 				result.cells[i].min = cells[i].min;
 				result.cells[i].max = cells[i].max;
 				result.cells[i].objs = new List<SpatialObject>(cells[i].objs);
 
-				List<SpatialObject> objs = result.cells[i].objs;
+				var objs = result.cells[i].objs;
 				for (int o=objs.Count-1; o>=0; o--) objs[o] = objs[o].Copy();
 			}
 			result.Count = Count;
@@ -96,8 +96,8 @@ namespace MapMagic
 
 		public void ChangeResolution (int newResolution)
 		{
-			SpatialHash newHash = new SpatialHash(offset,size,newResolution);
-			
+			var newHash = new SpatialHash(offset,size,newResolution);
+
 			foreach (SpatialObject obj in AllObjs())
 				newHash.Add(obj);
 
@@ -111,8 +111,8 @@ namespace MapMagic
 			{
 				for (int c=0; c<cells.Length; c++)
 				{
-					List<SpatialObject> list = cells[c].objs;
-					for (int i=list.Count-1; i>=0; i--) //inverse order, member could be removed
+					var list = cells[c].objs;
+				for (int i=list.Count-1; i>=0; i--) //inverse order, member could be removed
 						yield return list[i];
 				}
 			}
@@ -121,8 +121,8 @@ namespace MapMagic
 			{
 				for (int c=0; c<cells.Length; c++)
 				{
-					Cell cell = cells[c];
-					int objsCount = cell.objs.Count;
+					var cell = cells[c];
+				int objsCount = cell.objs.Count;
 					for (int i=0; i<objsCount; i++)
 						yield return cell.objs[i];
 				}
@@ -130,16 +130,16 @@ namespace MapMagic
 
 			public IEnumerable<SpatialObject> ObjsInCell(int cellNum)
 			{
-				Cell cell = cells[cellNum];
-				int objsCount = cell.objs.Count;
+				var cell = cells[cellNum];
+			int objsCount = cell.objs.Count;
 				for (int i=0; i<objsCount; i++)
 					yield return cell.objs[i];
 			}
 
 			public IEnumerable<SpatialObject> ObjsInCell(Vector2 point)
 			{
-				Cell cell = GetCellByPoint(point);
-				int objsCount = cell.objs.Count;
+				var cell = GetCellByPoint(point);
+			int objsCount = cell.objs.Count;
 				for (int i=0; i<objsCount; i++)
 					yield return cell.objs[i];
 			}
@@ -182,8 +182,8 @@ namespace MapMagic
 			{
 				foreach (int num in CellNumsInRect(min,max))
 				{
-					List<SpatialObject> objs = cells[num].objs;
-					int objsCount = objs.Count;
+					var objs = cells[num].objs;
+				int objsCount = objs.Count;
 					for (int i=0; i<objsCount; i++)
 						yield return objs[i];
 				}
@@ -191,13 +191,13 @@ namespace MapMagic
 
 			public IEnumerable<SpatialObject> ObjsInRange(Vector2 pos, float range) 
 			{
-				Vector2 min = new Vector2(pos.x-range, pos.y-range);
-				Vector2 max = new Vector2(pos.x+range, pos.y+range);
+				var min = new Vector2(pos.x-range, pos.y-range);
+			var max = new Vector2(pos.x+range, pos.y+range);
 
-				foreach (int num in CellNumsInRect(min,max))
+			foreach (int num in CellNumsInRect(min,max))
 				{
-					List<SpatialObject> objs = cells[num].objs;
-					int objsCount = objs.Count;
+					var objs = cells[num].objs;
+				int objsCount = objs.Count;
 					for (int i=0; i<objsCount; i++)
 					//for (int i=objs.Count-1; i>=0; i--)
 						if ((pos-objs[i].pos).sqrMagnitude < range*range) yield return objs[i];
@@ -206,26 +206,26 @@ namespace MapMagic
 
 			public void RemoveObjsInRange(Vector2 pos, float range) 
 			{
-				Vector2 min = new Vector2(pos.x-range, pos.y-range);
-				Vector2 max = new Vector2(pos.x+range, pos.y+range);
+				var min = new Vector2(pos.x-range, pos.y-range);
+			var max = new Vector2(pos.x+range, pos.y+range);
 
-				foreach (int num in CellNumsInRect(min,max))
+			foreach (int num in CellNumsInRect(min,max))
 				{
-					List<SpatialObject> objs = cells[num].objs;
-					for (int i=objs.Count-1; i>=0; i--)
+					var objs = cells[num].objs;
+				for (int i=objs.Count-1; i>=0; i--)
 						if ((pos-objs[i].pos).sqrMagnitude < range*range) objs.RemoveAt(i);
 				}
 			}
 
 			public bool IsAnyObjInRange (Vector2 pos, float range) 
 			{
-				Vector2 min = new Vector2(pos.x-range, pos.y-range);
-				Vector2 max = new Vector2(pos.x+range, pos.y+range);
+				var min = new Vector2(pos.x-range, pos.y-range);
+			var max = new Vector2(pos.x+range, pos.y+range);
 
-				foreach (int num in CellNumsInRect(min,max))
+			foreach (int num in CellNumsInRect(min,max))
 				{
-					List<SpatialObject> objs = cells[num].objs;
-					int objsCount = objs.Count;
+					var objs = cells[num].objs;
+				int objsCount = objs.Count;
 					for (int i=0; i<objsCount; i++)
 						if ((pos-objs[i].pos).sqrMagnitude < range*range) return true;
 				}
@@ -247,8 +247,8 @@ namespace MapMagic
 
 		public void Add (SpatialObject obj, Vector2 pos, float extend)
 		{
-			Vector2 min = pos - new Vector2(extend,extend);
-			Vector2 max = pos + new Vector2(extend,extend);
+			var min = pos - new Vector2(extend,extend);
+			var max = pos + new Vector2(extend,extend);
 			foreach (int cellNum in CellNumsInRect(min,max))	cells[cellNum].objs.Add(obj);
 			Count++;
 		}
@@ -283,8 +283,8 @@ namespace MapMagic
 			float minDist = 20000000;
 			SpatialObject closest = null;
 
-			Vector2 min = new Vector2(pos.x-range, pos.y-range);
-			Vector2 max = new Vector2(pos.x+range, pos.y+range);
+			var min = new Vector2(pos.x-range, pos.y-range);
+			var max = new Vector2(pos.x+range, pos.y+range);
 
 			foreach (SpatialObject coord in ObjsInRect(min,max))
 			{
@@ -314,16 +314,16 @@ namespace MapMagic
 
 			while (searchDist <= maxSearchDist)
 			{
-				Vector2 min = new Vector2(pos.x-searchDist, pos.y-searchDist);
-				Vector2 max = new Vector2(pos.x+searchDist, pos.y+searchDist);
+				var min = new Vector2(pos.x-searchDist, pos.y-searchDist);
+				var max = new Vector2(pos.x+searchDist, pos.y+searchDist);
 
 				foreach (int cellNum in CellNumsInRect(min, max, inCenter:false))
 				{
-					Cell cell = cells[cellNum];
+					var cell = cells[cellNum];
 					int cellObjsCount = cell.objs.Count;
 					for (int i=0; i<cellObjsCount; i++)
 					{
-						SpatialObject obj = cell.objs[i];
+						var obj = cell.objs[i];
 						float dist = (obj.pos-pos).sqrMagnitude;
 						if (dist < minDist)
 						{
@@ -358,7 +358,7 @@ namespace MapMagic
 
 		public float MinDist (Vector2 p, bool skipSelf=true) 
 		{ 
-			SpatialObject closest = Closest(p,skipSelf);
+			var closest = Closest(p,skipSelf);
 			if (closest == null) return 20000000;
 			else return (p-closest.pos).magnitude; 
 		}

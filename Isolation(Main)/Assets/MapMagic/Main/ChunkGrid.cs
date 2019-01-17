@@ -46,9 +46,9 @@ namespace MapMagic
 		{get{
 			if (typeof(T).BaseType == typeof(MonoBehaviour))
 			{
-				GameObject go = new GameObject();
-				//if (parent != null) go.transform.parent = parent.transform;
-				return (T)(object)go.AddComponent(typeof(T));
+				var go = new GameObject();
+					//if (parent != null) go.transform.parent = parent.transform;
+					return (T)(object)go.AddComponent(typeof(T));
 			}
 			else return new T();
 		}}
@@ -64,8 +64,8 @@ namespace MapMagic
 
 		public IEnumerable<T> WithinRect (CoordRect rect, bool skipMissing=true)
 		{
-			Coord min = rect.Min;
-			Coord max = rect.Max;
+			var min = rect.Min;
+			var max = rect.Max;
 
 			for (int bx=min.x; bx<max.x; bx++)
 				for (int bz=min.z; bz<max.z; bz++)
@@ -86,7 +86,7 @@ namespace MapMagic
 		{
 			foreach(KeyValuePair<int,T> kvp in grid)
 			{
-				T obj = kvp.Value;
+				var obj = kvp.Value;
 				if (!pinnedOnly || obj.pinned) yield return obj;
 			}
 		}
@@ -95,7 +95,7 @@ namespace MapMagic
 		{
 			foreach(KeyValuePair<int,T> kvp in grid)
 			{
-				T obj = kvp.Value;
+				var obj = kvp.Value;
 				if (!pinnedOnly || obj.pinned) return obj;
 			}
 			return null;
@@ -215,22 +215,22 @@ namespace MapMagic
 
 				if (grid.ContainsKey(hash)) 
 				{
-					T obj = grid[hash];
-					if (obj!=null) obj.OnRemove();
+					var obj = grid[hash];
+				if (obj!=null) obj.OnRemove();
 					grid.Remove(hash);
 				}
 			}
 
 			public void RemoveNonPinned ()
 			{
-				Dictionary<int,T> dstGrid = new Dictionary<int,T>();
-				
-				foreach (KeyValuePair<int,T> kvp in grid) 
+				var dstGrid = new Dictionary<int,T>();
+
+			foreach (KeyValuePair<int,T> kvp in grid) 
 				{ 
 					int hash = kvp.Key;
-					T obj = kvp.Value;
+					var obj = kvp.Value;
 
-					if (obj.pinned) dstGrid.Add(hash, obj);
+				if (obj.pinned) dstGrid.Add(hash, obj);
 					else obj.OnRemove();
 				}
 
@@ -249,7 +249,7 @@ namespace MapMagic
 
 			public Coord[] PinnedCoords
 			{get{
-				List<Coord> pinnedCoords = new List<Coord>();
+				var pinnedCoords = new List<Coord>();
 				foreach (T obj in All())
 					if (obj.pinned) pinnedCoords.Add(obj.coord);
 				return pinnedCoords.ToArray();
@@ -274,26 +274,26 @@ namespace MapMagic
 			public void Deploy (CoordRect[] createRects, CoordRect[] removeRects, object parent=null, bool allowMove=true)
 			{
 				//it would be easier to create new grid and fill it then, but 
-				Dictionary<int,T> dstGrid = new Dictionary<int,T>();
-				Dictionary<int,T> srcGrid = new Dictionary<int,T>(); //no change should be made in original grid because of multithreading
-				foreach(KeyValuePair<int,T> kvp in grid) 
+				var dstGrid = new Dictionary<int,T>();
+			var srcGrid = new Dictionary<int,T>(); //no change should be made in original grid because of multithreading
+			foreach (KeyValuePair<int,T> kvp in grid) 
 					srcGrid.Add(kvp.Key, kvp.Value);
 
 
 				//adding pinned objs
-				List<T> pinnedObjs = new List<T>();
-				foreach(KeyValuePair<int,T> kvp in srcGrid)
+				var pinnedObjs = new List<T>();
+			foreach (KeyValuePair<int,T> kvp in srcGrid)
 				{
-					T obj = kvp.Value;
-					if (obj.pinned) pinnedObjs.Add(obj);
+					var obj = kvp.Value;
+				if (obj.pinned) pinnedObjs.Add(obj);
 				}
 				int pinnedObjsCount = pinnedObjs.Count;
 				for (int i=0; i<pinnedObjsCount; i++)
 				{
-					T obj = pinnedObjs[i];
-					
-					//hash
-					int aax = obj.coord.x>=0? obj.coord.x:-obj.coord.x; int aaz = obj.coord.z>=0? obj.coord.z :-obj.coord.z;
+					var obj = pinnedObjs[i];
+
+				//hash
+				int aax = obj.coord.x>=0? obj.coord.x:-obj.coord.x; int aaz = obj.coord.z>=0? obj.coord.z :-obj.coord.z;
 					int hash = (obj.coord.x>=0? 0x40000000:0)  |  (obj.coord.z>=0? 0x20000000:0)  |  ((aax & 0x3FFF) << 14)  |  (aaz & 0x3FFF);
 					
 					//copy from src to dst
@@ -304,9 +304,9 @@ namespace MapMagic
 				//adding objects within remove rect
 				for (int r=0; r<removeRects.Length; r++)
 				{
-					CoordRect rect = removeRects[r];
-					Coord min = rect.Min; Coord max = rect.Max;
-					for (int bx=min.x; bx<max.x; bx++)
+					var rect = removeRects[r];
+				var min = rect.Min; var max = rect.Max;
+				for (int bx=min.x; bx<max.x; bx++)
 						for (int bz=min.z; bz<max.z; bz++)
 					{
 						//hash
@@ -316,7 +316,7 @@ namespace MapMagic
 						//adding to new grid
 						if (srcGrid.ContainsKey(hash))
 						{
-							T obj = srcGrid[hash];
+							var obj = srcGrid[hash];
 							if (obj!=null && !obj.Equals(null)) dstGrid.Add(hash,obj);
 							srcGrid.Remove(hash);
 						}
@@ -330,9 +330,9 @@ namespace MapMagic
 					//Coord center = rect.Center;
 					//foreach (Coord c in center.DistanceArea(rect))
 					
-					CoordRect rect = createRects[r];
-					Coord min = rect.Min; Coord max = rect.Max;
-					for (int bx=min.x; bx<max.x; bx++)
+					var rect = createRects[r];
+				var min = rect.Min; var max = rect.Max;
+				for (int bx=min.x; bx<max.x; bx++)
 						for (int bz=min.z; bz<max.z; bz++)
 					{
 						//hash
@@ -344,11 +344,11 @@ namespace MapMagic
 						//moving
 						if (srcGrid.Count != 0 && allowMove)
 						{
-							KeyValuePair<int,T> first = srcGrid.First();
-							T obj = first.Value;
+							var first = srcGrid.First();
+							var obj = first.Value;
 							srcGrid.Remove(first.Key);
 
-							Coord oldCoord = obj.coord;
+							var oldCoord = obj.coord;
 							obj.coord = new Coord(bx,bz);
 							//obj.rect = new CoordRect(bx*cellRes, bz*cellRes, cellRes, cellRes);
 							//obj.pos = new Rect(bx*cellSize, bz*cellSize, cellSize, cellSize);
@@ -361,7 +361,7 @@ namespace MapMagic
 						//creating
 						else 
 						{
-							T obj = defaultObj;
+							var obj = defaultObj;
 
 							obj.coord = new Coord(bx,bz);
 							//obj.rect = new CoordRect(bx*cellRes, bz*cellRes, cellRes, cellRes);
@@ -429,11 +429,11 @@ namespace MapMagic
 				int counter = 0;
 				foreach (KeyValuePair<int,T> kvp in grid)
 				{
-					T obj = kvp.Value;
-					bool objPinned = obj.pinned; if (pinnedOnly && !objPinned) continue;
-					Coord objCoord = obj.coord;
+					var obj = kvp.Value;
+				bool objPinned = obj.pinned; if (pinnedOnly && !objPinned) continue;
+					var objCoord = obj.coord;
 
-					objs[counter] = obj;
+				objs[counter] = obj;
 					coords[counter].x = objCoord.x; coords[counter].z = objCoord.z;
 					pinned[counter] = objPinned;
 
@@ -443,12 +443,12 @@ namespace MapMagic
 
 			public void Deserialize (T[] objs, Coord[] coords, bool[] pinned)
 			{
-				Dictionary<int,T> newGrid = new Dictionary<int,T>();
-				
-				for (int i=0; i<objs.Length; i++)
+				var newGrid = new Dictionary<int,T>();
+
+			for (int i=0; i<objs.Length; i++)
 				{
-					T obj = objs[i];
-					obj.coord = coords[i];
+					var obj = objs[i];
+				obj.coord = coords[i];
 					//obj.rect = new CoordRect(obj.coord.x*cellRes, obj.coord.z*cellRes, cellRes, cellRes);
 					//obj.pos = new Rect(obj.coord.x*cellSize, obj.coord.z*cellSize, cellSize, cellSize);
 					obj.pinned = pinned[i];

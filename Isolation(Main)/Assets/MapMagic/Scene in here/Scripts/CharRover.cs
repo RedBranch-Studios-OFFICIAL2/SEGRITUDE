@@ -17,7 +17,7 @@ namespace MapMagicDemo
 		
 		public void Update ()
 		{
-			Vector3 preferredDir = transform.forward;
+			var preferredDir = transform.forward;
 			preferredDir.y = 0;
 			preferredDir = preferredDir.normalized;
 			preferredDir.y = -descent;
@@ -26,11 +26,11 @@ namespace MapMagicDemo
 
 			Debug.DrawLine(transform.position, transform.position+preferredDir, Color.red);
 
-			Vector3 possibleDir = GetPossibleDirection(transform.position, collisionRadius, preferredDir, 4,4,20); 
-			Vector3 moveVector = possibleDir.normalized;
+			var possibleDir = GetPossibleDirection(transform.position, collisionRadius, preferredDir, 4,4,20);
+			var moveVector = possibleDir.normalized;
 			transform.position += moveVector*speed*Time.deltaTime;
 
-			Quaternion targetRotation = Quaternion.LookRotation(possibleDir);
+			var targetRotation = Quaternion.LookRotation(possibleDir);
 			transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSmoothness);
 
 			Debug.DrawLine(transform.position, transform.position+possibleDir, Color.green);
@@ -56,17 +56,17 @@ namespace MapMagicDemo
 			//Color rayColor = Color.green;
 			//float colorStep = 0.01f;
 
-			Coord center = new Coord(0,0);
+			var center = new Coord(0,0);
 			foreach (Coord coord in center.DistanceArea(numSteps/2))
 			{
 				float curAngle = angle + coord.x*horizontalStep*Mathf.Deg2Rad;
 				float curElevation = elevation + coord.z*verticalStep*Mathf.Deg2Rad;
 				
-				Vector3 curDirection = new Vector3( Mathf.Sin(curAngle), 0 , Mathf.Cos(curAngle));
+				var curDirection = new Vector3( Mathf.Sin(curAngle), 0 , Mathf.Cos(curAngle));
 				curDirection *= Mathf.Cos(curElevation);
 				curDirection.y = Mathf.Sin(curElevation);
 				curDirection *= direction.magnitude;
-				Ray curRay = new Ray(pos, curDirection);
+				var curRay = new Ray(pos, curDirection);
 
 				//rayColor.r += colorStep;
 				//rayColor.g -= colorStep;

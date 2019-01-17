@@ -144,7 +144,7 @@ public class GSDSaveWindow : EditorWindow{
 	void DoBridge(){
 		if(GUILayout.Button("Save group")){
 			SanitizeFilename();
-			GSD.Roads.GSDRoadUtil.WizardObject WO = new GSD.Roads.GSDRoadUtil.WizardObject();
+			var WO = new GSD.Roads.GSDRoadUtil.WizardObject();
 			WO.ThumbString = ThumbString;
 			WO.Desc = Desc;
 			WO.DisplayName = tDisplayName;
@@ -158,7 +158,7 @@ public class GSDSaveWindow : EditorWindow{
 	}
 	
 	void SanitizeFilename(){
-		Regex rgx = new Regex("[^a-zA-Z0-9 -]");
+		var rgx = new Regex("[^a-zA-Z0-9 -]");
 		tFilename = rgx.Replace(tDisplayName, "");
 		tFilename = tFilename.Replace(" ","-");
 		tFilename = tFilename.Replace("_","-");
@@ -176,9 +176,9 @@ public class GSDSaveWindow : EditorWindow{
 		if(Rx > (tRect.width + tRect.x)){ Rx = tRect.x; }
 		if(Ry > (tRect.height + tRect.y)){ Ry = tRect.y; }
 		
-		Rect fRect = new Rect(Rx,Ry,Rwidth,Rheight);
+		var fRect = new Rect(Rx,Ry,Rwidth,Rheight);
 
-		if(fRect.width < 300){
+		if (fRect.width < 300){
 			fRect.width = 300;
 			fRect.x = tRect.x;
 		}

@@ -13,7 +13,7 @@ public class GSDEditorProgressWindow : EditorWindow {
 	
 	#if UNITY_EDITOR
 	static void Init(){
-		GSDEditorProgressWindow window = (GSDEditorProgressWindow)EditorWindow.GetWindow (typeof (GSDEditorProgressWindow));
+		var window = (GSDEditorProgressWindow)EditorWindow.GetWindow (typeof (GSDEditorProgressWindow));
 		window.Show();
 	}
 	#endif
