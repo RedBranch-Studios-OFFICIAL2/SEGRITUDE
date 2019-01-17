@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class BasicGun : MonoBehaviour
 {
-    public float damage = 10f;
-    public float range = 150f;
+    #region Serialized Fields
+    [SerializeField] private GunData gun;
+    #endregion
 
-    public float clip = 30f;
-    public float max = 30f;
     public bool Debounce = false;
 
     public Camera fpsCam;
@@ -17,17 +16,17 @@ public class BasicGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1") && clip > 0 && Debounce == false)
+        if (Input.GetButton("Fire1") && gun.clip > 0 && Debounce == false)
         {
             Debounce = true;
 
-            clip -= 1;
-            Debug.Log("Clip: " + clip);
+            gun.clip -= 1;
+            Debug.Log("Clip: " + gun.clip);
             Shoot();
         }
-        if (Input.GetKeyDown(KeyCode.R) && clip < max)
+        if (Input.GetKeyDown(KeyCode.R) && gun.clip < gun.max)
         {
-            if (clip < max)
+            if (gun.clip < gun.max)
             {
                 Reload();
             }
@@ -37,26 +36,26 @@ public class BasicGun : MonoBehaviour
 
     void Reload()
     {
-        clip = max;
-        Debug.Log("Clip: " + clip);
+        gun.clip = gun.max;
+        Debug.Log("Clip: " + gun.clip);
     }
 
     void Shoot()
     {
         RaycastHit hit;
-        Vector3 forward = fpsCam.transform.TransformDirection(Vector3.forward) * range;
+        Vector3 forward = fpsCam.transform.TransformDirection(Vector3.forward) * gun.range;
         Debug.DrawRay(Barrel.transform.position, forward, Color.red);
 
 
 
-        if (Physics.Raycast(Barrel.transform.position, fpsCam.transform.forward, out hit, range))
+        if (Physics.Raycast(Barrel.transform.position, fpsCam.transform.forward, out hit, gun.range))
         {
             Debug.Log(hit.transform.name);
 
             Damage target = hit.transform.GetComponent<Damage>();
             if (target != null)
             {
-                target.TakeDamage(damage);
+                target.TakeDamage(gun.damage);
             }
         }
         StartCoroutine(FireRate());

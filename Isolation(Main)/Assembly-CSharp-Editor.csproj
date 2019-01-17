@@ -61,6 +61,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AmplifyImpostors\Plugins\Editor\About\About.cs" />
+    <Compile Include="Assets\AmplifyImpostors\Plugins\Editor\Inspector\AmplifyImpostorBakePresetEditor.cs" />
+    <Compile Include="Assets\AmplifyImpostors\Plugins\Editor\Inspector\AmplifyImpostorInspector.cs" />
+    <Compile Include="Assets\AmplifyImpostors\Plugins\Editor\ShaderEditorNode\AmplifyImpostorNode.cs" />
+    <Compile Include="Assets\MapMagic\Editor\CompatibilityManager.cs" />
+    <Compile Include="Assets\MapMagic\Editor\GeneratorsAssetEditor.cs" />
+    <Compile Include="Assets\MapMagic\Editor\InstantUpdaterEditor.cs" />
+    <Compile Include="Assets\MapMagic\Editor\MapMagicEditor.cs" />
+    <Compile Include="Assets\MapMagic\Editor\MapMagicWindow.cs" />
+    <Compile Include="Assets\MapMagic\Editor\PopupMenu.cs" />
+    <Compile Include="Assets\MapMagic\Editor\PreviewWindow.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\About\Editor\pb_AboutWindow.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\About\Editor\pb_UpdateAvailable.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\About\Editor\pb_UpdateCheck.cs" />
