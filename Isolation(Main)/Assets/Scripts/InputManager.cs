@@ -33,6 +33,9 @@ namespace Segritude
 
 		public const string Inventory = "Inventory";
 
+		public const string Crouch = "Crouch";
+		public const string Jump = "Jump";
+
 		#endregion Buttons
 
 		#region Values
@@ -82,6 +85,9 @@ namespace Segritude
 		public static bool SlotRelease(int i) => Input.GetButtonUp(Slot(i));
 
 		public static bool InventoryDown => Input.GetButtonDown(Inventory);
+
+		public static bool CrouchDown => Input.GetButtonDown(Crouch);
+		public static bool JumpHeld => Input.GetButton(Jump);
 
 		#endregion Values
 	}
