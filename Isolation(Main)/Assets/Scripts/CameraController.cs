@@ -53,7 +53,6 @@ namespace Segritude.Camera
 		{
 			OnUseChange += x =>
 			{
-				Debug.Log(x);
 				Cursor.lockState = x ? CursorLockMode.Locked : CursorLockMode.None;
 				Cursor.visible = !x;
 			};

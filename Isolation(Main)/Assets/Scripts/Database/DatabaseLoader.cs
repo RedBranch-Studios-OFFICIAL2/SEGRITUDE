@@ -9,10 +9,6 @@ namespace Segritude.Database
 		private void Start()
 		{
 			RegisterAllTypes();
-			foreach (var item in Database<Inventory.Item>.Items)
-			{
-				Debug.Log(item.Value.ID);
-			}
 		}
 
 		private void RegisterAllTypes()
@@ -25,7 +21,6 @@ namespace Segritude.Database
 			foreach (var type in types)
 			{
 				var items = Resources.LoadAll($"Database/{type.Name}", type).Cast<IDatabaseItem>();
-				Debug.Log(items.Count());
 				Database.AddDatabase(items, type);
 			}
 		}
