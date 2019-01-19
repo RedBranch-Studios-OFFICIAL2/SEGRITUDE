@@ -1,11 +1,11 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicGun : MonoBehaviour
 {
     #region Serialized Fields
-    [SerializeField] private GunData gun;
+    //[SerializeField] private GunData gun;
     #endregion
 
     public bool Debounce = false;
@@ -68,4 +68,4 @@ public class BasicGun : MonoBehaviour
         Debounce = false;
     }
     
-}
+}*/

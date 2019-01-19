@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,12 +13,3 @@ public class GunData : MonoBehaviour
     /*public float clip = 30f;
     public float max = 30f;*/
 
-    #endregion
-
-    #region
-    [SerializeField] private float damage = 10f;
-    [SerializeField] private float range = 150f;
-
-    #endregion
-}
-}

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: 8193bb9b199b2654887a9bddec42962b, type: 3}
   m_Sun: {fileID: 2093950640}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.501088, g: 0.5378795, b: 0.5951899, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -298,13 +298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac6fadd23ed90b4f9713ecc9e19ac5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  range: 100
-  clip: 30
-  max: 30
-  Debounce: 0
-  fpsCam: {fileID: 20940458519506391}
-  Barrel: {fileID: 1751738942}
 --- !u!1 &105313024 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1714487541691932, guid: a798472e33085a94db3ff022b5f61878,
@@ -22551,9 +22544,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961862073126917}
-  m_LocalRotation: {x: 0.000000011175868, y: 0.000000029802315, z: -0.0000000018626447,
+  m_LocalRotation: {x: 0.000000026077029, y: 0.000000089406946, z: -0.000000016763803,
     w: 1}
-  m_LocalPosition: {x: 0.060814857, y: 0.78758883, z: 0.15546227}
+  m_LocalPosition: {x: 0.060850494, y: 0.7875824, z: 0.15541765}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4472711769870643}
@@ -23701,6 +23694,7 @@ MonoBehaviour:
   SideDir: 0
   Crouch: 0
   Jump: 0
+  gun: 0
 --- !u!114 &114555485249477573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23740,6 +23734,7 @@ MonoBehaviour:
   SideDir: 0
   Crouch: 0
   Jump: 0
+  gun: 0
 --- !u!114 &114920229079586183
 MonoBehaviour:
   m_ObjectHideFlags: 0
