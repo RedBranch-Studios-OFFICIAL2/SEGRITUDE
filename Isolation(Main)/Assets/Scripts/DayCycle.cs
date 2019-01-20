@@ -1,68 +1,65 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DayCycle : MonoBehaviour {
+public class DayCycle : MonoBehaviour
+{
+	public float minutesInDay = 1.0f;
 
-    public float minutesInDay = 1.0f;
+	private float timer;
+	private float percentageOfDay;
+	private float turnSpeed;
 
-    float timer;
-    float percentageOfDay;
-    float turnSpeed;
-   
-    void Start()
-    {
-        timer = 0.0f;
-    }
+	private void Start()
+	{
+		timer = 0.0f;
+	}
 
-    
-    void Update()
-    {
-        checkTime();
-        UpdateLights();
+	private void Update()
+	{
+		checkTime();
+		UpdateLights();
 
-        turnSpeed = 360.0f / (minutesInDay * 60.0f) * Time.deltaTime;
-        transform.RotateAround(transform.position, transform.right, turnSpeed);
+		turnSpeed = 360.0f / (minutesInDay * 60.0f) * Time.deltaTime;
+		transform.RotateAround(transform.position, transform.right, turnSpeed);
 
-        Debug.Log(percentageOfDay);
-    }
+		Debug.Log(percentageOfDay);
+	}
 
-    void UpdateLights()
-    {
-        var l = GetComponent<Light>();
+	private void UpdateLights()
+	{
+		var l = GetComponent<Light>();
 		if (isNight())
-        {
-            if (l.intensity > 0.0f)
-            {
-                l.intensity -= 0.05f;
-            }
-        }
-        else
-        {
-            if (l.intensity < 1.0f)
-            {
-                l.intensity += 0.05f;
-            }
-        }
-    }
+		{
+			if (l.intensity > 0.0f)
+			{
+				l.intensity -= 0.05f;
+			}
+		}
+		else
+		{
+			if (l.intensity < 1.0f)
+			{
+				l.intensity += 0.05f;
+			}
+		}
+	}
 
-    bool isNight()
-    {
-        bool c = false;
-        if (percentageOfDay > 0.5f)
-        {
-            c = true;
-        }
-        return c;
-    }
+	private bool isNight()
+	{
+		bool c = false;
+		if (percentageOfDay > 0.5f)
+		{
+			c = true;
+		}
+		return c;
+	}
 
-    void checkTime()
-    {
-        timer += Time.deltaTime;
-        percentageOfDay = timer / (minutesInDay * 60.0f);
-        if (timer > (minutesInDay * 60.0f))
-        {
-            timer = 0.0f;
-        }
-    }
+	private void checkTime()
+	{
+		timer += Time.deltaTime;
+		percentageOfDay = timer / (minutesInDay * 60.0f);
+		if (timer > (minutesInDay * 60.0f))
+		{
+			timer = 0.0f;
+		}
+	}
 }

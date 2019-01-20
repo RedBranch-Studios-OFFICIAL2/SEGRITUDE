@@ -109,6 +109,37 @@ namespace Segritude.Interaction
 			return false;
 		}
 
+		/// <summary>
+		/// Get currently used interaction hijack
+		/// </summary>
+		/// <param name="type">Type of the interaction</param>
+		/// <returns>The hijack</returns>
+		private IInteractable GetCurrentHijack(InteractionType type)
+		{
+			foreach (var hijack in Hijacks)
+				if (hijack.ValidateInteraction(type))
+				{
+					return hijack;
+				}
+			return null;
+		}
+
+		/// <summary>
+		/// Gets the interactable in front of the player
+		/// </summary>
+		/// <param name="type">Type of the interaction</param>
+		/// <returns>The interactable</returns>
+		private IInteractable GetCurrentInteractable(InteractionType type)
+		{
+			var interactable = Raycast();
+			if (!interactable?.ValidateInteraction(type) ?? true)
+				interactable = null;
+			return interactable;
+		}
+
+		/// <summary>
+		/// Try to interact with the environment
+		/// </summary>
 		private void Interact()
 		{
 			if (!IsInteracting)
@@ -116,27 +147,15 @@ namespace Segritude.Interaction
 				IInteractable interactable = null;
 				foreach (InteractionType type in Enum.GetValues(typeof(InteractionType)))
 				{
-					if (GetInteractionStart(type))
+					if (!GetInteractionStart(type))
+						continue;
+					interactable = GetCurrentHijack(type) ?? GetCurrentInteractable(type);
+					if (interactable?.ValidateInteraction(type) ?? false)
 					{
-						foreach (var hijack in Hijacks)
-							if (hijack.ValidateInteraction(type))
-							{
-								interactable = hijack;
-								break;
-							}
-						if (interactable == null)
-						{
-							interactable = Raycast();
-							if (!interactable?.ValidateInteraction(type) ?? true)
-								interactable = null;
-						}
-						if (interactable?.ValidateInteraction(type) ?? false)
-						{
-							interactable.StartInteraction(type);
-							currentInteraction = type;
-							currentlyInteracting = interactable;
-							IsInteracting = true;
-						}
+						interactable.StartInteraction(type);
+						currentInteraction = type;
+						currentlyInteracting = interactable;
+						IsInteracting = true;
 					}
 				}
 			}

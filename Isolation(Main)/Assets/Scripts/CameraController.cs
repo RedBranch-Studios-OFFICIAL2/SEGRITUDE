@@ -1,11 +1,15 @@
 ﻿using System;
 using UnityEngine;
+
 namespace Segritude.Camera
 {
 	public class CameraController : MonoBehaviour
 	{
 		#region Static Properties
 
+		/// <summary>
+		/// Is the camera currently usable
+		/// </summary>
 		public static bool UseCamera
 		{
 			get => useCamera;
@@ -18,34 +22,59 @@ namespace Segritude.Camera
 			}
 		}
 
+		/// <summary>
+		/// Event invoked when <see cref="UseCamera"/> changes
+		/// </summary>
 		public static event Action<bool> OnUseChange;
 
-		#endregion
+		#endregion Static Properties
 
 		#region Static Fields
 
+		/// <summary>
+		/// Backend field for <see cref="UseCamera"/>
+		/// </summary>
 		private static bool useCamera;
 
-		#endregion
+		#endregion Static Fields
 
 		#region Serialized Fields
 
+		/// <summary>
+		/// Sensitivity of the camera movement
+		/// </summary>
 		[SerializeField] private float sensitivity = 5.0f;
+
+		/// <summary>
+		/// How much smoothing should be applied
+		/// </summary>
 		[SerializeField] private float smoothing = 2.0f;
+
+		/// <summary>
+		/// Maximal angle that the player can look at
+		/// </summary>
 		[SerializeField] private float maxLookAngle = 60;
 
+		/// <summary>
+		/// Reference to the player object
+		/// </summary>
 		[SerializeField] private Transform player;
 
-		#endregion
+		#endregion Serialized Fields
 
 		#region Private Fields
 
+		/// <summary>
+		/// Current rotation of the player
+		/// </summary>
 		private Vector2 rotation;
-		private Vector2 SmoothVector;
 
-		#endregion
+		/// <summary>
+		/// Vector for calculating smothing
+		/// </summary>
+		private Vector2 smoothVector;
 
-
+		#endregion Private Fields
 
 		#region Unity Callbacks
 
@@ -69,25 +98,26 @@ namespace Segritude.Camera
 				CalculateCameraRotation();
 		}
 
-		#endregion
+		#endregion Unity Callbacks
 
 		#region Private Methods
 
+		/// <summary>
+		/// Used for calculating camera rotation and smoothing
+		/// </summary>
 		private void CalculateCameraRotation()
 		{
-			var mousePositionDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+			var mousePositionDelta = new Vector2(-Input.GetAxisRaw("Mouse Y"), Input.GetAxisRaw("Mouse X"));
 
-			mousePositionDelta = Vector2.Scale(mousePositionDelta, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
-			SmoothVector.x = Mathf.Lerp(SmoothVector.x, mousePositionDelta.x, 1f / smoothing);
-			SmoothVector.y = Mathf.Lerp(SmoothVector.y, mousePositionDelta.y, 1f / smoothing);
-			rotation += SmoothVector;
+			mousePositionDelta.Scale(new Vector2(sensitivity * smoothing, sensitivity * smoothing));
+			smoothVector.x = Mathf.Lerp(smoothVector.x, mousePositionDelta.x, 1f / smoothing);
+			smoothVector.y = Mathf.Lerp(smoothVector.y, mousePositionDelta.y, 1f / smoothing);
+			rotation += smoothVector;
 			rotation.y = Mathf.Clamp(rotation.y, -maxLookAngle, maxLookAngle);
 
-			transform.localRotation = Quaternion.AngleAxis(-rotation.y, Vector3.right);
-			player.localRotation = Quaternion.AngleAxis(rotation.x, player.transform.up);
+			transform.localRotation = Quaternion.Euler(rotation);
 		}
 
-		#endregion
-
+		#endregion Private Methods
 	}
 }

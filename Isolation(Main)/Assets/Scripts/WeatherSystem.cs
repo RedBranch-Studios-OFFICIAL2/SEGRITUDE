@@ -1,10 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeatherSystem : MonoBehaviour
 {
-
 	public GameObject CurrentWeather;
 
 	public float Speed = .5f;
@@ -17,15 +15,14 @@ public class WeatherSystem : MonoBehaviour
 	public float MaxTime = 10f;
 	public float MinTime = 5f;
 
-
 	// Use this for initialization
-	void Start()
+	private void Start()
 	{
 		Spawn();
 	}
 
 	// Update is called once per frame
-	void Update()
+	private void Update()
 	{
 		if (CurrentWeather.transform.localPosition.x < 30 && Move)
 			CurrentWeather.transform.localPosition = CurrentWeather.transform.localPosition + new Vector3(Speed, 0, 0) * Time.deltaTime;
@@ -42,7 +39,7 @@ public class WeatherSystem : MonoBehaviour
 		StartCoroutine(WaitingTime());
 	}
 
-	IEnumerator WaitingTime()
+	private IEnumerator WaitingTime()
 	{
 		yield return new WaitForSeconds(Random.Range(MinTime, MaxTime));
 		Move = true;

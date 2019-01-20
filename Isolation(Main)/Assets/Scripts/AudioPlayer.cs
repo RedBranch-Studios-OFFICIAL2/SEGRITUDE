@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Segritude
 {
@@ -20,7 +16,7 @@ namespace Segritude
 		/// </summary>
 		private AudioSource _Source;
 
-		#endregion
+		#endregion Private Fields
 
 		#region Initialization
 
@@ -32,7 +28,7 @@ namespace Segritude
 			_Source = GetComponent<AudioSource>();
 		}
 
-		#endregion
+		#endregion Initialization
 
 		#region Public Methods
 
@@ -45,6 +41,6 @@ namespace Segritude
 			_Source.PlayOneShot(clip);
 		}
 
-		#endregion
+		#endregion Public Methods
 	}
 }

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Segritude.CSD
@@ -27,6 +24,7 @@ namespace Segritude.CSD
 		}
 
 		public IEnumerator<KeyValuePair<Vector3, CubicSpaceDivider<T>>> GetEnumerator() => dividers.GetEnumerator();
+
 		IEnumerator IEnumerable.GetEnumerator() => dividers.GetEnumerator();
 
 		public CubicSpace(float dividerSize)

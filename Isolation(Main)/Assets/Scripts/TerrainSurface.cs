@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public static class TerrainSurface
 {
-
 	public static float[] GetTextureMix(Vector3 worldPos, Terrain terrain)
 	{
 		// returns an array containing the relative mix of textures

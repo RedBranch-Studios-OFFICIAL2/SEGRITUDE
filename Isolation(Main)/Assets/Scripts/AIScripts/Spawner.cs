@@ -1,33 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
+﻿using UnityEngine;
 
-public class Spawner : MonoBehaviour {
+public class Spawner : MonoBehaviour
+{
+	public GameObject swatPrefab;
+	public GameObject area;
+	public int maxEnemies;
 
-    public GameObject swatPrefab;
-    public GameObject area;
-    public int maxEnemies;
+	private int currentEnemies;
 
-    private int currentEnemies;
+	private void Update()
+	{
+		SpawnEnemies();
+	}
 
-    private void Update() {
-        SpawnEnemies();
-    }
-
-    void SpawnEnemies (){
-        if (CheckAmountOfEnemies()) {
-            var swat = (GameObject)Instantiate(swatPrefab, this.transform.position, this.transform.rotation);
+	private void SpawnEnemies()
+	{
+		if (CheckAmountOfEnemies())
+		{
+			var swat = (GameObject)Instantiate(swatPrefab, this.transform.position, this.transform.rotation);
 			swat.GetComponent<AIController>().area = area;
-            currentEnemies++;
-        }
-    }
+			currentEnemies++;
+		}
+	}
 
-    bool CheckAmountOfEnemies() {
-        if (currentEnemies < maxEnemies) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+	private bool CheckAmountOfEnemies()
+	{
+		if (currentEnemies < maxEnemies)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }

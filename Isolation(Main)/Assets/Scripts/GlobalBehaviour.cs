@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Segritude
 {
@@ -21,7 +17,7 @@ namespace Segritude
 			get; private set;
 		}
 
-		#endregion
+		#endregion Public Properties
 
 		#region Initialization
 
@@ -33,7 +29,6 @@ namespace Segritude
 			Instance = (T)this;
 		}
 
-		#endregion
-
+		#endregion Initialization
 	}
 }

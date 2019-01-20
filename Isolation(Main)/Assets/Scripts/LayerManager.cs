@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Segritude
 {
@@ -18,7 +14,7 @@ namespace Segritude
 		/// </summary>
 		public const int InteractableLayer = 8;
 
-		#endregion
+		#endregion Layers
 
 		#region Masks
 
@@ -27,6 +23,6 @@ namespace Segritude
 		/// </summary>
 		public static LayerMask InteractableMask { get { return 1 << InteractableLayer; } }
 
-		#endregion
+		#endregion Masks
 	}
 }

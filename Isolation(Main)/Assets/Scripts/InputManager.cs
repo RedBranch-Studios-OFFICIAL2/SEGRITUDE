@@ -31,10 +31,25 @@ namespace Segritude
 		/// <returns>Name of the button</returns>
 		public static string Slot(int i) => $"Slot {i}";
 
+		/// <summary>
+		/// Name of the inventory button
+		/// </summary>
 		public const string Inventory = "Inventory";
 
+		/// <summary>
+		/// Name of the crouch button
+		/// </summary>
 		public const string Crouch = "Crouch";
+
+		/// <summary>
+		/// Name of the jump button
+		/// </summary>
 		public const string Jump = "Jump";
+
+		/// <summary>
+		/// Name of the run button
+		/// </summary>
+		public const string Run = "Run";
 
 		#endregion Buttons
 
@@ -84,10 +99,25 @@ namespace Segritude
 		/// <returns>Was the slot button released</returns>
 		public static bool SlotRelease(int i) => Input.GetButtonUp(Slot(i));
 
+		/// <summary>
+		/// Was the Inventory just presed
+		/// </summary>
 		public static bool InventoryDown => Input.GetButtonDown(Inventory);
 
+		/// <summary>
+		/// Was the <see cref="Crouch"/> just pressed
+		/// </summary>
 		public static bool CrouchDown => Input.GetButtonDown(Crouch);
+
+		/// <summary>
+		/// Is the <see cref="Jump"/> held down
+		/// </summary>
 		public static bool JumpHeld => Input.GetButton(Jump);
+
+		/// <summary>
+		/// Is the <see cref="Run"/> held down
+		/// </summary>
+		public static bool RunHeld => Input.GetButton(Run);
 
 		#endregion Values
 	}

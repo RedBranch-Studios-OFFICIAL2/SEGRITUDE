@@ -3,8 +3,17 @@ using UnityEngine.EventSystems;
 
 namespace Segritude.Player.UI
 {
+	/// <summary>
+	/// Special slot ui used for player toolbar
+	/// </summary>
 	public class PlayerToolbarSlotUI : InventorySlotUI
 	{
+		#region IDragHandler Callbacks
+
+		/// <summary>
+		/// Called when an item is dropped into the slot
+		/// </summary>
+		/// <param name="eventData"></param>
 		public override void OnDrop(PointerEventData eventData)
 		{
 			if (Stack is null)
@@ -24,6 +33,11 @@ namespace Segritude.Player.UI
 			}
 		}
 
+
+		/// <summary>
+		/// Called at the end of the drag
+		/// </summary>
+		/// <param name="eventData"></param>
 		public override void OnEndDrag(PointerEventData eventData)
 		{
 			ReturnDragSprite();
@@ -35,5 +49,8 @@ namespace Segritude.Player.UI
 				Manager.UpdateUI();
 			}
 		}
+
+		#endregion
+
 	}
 }

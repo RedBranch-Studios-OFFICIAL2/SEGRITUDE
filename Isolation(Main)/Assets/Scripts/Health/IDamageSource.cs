@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Segritude.Health
+﻿namespace Segritude.Health
 {
+	/// <summary>
+	/// Interface every damage source should have
+	/// </summary>
 	public interface IDamageSource
 	{
 	}

@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerEngine : MonoBehaviour
 {
-
-
 	#region Serialized Fields
 
 	[SerializeField] private Animator animator;
@@ -15,7 +11,7 @@ public class PlayerEngine : MonoBehaviour
 	[SerializeField] private float speed = 1;
 	[SerializeField] private float sliperyness = 0.9f;
 
-	#endregion
+	#endregion Serialized Fields
 
 	#region Private Fields
 
@@ -23,18 +19,15 @@ public class PlayerEngine : MonoBehaviour
 	private bool isCrouching;
 	private bool isJumping;
 	private CharacterController controller;
-	#endregion
 
-	#region Unity Callbackss
+	#endregion Private Fields
 
-	#endregion
-
-	void Start()
+	private void Start()
 	{
 		controller = GetComponent<CharacterController>();
 	}
 
-	void Update()
+	private void Update()
 	{
 		if (controller.isGrounded)
 		{

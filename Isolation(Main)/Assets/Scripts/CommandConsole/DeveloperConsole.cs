@@ -5,7 +5,6 @@
 
 //namespace Console
 //{
-
 //    The class that all commands inherit.More information on this can be found in the "Commands" script
 //    public abstract class ConsoleCommand
 //    {

@@ -43,22 +43,44 @@ namespace Segritude.Inventory
 
 		#region Public Methods
 
-		//TODO : comment methods
-
+		/// <summary>
+		/// The default indexer
+		/// </summary>
+		/// <param name="index">Index in the inventory</param>
+		/// <returns>The <see cref="ItemStack"/> in this slot</returns>
 		public ItemStack this[int index] => items[index];
 
+		/// <summary>
+		/// The indexer for checking how much of given item the inventory has
+		/// </summary>
+		/// <param name="id">Id of the item</param>
+		/// <returns></returns>
 		public int this[string id] => items.Where(x => x.ID == id).Sum(x => x.Quantity);
 
+		/// <summary>
+		/// Add an item to inventory
+		/// </summary>
+		/// <param name="stack">Stack of the item</param>
 		public void AddItem(ItemStack stack)
 		{
 			AddItem(stack.ID, stack.Quantity);
 		}
 
+		/// <summary>
+		/// Add an item to inventory
+		/// </summary>
+		/// <param name="id">Id of the item</param>
+		/// <param name="amount">amount of the item</param>
 		public void AddItem(string id, int amount)
 		{
 			AddItem(Database<Item>.Items[id], amount);
 		}
 
+		/// <summary>
+		/// Add an item to inventory
+		/// </summary>
+		/// <param name="item">Item to be added</param>
+		/// <param name="amount">amount of the item</param>
 		public void AddItem(Item item, int amount)
 		{
 			if (amount <= 0 || item is null)
@@ -78,11 +100,23 @@ namespace Segritude.Inventory
 			OnChange?.Invoke(this);
 		}
 
+		/// <summary>
+		/// Removes set amount of the item from inventory
+		/// </summary>
+		/// <param name="id">Id of the item</param>
+		/// <param name="amount">Amount to be removed</param>
+		/// <returns>How much of the item was actually removed</returns>
 		public int RemoveItem(string id, int amount)
 		{
 			return RemoveItem(Database<Item>.Items[id], amount);
 		}
 
+		/// <summary>
+		/// Removes set amount of the item from inventory
+		/// </summary>
+		/// <param name="item">Item to be removed</param>
+		/// <param name="amount">Amount to be removed</param>
+		/// <returns>How much of the item was actually removed</returns>
 		public int RemoveItem(Item item, int amount)
 		{
 			var taken = 0;
@@ -108,16 +142,33 @@ namespace Segritude.Inventory
 			return taken;
 		}
 
+		/// <summary>
+		/// Does the inventory contain set amount of item
+		/// </summary>
+		/// <param name="item">Id of the item to check</param>
+		/// <param name="amount">Amount that the item. Leave empty for any</param>
+		/// <returns></returns>
 		public bool HasItem(string item, int amount = 0)
 		{
 			return items.Any(x => x.ID == item) && items.Where(x => x.ID == item).Sum(x => x.Quantity) > amount;
 		}
 
+		/// <summary>
+		/// Does the inventory contain set amount of item
+		/// </summary>
+		/// <param name="item">The item to check</param>
+		/// <param name="amount">Amount that the item. Leave empty for any</param>
+		/// <returns></returns>
 		public bool HasItem(Item item, int amount = 0)
 		{
 			return HasItem(item.ID, amount);
 		}
 
+		/// <summary>
+		/// Removes whole stack from inventory
+		/// </summary>
+		/// <param name="index">Index of the inventory</param>
+		/// <returns>Stack that was removed</returns>
 		public ItemStack RemoveStack(int index)
 		{
 			var stack = items[index];
