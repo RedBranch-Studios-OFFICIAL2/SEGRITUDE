@@ -298,6 +298,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac6fadd23ed90b4f9713ecc9e19ac5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 50
+  damage: 10
+  clip: 30
+  max: 30
+  Debounce: 0
+  fpsCam: {fileID: 20940458519506391}
+  Barrel: {fileID: 1751738942}
 --- !u!1 &105313024 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1714487541691932, guid: a798472e33085a94db3ff022b5f61878,
