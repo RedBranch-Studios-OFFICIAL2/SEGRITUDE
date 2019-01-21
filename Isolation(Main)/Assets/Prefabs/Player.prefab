@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7785666689500614790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7873852303304745477}
+  m_Layer: 0
+  m_Name: Hold Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7873852303304745477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7785666689500614790}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.066, y: -0.042, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5395173160235436438}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9079885482471481023
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,8 +287,9 @@ MonoBehaviour:
   hungerProbabilityChangeRate: 0.1
   thirstChangeRange: {x: 0, y: 5}
   thirstProbabilityChangeRate: 0.1
-  StaminaRegenration: 1
-  InventoryUI: {fileID: 0}
+  staminaRegenration: 1
+  inventoryUI: {fileID: 0}
+  handHoldPoint: {fileID: 7873852303304745477}
 --- !u!114 &9079885482670408635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +303,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5395173160227759654}
-  camera: {fileID: 0}
+  heightJump: 0
+  acceleretionSpeed: 1
+  speed: 1
+  sliperyness: 0.9
 --- !u!1001 &5395173160235045702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -284,10 +318,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: xbot
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 811dea87be345664a89aa5d1ff00dbb3, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: d31ae817dc1a40a4ca4a3ff0f1010806, type: 2}
     - target: {fileID: 400138, guid: 811dea87be345664a89aa5d1ff00dbb3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -332,6 +362,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 811dea87be345664a89aa5d1ff00dbb3, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 811dea87be345664a89aa5d1ff00dbb3, type: 3}
 --- !u!4 &5395173160235436108 stripped
@@ -343,6 +377,12 @@ Transform:
 --- !u!95 &5395173160227759654 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9500000, guid: 811dea87be345664a89aa5d1ff00dbb3,
+    type: 3}
+  m_PrefabInstance: {fileID: 5395173160235045702}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5395173160235436438 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400080, guid: 811dea87be345664a89aa5d1ff00dbb3,
     type: 3}
   m_PrefabInstance: {fileID: 5395173160235045702}
   m_PrefabAsset: {fileID: 0}

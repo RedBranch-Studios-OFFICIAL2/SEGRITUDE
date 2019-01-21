@@ -1,8 +1,12 @@
 ﻿using Segritude.Database;
+using Segritude.Inventory.Items;
 using UnityEngine;
 
 namespace Segritude.Inventory
 {
+	/// <summary>
+	/// Base class for all items
+	/// </summary>
 	[CreateAssetMenu(menuName = "Inventory/Item")]
 	public class Item : ScriptableObject, IDatabaseItem
 	{
@@ -33,6 +37,11 @@ namespace Segritude.Inventory
 		/// </summary>
 		public int MaxAmount => maxAmountPerStack;
 
+		/// <summary>
+		/// Model show in the hands of the player
+		/// </summary>
+		public ItemBehaviour Model => model;
+
 		#endregion Public Properties
 
 		#region Serialized Fields
@@ -56,6 +65,11 @@ namespace Segritude.Inventory
 		/// Maximal amount per stack
 		/// </summary>
 		[SerializeField] private int maxAmountPerStack = 1;
+
+		/// <summary>
+		/// Model show in the hands of the player
+		/// </summary>
+		[SerializeField] private ItemBehaviour model;
 
 		#endregion Serialized Fields
 	}

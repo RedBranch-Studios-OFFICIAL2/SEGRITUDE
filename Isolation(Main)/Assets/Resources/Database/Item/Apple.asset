@@ -9,10 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b46e0b3fccf24ed4889c5951e7ac9ce6, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b2be739363c6de44ae9909572c4b296, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
   customName: 
   weight: 1
-  sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  maxAmountPerStack: 1
+  sprite: {fileID: 21300000, guid: 0051dc8da97286245a943cf89885149a, type: 3}
+  maxAmountPerStack: 10
+  model: {fileID: 2813571913305857620, guid: 6b69bce407068eb4099258dc5605ae1d, type: 3}
+  eatTime: 1
+  healthGain: 10
+  hungerGain: 0
+  thirstGain: 0
+  staminaGain: 0

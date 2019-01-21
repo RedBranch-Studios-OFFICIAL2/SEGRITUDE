@@ -87,9 +87,17 @@ namespace Segritude.Player.UI
 		public override void UpdateUI(Inventory.Inventory inventory)
 		{
 			base.UpdateUI(inventory);
+			UpdateToolbar();
+			weightCounter.text = $"{ (Holder.Inventory.TotalWeight + PlayerBehaviour.Instance.ToolBar.Where(x => !(x is null)).Sum(x => x.Quantity * x.Item.Weight)) / 10f} / {PlayerBehaviour.Instance.MaxWeight / 10f}";
+		}
+
+		/// <summary>
+		/// Updates the toolbar UI
+		/// </summary>
+		public void UpdateToolbar()
+		{
 			for (int i = 0; i < toolbar.Length; i++)
 				toolbar[i].Stack = PlayerBehaviour.Instance.ToolBar[i];
-			weightCounter.text = $"{ (Holder.Inventory.TotalWeight + PlayerBehaviour.Instance.ToolBar.Where(x => !(x is null)).Sum(x => x.Quantity * x.Item.Weight)) / 10f} / {PlayerBehaviour.Instance.MaxWeight / 10f}";
 		}
 
 		#endregion Public Methods

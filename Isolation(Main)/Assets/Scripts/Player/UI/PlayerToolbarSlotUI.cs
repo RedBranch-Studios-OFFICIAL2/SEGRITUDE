@@ -31,8 +31,9 @@ namespace Segritude.Player.UI
 				PlayerBehaviour.Instance.ToolBar[Index] = Stack;
 				PlayerBehaviour.Instance.Inventory.AddItem(previous);
 			}
+			if (Index == PlayerBehaviour.Instance.SelectedToolBarSlot)
+				PlayerBehaviour.Instance.UpdateCurrentSlot();
 		}
-
 
 		/// <summary>
 		/// Called at the end of the drag
@@ -50,7 +51,6 @@ namespace Segritude.Player.UI
 			}
 		}
 
-		#endregion
-
+		#endregion IDragHandler Callbacks
 	}
 }

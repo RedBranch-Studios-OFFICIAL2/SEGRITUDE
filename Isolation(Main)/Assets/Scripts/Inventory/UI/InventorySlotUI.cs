@@ -63,7 +63,6 @@ namespace Segritude.Inventory.UI
 
 		#region IDragHandler Callbacks
 
-
 		/// <summary>
 		/// Called at the start of the drag
 		/// </summary>
@@ -110,7 +109,7 @@ namespace Segritude.Inventory.UI
 			}
 		}
 
-		#endregion
+		#endregion IDragHandler Callbacks
 
 		#region Public methods
 
@@ -133,6 +132,6 @@ namespace Segritude.Inventory.UI
 			itemSprite.transform.localPosition = Vector3.zero;
 		}
 
-		#endregion
+		#endregion Public methods
 	}
 }

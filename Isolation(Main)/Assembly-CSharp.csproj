@@ -88,10 +88,16 @@
     <Compile Include="Assets\Scripts\Interaction\InteractableBehaviour.cs" />
     <Compile Include="Assets\Scripts\Interaction\InteractionType.cs" />
     <Compile Include="Assets\Scripts\Interaction\PlayerInteractor.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Equipement.cs" />
+    <Compile Include="Assets\Scripts\Inventory\EquipementType.cs" />
     <Compile Include="Assets\Scripts\Inventory\IInventoryHolder.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Inventory\Item.cs" />
-    <Compile Include="Assets\Scripts\Inventory\ItemBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Items\Edible.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Items\EdibleBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Items\InteractableItemBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Items\ItemBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Items\PickableItemBehaviour.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemStack.cs" />
     <Compile Include="Assets\Scripts\Inventory\UI\InventorySlotUI.cs" />
     <Compile Include="Assets\Scripts\Inventory\UI\InventoryUI.cs" />
