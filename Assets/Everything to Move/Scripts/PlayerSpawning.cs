@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Segritude.Player;
+using Segritude.Camera;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +14,7 @@ public class PlayerSpawning : MonoBehaviour {
 
     public GameObject respawnPanel;
 
-    private Playeratt playeratt;
+    private PlayerBehaviour playeratt;
 
     public Terrain[] terrains;
 
@@ -28,7 +30,7 @@ public class PlayerSpawning : MonoBehaviour {
 
     private void Start() {
         respawnPanel.SetActive(false);
-        playeratt = GetComponent<Playeratt>();
+        playeratt = GetComponent<PlayerBehaviour>();
         maxPlayerHealth = playeratt.Health;
         terrains = Object.FindObjectsOfType<Terrain>();
         
@@ -42,7 +44,7 @@ public class PlayerSpawning : MonoBehaviour {
         if (playeratt.Health <= 0 || isDead) {
             respawnPanel.SetActive(true);
             gameObject.GetComponent<ChaController>().speed = 0;
-            Cam.GetComponent<CamLook>().enabled = false;
+            CameraController.UseCamera = false;
         } else {
             respawnPanel.SetActive(false);
         }
@@ -54,6 +56,8 @@ public class PlayerSpawning : MonoBehaviour {
         Vector3 spawnLocation = new Vector3(possibleSpawnLocations[randomIndex].x, possibleSpawnLocationHeight[randomIndex].y + (transform.localScale.y/2), possibleSpawnLocations[randomIndex].z);
 
         GameObject playerSpawn = (GameObject)Instantiate(player, spawnLocation, Quaternion.identity);
+
+        CameraController.UseCamera = true;
     }
 
     //Get all possible positions that a player can spawn

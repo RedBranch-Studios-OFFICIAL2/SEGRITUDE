@@ -96,7 +96,7 @@ namespace Segritude.Inventory.Items
 		/// </summary>
 		/// <param name="type">Type of the interaction</param>
 		/// <returns></returns>
-		public bool ValidateInteraction(InteractionType type) => InteractionTypes.HasFlag(type);
+		public virtual bool ValidateInteraction(InteractionType type) => InteractionTypes.HasFlag(type);
 
 		#endregion IInteractable Implementation
 
