@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Segritude.Camera
 {
-	public class CameraController : MonoBehaviour
+	public class CameraController : GlobalBehaviour<CameraController>
 	{
 		#region Static Properties
 
@@ -80,6 +80,7 @@ namespace Segritude.Camera
 
 		private void Awake()
 		{
+			base.Awake();
 			OnUseChange += x =>
 			{
 				Cursor.lockState = x ? CursorLockMode.Locked : CursorLockMode.None;

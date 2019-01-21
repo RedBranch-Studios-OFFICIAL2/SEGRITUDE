@@ -96,8 +96,8 @@ namespace Segritude.Player
 			Inventory = new Inventory.Inventory();
 			inventoryUI.Holder = this;
 			Inventory.AddItem(Database<Item>.Items["Apple"], 1);
-            Inventory.AddItem(Database<Item>.Items["Rifle"], 1);
-        }
+			Inventory.AddItem(Database<Item>.Items["Rifle"], 1);
+		}
 
 		private void Update()
 		{
@@ -155,7 +155,7 @@ namespace Segritude.Player
 				Destroy(currentHeldItem.gameObject);
 				currentHeldItem = null;
 			}
-			else if(!(SelectedItem is null) && currentHeldItem is null)
+			else if (!(SelectedItem is null) && currentHeldItem is null)
 			{
 				currentHeldItem = Instantiate(SelectedItem.Item.Model.gameObject).GetComponent<ItemBehaviour>();
 				currentHeldItem.transform.SetParent(handHoldPoint);

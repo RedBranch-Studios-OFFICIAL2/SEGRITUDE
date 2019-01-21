@@ -57,10 +57,11 @@ namespace Segritude.Inventory.Items
 		/// <summary>
 		/// Called one per frame
 		/// </summary>
-		private void Update()
+		public void Update()
 		{
 			if (interactionTimer > 0)
 				interactionTimer -= Time.deltaTime;
+			Debug.Log(interactionTimer);
 			if (IsInteracting && interactionTimer <= 0)
 			{
 				OnInteract(interactionType);

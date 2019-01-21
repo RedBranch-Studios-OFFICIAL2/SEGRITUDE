@@ -29,9 +29,9 @@ public class ChaController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        CharacterController controller = gameObject.GetComponent<CharacterController>();
+        var controller = gameObject.GetComponent<CharacterController>();
 
-        if (controller.isGrounded)
+		if (controller.isGrounded)
         {
             // Movement Direction
             MoveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));

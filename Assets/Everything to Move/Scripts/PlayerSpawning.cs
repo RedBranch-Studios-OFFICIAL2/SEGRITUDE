@@ -53,11 +53,11 @@ public class PlayerSpawning : MonoBehaviour {
     void SpawnPlayer() {
         int randomIndex = Random.Range(0, possibleSpawnLocations.Count);
 
-        Vector3 spawnLocation = new Vector3(possibleSpawnLocations[randomIndex].x, possibleSpawnLocationHeight[randomIndex].y + (transform.localScale.y/2), possibleSpawnLocations[randomIndex].z);
+        var spawnLocation = new Vector3(possibleSpawnLocations[randomIndex].x, possibleSpawnLocationHeight[randomIndex].y + (transform.localScale.y/2), possibleSpawnLocations[randomIndex].z);
 
-        GameObject playerSpawn = (GameObject)Instantiate(player, spawnLocation, Quaternion.identity);
+		var playerSpawn = (GameObject)Instantiate(player, spawnLocation, Quaternion.identity);
 
-        CameraController.UseCamera = true;
+		CameraController.UseCamera = true;
     }
 
     //Get all possible positions that a player can spawn
@@ -70,8 +70,8 @@ public class PlayerSpawning : MonoBehaviour {
 
         for (int x = 0; x < terrainLength; x++) {
             for (int z = 0; z < terrainWidth; z++) {
-                Vector3 checkPos = new Vector3(terrainPosX + x, 0, terrainPosZ + z);
-                int textureIndexAtCheckPos = TerrainSurface.GetMainTexture(checkPos, terrain);
+                var checkPos = new Vector3(terrainPosX + x, 0, terrainPosZ + z);
+				int textureIndexAtCheckPos = TerrainSurface.GetMainTexture(checkPos, terrain);
 
                 if (textureIndexAtCheckPos == terrainTextureToSpawnPlayer) {
                     possibleSpawnLocations.Add(checkPos);
