@@ -20,5 +20,5 @@ MonoBehaviour:
   damage: 10
   range: 150
   maxClip: 32
-  fireRate: 1
+  fireRate: 0.1
   automatic: 1

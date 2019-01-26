@@ -13,7 +13,7 @@ public class Gun : Item
 
     public int MaxClip => maxClip;
 
-    public int FireRate => fireRate;
+    public float FireRate => fireRate;
     public bool Automatic => automatic;
 
     #endregion
@@ -25,7 +25,7 @@ public class Gun : Item
     
     [SerializeField] private int maxClip = 32;
 
-    [SerializeField] private int fireRate;
+    [SerializeField] private float fireRate;
     [SerializeField] private bool automatic;
 
 
